@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <HueSDK_iOS/HueSDK.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) PHHueSDK *phHueSDK;
 
 @end
 

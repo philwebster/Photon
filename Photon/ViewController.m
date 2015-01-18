@@ -8,12 +8,17 @@
 
 #import "ViewController.h"
 #import "LightGroupView.h"
+#import "LightGroupCollectionViewCell.h"
+#import <HueSDK_iOS/HueSDK.h>
+
+#define MAX_HUE 65535
+
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UICollectionView *colorCollection;
 @property (strong, nonatomic) LightGroupView *lightView;
-
 @property NSMutableArray *colors;
+@property UIColor *initialTapColor;
 
 @end
 
@@ -77,14 +82,42 @@
         NSLog(@"long press on view but not on a row");
     } else if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"long press on view at row %ld", (long)indexPath.row);
+        self.initialTapColor = _colors[indexPath.row];
         _lightView.hidden = NO;
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         NSIndexPath *path = [_lightView.lightGroups indexPathForItemAtPoint:p];
-        UIColor *c = [_lightView.lightGroups cellForItemAtIndexPath:path].backgroundColor;
+        
+        LightGroupCollectionViewCell *c = (LightGroupCollectionViewCell *)[_lightView collectionView:_lightView.lightGroups cellForItemAtIndexPath:path];
         NSLog(@"long press ended over item: %@", c);
         _lightView.hidden = YES;
+        if (c.group) {
+            [self setStateForGroup:c.group];
+        }
     } else {
-        NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
+//        NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
+    }
+}
+
+- (void)setStateForGroup:(PHGroup *)group {
+    for (NSString *lightIdentifier in group.lightIdentifiers) {
+        
+        PHLightState *lightState = [[PHLightState alloc] init];
+        
+        CGFloat hue, sat, brightness, alpha;
+        [self.initialTapColor getHue:&hue saturation:&sat brightness:&brightness alpha:&alpha];
+        [lightState setHue:[NSNumber numberWithInt:hue * MAX_HUE]];
+        [lightState setBrightness:[NSNumber numberWithInt:254]];
+        [lightState setSaturation:[NSNumber numberWithInt:254]];
+        
+        // Send lightstate to light
+        PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+        [bridgeSendAPI updateLightStateForId:lightIdentifier withLightState:lightState completionHandler:^(NSArray *errors) {
+            if (errors != nil) {
+                NSString *message = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Errors", @""), errors != nil ? errors : NSLocalizedString(@"none", @"")];
+                
+                NSLog(@"Response: %@",message);
+            }
+        }];
     }
 }
 

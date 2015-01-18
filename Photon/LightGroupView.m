@@ -7,11 +7,13 @@
 //
 
 #import "LightGroupView.h"
+#import <HueSDK_iOS/HueSDK.h>
+#import "LightGroupCollectionViewCell.h"
 
 @interface LightGroupView ()
 
-@property NSMutableArray *groups;
-@property NSMutableArray *lights;
+@property NSArray *groups;
+@property NSArray *lights;
 
 @end
 
@@ -25,26 +27,34 @@
         _lightGroups = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
         _lightGroups.dataSource = self;
         _lightGroups.delegate = self;
-        [_lightGroups registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"lightCell"];
+        [_lightGroups registerClass:[LightGroupCollectionViewCell class] forCellWithReuseIdentifier:@"lightCell"];
         [self addSubview:_lightGroups];
-        _lights = [NSMutableArray arrayWithArray:@[[UIColor yellowColor],
-                                                   [UIColor greenColor],
-                                                   [UIColor redColor],
-                                                   [UIColor brownColor],
-                                                   [UIColor orangeColor],
-                                                   [UIColor purpleColor],
-                                                   [UIColor lightGrayColor],
-                                                   [UIColor lightTextColor],
-                                                   [UIColor blueColor]]];
-        _groups = [NSMutableArray arrayWithArray:@[[UIColor yellowColor],
-                                                   [UIColor greenColor],
-                                                   [UIColor redColor],
-                                                   [UIColor brownColor],
-                                                   [UIColor orangeColor],
-                                                   [UIColor purpleColor],
-                                                   [UIColor lightGrayColor],
-                                                   [UIColor lightTextColor],
-                                                   [UIColor blueColor]]];
+        
+        // Get the cache
+        PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+        // And now you can get any resource you want, for example:
+        _lights = [cache.lights allValues];
+        
+        _groups = [cache.groups allValues];
+        
+//        _lights = [NSMutableArray arrayWithArray:@[[UIColor yellowColor],
+//                                                   [UIColor greenColor],
+//                                                   [UIColor redColor],
+//                                                   [UIColor brownColor],
+//                                                   [UIColor orangeColor],
+//                                                   [UIColor purpleColor],
+//                                                   [UIColor lightGrayColor],
+//                                                   [UIColor lightTextColor],
+//                                                   [UIColor blueColor]]];
+//        _groups = [NSMutableArray arrayWithArray:@[[UIColor yellowColor],
+//                                                   [UIColor greenColor],
+//                                                   [UIColor redColor],
+//                                                   [UIColor brownColor],
+//                                                   [UIColor orangeColor],
+//                                                   [UIColor purpleColor],
+//                                                   [UIColor lightGrayColor],
+//                                                   [UIColor lightTextColor],
+//                                                   [UIColor blueColor]]];
 
     }
     return self;
@@ -63,9 +73,21 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableArray *source = indexPath.section == 0 ? _groups : _lights;
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"lightCell" forIndexPath:indexPath];
-    UIColor *color = source[indexPath.row];
+    LightGroupCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"lightCell" forIndexPath:indexPath];
+
+    if (indexPath.section == 0) {
+        [cell setCellName:[_groups[indexPath.row] name]];
+        [cell setGroup:_groups[indexPath.row]];
+        cell.light = nil;
+    } else {
+        [cell setCellName:[_lights[indexPath.row] name]];
+        [cell setLight:_lights[indexPath.row]];
+        cell.group = nil;
+    }
+//    NSArray *source = indexPath.section == 0 ? _groups : _lights;
+//    LightGroupCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"lightCell" forIndexPath:indexPath];
+    
+    UIColor *color = [UIColor redColor];
     cell.backgroundColor = color;
     return cell;
 }
