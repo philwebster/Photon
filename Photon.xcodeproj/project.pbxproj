@@ -14,6 +14,7 @@
 		D38C16461A68DE96006FE974 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D38C16451A68DE96006FE974 /* Images.xcassets */; };
 		D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38C16471A68DE96006FE974 /* LaunchScreen.xib */; };
 		D38C16551A68DE96006FE974 /* PhotonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C16541A68DE96006FE974 /* PhotonTests.m */; };
+		D3BA9F231A6A013800CE7E91 /* LightGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA9F221A6A013800CE7E91 /* LightGroupView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		D38C164E1A68DE96006FE974 /* PhotonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16531A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C16541A68DE96006FE974 /* PhotonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotonTests.m; sourceTree = "<group>"; };
+		D3BA9F211A6A013800CE7E91 /* LightGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightGroupView.h; sourceTree = "<group>"; };
+		D3BA9F221A6A013800CE7E91 /* LightGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightGroupView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				D38C163D1A68DE96006FE974 /* AppDelegate.m */,
 				D38C163F1A68DE96006FE974 /* ViewController.h */,
 				D38C16401A68DE96006FE974 /* ViewController.m */,
+				D3BA9F211A6A013800CE7E91 /* LightGroupView.h */,
+				D3BA9F221A6A013800CE7E91 /* LightGroupView.m */,
 				D38C16421A68DE96006FE974 /* Main.storyboard */,
 				D38C16451A68DE96006FE974 /* Images.xcassets */,
 				D38C16471A68DE96006FE974 /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 				D38C16411A68DE96006FE974 /* ViewController.m in Sources */,
 				D38C163E1A68DE96006FE974 /* AppDelegate.m in Sources */,
 				D38C163B1A68DE96006FE974 /* main.m in Sources */,
+				D3BA9F231A6A013800CE7E91 /* LightGroupView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +420,7 @@
 				D38C165A1A68DE96006FE974 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D38C165B1A68DE96006FE974 /* Build configuration list for PBXNativeTarget "PhotonTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +429,7 @@
 				D38C165D1A68DE96006FE974 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
