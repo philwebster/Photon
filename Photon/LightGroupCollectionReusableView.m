@@ -10,14 +10,26 @@
 
 @implementation LightGroupCollectionReusableView
 
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.headerLabel = [UILabel new];
+        self.headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:self.headerLabel];
+    }
+    return self;
+}
+
+
+
 - (void)layoutSubviews {
-    self.headerLabel = [UILabel new];
-    self.headerLabel.text = @"Hello";
-    self.headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.headerLabel];
     self.layer.borderColor = [UIColor blackColor].CGColor;
     self.layer.borderWidth = 1;
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_headerLabel]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_headerLabel)]];
+}
+
+- (void)prepareForReuse {
+    self.headerLabel.text = nil;
 }
 
 @end

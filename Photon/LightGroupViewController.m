@@ -59,7 +59,7 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 2;
+    return 3;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -68,6 +68,13 @@
 
     if (kind == UICollectionElementKindSectionHeader) {
         LightGroupCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader" forIndexPath:indexPath];
+        if (indexPath.section == 0) {
+            headerView.headerLabel.text = @"Groups";
+        } else if (indexPath.section == 1) {
+            headerView.headerLabel.text = @"Lights";
+        } else if (indexPath.section == 2) {
+            headerView.headerLabel.text = @"Scenes";
+        }
         reusableview = headerView;
     }
     return reusableview;
@@ -76,9 +83,12 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 0) {
         return [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] count] + 1;
-    } else {
+    } else if (section == 1) {
         return [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] count];
+    } else if (section == 2) {
+        return [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] count];
     }
+    return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,9 +103,12 @@
         } else {
             cell.cellLabel.text = [groups[indexPath.row] name];
         }
-    } else {
+    } else if (indexPath.section == 1) {
         NSArray *lights = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
         cell.cellLabel.text = [lights[indexPath.row] name];
+    } else if (indexPath.section == 2) {
+        NSArray *scenes = [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
+        cell.cellLabel.text = [scenes[indexPath.row] name];
     }
     return cell;
 }
