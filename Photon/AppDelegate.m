@@ -299,6 +299,8 @@
      the chosen bridge.
      *****************************************************/
     
+    [self.lightVC.lightGroupCollectionView reloadData];
+    
     // Remove pushlink view controller
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     self.setupVC = nil;

@@ -36,25 +36,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.lightsTableView = [[UITableView alloc] initWithFrame:CGRectZero];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.lightsTableView = [UITableView new];
     self.lightsTableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.lightsTableView.dataSource = self;
     self.lightsTableView.delegate = self;
     self.lightsTableView.allowsMultipleSelection = YES;
-//    [self.view addSubview:self.lightsTableView];
+    [self.view addSubview:self.lightsTableView];
     
-    self.groupTitleField = [[UITextField alloc] init];
-    self.groupTitleField.borderStyle = UITextBorderStyleBezel;
-    [self.groupTitleField setAutoresizesSubviews:NO];
+    self.groupTitleField = [UITextField new];
+    self.groupTitleField.borderStyle = UITextBorderStyleLine;
+    self.groupTitleField.autoresizesSubviews = NO;
     self.groupTitleField.translatesAutoresizingMaskIntoConstraints = NO;
+    self.groupTitleField.placeholder = @"Group Name";
+    self.groupTitleField.text = self.group.name ? self.group.name : @"New Group";
     [self.view addSubview:self.groupTitleField];
     
-//    [self.view setAutoresizesSubviews:NO];
-//    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    id topGuide = self.topLayoutGuide;
+    
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[_groupTitleField]-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_lightsTableView, _groupTitleField)]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_groupTitleField(50.0)]-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_lightsTableView, _groupTitleField)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_lightsTableView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_lightsTableView, _groupTitleField)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topGuide]-[_groupTitleField(50.0)]-[_lightsTableView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(topGuide, _lightsTableView, _groupTitleField)]];
 
-    self.view.backgroundColor = [UIColor orangeColor];
     self.saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(saveGroup)];
     self.navigationItem.rightBarButtonItem = self.saveButton;
     
@@ -109,16 +114,29 @@
 - (void)saveGroup {
     // Get group from cache
     
-    // Update name of group
-//    group.name = @”New name of group”;
+    NSString *name = self.groupTitleField.text;
+    NSArray *lightIds = [NSArray arrayWithArray:[self.selectedLights allObjects]];
 
-    self.group.lightIdentifiers = [NSArray arrayWithArray:[self.selectedLights allObjects]];
-    
+    if (self.group) {
+        // We're updating an existing group
+        
+        // Update name of group
+        self.group.name = name;
+        self.group.lightIdentifiers = lightIds;
+
+        [self updateGroup:self.group];
+    } else {
+        // We're creating a new group
+        [self createNewGroupWithName:name lightIds:lightIds];
+    }
+}
+
+- (void)updateGroup:(PHGroup *)group {
     // Create PHBridgeSendAPI object
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     
     // Call update of group on bridge API
-    [bridgeSendAPI updateGroupWithGroup:self.group completionHandler:^(NSArray *errors) {
+    [bridgeSendAPI updateGroupWithGroup:group completionHandler:^(NSArray *errors) {
         if (!errors){
             // Update successful
             NSLog(@"successfully updated group");
@@ -129,10 +147,10 @@
     }];
 }
 
-- (void)createNewGroup {
-    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+- (void)createNewGroupWithName:(NSString *)name lightIds:(NSArray *)lightIds {
 
-    [bridgeSendAPI createGroupWithName:@"New Group" lightIds:[NSArray arrayWithArray:[self.selectedLights allObjects]] completionHandler:^(NSString *groupIdentifier, NSArray *errors) {
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    [bridgeSendAPI createGroupWithName:name lightIds:lightIds completionHandler:^(NSString *groupIdentifier, NSArray *errors) {
         if (!errors){
             // Create successful
             NSLog(@"successfully created group");

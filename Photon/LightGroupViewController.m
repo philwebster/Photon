@@ -8,6 +8,7 @@
 
 #import "LightGroupViewController.h"
 #import "LightGroupCollectionViewCell.h"
+#import "LightGroupCollectionReusableView.h"
 #import "GroupListViewController.h"
 #import "AppDelegate.h"
 #import <HueSDK_iOS/HueSDK.h>
@@ -25,6 +26,9 @@
 
 //        // Make it a form on iPad
 //        self.modalPresentationStyle = UIModalPresentationFormSheet;
+        PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
+        // Register for the local heartbeat notifications
+        [notificationManager registerObject:self withSelector:@selector(receivedHeartbeat) forNotification:LOCAL_CONNECTION_NOTIFICATION];
         
         self.phHueSDK = hueSdk;
     }
@@ -34,6 +38,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"LightGroupCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"lightCell"];
+    [self.lightGroupCollectionView registerClass:[LightGroupCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
+
+    self.lightGroupCollectionView.backgroundColor = [UIColor whiteColor];
 
     // Do any additional setup after loading the view from its nib.
 }
@@ -47,9 +54,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(self.view.frame.size.width, 50);
+}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 2;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+
+    UICollectionReusableView *reusableview = nil;
+
+    if (kind == UICollectionElementKindSectionHeader) {
+        LightGroupCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader" forIndexPath:indexPath];
+        reusableview = headerView;
+    }
+    return reusableview;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -62,24 +83,19 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     LightGroupCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"lightCell" forIndexPath:indexPath];
-    cell.layer.borderColor = [UIColor redColor].CGColor;
+    cell.layer.borderColor = [UIColor blackColor].CGColor;
     cell.layer.borderWidth = 1;
+
     if (indexPath.section == 0) {
         NSArray *groups = [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
         if (indexPath.row == groups.count) {
             cell.cellLabel.text = @"Edit groups";
-            cell.group = nil;
-            cell.light = nil;
         } else {
             cell.cellLabel.text = [groups[indexPath.row] name];
-            cell.group = groups[indexPath.row];
-            cell.light = nil;
         }
     } else {
         NSArray *lights = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
         cell.cellLabel.text = [lights[indexPath.row] name];
-        cell.light = lights[indexPath.row];
-        cell.group = nil;
     }
     return cell;
 }
@@ -107,6 +123,12 @@
         [navController setNavigationBarHidden:NO animated:YES];
         [navController pushViewController:self.groupListVC animated:NO];
     }
+}
+
+- (void)receivedHeartbeat {
+    NSLog(@"Got heartbeat, reloading data");
+    // TODO: Be smarter about reloading data
+    [self.lightGroupCollectionView reloadData];
 }
 
 /*

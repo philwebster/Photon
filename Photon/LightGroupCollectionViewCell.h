@@ -11,9 +11,6 @@
 
 @interface LightGroupCollectionViewCell : UICollectionViewCell
 
-@property PHGroup *group;
-@property PHLight *light;
-
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel;
 
 @end
