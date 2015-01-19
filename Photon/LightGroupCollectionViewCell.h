@@ -14,6 +14,6 @@
 @property PHGroup *group;
 @property PHLight *light;
 
-- (void)setCellName:(NSString *)cellName;
+@property (weak, nonatomic) IBOutlet UILabel *cellLabel;
 
 @end

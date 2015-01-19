@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "LightGroupView.h"
 #import "LightGroupCollectionViewCell.h"
 #import <HueSDK_iOS/HueSDK.h>
 
@@ -16,7 +15,6 @@
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UICollectionView *colorCollection;
-@property (strong, nonatomic) LightGroupView *lightView;
 @property NSMutableArray *colors;
 @property UIColor *initialTapColor;
 
@@ -44,15 +42,15 @@
                                                [UIColor colorWithHue:0.341 saturation:0.748 brightness:1.000 alpha:1.000],
                                                [UIColor colorWithHue:0.468 saturation:0.808 brightness:1.000 alpha:1.000]]];
     
-    _lightView = [[LightGroupView alloc] initWithFrame:self.view.frame];
-    _lightView.hidden = YES;
+//    _lightView = [[LightGroupView alloc] initWithFrame:self.view.frame];
+//    _lightView.hidden = YES;
 
     UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     recognizer.minimumPressDuration = 0.1;
     recognizer.delegate = self;
     [self.colorCollection addGestureRecognizer:recognizer];
 
-    [self.view addSubview:_lightView];
+//    [self.view addSubview:_lightView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,8 +71,8 @@
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
-    _lightView.hidden = NO;
-    [self.view bringSubviewToFront:_lightView];
+//    _lightView.hidden = NO;
+//    [self.view bringSubviewToFront:_lightView];
     CGPoint p = [recognizer locationInView:self.colorCollection];
     
     NSIndexPath *indexPath = [self.colorCollection indexPathForItemAtPoint:p];
@@ -83,16 +81,16 @@
     } else if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"long press on view at row %ld", (long)indexPath.row);
         self.initialTapColor = _colors[indexPath.row];
-        _lightView.hidden = NO;
+//        _lightView.hidden = NO;
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        NSIndexPath *path = [_lightView.lightGroups indexPathForItemAtPoint:p];
+//        NSIndexPath *path = [_lightView.lightGroups indexPathForItemAtPoint:p];
         
-        LightGroupCollectionViewCell *c = (LightGroupCollectionViewCell *)[_lightView collectionView:_lightView.lightGroups cellForItemAtIndexPath:path];
-        NSLog(@"long press ended over item: %@", c);
-        _lightView.hidden = YES;
-        if (c.group) {
-            [self setStateForGroup:c.group];
-        }
+//        LightGroupCollectionViewCell *c = (LightGroupCollectionViewCell *)[_lightView collectionView:_lightView.lightGroups cellForItemAtIndexPath:path];
+//        NSLog(@"long press ended over item: %@", c);
+//        _lightView.hidden = YES;
+//        if (c.group) {
+//            [self setStateForGroup:c.group];
+//        }
     } else {
 //        NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
     }
