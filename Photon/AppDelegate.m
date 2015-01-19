@@ -34,7 +34,7 @@
     // Create sdk instance
     self.phHueSDK = [[PHHueSDK alloc] init];
     [self.phHueSDK startUpSDK];
-    [self.phHueSDK enableLogging:YES];
+//    [self.phHueSDK enableLogging:YES];
     
     self.lightVC = [[LightGroupViewController alloc] initWithNibName:@"LightGroupViewController" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.lightVC];

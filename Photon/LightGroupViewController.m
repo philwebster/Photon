@@ -8,10 +8,13 @@
 
 #import "LightGroupViewController.h"
 #import "LightGroupCollectionViewCell.h"
+#import "GroupListViewController.h"
+#import "AppDelegate.h"
 #import <HueSDK_iOS/HueSDK.h>
 
 @interface LightGroupViewController ()
 @property (nonatomic, strong) PHHueSDK *phHueSDK;
+@property (nonatomic, strong) GroupListViewController *groupListVC;
 @end
 
 @implementation LightGroupViewController
@@ -35,6 +38,10 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -47,7 +54,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 0) {
-        return [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] count];
+        return [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] count] + 1;
     } else {
         return [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] count];
     }
@@ -59,9 +66,15 @@
     cell.layer.borderWidth = 1;
     if (indexPath.section == 0) {
         NSArray *groups = [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
-        cell.cellLabel.text = [groups[indexPath.row] name];
-        cell.group = groups[indexPath.row];
-        cell.light = nil;
+        if (indexPath.row == groups.count) {
+            cell.cellLabel.text = @"Edit groups";
+            cell.group = nil;
+            cell.light = nil;
+        } else {
+            cell.cellLabel.text = [groups[indexPath.row] name];
+            cell.group = groups[indexPath.row];
+            cell.light = nil;
+        }
     } else {
         NSArray *lights = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
         cell.cellLabel.text = [lights[indexPath.row] name];
@@ -85,6 +98,15 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 10;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 && indexPath.row + 1 == [collectionView numberOfItemsInSection:indexPath.section]) {
+        self.groupListVC = [[GroupListViewController alloc] init];
+        UINavigationController *navController = [(AppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+        [navController setNavigationBarHidden:NO animated:YES];
+        [navController pushViewController:self.groupListVC animated:NO];
+    }
 }
 
 /*

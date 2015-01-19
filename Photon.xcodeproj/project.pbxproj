@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */; };
+		D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */; };
 		D38C163B1A68DE96006FE974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163A1A68DE96006FE974 /* main.m */; };
 		D38C163E1A68DE96006FE974 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163D1A68DE96006FE974 /* AppDelegate.m */; };
 		D38C16411A68DE96006FE974 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C16401A68DE96006FE974 /* ViewController.m */; };
@@ -41,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListViewController.h; sourceTree = "<group>"; };
+		D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupListViewController.m; sourceTree = "<group>"; };
+		D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditGroupViewController.h; sourceTree = "<group>"; };
+		D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditGroupViewController.m; sourceTree = "<group>"; };
 		D38C16351A68DE96006FE974 /* Photon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16391A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C163A1A68DE96006FE974 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -132,6 +138,10 @@
 				D3FB694D1A6CF7080068945E /* SetupViewController.h */,
 				D3FB694E1A6CF7080068945E /* SetupViewController.m */,
 				D3FB694F1A6CF7080068945E /* SetupViewController.xib */,
+				D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */,
+				D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */,
+				D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */,
+				D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */,
 				D3FB69521A6D0D810068945E /* LightGroupViewController.h */,
 				D3FB69531A6D0D810068945E /* LightGroupViewController.m */,
 				D3FB69571A6D149D0068945E /* LightGroupViewController.xib */,
@@ -308,12 +318,14 @@
 				D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */,
 				D3BA633D1A6B664600095EF7 /* ContextFilterLogFormatter.m in Sources */,
 				D3BA633C1A6B664600095EF7 /* DDTTYLogger.m in Sources */,
+				D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */,
 				D3BA63411A6B7CA600095EF7 /* LightGroupCollectionViewCell.m in Sources */,
 				D3FB69551A6D0D810068945E /* LightGroupViewController.m in Sources */,
 				D3BA633A1A6B664600095EF7 /* DDFileLogger.m in Sources */,
 				D3BA633B1A6B664600095EF7 /* DDLog.m in Sources */,
 				D38C163B1A68DE96006FE974 /* main.m in Sources */,
 				D3BA633E1A6B664600095EF7 /* DispatchQueueLogFormatter.m in Sources */,
+				D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */,
 				D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
