@@ -140,6 +140,7 @@
         if (!errors){
             // Update successful
             NSLog(@"successfully updated group");
+            [[(AppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] popViewControllerAnimated:YES];
         } else {
             // Error occurred
             NSLog(@"didn't update group");
@@ -154,6 +155,7 @@
         if (!errors){
             // Create successful
             NSLog(@"successfully created group");
+            [[(AppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] popViewControllerAnimated:YES];
         } else {
             // Error occurred
             NSLog(@"didn't create group");

@@ -10,7 +10,8 @@
 
 @class PHHueSDK;
 
-@interface LightGroupViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface LightGroupViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil hueSDK:(PHHueSDK *)hueSdk;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *lightGroupCollectionView;

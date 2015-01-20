@@ -20,8 +20,6 @@
     return self;
 }
 
-
-
 - (void)layoutSubviews {
     self.layer.borderColor = [UIColor blackColor].CGColor;
     self.layer.borderWidth = 1;

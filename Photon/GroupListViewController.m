@@ -27,6 +27,7 @@
         self.groupTableView = [[UITableView alloc] initWithFrame:self.view.frame];
         self.groupTableView.dataSource = self;
         self.groupTableView.delegate = self;
+        self.groupTableView.allowsMultipleSelectionDuringEditing = YES;
         [self.view addSubview:self.groupTableView];
     }
     return self;
@@ -49,6 +50,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues] count];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //add code here for when you hit delete
+
+        NSArray *groups = [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
+        NSString *groupID = [groups[indexPath.row] identifier];
+
+        PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+        [bridgeSendAPI removeGroupWithId:groupID completionHandler:^(NSArray *errors) {
+            if (!errors) {
+                [_groupTableView reloadData];
+            }
+        }];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
