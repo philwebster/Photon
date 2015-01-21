@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D31C47931A6D993900E30CD3 /* LightGroupCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C47921A6D993900E30CD3 /* LightGroupCollectionReusableView.m */; };
-		D31C47961A6DC0A400E30CD3 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C47951A6DC0A400E30CD3 /* ColorPickerViewController.m */; };
 		D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */; };
 		D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */; };
 		D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */; };
@@ -19,6 +18,7 @@
 		D38C16461A68DE96006FE974 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D38C16451A68DE96006FE974 /* Images.xcassets */; };
 		D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38C16471A68DE96006FE974 /* LaunchScreen.xib */; };
 		D38C16551A68DE96006FE974 /* PhotonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C16541A68DE96006FE974 /* PhotonTests.m */; };
+		D3B90BB01A6F77E50062E355 /* ColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B90BAF1A6F77E50062E355 /* ColorPickerView.m */; };
 		D3BA63271A6B5F6100095EF7 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */; };
 		D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632A1A6B664600095EF7 /* DDAbstractDatabaseLogger.m */; };
 		D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632C1A6B664600095EF7 /* DDASLLogger.m */; };
@@ -47,8 +47,6 @@
 /* Begin PBXFileReference section */
 		D31C47911A6D993900E30CD3 /* LightGroupCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightGroupCollectionReusableView.h; sourceTree = "<group>"; };
 		D31C47921A6D993900E30CD3 /* LightGroupCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightGroupCollectionReusableView.m; sourceTree = "<group>"; };
-		D31C47941A6DC0A400E30CD3 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
-		D31C47951A6DC0A400E30CD3 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
 		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
 		D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridgeView.m; sourceTree = "<group>"; };
 		D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListViewController.h; sourceTree = "<group>"; };
@@ -68,6 +66,8 @@
 		D38C164E1A68DE96006FE974 /* PhotonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16531A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C16541A68DE96006FE974 /* PhotonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotonTests.m; sourceTree = "<group>"; };
+		D3B90BAE1A6F77E50062E355 /* ColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerView.h; sourceTree = "<group>"; };
+		D3B90BAF1A6F77E50062E355 /* ColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerView.m; sourceTree = "<group>"; };
 		D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		D3BA63291A6B664600095EF7 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		D3BA632A1A6B664600095EF7 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
@@ -153,8 +153,8 @@
 				D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */,
 				D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */,
 				D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */,
-				D31C47941A6DC0A400E30CD3 /* ColorPickerViewController.h */,
-				D31C47951A6DC0A400E30CD3 /* ColorPickerViewController.m */,
+				D3B90BAE1A6F77E50062E355 /* ColorPickerView.h */,
+				D3B90BAF1A6F77E50062E355 /* ColorPickerView.m */,
 				D38C16421A68DE96006FE974 /* Main.storyboard */,
 				D38C16451A68DE96006FE974 /* Images.xcassets */,
 				D38C16471A68DE96006FE974 /* LaunchScreen.xib */,
@@ -324,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D38C16411A68DE96006FE974 /* ViewController.m in Sources */,
+				D3B90BB01A6F77E50062E355 /* ColorPickerView.m in Sources */,
 				D38C163E1A68DE96006FE974 /* AppDelegate.m in Sources */,
 				D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */,
 				D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */,
@@ -337,7 +338,6 @@
 				D3BA633B1A6B664600095EF7 /* DDLog.m in Sources */,
 				D38C163B1A68DE96006FE974 /* main.m in Sources */,
 				D31C47931A6D993900E30CD3 /* LightGroupCollectionReusableView.m in Sources */,
-				D31C47961A6DC0A400E30CD3 /* ColorPickerViewController.m in Sources */,
 				D3BA633E1A6B664600095EF7 /* DispatchQueueLogFormatter.m in Sources */,
 				D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */,
 				D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */,

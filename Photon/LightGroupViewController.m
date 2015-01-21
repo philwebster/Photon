@@ -10,15 +10,14 @@
 #import "LightGroupCollectionViewCell.h"
 #import "LightGroupCollectionReusableView.h"
 #import "GroupListViewController.h"
-#import "ColorPickerViewController.h"
+#import "ColorPickerView.h"
 #import "AppDelegate.h"
 #import <HueSDK_iOS/HueSDK.h>
 
 @interface LightGroupViewController ()
 @property (nonatomic, strong) PHHueSDK *phHueSDK;
 @property (nonatomic, strong) GroupListViewController *groupListVC;
-@property (nonatomic, strong) ColorPickerViewController *colorPickerVC;
-@property (nonatomic, strong) UIView *quickPickView;
+@property (nonatomic, strong) ColorPickerView *quickPickView;
 @property (nonatomic, strong) UILongPressGestureRecognizer *recognizer;
 @property (nonatomic, weak) id<ViewControllerWithGestureRecognizerDelegate> delegate;
 @property (nonatomic, strong) NSMutableDictionary *fakeGroups;
@@ -50,8 +49,8 @@
             [_fakeGroups setObject:group forKey:[NSNumber numberWithInt:i]];
         }
         
-        _quickPickView = [[UIView alloc] initWithFrame:self.view.frame];
-        _quickPickView.backgroundColor = [UIColor redColor];
+        _quickPickView = [[ColorPickerView alloc] initWithFrame:self.view.frame lightResource:nil];
+//        _quickPickView.backgroundColor = [UIColor redColor];
         _quickPickView.hidden = YES;
         [self.view addSubview:_quickPickView];
         
@@ -169,15 +168,13 @@
             [navController pushViewController:self.groupListVC animated:NO];
         } else {
             NSArray *groups = [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
-            self.colorPickerVC = [[ColorPickerViewController alloc] initWithLightResource:groups[indexPath.row]];
-            [navController setNavigationBarHidden:NO];
-            [navController pushViewController:self.colorPickerVC animated:NO];
+            _quickPickView.lightResource = groups[indexPath.row];
+            _quickPickView.hidden = NO;
         }
     } else if (indexPath.section == 1) {
         NSArray *lights = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
-        self.colorPickerVC = [[ColorPickerViewController alloc] initWithLightResource:lights[indexPath.row]];
-        [navController setNavigationBarHidden:NO];
-        [navController pushViewController:self.colorPickerVC animated:NO];
+        _quickPickView.lightResource = lights[indexPath.row];
+        _quickPickView.hidden = NO;
     }
 }
 
