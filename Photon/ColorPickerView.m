@@ -22,22 +22,23 @@
 
 @implementation ColorPickerView
 
-- (id)initWithFrame:(CGRect)frame lightResource:(PHBridgeResource *)resource {
-    self = [super initWithFrame:frame];
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        self.lightResource = resource;
-        
         self.backgroundColor = [UIColor whiteColor];
         self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
         self.colorCollectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:self.flowLayout];
         [self.colorCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"colorCell"];
         
-        self.colorCollectionView.backgroundColor = [UIColor whiteColor];
+        self.colorCollectionView.backgroundColor = [UIColor grayColor];
         
         self.colorCollectionView.delegate = self;
         self.colorCollectionView.dataSource = self;
         
         [self addSubview:self.colorCollectionView];
+        [_colorCollectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_colorCollectionView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_colorCollectionView)]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_colorCollectionView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_colorCollectionView)]];
         _naturalColors = [NSMutableArray arrayWithArray:@[
                                                           [UIColor colorWithHue:0.123 saturation:0.665 brightness:0.996 alpha:1.000],
                                                           [UIColor colorWithHue:0.132 saturation:0.227 brightness:1.000 alpha:1.000],
@@ -56,11 +57,36 @@
                                                    [UIColor colorWithHue:0.341 saturation:0.748 brightness:1.000 alpha:1.000],
                                                    [UIColor colorWithHue:0.468 saturation:0.808 brightness:1.000 alpha:1.000]]];
         
-
+        
     }
     return self;
     
 }
+
+#pragma mark CollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return CGSizeMake(self.frame.size.width / 5, 100);
+    } else if (indexPath.section == 1) {
+        return CGSizeMake(self.frame.size.width, (self.frame.size.height - 100) / _colors.count);
+    }
+    return CGSizeMake(0, 0);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
+}
+
+#pragma mark CollectionViewDelegate
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 2;
@@ -74,24 +100,6 @@
     }
     return 0;
 }
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 0;
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 0;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return CGSizeMake(self.frame.size.width / 5, 100);
-    } else if (indexPath.section == 1) {
-        return CGSizeMake(self.frame.size.width, (self.frame.size.height - (100 /*+ self.topLayoutGuide.length*/)) / _colors.count);
-    }
-    return CGSizeMake(0, 0);
-}
-
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"colorCell" forIndexPath:indexPath];

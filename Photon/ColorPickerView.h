@@ -19,6 +19,6 @@
 // TODO: Color picker should return a color and not do the setting of a color, so it really shouldn't know about PHBridgeResource
 @property PHBridgeResource *lightResource;
 
-- (id)initWithFrame:(CGRect)frame lightResource:(PHBridgeResource *)resource;
+//- (id)initWithFrame:(CGRect)frame lightResource:(PHBridgeResource *)resource;
 
 @end

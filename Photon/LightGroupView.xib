@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LightGroupViewController">
             <connections>
                 <outlet property="lightGroupCollectionView" destination="0sA-tG-14p" id="Oyj-ui-jAp"/>
+                <outlet property="quickPickView" destination="M8e-vp-KpD" id="vT7-3O-Tqa"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ttw-XP-k51"/>
             </connections>
         </placeholder>
@@ -15,6 +16,10 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8e-vp-KpD" customClass="ColorPickerView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0sA-tG-14p">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -30,12 +35,16 @@
                     </connections>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="0sA-tG-14p" secondAttribute="trailing" id="03N-YW-t6r"/>
-                <constraint firstItem="0sA-tG-14p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SK8-Kj-DYi"/>
-                <constraint firstAttribute="bottom" secondItem="0sA-tG-14p" secondAttribute="bottom" id="ZoQ-28-OWa"/>
-                <constraint firstItem="0sA-tG-14p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wJ1-BQ-Y9B"/>
+                <constraint firstItem="0sA-tG-14p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7sf-8e-ATA"/>
+                <constraint firstAttribute="trailing" secondItem="M8e-vp-KpD" secondAttribute="trailing" id="DSE-Vp-B8e"/>
+                <constraint firstAttribute="bottom" secondItem="0sA-tG-14p" secondAttribute="bottom" id="DxO-TV-7tv"/>
+                <constraint firstItem="M8e-vp-KpD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MEh-xi-I8c"/>
+                <constraint firstItem="0sA-tG-14p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Oj5-ND-N0P"/>
+                <constraint firstAttribute="bottom" secondItem="M8e-vp-KpD" secondAttribute="bottom" id="Zfz-TM-eq6"/>
+                <constraint firstItem="M8e-vp-KpD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wFB-8v-WD3"/>
+                <constraint firstAttribute="trailing" secondItem="0sA-tG-14p" secondAttribute="trailing" id="xvp-yT-tR7"/>
             </constraints>
         </view>
     </objects>

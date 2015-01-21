@@ -17,35 +17,14 @@
 @interface LightGroupViewController ()
 @property (nonatomic, strong) PHHueSDK *phHueSDK;
 @property (nonatomic, strong) GroupListViewController *groupListVC;
-@property (nonatomic, strong) ColorPickerView *quickPickView;
 @property (nonatomic, strong) UILongPressGestureRecognizer *recognizer;
 @property (nonatomic, strong) NSMutableDictionary *fakeGroups;
 @property (nonatomic, strong) PHBridgeResource *selectedResource;
+@property (weak, nonatomic) IBOutlet ColorPickerView *quickPickView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @end
 
 @implementation LightGroupViewController
-
-//- (id)initWithHueSdk:(PHHueSDK *)hueSdk {
-//    self = [super init];
-//    if (self) {
-//        PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
-//        // Register for the local heartbeat notifications
-//        [notificationManager registerObject:self withSelector:@selector(receivedHeartbeat) forNotification:LOCAL_CONNECTION_NOTIFICATION];
-//        
-//        self.phHueSDK = hueSdk;
-//
-//        _fakeGroups = [NSMutableDictionary new];
-//        for (int i = 0; i < 5; ++i) {
-//            PHGroup *group = [[PHGroup alloc] init];
-//            group.name = @"fake group 1";
-//            [_fakeGroups setObject:group forKey:[NSNumber numberWithInt:i]];
-//        }
-//
-//
-//    }
-//    return self;
-//}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil hueSDK:(PHHueSDK *)hueSdk {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -70,12 +49,7 @@
         _recognizer.minimumPressDuration = 0.1;
         _recognizer.delegate = self;
         [self.view addGestureRecognizer:_recognizer];
-        
-        _quickPickView = [[ColorPickerView alloc] initWithFrame:self.view.frame lightResource:nil];
-        _quickPickView.hidden = YES;
-        [self.view addSubview:_quickPickView];
-        
-        
+                
         [self.lightGroupCollectionView registerClass:[LightGroupCollectionViewCell class] forCellWithReuseIdentifier:@"lightCell"];
         [self.lightGroupCollectionView registerClass:[LightGroupCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
         
@@ -211,15 +185,12 @@
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSIndexPath *indexPath = [self.lightGroupCollectionView indexPathForItemAtPoint:p];
         _selectedResource = [self bridgeResourceForIndexPath:indexPath];
-//    }
-//    if (indexPath == nil) {
-//        NSLog(@"long press on view but not on a row");
-//    } else if (recognizer.state == UIGestureRecognizerStateBegan) {
-//        NSLog(@"long press on view at row %ld", (long)indexPath.row);
         [self.view bringSubviewToFront:_quickPickView];
         _quickPickView.hidden = NO;
-        
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        _quickPickView.lightResource = _selectedResource;
+        NSIndexPath *indexPath = [_quickPickView.colorCollectionView indexPathForItemAtPoint:p];
+        [_quickPickView collectionView:_quickPickView.colorCollectionView didSelectItemAtIndexPath:indexPath];
         NSLog(@"long press ended");
         _quickPickView.hidden = YES;
     } else {
@@ -228,7 +199,6 @@
         UICollectionViewCell *cell = [_quickPickView.colorCollectionView cellForItemAtIndexPath:hoverIndex];
         cell.layer.borderColor = [UIColor whiteColor].CGColor;
         cell.layer.borderWidth = 2;
-
     }
 }
 
