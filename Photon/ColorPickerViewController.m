@@ -215,6 +215,10 @@
     }
 }
 
+- (void)viewControllerGestureRecognizerEvent:(UILongPressGestureRecognizer *)gestureRecognizer {
+    NSLog(@"got the gesture in color picker");
+}
+
 /*
 #pragma mark - Navigation
 

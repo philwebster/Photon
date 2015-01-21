@@ -7,12 +7,17 @@
 //
 
 #import "SetupViewController.h"
+#import "HueBridgeView.h"
 #import <HueSDK_iOS/HueSDK.h>
 #import "AppDelegate.h"
 
 @interface SetupViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *continueButton;
+@property (strong, nonatomic) HueBridgeView *bridgeView;
+@property (nonatomic) float scaleFactor;
+@property (nonatomic) float angle;
 
 @end
 
@@ -30,7 +35,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [(AppDelegate *)[[UIApplication sharedApplication] delegate] searchForBridgeLocal];
-    // Do any additional setup after loading the view from its nib.
+
+    _scaleFactor = 2;
+    _angle = 180;
+
+    _bridgeView = [[HueBridgeView alloc] initWithFrame:CGRectMake(50, 50, 150, 150)];
+    _bridgeView.backgroundColor = [UIColor whiteColor];
+    _bridgeView.hidden = YES;
+//    [_bridgeView setTranslatesAutoresizingMaskIntoConstraints:NO];
+//    [self.view addSubview:_bridgeView];
+//    
+//    [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_bridgeView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_bridgeView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+//    [_bridgeView addConstraint:[NSLayoutConstraint constraintWithItem:_bridgeView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:_bridgeView attribute:NSLayoutAttributeWidth multiplier:1 constant:200]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,6 +80,7 @@
      or failure of push linking
      *****************************************************/
     self.instructionLabel.text = @"Push the button";
+    _bridgeView.hidden = NO;
     self.progressView.hidden = NO;
     [self.phHueSDK startPushlinkAuthentication];
 }
@@ -172,6 +191,11 @@
     NSString *mac = [sortedKeys objectAtIndex:indexPath.row];
     NSString *ip = [self.bridges objectForKey:mac];
     [(AppDelegate *)[[UIApplication sharedApplication] delegate] bridgeSelectedWithIpAddress:ip andMacAddress:mac];
+}
+
+- (IBAction)continueButtonPressed:(id)sender {
+    ((AppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode = YES;
+    [self authenticationSuccess];
 }
 
 @end

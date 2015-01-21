@@ -30,6 +30,7 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.inDemoMode = NO;
     
     // Create sdk instance
     self.phHueSDK = [[PHHueSDK alloc] init];
@@ -115,6 +116,10 @@
  Notification receiver for failed local authentication
  */
 - (void)notAuthenticated {
+    if (self.inDemoMode) {
+        return;
+    }
+    
     /***************************************************
      We are not authenticated so we start the authentication process
      *****************************************************/
@@ -186,6 +191,9 @@
         [self.phHueSDK enableLocalConnection];
     } else {
         // Automatically start searching for bridges
+        if (self.inDemoMode) {
+            return;
+        }
         self.setupVC = [[SetupViewController alloc] initWithNibName:@"SetupViewController" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK delegate:self];
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.setupVC];
         [navController setNavigationBarHidden:YES animated:NO];

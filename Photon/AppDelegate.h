@@ -15,6 +15,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) PHHueSDK *phHueSDK;
+@property (nonatomic, assign) BOOL inDemoMode;
 
 - (void)searchForBridgeLocal;
 - (void)bridgeSelectedWithIpAddress:(NSString *)ipAddress andMacAddress:(NSString *)macAddress;

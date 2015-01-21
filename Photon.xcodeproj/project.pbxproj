@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D31C47931A6D993900E30CD3 /* LightGroupCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C47921A6D993900E30CD3 /* LightGroupCollectionReusableView.m */; };
 		D31C47961A6DC0A400E30CD3 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C47951A6DC0A400E30CD3 /* ColorPickerViewController.m */; };
+		D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */; };
 		D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */; };
 		D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */; };
 		D38C163B1A68DE96006FE974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163A1A68DE96006FE974 /* main.m */; };
@@ -48,6 +49,8 @@
 		D31C47921A6D993900E30CD3 /* LightGroupCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightGroupCollectionReusableView.m; sourceTree = "<group>"; };
 		D31C47941A6DC0A400E30CD3 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
 		D31C47951A6DC0A400E30CD3 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
+		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
+		D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridgeView.m; sourceTree = "<group>"; };
 		D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListViewController.h; sourceTree = "<group>"; };
 		D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupListViewController.m; sourceTree = "<group>"; };
 		D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditGroupViewController.h; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 			children = (
 				D38C163C1A68DE96006FE974 /* AppDelegate.h */,
 				D38C163D1A68DE96006FE974 /* AppDelegate.m */,
+				D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */,
+				D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */,
 				D3FB694D1A6CF7080068945E /* SetupViewController.h */,
 				D3FB694E1A6CF7080068945E /* SetupViewController.m */,
 				D3FB694F1A6CF7080068945E /* SetupViewController.xib */,
@@ -322,6 +327,7 @@
 				D38C163E1A68DE96006FE974 /* AppDelegate.m in Sources */,
 				D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */,
 				D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */,
+				D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */,
 				D3BA633D1A6B664600095EF7 /* ContextFilterLogFormatter.m in Sources */,
 				D3BA633C1A6B664600095EF7 /* DDTTYLogger.m in Sources */,
 				D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */,

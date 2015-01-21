@@ -18,7 +18,10 @@
 @property (nonatomic, strong) PHHueSDK *phHueSDK;
 @property (nonatomic, strong) GroupListViewController *groupListVC;
 @property (nonatomic, strong) ColorPickerViewController *colorPickerVC;
+@property (nonatomic, strong) UIView *quickPickView;
 @property (nonatomic, strong) UILongPressGestureRecognizer *recognizer;
+@property (nonatomic, weak) id<ViewControllerWithGestureRecognizerDelegate> delegate;
+@property (nonatomic, strong) NSMutableDictionary *fakeGroups;
 @end
 
 @implementation LightGroupViewController
@@ -40,13 +43,24 @@
         _recognizer.delegate = self;
         [self.view addGestureRecognizer:_recognizer];
 
+        _fakeGroups = [NSMutableDictionary new];
+        for (int i = 0; i < 5; ++i) {
+            PHGroup *group = [[PHGroup alloc] init];
+            group.name = @"fake group 1";
+            [_fakeGroups setObject:group forKey:[NSNumber numberWithInt:i]];
+        }
+        
+        _quickPickView = [[UIView alloc] initWithFrame:self.view.frame];
+        _quickPickView.backgroundColor = [UIColor redColor];
+        _quickPickView.hidden = YES;
+        [self.view addSubview:_quickPickView];
+        
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"LightGroupCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"lightCell"];
     [self.lightGroupCollectionView registerClass:[LightGroupCollectionViewCell class] forCellWithReuseIdentifier:@"lightCell"];
 
     [self.lightGroupCollectionView registerClass:[LightGroupCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
@@ -92,8 +106,9 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    BOOL useFakeGroups = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
     if (section == 0) {
-        return [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] count] + 1;
+        return useFakeGroups ? [_fakeGroups count] + 1 : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] count] + 1;
     } else if (section == 1) {
         return [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] count];
     } else if (section == 2) {
@@ -108,7 +123,8 @@
     cell.layer.borderWidth = 1;
 
     if (indexPath.section == 0) {
-        NSArray *groups = [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
+        BOOL useFakeGroups = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
+        NSArray *groups = useFakeGroups ? [_fakeGroups allValues] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
         if (indexPath.row == groups.count) {
             cell.cellLabel.text = @"Edit groups";
         } else {
@@ -166,8 +182,6 @@
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
-    //    _lightView.hidden = NO;
-    //    [self.view bringSubviewToFront:_lightView];
     CGPoint p = [recognizer locationInView:self.lightGroupCollectionView];
     
     NSIndexPath *indexPath = [self.lightGroupCollectionView indexPathForItemAtPoint:p];
@@ -175,18 +189,14 @@
         NSLog(@"long press on view but not on a row");
     } else if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"long press on view at row %ld", (long)indexPath.row);
-        [self collectionView:_lightGroupCollectionView didSelectItemAtIndexPath:indexPath];
-    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        //        NSIndexPath *path = [_lightView.lightGroups indexPathForItemAtPoint:p];
+        [self.view bringSubviewToFront:_quickPickView];
+        _quickPickView.hidden = NO;
         
-        //        LightGroupCollectionViewCell *c = (LightGroupCollectionViewCell *)[_lightView collectionView:_lightView.lightGroups cellForItemAtIndexPath:path];
-                NSLog(@"long press ended");
-        //        _lightView.hidden = YES;
-        //        if (c.group) {
-        //            [self setStateForGroup:c.group];
-        //        }
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"long press ended");
+        _quickPickView.hidden = YES;
     } else {
-                NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
+        NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
     }
 }
 

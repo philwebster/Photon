@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupViewController">
             <connections>
+                <outlet property="continueButton" destination="u83-tf-bNn" id="5R5-pE-oKr"/>
                 <outlet property="instructionLabel" destination="Fdc-E5-vDE" id="Q4F-X7-kNh"/>
                 <outlet property="progressView" destination="7Vz-nd-xOW" id="FnX-QH-C3z"/>
                 <outlet property="tableView" destination="tKx-ZD-oZc" id="BPw-h1-sxO"/>
@@ -41,6 +42,15 @@
                         <outlet property="delegate" destination="-1" id="S2L-5e-gBQ"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u83-tf-bNn">
+                    <rect key="frame" x="216" y="552" width="169" height="30"/>
+                    <state key="normal" title="Continue Without Bridge">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="continueButtonPressed:" destination="-1" eventType="touchUpInside" id="uZf-37-ptk"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

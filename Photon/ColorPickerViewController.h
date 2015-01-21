@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LightGroupViewController.h"
 
 @class PHBridgeResource;
 
-@interface ColorPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
+@interface ColorPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, ViewControllerWithGestureRecognizerDelegate>
 
 @property (strong, nonatomic) UICollectionView *colorCollectionView;
 
