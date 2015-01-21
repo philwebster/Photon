@@ -27,7 +27,6 @@
     if (self) {
         self.lightResource = resource;
         
-        
         self.backgroundColor = [UIColor whiteColor];
         self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
         self.colorCollectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:self.flowLayout];
@@ -62,7 +61,6 @@
     return self;
     
 }
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 2;

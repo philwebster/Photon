@@ -6,35 +6,36 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LightGroupViewController">
             <connections>
-                <outlet property="lightGroupCollectionView" destination="Wq2-fC-DMZ" id="TCs-Iq-zxP"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="lightGroupCollectionView" destination="0sA-tG-14p" id="Oyj-ui-jAp"/>
+                <outlet property="view" destination="iN0-l3-epB" id="ttw-XP-k51"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Wq2-fC-DMZ">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0sA-tG-14p">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tZW-WA-iog">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZIb-hd-ggU">
                         <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="75" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="RKk-cx-USD"/>
-                        <outlet property="delegate" destination="-1" id="rTp-LJ-gfy"/>
+                        <outlet property="dataSource" destination="-1" id="Zx9-Gl-9Ls"/>
+                        <outlet property="delegate" destination="-1" id="WZ2-zB-IkR"/>
                     </connections>
                 </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Wq2-fC-DMZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="10z-ys-GZh"/>
-                <constraint firstAttribute="centerX" secondItem="Wq2-fC-DMZ" secondAttribute="centerX" id="1XF-NM-JfK"/>
-                <constraint firstAttribute="centerY" secondItem="Wq2-fC-DMZ" secondAttribute="centerY" id="8fF-wT-EuY"/>
-                <constraint firstItem="Wq2-fC-DMZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="V1h-XQ-Ult"/>
+                <constraint firstAttribute="trailing" secondItem="0sA-tG-14p" secondAttribute="trailing" id="03N-YW-t6r"/>
+                <constraint firstItem="0sA-tG-14p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SK8-Kj-DYi"/>
+                <constraint firstAttribute="bottom" secondItem="0sA-tG-14p" secondAttribute="bottom" id="ZoQ-28-OWa"/>
+                <constraint firstItem="0sA-tG-14p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wJ1-BQ-Y9B"/>
             </constraints>
         </view>
     </objects>

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6249" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupViewController">
@@ -20,17 +19,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for SmartBridge" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdc-E5-vDE">
-                    <rect key="frame" x="198" y="62" width="204" height="21"/>
+                    <rect key="frame" x="198" y="8" width="204" height="129"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7Vz-nd-xOW">
-                    <rect key="frame" x="161" y="590" width="278" height="2"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="278" id="XYv-P3-rqg"/>
-                    </constraints>
-                </progressView>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tKx-ZD-oZc">
                     <rect key="frame" x="0.0" y="150" width="600" height="300"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -42,30 +35,38 @@
                         <outlet property="delegate" destination="-1" id="S2L-5e-gBQ"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u83-tf-bNn">
-                    <rect key="frame" x="216" y="552" width="169" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u83-tf-bNn">
+                    <rect key="frame" x="215.5" y="545.5" width="169" height="30"/>
                     <state key="normal" title="Continue Without Bridge">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="continueButtonPressed:" destination="-1" eventType="touchUpInside" id="uZf-37-ptk"/>
+                        <action selector="continueButtonPressed:" destination="-1" eventType="touchUpInside" id="xN4-xv-lAj"/>
                     </connections>
                 </button>
+                <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7Vz-nd-xOW">
+                    <rect key="frame" x="161" y="590" width="278" height="0.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="278" id="XYv-P3-rqg"/>
+                    </constraints>
+                </progressView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="tKx-ZD-oZc" firstAttribute="top" secondItem="Fdc-E5-vDE" secondAttribute="bottom" constant="67" id="32G-H0-bNa"/>
-                <constraint firstItem="tKx-ZD-oZc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7fI-jz-Dmb"/>
-                <constraint firstAttribute="centerX" secondItem="7Vz-nd-xOW" secondAttribute="centerX" id="UE4-ZD-iOD"/>
-                <constraint firstItem="7Vz-nd-xOW" firstAttribute="centerX" secondItem="tKx-ZD-oZc" secondAttribute="centerX" id="pCk-Zf-Lvc"/>
-                <constraint firstAttribute="centerX" secondItem="Fdc-E5-vDE" secondAttribute="centerX" id="qi0-rx-j1K"/>
-                <constraint firstItem="7Vz-nd-xOW" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottomMargin" id="r95-SU-1Vn"/>
-                <constraint firstItem="tKx-ZD-oZc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="u7b-BJ-t7V"/>
-                <constraint firstAttribute="centerX" secondItem="Fdc-E5-vDE" secondAttribute="centerX" id="v4k-mm-67n"/>
-                <constraint firstAttribute="centerY" secondItem="Fdc-E5-vDE" secondAttribute="centerY" constant="227.5" id="w82-Oi-HaB"/>
+                <constraint firstAttribute="centerY" secondItem="Fdc-E5-vDE" secondAttribute="centerY" constant="227.5" id="0G9-Pl-kTf"/>
+                <constraint firstItem="Fdc-E5-vDE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="1Vt-Eh-4Mf"/>
+                <constraint firstAttribute="centerX" secondItem="7Vz-nd-xOW" secondAttribute="centerX" id="4Xq-ZK-ebA"/>
+                <constraint firstAttribute="centerX" secondItem="Fdc-E5-vDE" secondAttribute="centerX" id="Atr-BV-hPJ"/>
+                <constraint firstAttribute="centerY" secondItem="u83-tf-bNn" secondAttribute="centerY" constant="-260.5" id="BLh-I0-KHI"/>
+                <constraint firstAttribute="bottom" secondItem="7Vz-nd-xOW" secondAttribute="bottom" constant="8" id="Bnp-vt-tGj"/>
+                <constraint firstAttribute="centerX" secondItem="u83-tf-bNn" secondAttribute="centerX" id="JDb-4B-c7O"/>
+                <constraint firstAttribute="centerY" secondItem="tKx-ZD-oZc" secondAttribute="centerY" id="f7P-7G-el7"/>
+                <constraint firstAttribute="trailing" secondItem="tKx-ZD-oZc" secondAttribute="trailing" id="q0a-8N-NbA"/>
+                <constraint firstItem="tKx-ZD-oZc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qiE-Y9-IHI"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
+            <point key="canvasLocation" x="454.5" y="343"/>
         </view>
     </objects>
 </document>

@@ -10,17 +10,11 @@
 
 @class PHHueSDK;
 
-@protocol ViewControllerWithGestureRecognizerDelegate
-
-- (void)viewControllerGestureRecognizerEvent:(UILongPressGestureRecognizer *)gestureRecognizer;
-
-@end
-
-
 @interface LightGroupViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *lightGroupCollectionView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil hueSDK:(PHHueSDK *)hueSdk;
 
-@property (strong, nonatomic) IBOutlet UICollectionView *lightGroupCollectionView;
 
 @end

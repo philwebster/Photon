@@ -37,7 +37,7 @@
     [self.phHueSDK startUpSDK];
     [self.phHueSDK enableLogging:YES];
     
-    self.lightVC = [[LightGroupViewController alloc] initWithNibName:@"LightGroupViewController" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK];
+    self.lightVC = [[LightGroupViewController alloc] initWithNibName:@"LightGroupView" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.lightVC];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     

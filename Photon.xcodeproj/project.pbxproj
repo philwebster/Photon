@@ -13,12 +13,11 @@
 		D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */; };
 		D38C163B1A68DE96006FE974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163A1A68DE96006FE974 /* main.m */; };
 		D38C163E1A68DE96006FE974 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163D1A68DE96006FE974 /* AppDelegate.m */; };
-		D38C16411A68DE96006FE974 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C16401A68DE96006FE974 /* ViewController.m */; };
-		D38C16441A68DE96006FE974 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D38C16421A68DE96006FE974 /* Main.storyboard */; };
 		D38C16461A68DE96006FE974 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D38C16451A68DE96006FE974 /* Images.xcassets */; };
 		D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38C16471A68DE96006FE974 /* LaunchScreen.xib */; };
 		D38C16551A68DE96006FE974 /* PhotonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C16541A68DE96006FE974 /* PhotonTests.m */; };
 		D3B90BB01A6F77E50062E355 /* ColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B90BAF1A6F77E50062E355 /* ColorPickerView.m */; };
+		D3B90BB21A6F902F0062E355 /* LightGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3B90BB11A6F902F0062E355 /* LightGroupView.xib */; };
 		D3BA63271A6B5F6100095EF7 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */; };
 		D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632A1A6B664600095EF7 /* DDAbstractDatabaseLogger.m */; };
 		D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632C1A6B664600095EF7 /* DDASLLogger.m */; };
@@ -31,7 +30,6 @@
 		D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB694E1A6CF7080068945E /* SetupViewController.m */; };
 		D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FB694F1A6CF7080068945E /* SetupViewController.xib */; };
 		D3FB69551A6D0D810068945E /* LightGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB69531A6D0D810068945E /* LightGroupViewController.m */; };
-		D3FB69581A6D149D0068945E /* LightGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FB69571A6D149D0068945E /* LightGroupViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +56,6 @@
 		D38C163A1A68DE96006FE974 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D38C163C1A68DE96006FE974 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D38C163D1A68DE96006FE974 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D38C163F1A68DE96006FE974 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D38C16401A68DE96006FE974 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		D38C16431A68DE96006FE974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D38C16451A68DE96006FE974 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D38C16481A68DE96006FE974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D38C164E1A68DE96006FE974 /* PhotonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +63,7 @@
 		D38C16541A68DE96006FE974 /* PhotonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotonTests.m; sourceTree = "<group>"; };
 		D3B90BAE1A6F77E50062E355 /* ColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerView.h; sourceTree = "<group>"; };
 		D3B90BAF1A6F77E50062E355 /* ColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerView.m; sourceTree = "<group>"; };
+		D3B90BB11A6F902F0062E355 /* LightGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightGroupView.xib; sourceTree = "<group>"; };
 		D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		D3BA63291A6B664600095EF7 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		D3BA632A1A6B664600095EF7 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
@@ -90,7 +86,6 @@
 		D3FB694F1A6CF7080068945E /* SetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		D3FB69521A6D0D810068945E /* LightGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightGroupViewController.h; sourceTree = "<group>"; };
 		D3FB69531A6D0D810068945E /* LightGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightGroupViewController.m; sourceTree = "<group>"; };
-		D3FB69571A6D149D0068945E /* LightGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightGroupViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +139,7 @@
 				D3FB694F1A6CF7080068945E /* SetupViewController.xib */,
 				D3FB69521A6D0D810068945E /* LightGroupViewController.h */,
 				D3FB69531A6D0D810068945E /* LightGroupViewController.m */,
-				D3FB69571A6D149D0068945E /* LightGroupViewController.xib */,
+				D3B90BB11A6F902F0062E355 /* LightGroupView.xib */,
 				D31C47911A6D993900E30CD3 /* LightGroupCollectionReusableView.h */,
 				D31C47921A6D993900E30CD3 /* LightGroupCollectionReusableView.m */,
 				D3BA633F1A6B7CA600095EF7 /* LightGroupCollectionViewCell.h */,
@@ -155,11 +150,8 @@
 				D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */,
 				D3B90BAE1A6F77E50062E355 /* ColorPickerView.h */,
 				D3B90BAF1A6F77E50062E355 /* ColorPickerView.m */,
-				D38C16421A68DE96006FE974 /* Main.storyboard */,
 				D38C16451A68DE96006FE974 /* Images.xcassets */,
 				D38C16471A68DE96006FE974 /* LaunchScreen.xib */,
-				D38C163F1A68DE96006FE974 /* ViewController.h */,
-				D38C16401A68DE96006FE974 /* ViewController.m */,
 				D38C16381A68DE96006FE974 /* Supporting Files */,
 			);
 			path = Photon;
@@ -301,11 +293,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3B90BB21A6F902F0062E355 /* LightGroupView.xib in Resources */,
 				D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */,
-				D38C16441A68DE96006FE974 /* Main.storyboard in Resources */,
 				D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */,
 				D38C16461A68DE96006FE974 /* Images.xcassets in Resources */,
-				D3FB69581A6D149D0068945E /* LightGroupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +314,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D38C16411A68DE96006FE974 /* ViewController.m in Sources */,
 				D3B90BB01A6F77E50062E355 /* ColorPickerView.m in Sources */,
 				D38C163E1A68DE96006FE974 /* AppDelegate.m in Sources */,
 				D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */,
@@ -363,14 +353,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D38C16421A68DE96006FE974 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D38C16431A68DE96006FE974 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D38C16471A68DE96006FE974 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

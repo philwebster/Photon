@@ -19,17 +19,39 @@
 @property (nonatomic, strong) GroupListViewController *groupListVC;
 @property (nonatomic, strong) ColorPickerView *quickPickView;
 @property (nonatomic, strong) UILongPressGestureRecognizer *recognizer;
-@property (nonatomic, weak) id<ViewControllerWithGestureRecognizerDelegate> delegate;
 @property (nonatomic, strong) NSMutableDictionary *fakeGroups;
+@property (nonatomic, strong) PHBridgeResource *selectedResource;
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @end
 
 @implementation LightGroupViewController
+
+//- (id)initWithHueSdk:(PHHueSDK *)hueSdk {
+//    self = [super init];
+//    if (self) {
+//        PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
+//        // Register for the local heartbeat notifications
+//        [notificationManager registerObject:self withSelector:@selector(receivedHeartbeat) forNotification:LOCAL_CONNECTION_NOTIFICATION];
+//        
+//        self.phHueSDK = hueSdk;
+//
+//        _fakeGroups = [NSMutableDictionary new];
+//        for (int i = 0; i < 5; ++i) {
+//            PHGroup *group = [[PHGroup alloc] init];
+//            group.name = @"fake group 1";
+//            [_fakeGroups setObject:group forKey:[NSNumber numberWithInt:i]];
+//        }
+//
+//
+//    }
+//    return self;
+//}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil hueSDK:(PHHueSDK *)hueSdk {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 
-//        // Make it a form on iPad
+        // Make it a form on iPad
 //        self.modalPresentationStyle = UIModalPresentationFormSheet;
         PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
         // Register for the local heartbeat notifications
@@ -37,11 +59,6 @@
         
         self.phHueSDK = hueSdk;
         
-        _recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-        _recognizer.minimumPressDuration = 0.1;
-        _recognizer.delegate = self;
-        [self.view addGestureRecognizer:_recognizer];
-
         _fakeGroups = [NSMutableDictionary new];
         for (int i = 0; i < 5; ++i) {
             PHGroup *group = [[PHGroup alloc] init];
@@ -49,24 +66,21 @@
             [_fakeGroups setObject:group forKey:[NSNumber numberWithInt:i]];
         }
         
+        _recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        _recognizer.minimumPressDuration = 0.1;
+        _recognizer.delegate = self;
+        [self.view addGestureRecognizer:_recognizer];
+        
         _quickPickView = [[ColorPickerView alloc] initWithFrame:self.view.frame lightResource:nil];
-//        _quickPickView.backgroundColor = [UIColor redColor];
         _quickPickView.hidden = YES;
         [self.view addSubview:_quickPickView];
         
+        
+        [self.lightGroupCollectionView registerClass:[LightGroupCollectionViewCell class] forCellWithReuseIdentifier:@"lightCell"];
+        [self.lightGroupCollectionView registerClass:[LightGroupCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
+        
     }
     return self;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self.lightGroupCollectionView registerClass:[LightGroupCollectionViewCell class] forCellWithReuseIdentifier:@"lightCell"];
-
-    [self.lightGroupCollectionView registerClass:[LightGroupCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
-
-    self.lightGroupCollectionView.backgroundColor = [UIColor whiteColor];
-
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -139,6 +153,19 @@
     return cell;
 }
 
+- (PHBridgeResource *)bridgeResourceForIndexPath:(NSIndexPath *)indexPath {
+    NSArray *group;
+    if (indexPath.section == 0) {
+        BOOL useFakeGroups = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
+        group = useFakeGroups ? [_fakeGroups allValues] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
+    } else if (indexPath.section == 1) {
+        group = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
+    } else if (indexPath.section == 2) {
+        group = [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
+    }
+    return group[indexPath.row];
+}
+
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     if (section == 0 || section == 1) {
         return UIEdgeInsetsMake(0, 0, 50, 0);
@@ -180,12 +207,15 @@
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
     CGPoint p = [recognizer locationInView:self.lightGroupCollectionView];
-    
-    NSIndexPath *indexPath = [self.lightGroupCollectionView indexPathForItemAtPoint:p];
-    if (indexPath == nil) {
-        NSLog(@"long press on view but not on a row");
-    } else if (recognizer.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"long press on view at row %ld", (long)indexPath.row);
+
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        NSIndexPath *indexPath = [self.lightGroupCollectionView indexPathForItemAtPoint:p];
+        _selectedResource = [self bridgeResourceForIndexPath:indexPath];
+//    }
+//    if (indexPath == nil) {
+//        NSLog(@"long press on view but not on a row");
+//    } else if (recognizer.state == UIGestureRecognizerStateBegan) {
+//        NSLog(@"long press on view at row %ld", (long)indexPath.row);
         [self.view bringSubviewToFront:_quickPickView];
         _quickPickView.hidden = NO;
         
@@ -194,6 +224,11 @@
         _quickPickView.hidden = YES;
     } else {
         NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
+        NSIndexPath *hoverIndex = [_quickPickView.colorCollectionView indexPathForItemAtPoint:p];
+        UICollectionViewCell *cell = [_quickPickView.colorCollectionView cellForItemAtIndexPath:hoverIndex];
+        cell.layer.borderColor = [UIColor whiteColor].CGColor;
+        cell.layer.borderWidth = 2;
+
     }
 }
 

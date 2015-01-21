@@ -10,6 +10,8 @@
 
 @class PHBridgeResource;
 
+// TODO: Define color picker delegate
+
 @interface ColorPickerView : UIView <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) UICollectionView *colorCollectionView;
