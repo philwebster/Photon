@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		D31C47931A6D993900E30CD3 /* ResourceCollectionHeaderReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C47921A6D993900E30CD3 /* ResourceCollectionHeaderReusableView.m */; };
 		D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */; };
+		D34FB2A71A71714600DB659E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A61A71714600DB659E /* InterfaceController.m */; };
+		D34FB2AA1A71714600DB659E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A91A71714600DB659E /* NotificationController.m */; };
+		D34FB2AC1A71714600DB659E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AB1A71714600DB659E /* Images.xcassets */; };
+		D34FB2B01A71714700DB659E /* Photon WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */; };
+		D34FB2B81A71714700DB659E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2B61A71714700DB659E /* Interface.storyboard */; };
+		D34FB2BA1A71714700DB659E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2B91A71714700DB659E /* Images.xcassets */; };
+		D34FB2BD1A71714700DB659E /* Photon WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */; };
 		D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */; };
 		D38C163B1A68DE96006FE974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163A1A68DE96006FE974 /* main.m */; };
@@ -33,6 +40,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D34FB2B11A71714700DB659E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D38C162D1A68DE96006FE974 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D34FB2AE1A71714700DB659E;
+			remoteInfo = "Photon WatchKit App";
+		};
+		D34FB2BB1A71714700DB659E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D38C162D1A68DE96006FE974 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D34FB29F1A71714600DB659E;
+			remoteInfo = "Photon WatchKit Extension";
+		};
 		D38C164F1A68DE96006FE974 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D38C162D1A68DE96006FE974 /* Project object */;
@@ -49,6 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				D34FB2BD1A71714700DB659E /* Photon WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,6 +82,18 @@
 		D31C47921A6D993900E30CD3 /* ResourceCollectionHeaderReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceCollectionHeaderReusableView.m; sourceTree = "<group>"; };
 		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
 		D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridgeView.m; sourceTree = "<group>"; };
+		D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Photon WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D34FB2A31A71714600DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D34FB2A41A71714600DB659E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		D34FB2A51A71714600DB659E /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		D34FB2A61A71714600DB659E /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		D34FB2A81A71714600DB659E /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		D34FB2A91A71714600DB659E /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		D34FB2AB1A71714600DB659E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photon WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D34FB2B51A71714700DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D34FB2B71A71714700DB659E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		D34FB2B91A71714700DB659E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListViewController.h; sourceTree = "<group>"; };
 		D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupListViewController.m; sourceTree = "<group>"; };
 		D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditGroupViewController.h; sourceTree = "<group>"; };
@@ -102,6 +136,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D34FB29D1A71714600DB659E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D38C16321A68DE96006FE974 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -120,11 +161,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D34FB2A11A71714600DB659E /* Photon WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D34FB2A51A71714600DB659E /* InterfaceController.h */,
+				D34FB2A61A71714600DB659E /* InterfaceController.m */,
+				D34FB2A81A71714600DB659E /* NotificationController.h */,
+				D34FB2A91A71714600DB659E /* NotificationController.m */,
+				D34FB2AB1A71714600DB659E /* Images.xcassets */,
+				D34FB2A21A71714600DB659E /* Supporting Files */,
+			);
+			path = "Photon WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		D34FB2A21A71714600DB659E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D34FB2A31A71714600DB659E /* Info.plist */,
+				D34FB2A41A71714600DB659E /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D34FB2B31A71714700DB659E /* Photon WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				D34FB2B61A71714700DB659E /* Interface.storyboard */,
+				D34FB2B91A71714700DB659E /* Images.xcassets */,
+				D34FB2B41A71714700DB659E /* Supporting Files */,
+			);
+			path = "Photon WatchKit App";
+			sourceTree = "<group>";
+		};
+		D34FB2B41A71714700DB659E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D34FB2B51A71714700DB659E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		D38C162C1A68DE96006FE974 = {
 			isa = PBXGroup;
 			children = (
 				D38C16371A68DE96006FE974 /* Photon */,
 				D38C16511A68DE96006FE974 /* PhotonTests */,
+				D34FB2A11A71714600DB659E /* Photon WatchKit Extension */,
+				D34FB2B31A71714700DB659E /* Photon WatchKit App */,
 				D38C16361A68DE96006FE974 /* Products */,
 				D3BA63281A6B664600095EF7 /* Lumberjack */,
 				D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */,
@@ -136,6 +219,8 @@
 			children = (
 				D38C16351A68DE96006FE974 /* Photon.app */,
 				D38C164E1A68DE96006FE974 /* PhotonTests.xctest */,
+				D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */,
+				D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,6 +313,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D34FB29F1A71714600DB659E /* Photon WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D34FB2C11A71714700DB659E /* Build configuration list for PBXNativeTarget "Photon WatchKit Extension" */;
+			buildPhases = (
+				D34FB29C1A71714600DB659E /* Sources */,
+				D34FB29D1A71714600DB659E /* Frameworks */,
+				D34FB29E1A71714600DB659E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D34FB2B21A71714700DB659E /* PBXTargetDependency */,
+			);
+			name = "Photon WatchKit Extension";
+			productName = "Photon WatchKit Extension";
+			productReference = D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		D34FB2AE1A71714700DB659E /* Photon WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D34FB2BE1A71714700DB659E /* Build configuration list for PBXNativeTarget "Photon WatchKit App" */;
+			buildPhases = (
+				D34FB2AD1A71714700DB659E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Photon WatchKit App";
+			productName = "Photon WatchKit App";
+			productReference = D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 		D38C16341A68DE96006FE974 /* Photon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D38C16581A68DE96006FE974 /* Build configuration list for PBXNativeTarget "Photon" */;
@@ -240,6 +358,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D34FB2BC1A71714700DB659E /* PBXTargetDependency */,
 			);
 			name = Photon;
 			productName = Photon;
@@ -273,6 +392,13 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = phil;
 				TargetAttributes = {
+					D34FB29F1A71714600DB659E = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = V9RH239UZW;
+					};
+					D34FB2AE1A71714700DB659E = {
+						CreatedOnToolsVersion = 6.2;
+					};
 					D38C16341A68DE96006FE974 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = V9RH239UZW;
@@ -298,11 +424,31 @@
 			targets = (
 				D38C16341A68DE96006FE974 /* Photon */,
 				D38C164D1A68DE96006FE974 /* PhotonTests */,
+				D34FB29F1A71714600DB659E /* Photon WatchKit Extension */,
+				D34FB2AE1A71714700DB659E /* Photon WatchKit App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D34FB29E1A71714600DB659E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D34FB2B01A71714700DB659E /* Photon WatchKit App.app in Resources */,
+				D34FB2AC1A71714600DB659E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D34FB2AD1A71714700DB659E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D34FB2B81A71714700DB659E /* Interface.storyboard in Resources */,
+				D34FB2BA1A71714700DB659E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D38C16331A68DE96006FE974 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,6 +470,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D34FB29C1A71714600DB659E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D34FB2AA1A71714600DB659E /* NotificationController.m in Sources */,
+				D34FB2A71A71714600DB659E /* InterfaceController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D38C16311A68DE96006FE974 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -359,6 +514,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D34FB2B21A71714700DB659E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D34FB2AE1A71714700DB659E /* Photon WatchKit App */;
+			targetProxy = D34FB2B11A71714700DB659E /* PBXContainerItemProxy */;
+		};
+		D34FB2BC1A71714700DB659E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D34FB29F1A71714600DB659E /* Photon WatchKit Extension */;
+			targetProxy = D34FB2BB1A71714700DB659E /* PBXContainerItemProxy */;
+		};
 		D38C16501A68DE96006FE974 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D38C16341A68DE96006FE974 /* Photon */;
@@ -367,6 +532,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D34FB2B61A71714700DB659E /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D34FB2B71A71714700DB659E /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		D38C16471A68DE96006FE974 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -378,6 +551,72 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D34FB2BF1A71714700DB659E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = Photon_WatchKit_Extension;
+				INFOPLIST_FILE = "Photon WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		D34FB2C01A71714700DB659E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				COPY_PHASE_STRIP = NO;
+				IBSC_MODULE = Photon_WatchKit_Extension;
+				INFOPLIST_FILE = "Photon WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
+		D34FB2C21A71714700DB659E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Photon WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D34FB2C31A71714700DB659E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = "Photon WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		D38C16561A68DE96006FE974 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -529,6 +768,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D34FB2BE1A71714700DB659E /* Build configuration list for PBXNativeTarget "Photon WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D34FB2BF1A71714700DB659E /* Debug */,
+				D34FB2C01A71714700DB659E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D34FB2C11A71714700DB659E /* Build configuration list for PBXNativeTarget "Photon WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D34FB2C21A71714700DB659E /* Debug */,
+				D34FB2C31A71714700DB659E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D38C16301A68DE96006FE974 /* Build configuration list for PBXProject "Photon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
