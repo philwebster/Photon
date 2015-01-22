@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSMutableDictionary *fakeGroups;
 @property (nonatomic, strong) PHBridgeResource *selectedResource;
 @property (weak, nonatomic) IBOutlet ColorPickerView *quickPickView;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *colorTapRecognizer;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *groupTapRecognizer;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @end
 
@@ -106,8 +108,6 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     LightGroupCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"lightCell" forIndexPath:indexPath];
-    cell.layer.borderColor = [UIColor blackColor].CGColor;
-    cell.layer.borderWidth = 1;
 
     if (indexPath.section == 0) {
         BOOL useFakeGroups = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
@@ -201,6 +201,23 @@
     } else {
         NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
     }
+}
+
+- (IBAction)handleGroupTap:(UITapGestureRecognizer *)sender {
+    CGPoint p = [sender locationInView:self.lightGroupCollectionView];
+    NSIndexPath *indexPath = [self.lightGroupCollectionView indexPathForItemAtPoint:p];
+    _selectedResource = [self bridgeResourceForIndexPath:indexPath];
+    _quickPickView.hidden = NO;
+    [self.view bringSubviewToFront:_quickPickView];
+}
+
+- (IBAction)handleColorTap:(UITapGestureRecognizer *)sender {
+    CGPoint p = [sender locationInView:self.lightGroupCollectionView];
+    _quickPickView.lightResource = _selectedResource;
+    NSIndexPath *indexPath = [_quickPickView.colorCollectionView indexPathForItemAtPoint:p];
+    [_quickPickView collectionView:_quickPickView.colorCollectionView didSelectItemAtIndexPath:indexPath];
+    NSLog(@"color tap handled");
+    _quickPickView.hidden = YES;
 }
 
 - (void)receivedHeartbeat {

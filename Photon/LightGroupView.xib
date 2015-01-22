@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LightGroupViewController">
             <connections>
+                <outlet property="colorTapRecognizer" destination="VeP-yG-HlR" id="yxF-Cc-vb2"/>
+                <outlet property="groupTapRecognizer" destination="aFs-av-8Cv" id="Rg5-fS-pzh"/>
                 <outlet property="lightGroupCollectionView" destination="0sA-tG-14p" id="Oyj-ui-jAp"/>
                 <outlet property="quickPickView" destination="M8e-vp-KpD" id="vT7-3O-Tqa"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ttw-XP-k51"/>
@@ -19,10 +21,15 @@
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8e-vp-KpD" customClass="ColorPickerView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="VeP-yG-HlR" appends="YES" id="kVr-bP-hhg"/>
+                    </connections>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0sA-tG-14p">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZIb-hd-ggU">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -32,6 +39,7 @@
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Zx9-Gl-9Ls"/>
                         <outlet property="delegate" destination="-1" id="WZ2-zB-IkR"/>
+                        <outletCollection property="gestureRecognizers" destination="aFs-av-8Cv" appends="YES" id="1V0-99-Xax"/>
                     </connections>
                 </collectionView>
             </subviews>
@@ -47,5 +55,15 @@
                 <constraint firstAttribute="trailing" secondItem="0sA-tG-14p" secondAttribute="trailing" id="xvp-yT-tR7"/>
             </constraints>
         </view>
+        <tapGestureRecognizer id="VeP-yG-HlR">
+            <connections>
+                <action selector="handleColorTap:" destination="-1" id="CX8-hp-fH3"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="aFs-av-8Cv">
+            <connections>
+                <action selector="handleGroupTap:" destination="-1" id="4eY-t1-jzT"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
