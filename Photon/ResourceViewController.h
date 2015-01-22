@@ -10,7 +10,7 @@
 
 @class PHHueSDK;
 
-@interface LightGroupViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
+@interface ResourceViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *lightGroupCollectionView;
 

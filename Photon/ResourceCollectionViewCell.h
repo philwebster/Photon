@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <HueSDK_iOS/HueSDK.h>
 
-@interface LightGroupCollectionViewCell : UICollectionViewCell
+@interface ResourceCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) UILabel *cellLabel;
 

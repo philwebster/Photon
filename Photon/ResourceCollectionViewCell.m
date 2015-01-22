@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 phil. All rights reserved.
 //
 
-#import "LightGroupCollectionViewCell.h"
+#import "ResourceCollectionViewCell.h"
 
-@interface LightGroupCollectionViewCell ()
+@interface ResourceCollectionViewCell ()
 
 @end
 
-@implementation LightGroupCollectionViewCell
+@implementation ResourceCollectionViewCell
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

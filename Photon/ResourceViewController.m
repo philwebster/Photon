@@ -6,15 +6,15 @@
 //  Copyright (c) 2015 phil. All rights reserved.
 //
 
-#import "LightGroupViewController.h"
-#import "LightGroupCollectionViewCell.h"
-#import "LightGroupCollectionReusableView.h"
+#import "ResourceViewController.h"
+#import "ResourceCollectionViewCell.h"
+#import "ResourceCollectionHeaderReusableView.h"
 #import "GroupListViewController.h"
 #import "ColorPickerView.h"
 #import "AppDelegate.h"
 #import <HueSDK_iOS/HueSDK.h>
 
-@interface LightGroupViewController ()
+@interface ResourceViewController ()
 @property (nonatomic, strong) PHHueSDK *phHueSDK;
 @property (nonatomic, strong) GroupListViewController *groupListVC;
 @property (nonatomic, strong) UILongPressGestureRecognizer *recognizer;
@@ -26,7 +26,7 @@
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @end
 
-@implementation LightGroupViewController
+@implementation ResourceViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil hueSDK:(PHHueSDK *)hueSdk {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -52,8 +52,8 @@
         _recognizer.delegate = self;
         [self.view addGestureRecognizer:_recognizer];
                 
-        [self.lightGroupCollectionView registerClass:[LightGroupCollectionViewCell class] forCellWithReuseIdentifier:@"lightCell"];
-        [self.lightGroupCollectionView registerClass:[LightGroupCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
+        [self.lightGroupCollectionView registerClass:[ResourceCollectionViewCell class] forCellWithReuseIdentifier:@"lightCell"];
+        [self.lightGroupCollectionView registerClass:[ResourceCollectionHeaderReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
         
     }
     return self;
@@ -81,7 +81,7 @@
     UICollectionReusableView *reusableview = nil;
 
     if (kind == UICollectionElementKindSectionHeader) {
-        LightGroupCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader" forIndexPath:indexPath];
+        ResourceCollectionHeaderReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader" forIndexPath:indexPath];
         if (indexPath.section == 0) {
             headerView.headerLabel.text = @"Groups";
         } else if (indexPath.section == 1) {
@@ -107,7 +107,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    LightGroupCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"lightCell" forIndexPath:indexPath];
+    ResourceCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"lightCell" forIndexPath:indexPath];
 
     if (indexPath.section == 0) {
         BOOL useFakeGroups = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;

@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SetupViewController.h"
-#import "LightGroupViewController.h"
+#import "ResourceViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +19,7 @@
 @property (nonatomic, strong) UIAlertView *authenticationFailedAlert;
 
 @property (nonatomic, strong) SetupViewController *setupVC;
-@property (nonatomic, strong) LightGroupViewController *lightVC;
+@property (nonatomic, strong) ResourceViewController *lightVC;
 
 @end
 
@@ -37,7 +37,7 @@
     [self.phHueSDK startUpSDK];
     [self.phHueSDK enableLogging:YES];
     
-    self.lightVC = [[LightGroupViewController alloc] initWithNibName:@"LightGroupView" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK];
+    self.lightVC = [[ResourceViewController alloc] initWithNibName:@"LightGroupView" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.lightVC];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     

@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LightGroupViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResourceViewController">
             <connections>
                 <outlet property="colorTapRecognizer" destination="VeP-yG-HlR" id="yxF-Cc-vb2"/>
                 <outlet property="groupTapRecognizer" destination="aFs-av-8Cv" id="Rg5-fS-pzh"/>

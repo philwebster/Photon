@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 phil. All rights reserved.
 //
 
-#import "LightGroupCollectionReusableView.h"
+#import "ResourceCollectionHeaderReusableView.h"
 
-@implementation LightGroupCollectionReusableView
+@implementation ResourceCollectionHeaderReusableView
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

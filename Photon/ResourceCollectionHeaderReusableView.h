@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LightGroupCollectionReusableView : UICollectionReusableView
+@interface ResourceCollectionHeaderReusableView : UICollectionReusableView
 
 @property (strong, nonatomic) UILabel *headerLabel;
 
