@@ -132,6 +132,11 @@
     if (indexPath.section == 0) {
         BOOL useFakeGroups = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
         group = useFakeGroups ? [_fakeGroups allValues] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
+        if (indexPath.row >= group.count) {
+            // selected edit groups
+            NSLog(@"returning nil for bridge resource");
+            return nil;
+        }
     } else if (indexPath.section == 1) {
         group = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
     } else if (indexPath.section == 2) {
@@ -195,10 +200,6 @@
         _quickPickView.hidden = YES;
     } else {
         NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
-        NSIndexPath *hoverIndex = [_quickPickView.colorCollectionView indexPathForItemAtPoint:p];
-        UICollectionViewCell *cell = [_quickPickView.colorCollectionView cellForItemAtIndexPath:hoverIndex];
-        cell.layer.borderColor = [UIColor whiteColor].CGColor;
-        cell.layer.borderWidth = 2;
     }
 }
 
