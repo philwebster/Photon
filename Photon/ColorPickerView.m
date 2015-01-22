@@ -17,6 +17,7 @@
 @property NSMutableArray *naturalColors;
 @property NSArray *ctNaturalColors;
 @property UICollectionViewFlowLayout *flowLayout;
+@property UIButton *cancelButton;
 
 @end
 
@@ -57,6 +58,9 @@
                                                    [UIColor colorWithHue:0.341 saturation:0.748 brightness:1.000 alpha:1.000],
                                                    [UIColor colorWithHue:0.468 saturation:0.808 brightness:1.000 alpha:1.000]]];
         
+        self.cancelButton = [UIButton new];
+        self.cancelButton.titleLabel.text = @"Cancel";
+        [self addSubview:self.cancelButton];
         
     }
     return self;

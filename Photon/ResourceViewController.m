@@ -206,6 +206,17 @@
 - (IBAction)handleGroupTap:(UITapGestureRecognizer *)sender {
     CGPoint p = [sender locationInView:self.lightGroupCollectionView];
     NSIndexPath *indexPath = [self.lightGroupCollectionView indexPathForItemAtPoint:p];
+
+    if (indexPath.section == 0) {
+        if (indexPath.row + 1 == [self.lightGroupCollectionView numberOfItemsInSection:indexPath.section]) {
+            UINavigationController *navController = [(AppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+            self.groupListVC = [[GroupListViewController alloc] init];
+            [navController setNavigationBarHidden:NO];
+            [navController pushViewController:self.groupListVC animated:NO];
+            return;
+        }
+    }
+    
     _selectedResource = [self bridgeResourceForIndexPath:indexPath];
     _quickPickView.hidden = NO;
     [self.view bringSubviewToFront:_quickPickView];
