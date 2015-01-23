@@ -12,5 +12,6 @@
 @interface ResourceRowController : NSObject
 
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *resourceType;
+@property (weak, nonatomic) IBOutlet WKInterfaceGroup *rowGroup;
 
 @end

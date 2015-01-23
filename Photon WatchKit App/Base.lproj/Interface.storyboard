@@ -20,6 +20,7 @@
                                     </group>
                                     <connections>
                                         <outlet property="resourceType" destination="bEK-R7-zKz" id="XCq-0k-ob8"/>
+                                        <segue destination="YER-dv-bR6" kind="push" id="NY8-gf-4YN"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -31,6 +32,59 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="tUo-WM-4GY">
+            <objects>
+                <controller id="YER-dv-bR6" customClass="InterfaceController">
+                    <items>
+                        <table alignment="left" id="JlT-UW-pDZ">
+                            <items>
+                                <tableRow id="oHu-hT-2PR" customClass="ResourceRowController">
+                                    <group key="rootItem" width="1" alignment="left" id="0RE-nD-Ynf">
+                                        <items>
+                                            <label width="131.5" height="30.5" alignment="left" text="Label" id="qnH-h2-Uw9"/>
+                                        </items>
+                                        <connections>
+                                            <segue destination="CW7-YK-FKz" kind="push" id="6AO-vF-CRe"/>
+                                        </connections>
+                                    </group>
+                                    <connections>
+                                        <outlet property="resourceType" destination="qnH-h2-Uw9" id="Q96-Ai-ven"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="ResourceTable" destination="JlT-UW-pDZ" id="ZAa-Gl-Juv"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="450" y="345"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="3qT-d1-Ku7">
+            <objects>
+                <controller id="CW7-YK-FKz" customClass="InterfaceController">
+                    <items>
+                        <table alignment="left" id="zSe-Nv-4RK">
+                            <items>
+                                <tableRow id="Br9-42-jpz" customClass="ResourceRowController">
+                                    <group key="rootItem" width="1" alignment="left" id="7Ma-3O-cKg"/>
+                                    <connections>
+                                        <outlet property="rowGroup" destination="7Ma-3O-cKg" id="Hav-lz-BO3"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="ResourceTable" destination="zSe-Nv-4RK" id="yqp-Lr-rsX"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="715" y="345"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
