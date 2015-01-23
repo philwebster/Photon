@@ -194,8 +194,11 @@
         _quickPickView.hidden = NO;
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         _quickPickView.lightResource = _selectedResource;
-        NSIndexPath *indexPath = [_quickPickView.colorCollectionView indexPathForItemAtPoint:p];
-        [_quickPickView collectionView:_quickPickView.colorCollectionView didSelectItemAtIndexPath:indexPath];
+
+        if (!CGRectContainsPoint(_quickPickView.cancelButton.frame, p)) {
+            NSIndexPath *indexPath = [_quickPickView.colorCollectionView indexPathForItemAtPoint:p];
+            [_quickPickView collectionView:_quickPickView.colorCollectionView didSelectItemAtIndexPath:indexPath];
+        }
         NSLog(@"long press ended");
         _quickPickView.hidden = YES;
     } else {
@@ -224,6 +227,7 @@
 
 - (IBAction)handleColorTap:(UITapGestureRecognizer *)sender {
     CGPoint p = [sender locationInView:self.lightGroupCollectionView];
+
     _quickPickView.lightResource = _selectedResource;
     NSIndexPath *indexPath = [_quickPickView.colorCollectionView indexPathForItemAtPoint:p];
     [_quickPickView collectionView:_quickPickView.colorCollectionView didSelectItemAtIndexPath:indexPath];

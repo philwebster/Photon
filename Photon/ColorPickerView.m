@@ -17,7 +17,6 @@
 @property NSMutableArray *naturalColors;
 @property NSArray *ctNaturalColors;
 @property UICollectionViewFlowLayout *flowLayout;
-@property UIButton *cancelButton;
 
 @end
 
@@ -59,12 +58,18 @@
                                                    [UIColor colorWithHue:0.468 saturation:0.808 brightness:1.000 alpha:1.000]]];
         
         self.cancelButton = [UIButton new];
-        self.cancelButton.titleLabel.text = @"Cancel";
+        self.cancelButton.backgroundColor = [UIColor whiteColor];
+        [self.cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        [self.cancelButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.cancelButton addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.cancelButton];
+        [self bringSubviewToFront:_cancelButton];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[_cancelButton]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_cancelButton)]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_cancelButton]-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_cancelButton)]];
         
     }
     return self;
-    
 }
 
 #pragma mark CollectionViewDelegateFlowLayout
@@ -175,7 +180,9 @@
     }
 }
 
-
+- (void)dismissView {
+    self.hidden = YES;
+}
 
 
 /*
