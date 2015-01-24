@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <HueSDK_iOS/HueSDK.h>
 
 @interface PTNLightController : NSObject
@@ -15,8 +16,11 @@
 @property NSArray *naturalColors;
 @property NSArray *ctNaturalColors;
 
+@property (nonatomic) NSArray *lights;
+
 - (void)setNaturalColor:(NSNumber *)ct forResource:(PHBridgeResource *)resource;
 - (void)setColor:(UIColor *)color forResource:(PHBridgeResource *)resource;
 - (void)setResourceOff:(PHBridgeResource *)resource;
+- (void)setStateWithDict:(NSDictionary *)stateDict;
 
 @end

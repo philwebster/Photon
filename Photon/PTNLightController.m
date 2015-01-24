@@ -44,6 +44,10 @@
     return self;
 }
 
+- (void)setStateWithDict:(NSDictionary *)stateDict {
+    // Maybe do this?
+}
+
 - (void)setNaturalColor:(NSNumber *)ct forResource:(PHBridgeResource *)resource {
     // TODO: set natural color should maybe only be called for lights that can handle it and put the extra logic somewhere else.
     PHLightState *lightState = [[PHLightState alloc] init];
@@ -96,6 +100,10 @@
     } else if ([resource isKindOfClass:[PHGroup class]]) {
         [bridgeSendAPI setLightStateForGroupWithId:resource.identifier lightState:lightState completionHandler:nil];
     }
+}
+
+- (NSArray *)lights {
+    return [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
 }
 
 @end

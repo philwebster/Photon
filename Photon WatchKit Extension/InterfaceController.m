@@ -8,12 +8,13 @@
 
 #import "InterfaceController.h"
 #import "ResourceRowController.h"
-
+#import "PTNLightController.h"
 
 @interface InterfaceController()
 @property (weak, nonatomic) IBOutlet WKInterfaceTable *ResourceTable;
 @property NSString *context;
 @property NSArray *tableData;
+@property PTNLightController *lightController;
 
 @end
 
@@ -22,24 +23,16 @@
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
+    self.lightController = [PTNLightController new];
     self.context = context;
     if ([context isEqualToString:@"Groups"]) {
         self.tableData = @[@"Group 1", @"Group 2", @"Group 3"];
     } else if ([context isEqualToString:@"Lights"]) {
-        self.tableData = @[@"Light 1", @"Light 2", @"Light 3"];
+        self.tableData = self.lightController.lights;
     } else if ([context isEqualToString:@"Scenes"]) {
         self.tableData = @[@"Scene 1", @"Scene 2", @"Scene 3"];
     } else if ([context isEqualToString:@"ColorPicker"]) {
-        self.tableData = @[ [UIColor blackColor],
-                            [UIColor colorWithHue:0.626 saturation:0.871 brightness:1.000 alpha:1.000],
-                            [UIColor colorWithHue:0.788 saturation:1.000 brightness:0.996 alpha:1.000],
-                            [UIColor colorWithHue:0.846 saturation:1.000 brightness:0.984 alpha:1.000],
-                            [UIColor colorWithHue:0.965 saturation:1.000 brightness:0.984 alpha:1.000],
-                            [UIColor colorWithHue:0.081 saturation:0.881 brightness:0.992 alpha:1.000],
-                            [UIColor colorWithHue:0.155 saturation:0.941 brightness:0.996 alpha:1.000],
-                            [UIColor colorWithHue:0.341 saturation:0.748 brightness:1.000 alpha:1.000],
-                            [UIColor colorWithHue:0.468 saturation:0.808 brightness:1.000 alpha:1.000]];
-
+        self.tableData = self.lightController.standardColors;
     } else {
         self.tableData = @[@"Groups", @"Lights", @"Scenes"];
     }
@@ -57,8 +50,6 @@
 }
 
 - (void)loadResourceItems {
-    
-//    NSArray* items = @[@"Groups", @"Lights", @"Scenes"];
     [self.ResourceTable setNumberOfRows:self.tableData.count withRowType:@"default"];
     NSInteger rowCount = self.ResourceTable.numberOfRows;
     
@@ -75,6 +66,9 @@
 }
 
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex {
+    if ([self.context isEqualToString:@"ColorPicker"]) {
+//        self.lightController 
+    }
     NSLog(@"tapped row");
 }
 

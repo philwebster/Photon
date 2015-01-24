@@ -36,6 +36,9 @@
 		D3BA633E1A6B664600095EF7 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */; };
 		D3BA63411A6B7CA600095EF7 /* ResourceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63401A6B7CA600095EF7 /* ResourceCollectionViewCell.m */; };
 		D3C33B331A738AD10008EAFA /* PTNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PTNLightController.m */; };
+		D3DF823C1A7425B1001AD7DB /* PTNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PTNLightController.m */; };
+		D3DF823D1A7425CF001AD7DB /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */; };
+		D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63301A6B664600095EF7 /* DDLog.m */; };
 		D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB694E1A6CF7080068945E /* SetupViewController.m */; };
 		D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FB694F1A6CF7080068945E /* SetupViewController.xib */; };
 		D3FB69551A6D0D810068945E /* ResourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB69531A6D0D810068945E /* ResourceViewController.m */; };
@@ -146,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3DF823D1A7425CF001AD7DB /* HueSDK_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +488,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */,
+				D3DF823C1A7425B1001AD7DB /* PTNLightController.m in Sources */,
 				D34FB2AA1A71714600DB659E /* NotificationController.m in Sources */,
 				D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */,
 				D34FB2A71A71714600DB659E /* InterfaceController.m in Sources */,
@@ -603,6 +609,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -621,6 +631,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Photon WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
