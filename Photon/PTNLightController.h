@@ -11,6 +11,10 @@
 
 @interface PTNLightController : NSObject
 
+@property NSArray *standardColors;
+@property NSArray *naturalColors;
+@property NSArray *ctNaturalColors;
+
 - (void)setNaturalColor:(NSNumber *)ct forResource:(PHBridgeResource *)resource;
 - (void)setColor:(UIColor *)color forResource:(PHBridgeResource *)resource;
 - (void)setResourceOff:(PHBridgeResource *)resource;
