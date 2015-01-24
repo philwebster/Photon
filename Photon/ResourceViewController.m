@@ -203,6 +203,7 @@
         _quickPickView.hidden = YES;
     } else {
         NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
+        
     }
 }
 
