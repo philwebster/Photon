@@ -35,6 +35,7 @@
 		D3BA633D1A6B664600095EF7 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63351A6B664600095EF7 /* ContextFilterLogFormatter.m */; };
 		D3BA633E1A6B664600095EF7 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */; };
 		D3BA63411A6B7CA600095EF7 /* ResourceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63401A6B7CA600095EF7 /* ResourceCollectionViewCell.m */; };
+		D3C33B331A738AD10008EAFA /* PTNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PTNLightController.m */; };
 		D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB694E1A6CF7080068945E /* SetupViewController.m */; };
 		D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FB694F1A6CF7080068945E /* SetupViewController.xib */; };
 		D3FB69551A6D0D810068945E /* ResourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB69531A6D0D810068945E /* ResourceViewController.m */; };
@@ -131,6 +132,8 @@
 		D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		D3BA633F1A6B7CA600095EF7 /* ResourceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceCollectionViewCell.h; sourceTree = "<group>"; };
 		D3BA63401A6B7CA600095EF7 /* ResourceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceCollectionViewCell.m; sourceTree = "<group>"; };
+		D3C33B311A738AD10008EAFA /* PTNLightController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTNLightController.h; sourceTree = "<group>"; };
+		D3C33B321A738AD10008EAFA /* PTNLightController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTNLightController.m; sourceTree = "<group>"; };
 		D3FB694D1A6CF7080068945E /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
 		D3FB694E1A6CF7080068945E /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 		D3FB694F1A6CF7080068945E /* SetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 			children = (
 				D38C163C1A68DE96006FE974 /* AppDelegate.h */,
 				D38C163D1A68DE96006FE974 /* AppDelegate.m */,
+				D3C33B311A738AD10008EAFA /* PTNLightController.h */,
+				D3C33B321A738AD10008EAFA /* PTNLightController.m */,
 				D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */,
 				D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */,
 				D3FB694D1A6CF7080068945E /* SetupViewController.h */,
@@ -506,6 +511,7 @@
 				D3BA633E1A6B664600095EF7 /* DispatchQueueLogFormatter.m in Sources */,
 				D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */,
 				D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */,
+				D3C33B331A738AD10008EAFA /* PTNLightController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
