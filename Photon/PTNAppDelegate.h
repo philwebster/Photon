@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  PTNAppDelegate.h
 //  Photon
 //
 //  Created by Philip Webster on 1/15/15.
@@ -10,7 +10,7 @@
 #import <HueSDK_iOS/HueSDK.h>
 #import "SetupViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, BridgeSetupDelegate>
+@interface PTNAppDelegate : UIResponder <UIApplicationDelegate, BridgeSetupDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;

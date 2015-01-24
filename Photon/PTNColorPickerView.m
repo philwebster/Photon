@@ -1,22 +1,22 @@
 //
-//  ColorPickerView.m
+//  PTNColorPickerView.m
 //  Photon
 //
 //  Created by Philip Webster on 1/20/15.
 //  Copyright (c) 2015 phil. All rights reserved.
 //
 
-#import "ColorPickerView.h"
+#import "PTNColorPickerView.h"
 #import "PTNLightController.h"
 
-@interface ColorPickerView()
+@interface PTNColorPickerView()
 
 @property UICollectionViewFlowLayout *flowLayout;
 @property PTNLightController *lightController;
 
 @end
 
-@implementation ColorPickerView
+@implementation PTNColorPickerView
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];

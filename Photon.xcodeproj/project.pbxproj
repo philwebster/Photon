@@ -20,11 +20,11 @@
 		D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */; };
 		D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */; };
 		D38C163B1A68DE96006FE974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163A1A68DE96006FE974 /* main.m */; };
-		D38C163E1A68DE96006FE974 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163D1A68DE96006FE974 /* AppDelegate.m */; };
+		D38C163E1A68DE96006FE974 /* PTNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163D1A68DE96006FE974 /* PTNAppDelegate.m */; };
 		D38C16461A68DE96006FE974 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D38C16451A68DE96006FE974 /* Images.xcassets */; };
 		D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38C16471A68DE96006FE974 /* LaunchScreen.xib */; };
 		D38C16551A68DE96006FE974 /* PhotonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C16541A68DE96006FE974 /* PhotonTests.m */; };
-		D3B90BB01A6F77E50062E355 /* ColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B90BAF1A6F77E50062E355 /* ColorPickerView.m */; };
+		D3B90BB01A6F77E50062E355 /* PTNColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B90BAF1A6F77E50062E355 /* PTNColorPickerView.m */; };
 		D3B90BB21A6F902F0062E355 /* LightGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3B90BB11A6F902F0062E355 /* LightGroupView.xib */; };
 		D3BA63271A6B5F6100095EF7 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */; };
 		D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632A1A6B664600095EF7 /* DDAbstractDatabaseLogger.m */; };
@@ -105,15 +105,15 @@
 		D38C16351A68DE96006FE974 /* Photon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16391A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C163A1A68DE96006FE974 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D38C163C1A68DE96006FE974 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D38C163D1A68DE96006FE974 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D38C163C1A68DE96006FE974 /* PTNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTNAppDelegate.h; sourceTree = "<group>"; };
+		D38C163D1A68DE96006FE974 /* PTNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTNAppDelegate.m; sourceTree = "<group>"; };
 		D38C16451A68DE96006FE974 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D38C16481A68DE96006FE974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D38C164E1A68DE96006FE974 /* PhotonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16531A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C16541A68DE96006FE974 /* PhotonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotonTests.m; sourceTree = "<group>"; };
-		D3B90BAE1A6F77E50062E355 /* ColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerView.h; sourceTree = "<group>"; };
-		D3B90BAF1A6F77E50062E355 /* ColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerView.m; sourceTree = "<group>"; };
+		D3B90BAE1A6F77E50062E355 /* PTNColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTNColorPickerView.h; sourceTree = "<group>"; };
+		D3B90BAF1A6F77E50062E355 /* PTNColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTNColorPickerView.m; sourceTree = "<group>"; };
 		D3B90BB11A6F902F0062E355 /* LightGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightGroupView.xib; sourceTree = "<group>"; };
 		D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		D3BA63291A6B664600095EF7 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
@@ -236,8 +236,8 @@
 		D38C16371A68DE96006FE974 /* Photon */ = {
 			isa = PBXGroup;
 			children = (
-				D38C163C1A68DE96006FE974 /* AppDelegate.h */,
-				D38C163D1A68DE96006FE974 /* AppDelegate.m */,
+				D38C163C1A68DE96006FE974 /* PTNAppDelegate.h */,
+				D38C163D1A68DE96006FE974 /* PTNAppDelegate.m */,
 				D3C33B311A738AD10008EAFA /* PTNLightController.h */,
 				D3C33B321A738AD10008EAFA /* PTNLightController.m */,
 				D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */,
@@ -256,8 +256,8 @@
 				D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */,
 				D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */,
 				D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */,
-				D3B90BAE1A6F77E50062E355 /* ColorPickerView.h */,
-				D3B90BAF1A6F77E50062E355 /* ColorPickerView.m */,
+				D3B90BAE1A6F77E50062E355 /* PTNColorPickerView.h */,
+				D3B90BAF1A6F77E50062E355 /* PTNColorPickerView.m */,
 				D38C16451A68DE96006FE974 /* Images.xcassets */,
 				D38C16471A68DE96006FE974 /* LaunchScreen.xib */,
 				D38C16381A68DE96006FE974 /* Supporting Files */,
@@ -494,8 +494,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3B90BB01A6F77E50062E355 /* ColorPickerView.m in Sources */,
-				D38C163E1A68DE96006FE974 /* AppDelegate.m in Sources */,
+				D3B90BB01A6F77E50062E355 /* PTNColorPickerView.m in Sources */,
+				D38C163E1A68DE96006FE974 /* PTNAppDelegate.m in Sources */,
 				D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */,
 				D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */,
 				D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */,

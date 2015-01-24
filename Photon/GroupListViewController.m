@@ -8,7 +8,7 @@
 
 #import "GroupListViewController.h"
 #import "EditGroupViewController.h"
-#import "AppDelegate.h"
+#import "PTNAppDelegate.h"
 #import <HueSDK_iOS/HueSDK.h>
 
 @interface GroupListViewController ()
@@ -85,13 +85,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *groups = [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
     self.editGroupVC = [[EditGroupViewController alloc] initWithGroup:groups[indexPath.row]];
-    UINavigationController *navController = [(AppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+    UINavigationController *navController = [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
     [navController pushViewController:self.editGroupVC animated:YES];
 }
 
 - (void)createGroup {
     self.editGroupVC = [[EditGroupViewController alloc] initWithGroup:nil];
-    UINavigationController *navController = [(AppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+    UINavigationController *navController = [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
     [navController pushViewController:self.editGroupVC animated:YES];
 }
 

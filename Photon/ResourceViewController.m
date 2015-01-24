@@ -10,8 +10,8 @@
 #import "ResourceCollectionViewCell.h"
 #import "ResourceCollectionHeaderReusableView.h"
 #import "GroupListViewController.h"
-#import "ColorPickerView.h"
-#import "AppDelegate.h"
+#import "PTNColorPickerView.h"
+#import "PTNAppDelegate.h"
 #import <HueSDK_iOS/HueSDK.h>
 
 @interface ResourceViewController ()
@@ -20,7 +20,7 @@
 @property (nonatomic, strong) UILongPressGestureRecognizer *recognizer;
 @property (nonatomic, strong) NSMutableDictionary *fakeGroups;
 @property (nonatomic, strong) PHBridgeResource *selectedResource;
-@property (weak, nonatomic) IBOutlet ColorPickerView *quickPickView;
+@property (weak, nonatomic) IBOutlet PTNColorPickerView *quickPickView;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *colorTapRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *groupTapRecognizer;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
@@ -95,7 +95,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    BOOL useFakeGroups = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
+    BOOL useFakeGroups = ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
     if (section == 0) {
         return useFakeGroups ? [_fakeGroups count] + 1 : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] count] + 1;
     } else if (section == 1) {
@@ -110,7 +110,7 @@
     ResourceCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"lightCell" forIndexPath:indexPath];
 
     if (indexPath.section == 0) {
-        BOOL useFakeGroups = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
+        BOOL useFakeGroups = ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
         NSArray *groups = useFakeGroups ? [_fakeGroups allValues] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
         if (indexPath.row == groups.count) {
             cell.cellLabel.text = @"Edit groups";
@@ -130,7 +130,7 @@
 - (PHBridgeResource *)bridgeResourceForIndexPath:(NSIndexPath *)indexPath {
     NSArray *group;
     if (indexPath.section == 0) {
-        BOOL useFakeGroups = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
+        BOOL useFakeGroups = ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
         group = useFakeGroups ? [_fakeGroups allValues] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
         if (indexPath.row >= group.count) {
             // selected edit groups
@@ -166,7 +166,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    UINavigationController *navController = [(AppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+    UINavigationController *navController = [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
     if (indexPath.section == 0) {
         if (indexPath.row + 1 == [collectionView numberOfItemsInSection:indexPath.section]) {
             self.groupListVC = [[GroupListViewController alloc] init];
@@ -213,7 +213,7 @@
 
     if (indexPath.section == 0) {
         if (indexPath.row + 1 == [self.lightGroupCollectionView numberOfItemsInSection:indexPath.section]) {
-            UINavigationController *navController = [(AppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+            UINavigationController *navController = [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
             self.groupListVC = [[GroupListViewController alloc] init];
             [navController setNavigationBarHidden:NO];
             [navController pushViewController:self.groupListVC animated:NO];

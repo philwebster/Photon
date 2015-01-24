@@ -1,5 +1,5 @@
 //
-//  ColorPickerView.h
+//  PTNColorPickerView.h
 //  Photon
 //
 //  Created by Philip Webster on 1/20/15.
@@ -10,7 +10,7 @@
 
 @class PHBridgeResource;
 
-@interface ColorPickerView : UIView <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
+@interface PTNColorPickerView : UIView <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) UICollectionView *colorCollectionView;
 @property UIButton *cancelButton;

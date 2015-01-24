@@ -1,16 +1,16 @@
 //
-//  AppDelegate.m
+//  PTNAppDelegate.m
 //  Photon
 //
 //  Created by Philip Webster on 1/15/15.
 //  Copyright (c) 2015 phil. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "PTNAppDelegate.h"
 #import "SetupViewController.h"
 #import "ResourceViewController.h"
 
-@interface AppDelegate ()
+@interface PTNAppDelegate ()
 
 @property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
 
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation AppDelegate
+@implementation PTNAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
