@@ -17,6 +17,8 @@
 @property NSArray *ctNaturalColors;
 
 @property (nonatomic) NSArray *lights;
+@property (nonatomic) NSArray *groups;
+@property (nonatomic) NSArray *scenes;
 
 - (void)setNaturalColor:(NSNumber *)ct forResource:(PHBridgeResource *)resource;
 - (void)setColor:(UIColor *)color forResource:(PHBridgeResource *)resource;

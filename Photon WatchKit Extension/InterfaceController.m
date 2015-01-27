@@ -26,11 +26,11 @@
     self.lightController = [PTNLightController new];
     self.context = context;
     if ([context isEqualToString:@"Groups"]) {
-        self.tableData = @[@"Group 1", @"Group 2", @"Group 3"];
+        self.tableData = self.lightController.groups;
     } else if ([context isEqualToString:@"Lights"]) {
         self.tableData = self.lightController.lights;
     } else if ([context isEqualToString:@"Scenes"]) {
-        self.tableData = @[@"Scene 1", @"Scene 2", @"Scene 3"];
+        self.tableData = self.lightController.scenes;
     } else if ([context isEqualToString:@"ColorPicker"]) {
         self.tableData = self.lightController.standardColors;
     } else {
@@ -50,6 +50,8 @@
 }
 
 - (void)loadResourceItems {
+
+    
     [self.ResourceTable setNumberOfRows:self.tableData.count withRowType:@"default"];
     NSInteger rowCount = self.ResourceTable.numberOfRows;
     
@@ -60,14 +62,24 @@
             [row.rowGroup setBackgroundColor:[self.tableData objectAtIndex:i]];
             continue;
         }
-        NSString* itemText = self.tableData[i];
+        NSString *itemText;
+        if ([self.context isEqualToString:@"Lights"]) {
+            itemText = self.lightController.lights[i];
+        } else if ([self.context isEqualToString:@"Groups"]) {
+            itemText = self.lightController.groups[i];
+        } else if ([self.context isEqualToString:@"Scenes"]) {
+            itemText = self.lightController.scenes[i];
+        } else {
+            itemText = @"error";
+        }
+        
         [row.resourceType setText:itemText];
     }
 }
 
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex {
     if ([self.context isEqualToString:@"ColorPicker"]) {
-//        self.lightController 
+
     }
     NSLog(@"tapped row");
 }

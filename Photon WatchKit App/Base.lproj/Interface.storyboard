@@ -15,7 +15,7 @@
                                 <tableRow id="bfc-WT-HeD" customClass="ResourceRowController">
                                     <group key="rootItem" width="1" alignment="left" id="hhi-4Y-BIS">
                                         <items>
-                                            <label width="131.5" height="30.5" alignment="left" text="Label" id="bEK-R7-zKz"/>
+                                            <label width="131.5" height="40.5" alignment="left" text="Label" id="bEK-R7-zKz"/>
                                         </items>
                                     </group>
                                     <connections>
@@ -43,7 +43,7 @@
                                 <tableRow id="oHu-hT-2PR" customClass="ResourceRowController">
                                     <group key="rootItem" width="1" alignment="left" id="0RE-nD-Ynf">
                                         <items>
-                                            <label width="131.5" height="30.5" alignment="left" text="Label" id="qnH-h2-Uw9"/>
+                                            <label width="131.5" height="38.5" alignment="left" text="Label" id="qnH-h2-Uw9"/>
                                         </items>
                                         <connections>
                                             <segue destination="CW7-YK-FKz" kind="push" id="6AO-vF-CRe"/>

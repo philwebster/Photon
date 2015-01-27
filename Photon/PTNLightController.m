@@ -7,6 +7,7 @@
 //
 
 #import "PTNLightController.h"
+#import "PTNAppDelegate.h"
 
 #define MAX_HUE 65535
 
@@ -17,6 +18,13 @@
 
 @property PHHueSDK *sdk;
 
+@property NSArray *demoGroups;
+@property NSArray *demoLights;
+@property NSArray *demoScenes;
+
+@property (nonatomic, assign) BOOL inDemoMode;
+
+
 @end
 
 @implementation PTNLightController
@@ -24,6 +32,7 @@
 - (id)init {
     self = [super init];
     if (self) {
+        self.inDemoMode = NO;
         self.standardColors = @[[UIColor blackColor],
                                 [UIColor colorWithHue:0.626 saturation:0.871 brightness:1.000 alpha:1.000],
                                 [UIColor colorWithHue:0.788 saturation:1.000 brightness:0.996 alpha:1.000],
@@ -40,6 +49,27 @@
                                 [UIColor colorWithHue:0.540 saturation:0.409 brightness:0.922 alpha:1.000]];
         self.ctNaturalColors = @[@500, @413, @326, @240, @153];
         self.xyNaturalColors = @[@[@0.513, @0.4029], @[@0.513, @0.4029], @[@0.3114, @0.3296], @[@0.3114, @0.3296], @[@0.3114, @0.3296]];
+        
+        NSMutableArray *tempGroups = [NSMutableArray new];
+        NSMutableArray *tempLights = [NSMutableArray new];
+        NSMutableArray *tempScenes = [NSMutableArray new];
+
+        for (int i = 0; i < 6; ++i) {
+            PHGroup *group = [PHGroup new];
+            group.name = [NSString stringWithFormat:@"fake group %d", i];
+            [tempGroups addObject:group];
+
+            PHLight *light = [PHLight new];
+            light.name = [NSString stringWithFormat:@"fake light %d", i];
+            [tempLights addObject:light];
+            
+            PHScene *scene = [PHScene new];
+            scene.name = [NSString stringWithFormat:@"fake scene %d", i];
+            [tempScenes addObject:scene];
+        }
+        self.demoGroups = tempGroups;
+        self.demoLights = tempLights;
+        self.demoScenes = tempScenes;
     }
     return self;
 }
@@ -66,7 +96,16 @@
         }
         [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:nil];
     } else if ([resource isKindOfClass:[PHGroup class]]) {
-        [bridgeSendAPI setLightStateForGroupWithId:resource.identifier lightState:lightState completionHandler:nil];
+        PHGroup *group = (PHGroup *)resource;
+        for (NSString *identifier in group.lightIdentifiers) {
+            PHLight *groupedLight = [self lightWithId:identifier];
+            if (![groupedLight supportsCT]) {
+                // add to array and set with xy
+            }
+        }
+        [lightState setCt:ct];
+        [lightState setOnBool:YES];
+        [bridgeSendAPI setLightStateForGroupWithId:group.identifier lightState:lightState completionHandler:nil];
     }
 }
 
@@ -102,8 +141,33 @@
     }
 }
 
+- (PHLight *)lightWithId:(NSString *)lightId {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier == %@", lightId];
+    NSArray *filteredArray = [self.lights filteredArrayUsingPredicate:predicate];
+    PHLight *firstFoundObject = nil;
+    firstFoundObject =  filteredArray.count > 0 ? filteredArray.firstObject : nil;
+    return firstFoundObject;
+}
+
 - (NSArray *)lights {
+    if (self.inDemoMode) {
+        return self.demoLights;
+    }
     return [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
+}
+
+- (NSArray *)groups {
+    if (self.inDemoMode) {
+        return self.demoGroups;
+    }
+    return [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
+}
+
+- (NSArray *)scenes {
+    if (self.inDemoMode) {
+        return self.demoScenes;
+    }
+    return [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
 }
 
 @end
