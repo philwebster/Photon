@@ -7,7 +7,6 @@
 //
 
 #import "ResourceViewController.h"
-#import "ResourceCollectionViewCell.h"
 #import "GroupListViewController.h"
 #import "PTNColorPickerView.h"
 #import "PTNAppDelegate.h"
@@ -50,9 +49,8 @@
         _recognizer.minimumPressDuration = 0.1;
         _recognizer.delegate = self;
         [self.view addGestureRecognizer:_recognizer];
-                
-        [self.lightGroupCollectionView registerClass:[ResourceCollectionViewCell class] forCellWithReuseIdentifier:@"lightCell"];
-//        [self.lightGroupCollectionView registerClass:[ResourceCollectionHeaderReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
+        
+        [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"resourceCell"];
         [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionHeaderReusableView" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
         
     }
@@ -108,23 +106,24 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ResourceCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"lightCell" forIndexPath:indexPath];
-
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"resourceCell" forIndexPath:indexPath];
+    UILabel *cellLabel = (UILabel *)[cell viewWithTag:100];
+    
     if (indexPath.section == 0) {
         BOOL useFakeGroups = ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
         NSArray *groups = useFakeGroups ? [_fakeGroups allValues] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
         // TODO: Add a default All group if user doesn't already have one
         if (indexPath.row == groups.count) {
-            cell.cellLabel.text = @"Edit groups";
+            cellLabel.text = @"Edit groups";
         } else {
-            cell.cellLabel.text = [groups[indexPath.row] name];
+            cellLabel.text = [groups[indexPath.row] name];
         }
     } else if (indexPath.section == 1) {
         NSArray *lights = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
-        cell.cellLabel.text = [lights[indexPath.row] name];
+        cellLabel.text = [lights[indexPath.row] name];
     } else if (indexPath.section == 2) {
         NSArray *scenes = [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
-        cell.cellLabel.text = [scenes[indexPath.row] name];
+        cellLabel.text = [scenes[indexPath.row] name];
     }
     return cell;
 }
