@@ -8,7 +8,6 @@
 
 #import "ResourceViewController.h"
 #import "ResourceCollectionViewCell.h"
-#import "ResourceCollectionHeaderReusableView.h"
 #import "GroupListViewController.h"
 #import "PTNColorPickerView.h"
 #import "PTNAppDelegate.h"
@@ -53,7 +52,8 @@
         [self.view addGestureRecognizer:_recognizer];
                 
         [self.lightGroupCollectionView registerClass:[ResourceCollectionViewCell class] forCellWithReuseIdentifier:@"lightCell"];
-        [self.lightGroupCollectionView registerClass:[ResourceCollectionHeaderReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
+//        [self.lightGroupCollectionView registerClass:[ResourceCollectionHeaderReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
+        [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionHeaderReusableView" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
         
     }
     return self;
@@ -81,13 +81,14 @@
     UICollectionReusableView *reusableview = nil;
 
     if (kind == UICollectionElementKindSectionHeader) {
-        ResourceCollectionHeaderReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader" forIndexPath:indexPath];
+        UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader" forIndexPath:indexPath];
+        UILabel *headerLabel = (UILabel *)[headerView viewWithTag:100];
         if (indexPath.section == 0) {
-            headerView.headerLabel.text = @"Groups";
+            headerLabel.text = @"Groups";
         } else if (indexPath.section == 1) {
-            headerView.headerLabel.text = @"Lights";
+            headerLabel.text = @"Lights";
         } else if (indexPath.section == 2) {
-            headerView.headerLabel.text = @"Scenes";
+            headerLabel.text = @"Scenes";
         }
         reusableview = headerView;
     }
@@ -112,6 +113,7 @@
     if (indexPath.section == 0) {
         BOOL useFakeGroups = ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
         NSArray *groups = useFakeGroups ? [_fakeGroups allValues] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
+        // TODO: Add a default All group if user doesn't already have one
         if (indexPath.row == groups.count) {
             cell.cellLabel.text = @"Edit groups";
         } else {

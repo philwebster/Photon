@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C3BE41A722834006D2678 /* ResourceRowController.m */; };
-		D31C47931A6D993900E30CD3 /* ResourceCollectionHeaderReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C47921A6D993900E30CD3 /* ResourceCollectionHeaderReusableView.m */; };
 		D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */; };
 		D34FB2A71A71714600DB659E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A61A71714600DB659E /* InterfaceController.m */; };
 		D34FB2AA1A71714600DB659E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A91A71714600DB659E /* NotificationController.m */; };
@@ -17,6 +16,7 @@
 		D34FB2B81A71714700DB659E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2B61A71714700DB659E /* Interface.storyboard */; };
 		D34FB2BA1A71714700DB659E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2B91A71714700DB659E /* Images.xcassets */; };
 		D34FB2BD1A71714700DB659E /* Photon WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */; };
 		D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */; };
 		D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */; };
 		D38C163B1A68DE96006FE974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163A1A68DE96006FE974 /* main.m */; };
@@ -85,8 +85,6 @@
 /* Begin PBXFileReference section */
 		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourceRowController.h; path = "../Photon WatchKit Extension/ResourceRowController.h"; sourceTree = "<group>"; };
 		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResourceRowController.m; path = "../Photon WatchKit Extension/ResourceRowController.m"; sourceTree = "<group>"; };
-		D31C47911A6D993900E30CD3 /* ResourceCollectionHeaderReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceCollectionHeaderReusableView.h; sourceTree = "<group>"; };
-		D31C47921A6D993900E30CD3 /* ResourceCollectionHeaderReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceCollectionHeaderReusableView.m; sourceTree = "<group>"; };
 		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
 		D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridgeView.m; sourceTree = "<group>"; };
 		D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Photon WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +99,7 @@
 		D34FB2B51A71714700DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34FB2B71A71714700DB659E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		D34FB2B91A71714700DB659E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResourceCollectionHeaderReusableView.xib; sourceTree = "<group>"; };
 		D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListViewController.h; sourceTree = "<group>"; };
 		D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupListViewController.m; sourceTree = "<group>"; };
 		D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditGroupViewController.h; sourceTree = "<group>"; };
@@ -252,8 +251,7 @@
 				D3FB69521A6D0D810068945E /* ResourceViewController.h */,
 				D3FB69531A6D0D810068945E /* ResourceViewController.m */,
 				D3B90BB11A6F902F0062E355 /* LightGroupView.xib */,
-				D31C47911A6D993900E30CD3 /* ResourceCollectionHeaderReusableView.h */,
-				D31C47921A6D993900E30CD3 /* ResourceCollectionHeaderReusableView.m */,
+				D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */,
 				D3BA633F1A6B7CA600095EF7 /* ResourceCollectionViewCell.h */,
 				D3BA63401A6B7CA600095EF7 /* ResourceCollectionViewCell.m */,
 				D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */,
@@ -262,8 +260,8 @@
 				D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */,
 				D3B90BAE1A6F77E50062E355 /* PTNColorPickerView.h */,
 				D3B90BAF1A6F77E50062E355 /* PTNColorPickerView.m */,
-				D38C16451A68DE96006FE974 /* Images.xcassets */,
 				D38C16471A68DE96006FE974 /* LaunchScreen.xib */,
+				D38C16451A68DE96006FE974 /* Images.xcassets */,
 				D38C16381A68DE96006FE974 /* Supporting Files */,
 			);
 			path = Photon;
@@ -471,6 +469,7 @@
 				D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */,
 				D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */,
 				D38C16461A68DE96006FE974 /* Images.xcassets in Resources */,
+				D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,7 +512,6 @@
 				D3BA633A1A6B664600095EF7 /* DDFileLogger.m in Sources */,
 				D3BA633B1A6B664600095EF7 /* DDLog.m in Sources */,
 				D38C163B1A68DE96006FE974 /* main.m in Sources */,
-				D31C47931A6D993900E30CD3 /* ResourceCollectionHeaderReusableView.m in Sources */,
 				D3BA633E1A6B664600095EF7 /* DispatchQueueLogFormatter.m in Sources */,
 				D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */,
 				D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */,
