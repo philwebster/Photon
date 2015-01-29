@@ -97,15 +97,22 @@
         [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:nil];
     } else if ([resource isKindOfClass:[PHGroup class]]) {
         PHGroup *group = (PHGroup *)resource;
+        NSMutableSet *nonCTLights = [NSMutableSet new];
         for (NSString *identifier in group.lightIdentifiers) {
             PHLight *groupedLight = [self lightWithId:identifier];
             if (![groupedLight supportsCT]) {
-                // add to array and set with xy
+                [nonCTLights addObject:groupedLight];
             }
         }
         [lightState setCt:ct];
         [lightState setOnBool:YES];
         [bridgeSendAPI setLightStateForGroupWithId:group.identifier lightState:lightState completionHandler:nil];
+        // TODO: Set x and y to closest natural color
+        [lightState setX:@0.5268];
+        [lightState setY:@0.4133];
+        for (PHLight *light in nonCTLights) {
+            [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:nil];
+        }
     }
 }
 
