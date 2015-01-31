@@ -10,6 +10,7 @@
                 <outlet property="groupTapRecognizer" destination="aFs-av-8Cv" id="Rg5-fS-pzh"/>
                 <outlet property="lightGroupCollectionView" destination="0sA-tG-14p" id="Oyj-ui-jAp"/>
                 <outlet property="quickPickView" destination="M8e-vp-KpD" id="vT7-3O-Tqa"/>
+                <outlet property="settingsButton" destination="t9W-y8-U7x" id="rgt-dO-Jng"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ttw-XP-k51"/>
             </connections>
         </placeholder>
@@ -42,13 +43,24 @@
                         <outletCollection property="gestureRecognizers" destination="aFs-av-8Cv" appends="YES" id="1V0-99-Xax"/>
                     </connections>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9W-y8-U7x">
+                    <rect key="frame" x="523" y="550" width="57" height="30"/>
+                    <state key="normal" title="Settings">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="settingsButtonPressed:" destination="-1" eventType="touchUpInside" id="cV5-vc-m13"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="t9W-y8-U7x" secondAttribute="bottom" constant="20" id="543-wX-Z9L"/>
                 <constraint firstItem="0sA-tG-14p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7sf-8e-ATA"/>
                 <constraint firstAttribute="trailing" secondItem="M8e-vp-KpD" secondAttribute="trailing" id="DSE-Vp-B8e"/>
                 <constraint firstAttribute="bottom" secondItem="0sA-tG-14p" secondAttribute="bottom" id="DxO-TV-7tv"/>
                 <constraint firstItem="M8e-vp-KpD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MEh-xi-I8c"/>
+                <constraint firstAttribute="trailing" secondItem="t9W-y8-U7x" secondAttribute="trailing" constant="20" id="OPP-o0-Q9w"/>
                 <constraint firstItem="0sA-tG-14p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Oj5-ND-N0P"/>
                 <constraint firstAttribute="bottom" secondItem="M8e-vp-KpD" secondAttribute="bottom" id="Zfz-TM-eq6"/>
                 <constraint firstItem="M8e-vp-KpD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wFB-8v-WD3"/>

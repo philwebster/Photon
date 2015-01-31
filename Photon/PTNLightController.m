@@ -136,6 +136,11 @@
     }
 }
 
+- (void)setScene:(PHScene *)scene onGroup:(PHGroup *)group {
+    PHBridgeSendAPI *bridgeSendAPI = [PHBridgeSendAPI new];
+    [bridgeSendAPI activateSceneWithIdentifier:scene.identifier onGroup:@"0" completionHandler:nil];
+}
+
 - (void)setResourceOff:(PHBridgeResource *)resource {
     PHLightState *lightState = [[PHLightState alloc] init];
     [lightState setOnBool:NO];

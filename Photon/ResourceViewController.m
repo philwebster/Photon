@@ -10,14 +10,17 @@
 #import "GroupListViewController.h"
 #import "PTNColorPickerView.h"
 #import "PTNAppDelegate.h"
+#import "PTNLightController.h"
 #import <HueSDK_iOS/HueSDK.h>
 
 @interface ResourceViewController ()
 @property (nonatomic, strong) PHHueSDK *phHueSDK;
+@property (nonatomic, strong) PTNLightController *lightController;
 @property (nonatomic, strong) GroupListViewController *groupListVC;
 @property (nonatomic, strong) UILongPressGestureRecognizer *recognizer;
 @property (nonatomic, strong) NSMutableDictionary *fakeGroups;
 @property (nonatomic, strong) PHBridgeResource *selectedResource;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet PTNColorPickerView *quickPickView;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *colorTapRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *groupTapRecognizer;
@@ -52,6 +55,8 @@
         
         [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"resourceCell"];
         [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionHeaderReusableView" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
+        
+        self.lightController = [PTNLightController new];
         
     }
     return self;
@@ -182,6 +187,9 @@
         NSArray *lights = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
         _quickPickView.lightResource = lights[indexPath.row];
         _quickPickView.hidden = NO;
+    } else if (indexPath.section == 2) {
+        NSArray *scenes = [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
+        [self.lightController setScene:scenes[indexPath.row] onGroup:nil];
     }
 }
 
@@ -203,7 +211,7 @@
         NSLog(@"long press ended");
         _quickPickView.hidden = YES;
     } else {
-        NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
+//        NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
         
     }
 }
@@ -241,6 +249,10 @@
     NSLog(@"Got heartbeat, reloading data");
     // TODO: Be smarter about reloading data
     [self.lightGroupCollectionView reloadData];
+}
+
+- (IBAction)settingsButtonPressed:(id)sender {
+    NSLog(@"Settings pressed");
 }
 
 /*
