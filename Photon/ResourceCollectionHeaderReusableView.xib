@@ -11,16 +11,24 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOE-NY-zOU">
-                    <rect key="frame" x="279" y="289" width="42" height="21"/>
+                    <rect key="frame" x="20" y="289.5" width="42" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06y-Xa-cQf">
+                    <rect key="frame" x="550" y="285" width="30" height="30"/>
+                    <state key="normal" title="Edit">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="aOE-NY-zOU" secondAttribute="centerY" constant="0.5" id="8uW-1l-c0F"/>
-                <constraint firstAttribute="centerX" secondItem="aOE-NY-zOU" secondAttribute="centerX" id="p1R-Rb-HRs"/>
+                <constraint firstAttribute="trailing" secondItem="06y-Xa-cQf" secondAttribute="trailing" constant="20" id="LsM-GI-5RI"/>
+                <constraint firstAttribute="centerY" secondItem="06y-Xa-cQf" secondAttribute="centerY" id="eeR-xZ-RUs"/>
+                <constraint firstItem="aOE-NY-zOU" firstAttribute="leading" secondItem="HFL-6V-1dR" secondAttribute="leading" constant="20" id="iy4-ZI-vUL"/>
             </constraints>
             <point key="canvasLocation" x="566" y="273"/>
         </view>
