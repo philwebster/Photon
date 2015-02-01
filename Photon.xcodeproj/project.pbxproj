@@ -17,7 +17,6 @@
 		D34FB2BA1A71714700DB659E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2B91A71714700DB659E /* Images.xcassets */; };
 		D34FB2BD1A71714700DB659E /* Photon WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */; };
-		D3779F151A78D285008B817A /* ResourceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3779F141A78D285008B817A /* ResourceCollectionViewCell.xib */; };
 		D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */; };
 		D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */; };
 		D38C163B1A68DE96006FE974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163A1A68DE96006FE974 /* main.m */; };
@@ -39,6 +38,8 @@
 		D3DF823C1A7425B1001AD7DB /* PTNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PTNLightController.m */; };
 		D3DF823D1A7425CF001AD7DB /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */; };
 		D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63301A6B664600095EF7 /* DDLog.m */; };
+		D3ED38501A7DAD30000CE316 /* ResourceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */; };
+		D3ED38521A7DBE58000CE316 /* ResourceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */; };
 		D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB694E1A6CF7080068945E /* SetupViewController.m */; };
 		D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FB694F1A6CF7080068945E /* SetupViewController.xib */; };
 		D3FB69551A6D0D810068945E /* ResourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB69531A6D0D810068945E /* ResourceViewController.m */; };
@@ -100,7 +101,6 @@
 		D34FB2B71A71714700DB659E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		D34FB2B91A71714700DB659E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResourceCollectionHeaderReusableView.xib; sourceTree = "<group>"; };
-		D3779F141A78D285008B817A /* ResourceCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResourceCollectionViewCell.xib; sourceTree = "<group>"; };
 		D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListViewController.h; sourceTree = "<group>"; };
 		D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupListViewController.m; sourceTree = "<group>"; };
 		D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditGroupViewController.h; sourceTree = "<group>"; };
@@ -135,6 +135,9 @@
 		D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		D3C33B311A738AD10008EAFA /* PTNLightController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTNLightController.h; sourceTree = "<group>"; };
 		D3C33B321A738AD10008EAFA /* PTNLightController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTNLightController.m; sourceTree = "<group>"; };
+		D3ED384E1A7DAD30000CE316 /* ResourceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceCollectionViewCell.h; sourceTree = "<group>"; };
+		D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceCollectionViewCell.m; sourceTree = "<group>"; };
+		D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResourceCollectionViewCell.xib; path = ../ResourceCollectionViewCell.xib; sourceTree = "<group>"; };
 		D3FB694D1A6CF7080068945E /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
 		D3FB694E1A6CF7080068945E /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 		D3FB694F1A6CF7080068945E /* SetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
@@ -251,7 +254,9 @@
 				D3FB69531A6D0D810068945E /* ResourceViewController.m */,
 				D3B90BB11A6F902F0062E355 /* LightGroupView.xib */,
 				D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */,
-				D3779F141A78D285008B817A /* ResourceCollectionViewCell.xib */,
+				D3ED384E1A7DAD30000CE316 /* ResourceCollectionViewCell.h */,
+				D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */,
+				D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */,
 				D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */,
 				D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */,
 				D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */,
@@ -467,7 +472,7 @@
 				D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */,
 				D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */,
 				D38C16461A68DE96006FE974 /* Images.xcassets in Resources */,
-				D3779F151A78D285008B817A /* ResourceCollectionViewCell.xib in Resources */,
+				D3ED38521A7DBE58000CE316 /* ResourceCollectionViewCell.xib in Resources */,
 				D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,6 +511,7 @@
 				D3BA633D1A6B664600095EF7 /* ContextFilterLogFormatter.m in Sources */,
 				D3BA633C1A6B664600095EF7 /* DDTTYLogger.m in Sources */,
 				D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */,
+				D3ED38501A7DAD30000CE316 /* ResourceCollectionViewCell.m in Sources */,
 				D3FB69551A6D0D810068945E /* ResourceViewController.m in Sources */,
 				D3BA633A1A6B664600095EF7 /* DDFileLogger.m in Sources */,
 				D3BA633B1A6B664600095EF7 /* DDLog.m in Sources */,

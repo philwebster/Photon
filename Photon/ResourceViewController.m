@@ -11,6 +11,7 @@
 #import "PTNColorPickerView.h"
 #import "PTNAppDelegate.h"
 #import "PTNLightController.h"
+#import "ResourceCollectionViewCell.h"
 #import <HueSDK_iOS/HueSDK.h>
 
 @interface ResourceViewController ()
@@ -111,24 +112,23 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"resourceCell" forIndexPath:indexPath];
-    UILabel *cellLabel = (UILabel *)[cell viewWithTag:100];
+    ResourceCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"resourceCell" forIndexPath:indexPath];
     
     if (indexPath.section == 0) {
         BOOL useFakeGroups = ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
         NSArray *groups = useFakeGroups ? [_fakeGroups allValues] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
         // TODO: Add a default All group if user doesn't already have one
         if (indexPath.row == groups.count) {
-            cellLabel.text = @"Edit groups";
+            cell.resourceTitleLabel.text = @"Edit groups";
         } else {
-            cellLabel.text = [groups[indexPath.row] name];
+            cell.resourceTitleLabel.text = [groups[indexPath.row] name];
         }
     } else if (indexPath.section == 1) {
         NSArray *lights = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
-        cellLabel.text = [lights[indexPath.row] name];
+        cell.resourceTitleLabel.text = [lights[indexPath.row] name];
     } else if (indexPath.section == 2) {
         NSArray *scenes = [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
-        cellLabel.text = [scenes[indexPath.row] name];
+        cell.resourceTitleLabel.text = [scenes[indexPath.row] name];
     }
     return cell;
 }
