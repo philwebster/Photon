@@ -8,6 +8,7 @@
 
 #import "ResourceViewController.h"
 #import "GroupListViewController.h"
+#import "SceneListViewController.h"
 #import "PTNColorPickerView.h"
 #import "PTNAppDelegate.h"
 #import "PTNLightController.h"
@@ -18,13 +19,12 @@
 @property (nonatomic, strong) PHHueSDK *phHueSDK;
 @property (nonatomic, strong) PTNLightController *lightController;
 @property (nonatomic, strong) GroupListViewController *groupListVC;
+@property (nonatomic, strong) SceneListViewController *sceneListVC;
 @property (nonatomic, strong) UILongPressGestureRecognizer *recognizer;
 @property (nonatomic, strong) NSMutableDictionary *fakeGroups;
 @property (nonatomic, strong) PHBridgeResource *selectedResource;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet PTNColorPickerView *quickPickView;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *colorTapRecognizer;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *groupTapRecognizer;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @end
 
@@ -87,12 +87,19 @@
     if (kind == UICollectionElementKindSectionHeader) {
         UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader" forIndexPath:indexPath];
         UILabel *headerLabel = (UILabel *)[headerView viewWithTag:100];
+        UIButton *headerEditButton = (UIButton *)[headerView viewWithTag:101];
+        [headerEditButton removeTarget:nil
+                                action:NULL
+                      forControlEvents:UIControlEventAllEvents];
         if (indexPath.section == 0) {
             headerLabel.text = @"Groups";
+            [headerEditButton addTarget:self action:@selector(editGroupsTapped) forControlEvents:UIControlEventTouchUpInside];
         } else if (indexPath.section == 1) {
             headerLabel.text = @"Lights";
+            [headerEditButton addTarget:self action:@selector(editLightsTapped) forControlEvents:UIControlEventTouchUpInside];
         } else if (indexPath.section == 2) {
             headerLabel.text = @"Scenes";
+            [headerEditButton addTarget:self action:@selector(editScenesTapped) forControlEvents:UIControlEventTouchUpInside];
         }
         reusableview = headerView;
     }
@@ -102,7 +109,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     BOOL useFakeGroups = ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
     if (section == 0) {
-        return useFakeGroups ? [_fakeGroups count] + 1 : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] count] + 1;
+        return useFakeGroups ? [_fakeGroups count] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] count];
     } else if (section == 1) {
         return [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] count];
     } else if (section == 2) {
@@ -118,11 +125,7 @@
         BOOL useFakeGroups = ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
         NSArray *groups = useFakeGroups ? [_fakeGroups allValues] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
         // TODO: Add a default All group if user doesn't already have one
-        if (indexPath.row == groups.count) {
-            cell.resourceTitleLabel.text = @"Edit groups";
-        } else {
-            cell.resourceTitleLabel.text = [groups[indexPath.row] name];
-        }
+        cell.resourceTitleLabel.text = [groups[indexPath.row] name];
     } else if (indexPath.section == 1) {
         NSArray *lights = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
         cell.resourceTitleLabel.text = [lights[indexPath.row] name];
@@ -152,11 +155,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    if (section == 0 || section == 1) {
-        return UIEdgeInsetsMake(0, 0, 50, 0);
-    } else {
-        return UIEdgeInsetsMake(0, 0, 0, 0);
-    }
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -172,17 +171,10 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    UINavigationController *navController = [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
     if (indexPath.section == 0) {
-        if (indexPath.row + 1 == [collectionView numberOfItemsInSection:indexPath.section]) {
-            self.groupListVC = [[GroupListViewController alloc] init];
-            [navController setNavigationBarHidden:NO];
-            [navController pushViewController:self.groupListVC animated:NO];
-        } else {
-            NSArray *groups = [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
-            _quickPickView.lightResource = groups[indexPath.row];
-            _quickPickView.hidden = NO;
-        }
+        NSArray *groups = [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
+        _quickPickView.lightResource = groups[indexPath.row];
+        _quickPickView.hidden = NO;
     } else if (indexPath.section == 1) {
         NSArray *lights = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
         _quickPickView.lightResource = lights[indexPath.row];
@@ -198,6 +190,9 @@
 
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSIndexPath *indexPath = [self.lightGroupCollectionView indexPathForItemAtPoint:p];
+        if (!indexPath) {
+            return;
+        }
         _selectedResource = [self bridgeResourceForIndexPath:indexPath];
         [self.view bringSubviewToFront:_quickPickView];
         _quickPickView.hidden = NO;
@@ -216,35 +211,6 @@
     }
 }
 
-- (IBAction)handleGroupTap:(UITapGestureRecognizer *)sender {
-    CGPoint p = [sender locationInView:self.lightGroupCollectionView];
-    NSIndexPath *indexPath = [self.lightGroupCollectionView indexPathForItemAtPoint:p];
-
-    if (indexPath.section == 0) {
-        if (indexPath.row + 1 == [self.lightGroupCollectionView numberOfItemsInSection:indexPath.section]) {
-            UINavigationController *navController = [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
-            self.groupListVC = [[GroupListViewController alloc] init];
-            [navController setNavigationBarHidden:NO];
-            [navController pushViewController:self.groupListVC animated:NO];
-            return;
-        }
-    }
-    
-    _selectedResource = [self bridgeResourceForIndexPath:indexPath];
-    _quickPickView.hidden = NO;
-    [self.view bringSubviewToFront:_quickPickView];
-}
-
-- (IBAction)handleColorTap:(UITapGestureRecognizer *)sender {
-    CGPoint p = [sender locationInView:self.lightGroupCollectionView];
-
-    _quickPickView.lightResource = _selectedResource;
-    NSIndexPath *indexPath = [_quickPickView.colorCollectionView indexPathForItemAtPoint:p];
-    [_quickPickView collectionView:_quickPickView.colorCollectionView didSelectItemAtIndexPath:indexPath];
-    NSLog(@"color tap handled");
-    _quickPickView.hidden = YES;
-}
-
 - (void)receivedHeartbeat {
     NSLog(@"Got heartbeat, reloading data");
     // TODO: Be smarter about reloading data
@@ -253,6 +219,24 @@
 
 - (IBAction)settingsButtonPressed:(id)sender {
     NSLog(@"Settings pressed");
+}
+
+- (void)editGroupsTapped {
+    UINavigationController *navController = [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+    self.groupListVC = [[GroupListViewController alloc] init];
+    [navController setNavigationBarHidden:NO];
+    [navController pushViewController:self.groupListVC animated:YES];
+}
+
+- (void)editLightsTapped {
+    NSLog(@"edit lights tapped");
+}
+
+- (void)editScenesTapped {
+    UINavigationController *navController = [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+    self.sceneListVC = [[SceneListViewController alloc] init];
+    [navController setNavigationBarHidden:NO];
+    [navController pushViewController:self.sceneListVC animated:YES];
 }
 
 /*

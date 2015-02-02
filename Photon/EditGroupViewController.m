@@ -112,6 +112,8 @@
 }
 
 - (void)saveGroup {
+    // TODO: move to LightController
+    
     // Get group from cache
     
     NSString *name = self.groupTitleField.text;
@@ -132,6 +134,8 @@
 }
 
 - (void)updateGroup:(PHGroup *)group {
+    // TODO: move to LightController
+    
     // Create PHBridgeSendAPI object
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     
@@ -149,7 +153,8 @@
 }
 
 - (void)createNewGroupWithName:(NSString *)name lightIds:(NSArray *)lightIds {
-
+    // TODO: move to LightController
+    
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     [bridgeSendAPI createGroupWithName:name lightIds:lightIds completionHandler:^(NSString *groupIdentifier, NSArray *errors) {
         if (!errors){

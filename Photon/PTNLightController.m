@@ -33,8 +33,7 @@
     self = [super init];
     if (self) {
         self.inDemoMode = NO;
-        self.standardColors = @[[UIColor blackColor],
-                                [UIColor colorWithHue:0.626 saturation:0.871 brightness:1.000 alpha:1.000],
+        self.standardColors = @[[UIColor colorWithHue:0.626 saturation:0.871 brightness:1.000 alpha:1.000],
                                 [UIColor colorWithHue:0.788 saturation:1.000 brightness:0.996 alpha:1.000],
                                 [UIColor colorWithHue:0.846 saturation:1.000 brightness:0.984 alpha:1.000],
                                 [UIColor colorWithHue:0.965 saturation:1.000 brightness:0.984 alpha:1.000],

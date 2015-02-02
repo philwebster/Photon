@@ -40,6 +40,7 @@
 		D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63301A6B664600095EF7 /* DDLog.m */; };
 		D3ED38501A7DAD30000CE316 /* ResourceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */; };
 		D3ED38521A7DBE58000CE316 /* ResourceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */; };
+		D3ED38591A7ED43F000CE316 /* SceneListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED38581A7ED43F000CE316 /* SceneListViewController.m */; };
 		D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB694E1A6CF7080068945E /* SetupViewController.m */; };
 		D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FB694F1A6CF7080068945E /* SetupViewController.xib */; };
 		D3FB69551A6D0D810068945E /* ResourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FB69531A6D0D810068945E /* ResourceViewController.m */; };
@@ -138,6 +139,8 @@
 		D3ED384E1A7DAD30000CE316 /* ResourceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceCollectionViewCell.h; sourceTree = "<group>"; };
 		D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceCollectionViewCell.m; sourceTree = "<group>"; };
 		D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResourceCollectionViewCell.xib; path = ../ResourceCollectionViewCell.xib; sourceTree = "<group>"; };
+		D3ED38571A7ED43F000CE316 /* SceneListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneListViewController.h; sourceTree = "<group>"; };
+		D3ED38581A7ED43F000CE316 /* SceneListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneListViewController.m; sourceTree = "<group>"; };
 		D3FB694D1A6CF7080068945E /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
 		D3FB694E1A6CF7080068945E /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 		D3FB694F1A6CF7080068945E /* SetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
@@ -257,10 +260,8 @@
 				D3ED384E1A7DAD30000CE316 /* ResourceCollectionViewCell.h */,
 				D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */,
 				D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */,
-				D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */,
-				D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */,
-				D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */,
-				D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */,
+				D3ED38561A7ED3F3000CE316 /* Scenes */,
+				D3ED38551A7ED3E0000CE316 /* Groups */,
 				D3B90BAE1A6F77E50062E355 /* PTNColorPickerView.h */,
 				D3B90BAF1A6F77E50062E355 /* PTNColorPickerView.m */,
 				D38C16471A68DE96006FE974 /* LaunchScreen.xib */,
@@ -323,6 +324,26 @@
 				D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D3ED38551A7ED3E0000CE316 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */,
+				D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */,
+				D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */,
+				D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */,
+			);
+			name = Groups;
+			sourceTree = "<group>";
+		};
+		D3ED38561A7ED3F3000CE316 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D3ED38571A7ED43F000CE316 /* SceneListViewController.h */,
+				D3ED38581A7ED43F000CE316 /* SceneListViewController.m */,
+			);
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,6 +529,7 @@
 				D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */,
 				D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */,
 				D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */,
+				D3ED38591A7ED43F000CE316 /* SceneListViewController.m in Sources */,
 				D3BA633D1A6B664600095EF7 /* ContextFilterLogFormatter.m in Sources */,
 				D3BA633C1A6B664600095EF7 /* DDTTYLogger.m in Sources */,
 				D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */,

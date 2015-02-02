@@ -58,7 +58,9 @@
     if (indexPath.section == 0) {
         return CGSizeMake(self.frame.size.width / 5, 100);
     } else if (indexPath.section == 1) {
-        return CGSizeMake(self.frame.size.width, (self.frame.size.height - 100) / self.lightController.standardColors.count);
+        return CGSizeMake(self.frame.size.width, (self.frame.size.height - 200) / self.lightController.standardColors.count);
+    } else if (indexPath.section == 2) {
+        return CGSizeMake(self.frame.size.width / 2, 100);
     }
     return CGSizeMake(0, 0);
 }
@@ -78,7 +80,7 @@
 #pragma mark CollectionViewDelegate
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -86,6 +88,8 @@
         return self.lightController.naturalColors.count;
     } else if (section == 1) {
         return self.lightController.standardColors.count;
+    } else if (section == 2) {
+        return 2;
     }
     return 0;
 }
@@ -97,22 +101,25 @@
         color = self.lightController.naturalColors[indexPath.row];
     } else if (indexPath.section == 1) {
         color = self.lightController.standardColors[indexPath.row];
+    } else if (indexPath.section == 2) {
+        color = indexPath.row == 0 ? [UIColor grayColor] : [UIColor blackColor];
     }
     cell.backgroundColor = color;
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    UIColor *color = [_colorCollectionView cellForItemAtIndexPath:indexPath].backgroundColor;
     if (indexPath.section == 0) {
         [self.lightController setNaturalColor:self.lightController.ctNaturalColors[indexPath.row] forResource:self.lightResource];
-    } else {
-        UIColor *color = [_colorCollectionView cellForItemAtIndexPath:indexPath].backgroundColor;
+    } else if (indexPath.section == 1) {
+        [self.lightController setColor:[_colorCollectionView cellForItemAtIndexPath:indexPath].backgroundColor forResource:self.lightResource];
+    } else if (indexPath.section == 2) {
         if (color == [UIColor blackColor]) {
             [self.lightController setResourceOff:self.lightResource];
-        } else {
-            [self.lightController setColor:[_colorCollectionView cellForItemAtIndexPath:indexPath].backgroundColor forResource:self.lightResource];
         }
     }
+    self.hidden = YES;
 }
 
 - (void)dismissView {
