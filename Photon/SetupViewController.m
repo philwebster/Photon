@@ -9,7 +9,8 @@
 #import "SetupViewController.h"
 #import "HueBridgeView.h"
 #import <HueSDK_iOS/HueSDK.h>
-#import "PTNAppDelegate.h"
+#import "PNAppDelegate.h"
+#import "PNLightController.h"
 
 @interface SetupViewController ()
 
@@ -34,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] searchForBridgeLocal];
+    [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] searchForBridgeLocal];
 
     _scaleFactor = 2;
     _angle = 180;
@@ -190,11 +191,11 @@
     NSArray *sortedKeys = [self.bridges.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSString *mac = [sortedKeys objectAtIndex:indexPath.row];
     NSString *ip = [self.bridges objectForKey:mac];
-    [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] bridgeSelectedWithIpAddress:ip andMacAddress:mac];
+    [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] bridgeSelectedWithIpAddress:ip andMacAddress:mac];
 }
 
 - (IBAction)continueButtonPressed:(id)sender {
-    ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode = YES;
+    [[PNLightController singleton] setInDemoMode:YES];
     [self authenticationSuccess];
 }
 

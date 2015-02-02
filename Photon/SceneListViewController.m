@@ -7,7 +7,7 @@
 //
 
 #import "SceneListViewController.h"
-#import "PTNAppDelegate.h"
+#import "PNAppDelegate.h"
 #import <HueSDK_iOS/HueSDK.h>
 
 @interface SceneListViewController ()

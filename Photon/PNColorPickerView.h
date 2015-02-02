@@ -10,7 +10,7 @@
 
 @class PHBridgeResource;
 
-@interface PTNColorPickerView : UIView <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
+@interface PNColorPickerView : UIView <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) UICollectionView *colorCollectionView;
 @property UIButton *cancelButton;

@@ -6,17 +6,17 @@
 //  Copyright (c) 2015 phil. All rights reserved.
 //
 
-#import "PTNColorPickerView.h"
-#import "PTNLightController.h"
+#import "PNColorPickerView.h"
+#import "PNLightController.h"
 
-@interface PTNColorPickerView()
+@interface PNColorPickerView()
 
 @property UICollectionViewFlowLayout *flowLayout;
-@property PTNLightController *lightController;
+@property PNLightController *lightController;
 
 @end
 
-@implementation PTNColorPickerView
+@implementation PNColorPickerView
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -47,7 +47,7 @@
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[_cancelButton]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_cancelButton)]];
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_cancelButton]-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_cancelButton)]];
         
-        self.lightController = [PTNLightController new];
+        self.lightController = [PNLightController new];
     }
     return self;
 }

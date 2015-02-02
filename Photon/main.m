@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PTNAppDelegate.h"
+#import "PNAppDelegate.h"
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([PTNAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([PNAppDelegate class]));
     }
 }

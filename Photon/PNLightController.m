@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 phil. All rights reserved.
 //
 
-#import "PTNLightController.h"
-#import "PTNAppDelegate.h"
+#import "PNLightController.h"
+#import "PNAppDelegate.h"
 
 #define MAX_HUE 65535
 
-@interface PTNLightController()
+@interface PNLightController()
 
 @property NSArray *xyNaturalColors;
 @property NSArray *colors;
@@ -22,12 +22,18 @@
 @property NSArray *demoLights;
 @property NSArray *demoScenes;
 
-@property (nonatomic, assign) BOOL inDemoMode;
-
-
 @end
 
-@implementation PTNLightController
+@implementation PNLightController
+
++ (id)singleton {
+    static PNLightController *singleton = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        singleton = [[self alloc] init];
+    });
+    return singleton;
+}
 
 - (id)init {
     self = [super init];

@@ -8,7 +8,7 @@
 
 #import "EditGroupViewController.h"
 #import <HueSDK_iOS/HueSDK.h>
-#import "PTNAppDelegate.h"
+#import "PNAppDelegate.h"
 
 @interface EditGroupViewController ()
 
@@ -144,7 +144,7 @@
         if (!errors){
             // Update successful
             NSLog(@"successfully updated group");
-            [[(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] popViewControllerAnimated:YES];
+            [[(PNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] popViewControllerAnimated:YES];
         } else {
             // Error occurred
             NSLog(@"didn't update group");
@@ -160,7 +160,7 @@
         if (!errors){
             // Create successful
             NSLog(@"successfully created group");
-            [[(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] popViewControllerAnimated:YES];
+            [[(PNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController] popViewControllerAnimated:YES];
         } else {
             // Error occurred
             NSLog(@"didn't create group");

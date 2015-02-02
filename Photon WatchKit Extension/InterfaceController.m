@@ -8,13 +8,13 @@
 
 #import "InterfaceController.h"
 #import "ResourceRowController.h"
-#import "PTNLightController.h"
+#import "PNLightController.h"
 
 @interface InterfaceController()
 @property (weak, nonatomic) IBOutlet WKInterfaceTable *ResourceTable;
 @property NSString *context;
 @property NSArray *tableData;
-@property PTNLightController *lightController;
+@property PNLightController *lightController;
 
 @end
 
@@ -23,7 +23,7 @@
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
-    self.lightController = [PTNLightController new];
+    self.lightController = [PNLightController new];
     self.context = context;
     if ([context isEqualToString:@"Groups"]) {
         self.tableData = self.lightController.groups;

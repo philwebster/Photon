@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <HueSDK_iOS/HueSDK.h>
 
-@interface PTNLightController : NSObject
+@interface PNLightController : NSObject
 
 @property NSArray *standardColors;
 @property NSArray *naturalColors;
@@ -20,6 +20,9 @@
 @property (nonatomic) NSArray *groups;
 @property (nonatomic) NSArray *scenes;
 
+@property (nonatomic, assign) BOOL inDemoMode;
+
++ (id)singleton;
 - (void)setNaturalColor:(NSNumber *)ct forResource:(PHBridgeResource *)resource;
 - (void)setColor:(UIColor *)color forResource:(PHBridgeResource *)resource;
 - (void)setResourceOff:(PHBridgeResource *)resource;

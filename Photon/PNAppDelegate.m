@@ -6,11 +6,12 @@
 //  Copyright (c) 2015 phil. All rights reserved.
 //
 
-#import "PTNAppDelegate.h"
+#import "PNAppDelegate.h"
 #import "SetupViewController.h"
 #import "ResourceViewController.h"
+#import "PNLightController.h"
 
-@interface PTNAppDelegate ()
+@interface PNAppDelegate ()
 
 @property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
 
@@ -21,21 +22,24 @@
 @property (nonatomic, strong) SetupViewController *setupVC;
 @property (nonatomic, strong) ResourceViewController *lightVC;
 
+//@property (nonatomic, strong) PNLightController *lightController;
+
 @end
 
-@implementation PTNAppDelegate
+@implementation PNAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.inDemoMode = NO;
     
     // Create sdk instance
     self.phHueSDK = [[PHHueSDK alloc] init];
     [self.phHueSDK startUpSDK];
     [self.phHueSDK enableLogging:YES];
+    
+//    self.lightController = [PNLightController singleton];
     
     self.lightVC = [[ResourceViewController alloc] initWithNibName:@"LightGroupView" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.lightVC];
@@ -116,7 +120,7 @@
  Notification receiver for failed local authentication
  */
 - (void)notAuthenticated {
-    if (self.inDemoMode) {
+    if ([[PNLightController singleton] inDemoMode]) {
         return;
     }
     
@@ -191,7 +195,7 @@
         [self.phHueSDK enableLocalConnection];
     } else {
         // Automatically start searching for bridges
-        if (self.inDemoMode) {
+        if ([[PNLightController singleton] inDemoMode]) {
             return;
         }
         self.setupVC = [[SetupViewController alloc] initWithNibName:@"SetupViewController" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK delegate:self];

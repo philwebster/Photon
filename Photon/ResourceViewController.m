@@ -9,22 +9,22 @@
 #import "ResourceViewController.h"
 #import "GroupListViewController.h"
 #import "SceneListViewController.h"
-#import "PTNColorPickerView.h"
-#import "PTNAppDelegate.h"
-#import "PTNLightController.h"
+#import "PNColorPickerView.h"
+#import "PNAppDelegate.h"
+#import "PNLightController.h"
 #import "ResourceCollectionViewCell.h"
 #import <HueSDK_iOS/HueSDK.h>
 
 @interface ResourceViewController ()
 @property (nonatomic, strong) PHHueSDK *phHueSDK;
-@property (nonatomic, strong) PTNLightController *lightController;
+@property (nonatomic, strong) PNLightController *lightController;
 @property (nonatomic, strong) GroupListViewController *groupListVC;
 @property (nonatomic, strong) SceneListViewController *sceneListVC;
 @property (nonatomic, strong) UILongPressGestureRecognizer *recognizer;
 @property (nonatomic, strong) NSMutableDictionary *fakeGroups;
 @property (nonatomic, strong) PHBridgeResource *selectedResource;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
-@property (weak, nonatomic) IBOutlet PTNColorPickerView *quickPickView;
+@property (weak, nonatomic) IBOutlet PNColorPickerView *quickPickView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @end
 
@@ -57,7 +57,7 @@
         [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"resourceCell"];
         [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionHeaderReusableView" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
         
-        self.lightController = [PTNLightController new];
+        self.lightController = [PNLightController singleton];
         
     }
     return self;
@@ -107,13 +107,12 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    BOOL useFakeGroups = ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
     if (section == 0) {
-        return useFakeGroups ? [_fakeGroups count] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] count];
+        return [self.lightController.groups count];
     } else if (section == 1) {
-        return [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] count];
+        return [self.lightController.lights count];
     } else if (section == 2) {
-        return [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] count];
+        return [self.lightController.scenes count];
     }
     return 0;
 }
@@ -122,36 +121,29 @@
     ResourceCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"resourceCell" forIndexPath:indexPath];
     
     if (indexPath.section == 0) {
-        BOOL useFakeGroups = ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
-        NSArray *groups = useFakeGroups ? [_fakeGroups allValues] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
+        NSArray *groups = self.lightController.groups;
         // TODO: Add a default All group if user doesn't already have one
         cell.resourceTitleLabel.text = [groups[indexPath.row] name];
     } else if (indexPath.section == 1) {
-        NSArray *lights = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
+        NSArray *lights = self.lightController.lights;
         cell.resourceTitleLabel.text = [lights[indexPath.row] name];
     } else if (indexPath.section == 2) {
-        NSArray *scenes = [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
+        NSArray *scenes = self.lightController.scenes;
         cell.resourceTitleLabel.text = [scenes[indexPath.row] name];
     }
     return cell;
 }
 
 - (PHBridgeResource *)bridgeResourceForIndexPath:(NSIndexPath *)indexPath {
-    NSArray *group;
+    NSArray *resources;
     if (indexPath.section == 0) {
-        BOOL useFakeGroups = ((PTNAppDelegate *)[[UIApplication sharedApplication] delegate]).inDemoMode;
-        group = useFakeGroups ? [_fakeGroups allValues] : [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
-        if (indexPath.row >= group.count) {
-            // selected edit groups
-            NSLog(@"returning nil for bridge resource");
-            return nil;
-        }
+        resources = self.lightController.groups;
     } else if (indexPath.section == 1) {
-        group = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
+        resources = self.lightController.lights;
     } else if (indexPath.section == 2) {
-        group = [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
+        resources = self.lightController.scenes;
     }
-    return group[indexPath.row];
+    return resources[indexPath.row];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -172,15 +164,15 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        NSArray *groups = [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
+        NSArray *groups = self.lightController.groups;
         _quickPickView.lightResource = groups[indexPath.row];
         _quickPickView.hidden = NO;
     } else if (indexPath.section == 1) {
-        NSArray *lights = [[[PHBridgeResourcesReader readBridgeResourcesCache] lights] allValues];
+        NSArray *lights = self.lightController.lights;
         _quickPickView.lightResource = lights[indexPath.row];
         _quickPickView.hidden = NO;
     } else if (indexPath.section == 2) {
-        NSArray *scenes = [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
+        NSArray *scenes = self.lightController.scenes;
         [self.lightController setScene:scenes[indexPath.row] onGroup:nil];
     }
 }
@@ -222,7 +214,7 @@
 }
 
 - (void)editGroupsTapped {
-    UINavigationController *navController = [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+    UINavigationController *navController = [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
     self.groupListVC = [[GroupListViewController alloc] init];
     [navController setNavigationBarHidden:NO];
     [navController pushViewController:self.groupListVC animated:YES];
@@ -233,7 +225,7 @@
 }
 
 - (void)editScenesTapped {
-    UINavigationController *navController = [(PTNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+    UINavigationController *navController = [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
     self.sceneListVC = [[SceneListViewController alloc] init];
     [navController setNavigationBarHidden:NO];
     [navController pushViewController:self.sceneListVC animated:YES];
