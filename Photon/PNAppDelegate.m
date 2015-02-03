@@ -10,6 +10,7 @@
 #import "SetupViewController.h"
 #import "ResourceViewController.h"
 #import "PNLightController.h"
+#import "PNColorPickerVC.h"
 
 @interface PNAppDelegate ()
 
@@ -21,8 +22,8 @@
 
 @property (nonatomic, strong) SetupViewController *setupVC;
 @property (nonatomic, strong) ResourceViewController *lightVC;
-
-//@property (nonatomic, strong) PNLightController *lightController;
+@property (nonatomic, strong) PNColorPickerVC *naturalColorPicker;
+@property (nonatomic, strong) PNLightController *lightController;
 
 @end
 
@@ -39,10 +40,12 @@
     [self.phHueSDK startUpSDK];
     [self.phHueSDK enableLogging:YES];
     
-//    self.lightController = [PNLightController singleton];
+    self.lightController = [PNLightController singleton];
     
     self.lightVC = [[ResourceViewController alloc] initWithNibName:@"LightGroupView" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.lightVC];
+//    self.naturalColorPicker = [[PNColorPickerVC alloc] initWithColors:self.lightController.naturalColors];
+//    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.naturalColorPicker];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     self.window.rootViewController = self.navigationController;
