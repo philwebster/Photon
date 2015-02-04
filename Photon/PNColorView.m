@@ -12,6 +12,9 @@
 @interface PNColorView ()
 
 @property NSArray *colorViews;
+@property UIView *touchedView;
+@property UIView *gradientView;
+@property CAGradientLayer *gradLayer;
 
 @end
 
@@ -44,8 +47,76 @@
             [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:widthMultiplier constant:0]];
             [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
         }
+        
+        self.gradientView = [UIView new];
+        [self addSubview:self.gradientView];
+        self.gradLayer = [self gradientLayerWithColors:colors];
+        self.gradLayer.frame = self.bounds;
+        [self.gradientView.layer insertSublayer:self.gradLayer atIndex:0];
+        
+        [self becomeFirstResponder];
     }
     return self;
+}
+
+- (void)layoutSubviews {
+    // resize your layers based on the view's new bounds
+    self.gradLayer.frame = self.bounds;
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (CAGradientLayer *)gradientLayerWithColors:(NSArray *)colors {
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+
+    NSMutableArray *colorsCG = [NSMutableArray array];
+    for (UIColor *c in colors) {
+        [colorsCG addObject:(id)c.CGColor];
+    }
+    gradientLayer.colors = colorsCG;
+    gradientLayer.startPoint = CGPointMake(0, 0.5);
+    gradientLayer.endPoint = CGPointMake(1.0, 0.5);
+    return gradientLayer;
+}
+
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (event.subtype == UIEventSubtypeMotionShake) {
+        [UIView animateWithDuration:0.25 animations:^() {
+            self.gradientView.alpha = self.gradientView.alpha == 0.0f ? 1.0f : 0.0f;
+        }];
+    }
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self updateTouchedViewWithTouches:touches event:event];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self updateTouchedViewWithTouches:touches event:event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint p = [(UITouch *)[touches anyObject] locationInView:self];
+    UIView *updatedTouchedView = [self hitTest:p withEvent:event];
+    updatedTouchedView.layer.borderWidth = 0;
+    _touchedView = nil;
+}
+
+- (void)updateTouchedViewWithTouches:(NSSet *)touches event:(UIEvent *)event {
+    CGPoint p = [(UITouch *)[touches anyObject] locationInView:self];
+    UIView *updatedTouchedView = [self hitTest:p withEvent:event];
+    if (_touchedView == updatedTouchedView) {
+        return;
+    }
+    updatedTouchedView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    updatedTouchedView.layer.borderWidth = 4;
+
+    _touchedView.layer.borderWidth = 0;
+    _touchedView = updatedTouchedView;
+    
+//    NSLog(@"touching view %lu", (unsigned long)[self.colorViews indexOfObject:updatedTouchedView]);
 }
 
 /*

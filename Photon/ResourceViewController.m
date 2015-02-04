@@ -9,6 +9,7 @@
 #import "ResourceViewController.h"
 #import "GroupListViewController.h"
 #import "SceneListViewController.h"
+#import "PNColorPickerVC.h"
 #import "PNColorPickerView.h"
 #import "PNAppDelegate.h"
 #import "PNLightController.h"
@@ -25,6 +26,7 @@
 @property (nonatomic, strong) PHBridgeResource *selectedResource;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet PNColorPickerView *quickPickView;
+@property (nonatomic, strong) PNColorPickerVC *colorPickerVC;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @end
 
@@ -58,6 +60,7 @@
         [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionHeaderReusableView" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
         
         self.lightController = [PNLightController singleton];
+        self.colorPickerVC = [[PNColorPickerVC alloc] initWithColors:self.lightController.naturalColors];
         
     }
     return self;
@@ -164,9 +167,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        NSArray *groups = self.lightController.groups;
-        _quickPickView.lightResource = groups[indexPath.row];
-        _quickPickView.hidden = NO;
+        UINavigationController *navController = [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+        [navController setNavigationBarHidden:NO];
+        [navController pushViewController:self.colorPickerVC animated:YES];
     } else if (indexPath.section == 1) {
         NSArray *lights = self.lightController.lights;
         _quickPickView.lightResource = lights[indexPath.row];
