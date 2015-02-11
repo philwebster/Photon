@@ -38,7 +38,7 @@
     // Create sdk instance
     self.phHueSDK = [[PHHueSDK alloc] init];
     [self.phHueSDK startUpSDK];
-    [self.phHueSDK enableLogging:YES];
+//    [self.phHueSDK enableLogging:YES];
     
     self.lightController = [PNLightController singleton];
     

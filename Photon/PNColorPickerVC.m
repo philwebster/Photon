@@ -13,8 +13,12 @@
 @interface PNColorPickerVC ()
 
 @property NSArray *colorViews;
-@property PNColorView *colorView;
+@property PNColorView *naturalColorView;
+@property PNColorView *standardColorView;
+@property PNColorView *focusedView;
+@property NSLayoutConstraint *topConstraint;
 @property PNLightController *lightController;
+@property UITapGestureRecognizer *tapRecognizer;
 
 @end
 
@@ -25,8 +29,21 @@
     self = [super init];
     if (self) {
         self.lightController = [PNLightController singleton];
-        self.colorView = [[PNColorView alloc] initWithFrame:CGRectZero colors:self.lightController.naturalColors];
-        self.colorView.delegate = self;
+
+        self.naturalColorView = [[PNColorView alloc] initWithFrame:CGRectZero colors:self.lightController.naturalColors];
+        self.naturalColorView.delegate = self;
+        self.standardColorView = [[PNColorView alloc] initWithFrame:CGRectZero colors:self.lightController.standardColors];
+        self.standardColorView.delegate = self;
+        
+        self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                              action:@selector(tap:)];
+        self.tapRecognizer.numberOfTapsRequired = 1;
+        self.tapRecognizer.delegate = self;
+        [self.tapRecognizer setCancelsTouchesInView:YES];
+        
+        [self.view addGestureRecognizer:self.tapRecognizer];
+
+
     }
     return self;
 }
@@ -35,9 +52,32 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    [self.view addSubview:self.colorView];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_colorView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_colorView)]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_colorView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_colorView)]];
+    [self.view addSubview:self.naturalColorView];
+    [self.view addSubview:self.standardColorView];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_naturalColorView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_naturalColorView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView)]];
+
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_standardColorView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_standardColorView)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_standardColorView(_naturalColorView)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_standardColorView, _naturalColorView)]];
+
+    self.topConstraint = [NSLayoutConstraint constraintWithItem:_standardColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:-50];
+    [self.view addConstraint:self.topConstraint];
+    
+    self.focusedView = _naturalColorView;
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+//    CGPoint p = [(UITouch *)[touches anyObject] locationInView:self.view];
+//    UIView *touchedView = [self.view hitTest:p withEvent:event];
+//    if (touchedView == _naturalColorView && self.focusedView != _naturalColorView) {
+//        self.topConstraint = [NSLayoutConstraint constraintWithItem:_standardColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:-300];
+//    } else if (touchedView == _standardColorView && self.focusedView != _standardColorView) {
+//        self.topConstraint = [NSLayoutConstraint constraintWithItem:_standardColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:-50];
+//    }
+//    [UIView animateWithDuration:0.2 animations:^{
+//        [self.view layoutIfNeeded];
+//    }];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +92,23 @@
 
 - (void)naturalColorSelected:(NSNumber *)colorTemp {
     [self.lightController setNaturalColor:colorTemp forResource:self.resource];
+}
+
+- (void)tap:(UITapGestureRecognizer *)tapRecognizer {
+    [self.view removeConstraint:self.topConstraint];
+    CGPoint p = [tapRecognizer locationInView:self.view];
+    if (CGRectContainsPoint(_standardColorView.frame, p)) {
+        self.topConstraint = [NSLayoutConstraint constraintWithItem:_standardColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:-600];
+        [_standardColorView becomeFirstResponder];
+    } else {
+        self.topConstraint = [NSLayoutConstraint constraintWithItem:_standardColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:-50];
+        [_naturalColorView becomeFirstResponder];
+    }
+    [self.view addConstraint:self.topConstraint];
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+
 }
 
 /*

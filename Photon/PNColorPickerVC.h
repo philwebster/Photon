@@ -10,7 +10,7 @@
 #import "PNColorView.h"
 #import <HueSDK_iOS/HueSDK.h>
 
-@interface PNColorPickerVC : UIViewController <colorSelectionDelegate>
+@interface PNColorPickerVC : UIViewController <colorSelectionDelegate, UIGestureRecognizerDelegate>
 
 @property PHBridgeResource *resource;
 

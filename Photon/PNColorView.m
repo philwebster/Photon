@@ -114,7 +114,7 @@
 - (void)updateTouchedViewWithTouches:(NSSet *)touches event:(UIEvent *)event {
     CGPoint p = [(UITouch *)[touches anyObject] locationInView:self];
     UIView *updatedTouchedView = [self hitTest:p withEvent:event];
-    if (_touchedView == updatedTouchedView) {
+    if (_touchedView == updatedTouchedView || !self.isFirstResponder) {
         return;
     }
     updatedTouchedView.layer.borderColor = [UIColor lightGrayColor].CGColor;
