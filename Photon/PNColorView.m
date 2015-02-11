@@ -8,6 +8,7 @@
 
 #import "PNColorView.h"
 #import "PNLightController.h"
+#import "UIColor+PNUtilities.h"
 
 @interface PNColorView ()
 
@@ -15,12 +16,14 @@
 @property UIView *touchedView;
 @property UIView *gradientView;
 @property CAGradientLayer *gradLayer;
+@property BOOL isCT;
 
 @end
 
 @implementation PNColorView
 
 - (id)initWithFrame:(CGRect)frame colors:(NSArray *)colors {
+    // TODO: Pass in a gradient
     self = [super initWithFrame:frame];
     if (self) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
@@ -53,6 +56,10 @@
         self.gradLayer = [self gradientLayerWithColors:colors];
         self.gradLayer.frame = self.bounds;
         [self.gradientView.layer insertSublayer:self.gradLayer atIndex:0];
+        
+        if (colors.count == 5) {
+            self.isCT = YES;
+        }
         
         [self becomeFirstResponder];
     }
@@ -116,7 +123,12 @@
     _touchedView.layer.borderWidth = 0;
     _touchedView = updatedTouchedView;
     
-//    NSLog(@"touching view %lu", (unsigned long)[self.colorViews indexOfObject:updatedTouchedView]);
+    // TODO: Fire a timer and set the color if it's still being touched after a second or so
+    if (self.isCT) {
+        [self.delegate naturalColorSelected:[UIColor tempFromColor:_touchedView.backgroundColor]];
+    } else {
+        [self.delegate colorSelected:_touchedView.backgroundColor];
+    }
 }
 
 /*

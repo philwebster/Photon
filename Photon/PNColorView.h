@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol colorSelectionDelegate
+
+- (void)colorSelected:(UIColor *)color;
+- (void)naturalColorSelected:(NSNumber *)colorTemp;
+
+@end
+
 @interface PNColorView : UIView
+
+@property id <colorSelectionDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame colors:(NSArray *)colors;
 

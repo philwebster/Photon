@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PNColorView.h"
+#import <HueSDK_iOS/HueSDK.h>
 
-@interface PNColorPickerVC : UIViewController
+@interface PNColorPickerVC : UIViewController <colorSelectionDelegate>
 
-- (id)initWithColors:(NSArray *)colors;
+@property PHBridgeResource *resource;
 
 @end

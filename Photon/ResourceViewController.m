@@ -60,8 +60,7 @@
         [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionHeaderReusableView" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
         
         self.lightController = [PNLightController singleton];
-        self.colorPickerVC = [[PNColorPickerVC alloc] initWithColors:self.lightController.naturalColors];
-        
+        self.colorPickerVC = [[PNColorPickerVC alloc] init];
     }
     return self;
 }
@@ -169,6 +168,7 @@
     if (indexPath.section == 0) {
         UINavigationController *navController = [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
         [navController setNavigationBarHidden:NO];
+        self.colorPickerVC.resource = self.lightController.groups[indexPath.row];
         [navController pushViewController:self.colorPickerVC animated:YES];
     } else if (indexPath.section == 1) {
         NSArray *lights = self.lightController.lights;
