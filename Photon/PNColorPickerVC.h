@@ -12,6 +12,6 @@
 
 @interface PNColorPickerVC : UIViewController <colorSelectionDelegate, UIGestureRecognizerDelegate>
 
-@property PHBridgeResource *resource;
+@property (nonatomic) PHBridgeResource *resource;
 
 @end

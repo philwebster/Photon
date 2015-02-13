@@ -61,6 +61,9 @@
             self.isCT = YES;
         }
         
+        self.layer.cornerRadius = 9;
+        self.layer.masksToBounds = YES;
+        
         [self becomeFirstResponder];
     }
     return self;
