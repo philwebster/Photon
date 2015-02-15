@@ -45,6 +45,7 @@
         [self.tapRecognizer setCancelsTouchesInView:YES];
         
         [self.view addGestureRecognizer:self.tapRecognizer];
+        self.view.backgroundColor = [UIColor blackColor];
     }
     return self;
 }
@@ -164,7 +165,7 @@
 }
 
 - (void)dismissView {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.view removeFromSuperview];
 }
 
 /*

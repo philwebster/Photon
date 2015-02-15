@@ -166,10 +166,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        UINavigationController *navController = [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
-        [navController setNavigationBarHidden:NO];
         self.colorPickerVC.resource = self.lightController.groups[indexPath.row];
-        [navController pushViewController:self.colorPickerVC animated:YES];
+        [self addChildViewController:self.colorPickerVC];
+        [self.view addSubview:self.colorPickerVC.view];
     } else if (indexPath.section == 1) {
         NSArray *lights = self.lightController.lights;
         _quickPickView.lightResource = lights[indexPath.row];
@@ -189,8 +188,9 @@
             return;
         }
         _selectedResource = [self bridgeResourceForIndexPath:indexPath];
-        [self.view bringSubviewToFront:_quickPickView];
-        _quickPickView.hidden = NO;
+        self.colorPickerVC.resource = _selectedResource;
+        [self addChildViewController:self.colorPickerVC];
+        [self.view addSubview:self.colorPickerVC.view];        
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
         _quickPickView.lightResource = _selectedResource;
 
@@ -202,7 +202,6 @@
         _quickPickView.hidden = YES;
     } else {
 //        NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
-        
     }
 }
 
