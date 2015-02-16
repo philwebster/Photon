@@ -10,8 +10,17 @@
 #import "PNColorView.h"
 #import <HueSDK_iOS/HueSDK.h>
 
+@protocol colorPickerDelegate
+
+- (void)dismissedColorPicker;
+
+@end
+
 @interface PNColorPickerVC : UIViewController <colorSelectionDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic) PHBridgeResource *resource;
+@property id <colorPickerDelegate> delegate;
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer;
 
 @end

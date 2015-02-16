@@ -63,8 +63,6 @@
         
         self.layer.cornerRadius = 9;
         self.layer.masksToBounds = YES;
-        
-        [self becomeFirstResponder];
     }
     return self;
 }
@@ -116,13 +114,33 @@
 
 - (void)updateTouchedViewWithTouches:(NSSet *)touches event:(UIEvent *)event {
     CGPoint p = [(UITouch *)[touches anyObject] locationInView:self];
-    UIView *updatedTouchedView = [self hitTest:p withEvent:event];
+    [self updateTouchedViewWithPoint:p];
+//    UIView *updatedTouchedView = [self hitTest:p withEvent:event];
+//    if (_touchedView == updatedTouchedView || !self.isFirstResponder) {
+//        return;
+//    }
+//    updatedTouchedView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+//    updatedTouchedView.layer.borderWidth = 4;
+//
+//    _touchedView.layer.borderWidth = 0;
+//    _touchedView = updatedTouchedView;
+//    
+//    // TODO: Fire a timer and set the color if it's still being touched after a second or so
+//    if (self.isCT) {
+//        [self.delegate naturalColorSelected:[UIColor tempFromColor:_touchedView.backgroundColor]];
+//    } else {
+//        [self.delegate colorSelected:_touchedView.backgroundColor];
+//    }
+}
+
+- (void)updateTouchedViewWithPoint:(CGPoint)p {
+    UIView *updatedTouchedView = [self hitTest:p withEvent:nil];
     if (_touchedView == updatedTouchedView || !self.isFirstResponder) {
         return;
     }
     updatedTouchedView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     updatedTouchedView.layer.borderWidth = 4;
-
+    
     _touchedView.layer.borderWidth = 0;
     _touchedView = updatedTouchedView;
     
@@ -132,6 +150,7 @@
     } else {
         [self.delegate colorSelected:_touchedView.backgroundColor];
     }
+
 }
 
 /*

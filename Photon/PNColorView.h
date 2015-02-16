@@ -20,5 +20,6 @@
 @property id <colorSelectionDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame colors:(NSArray *)colors;
+- (void)updateTouchedViewWithPoint:(CGPoint)p;
 
 @end

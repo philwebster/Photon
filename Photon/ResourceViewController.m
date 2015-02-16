@@ -9,7 +9,6 @@
 #import "ResourceViewController.h"
 #import "GroupListViewController.h"
 #import "SceneListViewController.h"
-#import "PNColorPickerVC.h"
 #import "PNColorPickerView.h"
 #import "PNAppDelegate.h"
 #import "PNLightController.h"
@@ -25,9 +24,9 @@
 @property (nonatomic, strong) NSMutableDictionary *fakeGroups;
 @property (nonatomic, strong) PHBridgeResource *selectedResource;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
-@property (weak, nonatomic) IBOutlet PNColorPickerView *quickPickView;
 @property (nonatomic, strong) PNColorPickerVC *colorPickerVC;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, assign) BOOL pickingColor;
 @end
 
 @implementation ResourceViewController
@@ -43,6 +42,7 @@
         [notificationManager registerObject:self withSelector:@selector(receivedHeartbeat) forNotification:LOCAL_CONNECTION_NOTIFICATION];
         
         self.phHueSDK = hueSdk;
+        self.pickingColor = NO;
         
         _fakeGroups = [NSMutableDictionary new];
         for (int i = 0; i < 5; ++i) {
@@ -61,6 +61,7 @@
         
         self.lightController = [PNLightController singleton];
         self.colorPickerVC = [[PNColorPickerVC alloc] init];
+        self.colorPickerVC.delegate = self;
     }
     return self;
 }
@@ -165,14 +166,15 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.recognizer.enabled = NO;
     if (indexPath.section == 0) {
         self.colorPickerVC.resource = self.lightController.groups[indexPath.row];
         [self addChildViewController:self.colorPickerVC];
         [self.view addSubview:self.colorPickerVC.view];
     } else if (indexPath.section == 1) {
-        NSArray *lights = self.lightController.lights;
-        _quickPickView.lightResource = lights[indexPath.row];
-        _quickPickView.hidden = NO;
+        self.colorPickerVC.resource = self.lightController.lights[indexPath.row];
+        [self addChildViewController:self.colorPickerVC];
+        [self.view addSubview:self.colorPickerVC.view];
     } else if (indexPath.section == 2) {
         NSArray *scenes = self.lightController.scenes;
         [self.lightController setScene:scenes[indexPath.row] onGroup:nil];
@@ -180,8 +182,20 @@
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
-    CGPoint p = [recognizer locationInView:self.lightGroupCollectionView];
 
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"long press ended");
+        [self.colorPickerVC handleLongPress:recognizer];
+        self.pickingColor = NO;
+        return;
+    }
+    
+    if (self.pickingColor) {
+        [self.colorPickerVC handleLongPress:recognizer];
+        return;
+    }
+
+    CGPoint p = [recognizer locationInView:self.lightGroupCollectionView];
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         NSIndexPath *indexPath = [self.lightGroupCollectionView indexPathForItemAtPoint:p];
         if (!indexPath) {
@@ -190,16 +204,8 @@
         _selectedResource = [self bridgeResourceForIndexPath:indexPath];
         self.colorPickerVC.resource = _selectedResource;
         [self addChildViewController:self.colorPickerVC];
-        [self.view addSubview:self.colorPickerVC.view];        
-    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        _quickPickView.lightResource = _selectedResource;
-
-        if (!CGRectContainsPoint(_quickPickView.cancelButton.frame, p)) {
-            NSIndexPath *indexPath = [_quickPickView.colorCollectionView indexPathForItemAtPoint:p];
-            [_quickPickView collectionView:_quickPickView.colorCollectionView didSelectItemAtIndexPath:indexPath];
-        }
-        NSLog(@"long press ended");
-        _quickPickView.hidden = YES;
+        [self.view addSubview:self.colorPickerVC.view];
+        self.pickingColor = YES;
     } else {
 //        NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
     }
@@ -231,6 +237,10 @@
     self.sceneListVC = [[SceneListViewController alloc] init];
     [navController setNavigationBarHidden:NO];
     [navController pushViewController:self.sceneListVC animated:YES];
+}
+
+- (void)dismissedColorPicker {
+    self.recognizer.enabled = YES;
 }
 
 /*

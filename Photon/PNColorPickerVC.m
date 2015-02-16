@@ -61,8 +61,6 @@
     [self.view addSubview:self.resourceLabel];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.resourceLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.resourceLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.cancelButton attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-
-//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_resourceLabel]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_resourceLabel)]];
     
     [self.view addSubview:self.offButton];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[_offButton]-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_offButton)]];
@@ -77,7 +75,7 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_standardColorView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_standardColorView)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_standardColorView(_naturalColorView)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_standardColorView, _naturalColorView)]];
 
-    self.topConstraint = [NSLayoutConstraint constraintWithItem:_standardColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:-50];
+    self.topConstraint = [NSLayoutConstraint constraintWithItem:_standardColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:-70];
     [self.view addConstraint:self.topConstraint];
     
     self.focusedView = _naturalColorView;
@@ -87,10 +85,8 @@
     
 }
 
-
 - (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [self.navigationController.interactivePopGestureRecognizer setDelegate:nil];
+    [self.naturalColorView becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,18 +106,27 @@
 - (void)tap:(UITapGestureRecognizer *)tapRecognizer {
     [self.view removeConstraint:self.topConstraint];
     CGPoint p = [tapRecognizer locationInView:self.view];
+    [self tapAtPoint:p];
+}
+
+- (void)tapAtPoint:(CGPoint)p {
+//    NSLog(@"tapping at point: %f, %f", p.x, p.y);
     if (CGRectContainsPoint(_standardColorView.frame, p)) {
+        [self.view removeConstraint:self.topConstraint];
         self.topConstraint = [NSLayoutConstraint constraintWithItem:_standardColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:-550];
+        [self.view addConstraint:self.topConstraint];
         [_standardColorView becomeFirstResponder];
+        [_standardColorView updateTouchedViewWithPoint:p];
     } else {
+        [self.view removeConstraint:self.topConstraint];
         self.topConstraint = [NSLayoutConstraint constraintWithItem:_standardColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:-70];
+        [self.view addConstraint:self.topConstraint];
         [_naturalColorView becomeFirstResponder];
+        [_naturalColorView updateTouchedViewWithPoint:p];
     }
-    [self.view addConstraint:self.topConstraint];
     [UIView animateWithDuration:0.2 animations:^{
         [self.view layoutIfNeeded];
     }];
-
 }
 
 - (void)setResource:(PHBridgeResource *)resource {
@@ -166,6 +171,19 @@
 
 - (void)dismissView {
     [self.view removeFromSuperview];
+    [self.delegate dismissedColorPicker];
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
+    CGPoint p = [recognizer locationInView:self.view];
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        if (CGRectContainsPoint(self.cancelButton.frame, p)) {
+            [self dismissView];
+        }
+        [self dismissView];
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        [self tapAtPoint:p];
+    }
 }
 
 /*

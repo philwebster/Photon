@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
     </dependencies>
@@ -7,7 +7,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResourceViewController">
             <connections>
                 <outlet property="lightGroupCollectionView" destination="0sA-tG-14p" id="Oyj-ui-jAp"/>
-                <outlet property="quickPickView" destination="M8e-vp-KpD" id="vT7-3O-Tqa"/>
                 <outlet property="settingsButton" destination="t9W-y8-U7x" id="rgt-dO-Jng"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ttw-XP-k51"/>
             </connections>
@@ -42,23 +41,14 @@
                         <action selector="settingsButtonPressed:" destination="-1" eventType="touchUpInside" id="cV5-vc-m13"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8e-vp-KpD" customClass="PNColorPickerView">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <gestureRecognizers/>
-                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="t9W-y8-U7x" secondAttribute="bottom" constant="20" id="543-wX-Z9L"/>
                 <constraint firstItem="0sA-tG-14p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7sf-8e-ATA"/>
-                <constraint firstAttribute="trailing" secondItem="M8e-vp-KpD" secondAttribute="trailing" id="DSE-Vp-B8e"/>
                 <constraint firstAttribute="bottom" secondItem="0sA-tG-14p" secondAttribute="bottom" id="DxO-TV-7tv"/>
-                <constraint firstItem="M8e-vp-KpD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MEh-xi-I8c"/>
                 <constraint firstAttribute="trailing" secondItem="t9W-y8-U7x" secondAttribute="trailing" constant="20" id="OPP-o0-Q9w"/>
                 <constraint firstItem="0sA-tG-14p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Oj5-ND-N0P"/>
-                <constraint firstAttribute="bottom" secondItem="M8e-vp-KpD" secondAttribute="bottom" id="Zfz-TM-eq6"/>
-                <constraint firstItem="M8e-vp-KpD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wFB-8v-WD3"/>
                 <constraint firstAttribute="trailing" secondItem="0sA-tG-14p" secondAttribute="trailing" id="xvp-yT-tR7"/>
             </constraints>
         </view>
