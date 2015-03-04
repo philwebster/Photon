@@ -109,6 +109,7 @@
     CGPoint p = [(UITouch *)[touches anyObject] locationInView:self];
     UIView *updatedTouchedView = [self hitTest:p withEvent:event];
     updatedTouchedView.layer.borderWidth = 0;
+    [self contractWidthOfView:updatedTouchedView withConstraint:[self widthConstraintForView:updatedTouchedView]];
     _touchedView = nil;
 }
 
@@ -138,9 +139,12 @@
     if (_touchedView == updatedTouchedView || !self.isFirstResponder) {
         return;
     }
-    updatedTouchedView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    updatedTouchedView.layer.borderWidth = 4;
-    
+    NSLayoutConstraint *widthConstraint = [self widthConstraintForView:updatedTouchedView];
+//    NSLog(@"constraint: %@", widthConstraint);
+    [self expandWidthOfView:updatedTouchedView withConstraint:widthConstraint];
+//    updatedTouchedView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+//    updatedTouchedView.layer.borderWidth = 4;
+    [self contractWidthOfView:_touchedView withConstraint:[self widthConstraintForView:_touchedView]];
     _touchedView.layer.borderWidth = 0;
     _touchedView = updatedTouchedView;
     
@@ -151,6 +155,55 @@
         [self.delegate colorSelected:_touchedView.backgroundColor];
     }
 
+}
+
+- (NSLayoutConstraint *)widthConstraintForView:(UIView *)view {
+    NSLayoutConstraint *widthConstraint;
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if (constraint.firstItem == view && constraint.secondItem == self && constraint.firstAttribute == NSLayoutAttributeWidth) {
+            widthConstraint = constraint;
+            break;
+        }
+    }
+    return widthConstraint;
+}
+
+- (void)expandWidthOfView:(UIView *)view withConstraint:(NSLayoutConstraint *)constraint {
+    if (!view) {
+        return;
+    }
+    [self removeConstraint:constraint];
+    CGFloat widthMultiplier = 1.3 / self.colorViews.count;
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:widthMultiplier constant:0]];
+    [self bringSubviewToFront:view];
+
+    view.layer.masksToBounds = NO;
+    view.layer.shadowOffset = CGSizeMake(0,0);//CGSizeMake(-15, 20);
+    view.layer.shadowRadius = 5;
+    view.layer.shadowOpacity = 0.5;
+//    [self layoutSubviews];
+    [UIView animateWithDuration:0.05 animations:^{
+        [self layoutIfNeeded];
+    }];
+
+}
+
+- (void)contractWidthOfView:(UIView *)view withConstraint:(NSLayoutConstraint *)constraint {
+    if (!view) {
+        return;
+    }
+    [self removeConstraint:constraint];
+    CGFloat widthMultiplier = 1.0 / self.colorViews.count;
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:widthMultiplier constant:0]];
+    view.layer.masksToBounds = YES;
+    view.layer.shadowOffset = CGSizeMake(0,0);//CGSizeMake(-15, 20);
+    view.layer.shadowRadius = 5;
+    view.layer.shadowOpacity = 0.5;
+    [UIView animateWithDuration:0.05 animations:^{
+        [self layoutIfNeeded];
+    }];
+
+//    [self layoutSubviews];
 }
 
 /*

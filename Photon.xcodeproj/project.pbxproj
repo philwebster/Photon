@@ -465,6 +465,7 @@
 					};
 					D34FB2AE1A71714700DB659E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = V9RH239UZW;
 					};
 					D38C16341A68DE96006FE974 = {
 						CreatedOnToolsVersion = 6.1;
