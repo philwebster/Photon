@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
     </dependencies>
@@ -13,10 +13,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="387" height="239"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VwM-2P-yp8">
-                        <rect key="frame" x="172" y="109" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="VwM-2P-yp8">
+                        <rect key="frame" x="151" y="100.5" width="84" height="38.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -24,8 +24,10 @@
             </view>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="VwM-2P-yp8" secondAttribute="centerY" id="T0E-kY-KRf"/>
-                <constraint firstAttribute="centerX" secondItem="VwM-2P-yp8" secondAttribute="centerX" constant="0.5" id="YMu-1y-vFr"/>
+                <constraint firstAttribute="bottom" secondItem="VwM-2P-yp8" secondAttribute="bottom" constant="15" id="0Q5-jN-um6"/>
+                <constraint firstAttribute="trailing" secondItem="VwM-2P-yp8" secondAttribute="trailing" constant="15" id="p2H-fd-jqm"/>
+                <constraint firstItem="VwM-2P-yp8" firstAttribute="top" secondItem="tNm-74-EwU" secondAttribute="top" constant="15" id="vSj-N0-hC2"/>
+                <constraint firstItem="VwM-2P-yp8" firstAttribute="leading" secondItem="tNm-74-EwU" secondAttribute="leading" constant="15" id="yWl-iS-2yM"/>
             </constraints>
             <size key="customSize" width="387" height="239"/>
             <connections>
