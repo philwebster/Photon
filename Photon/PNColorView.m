@@ -17,6 +17,7 @@
 @property UIView *gradientView;
 @property CAGradientLayer *gradLayer;
 @property BOOL isCT;
+@property BOOL isGradient;
 
 @end
 
@@ -60,6 +61,7 @@
         if (colors.count == 5) {
             self.isCT = YES;
         }
+        self.isGradient = NO;
         
         self.layer.cornerRadius = 9;
         self.layer.masksToBounds = YES;
@@ -91,8 +93,10 @@
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
     if (event.subtype == UIEventSubtypeMotionShake) {
+        self.isGradient = !self.isGradient;
         [UIView animateWithDuration:0.25 animations:^() {
-            self.gradientView.alpha = self.gradientView.alpha == 0.0f ? 1.0f : 0.0f;
+            [self bringSubviewToFront:self.gradientView];
+            self.gradientView.alpha = self.isGradient ? 1.0f : 0.0f;
         }];
     }
 }
@@ -139,18 +143,20 @@
     if (_touchedView == updatedTouchedView || !self.isFirstResponder) {
         return;
     }
-    NSLayoutConstraint *widthConstraint = [self widthConstraintForView:updatedTouchedView];
-//    NSLog(@"constraint: %@", widthConstraint);
-    [self expandWidthOfView:updatedTouchedView withConstraint:widthConstraint];
-//    updatedTouchedView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-//    updatedTouchedView.layer.borderWidth = 4;
-    [self contractWidthOfView:_touchedView withConstraint:[self widthConstraintForView:_touchedView]];
-    _touchedView.layer.borderWidth = 0;
-    _touchedView = updatedTouchedView;
+    if (!self.isGradient) {
+        NSLayoutConstraint *widthConstraint = [self widthConstraintForView:updatedTouchedView];
+        [self expandWidthOfView:updatedTouchedView withConstraint:widthConstraint];
+        [self contractWidthOfView:_touchedView withConstraint:[self widthConstraintForView:_touchedView]];
+        _touchedView = updatedTouchedView;
+    }
     
     // TODO: Fire a timer and set the color if it's still being touched after a second or so
     if (self.isCT) {
-        [self.delegate naturalColorSelected:[UIColor tempFromColor:_touchedView.backgroundColor]];
+        if (self.isGradient) {
+            [self.delegate naturalColorSelected:[NSNumber numberWithInt:300]];
+        } else {
+            [self.delegate naturalColorSelected:[UIColor tempFromColor:_touchedView.backgroundColor]];
+        }
     } else {
         [self.delegate colorSelected:_touchedView.backgroundColor];
     }
