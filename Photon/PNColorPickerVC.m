@@ -87,12 +87,18 @@
 }
 
 - (void)colorSelected:(UIColor *)color {
-    NSLog(@"Color selected: %@", color);
+    NSLog(@"Setting color: %@ for resource: %@", color, self.resource.name);
     [self.lightController setColor:color forResource:self.resource];
 }
 
 - (void)naturalColorSelected:(NSNumber *)colorTemp {
+    NSLog(@"Setting natural color: %@ for resource: %@", colorTemp, self.resource.name);
     [self.lightController setNaturalColor:colorTemp forResource:self.resource];
+}
+
+- (void)tappedOffButton {
+    NSLog(@"Setting resource off: %@", self.resource.name);
+    [self.lightController setResourceOff:self.resource];
 }
 
 - (void)tap:(UITapGestureRecognizer *)tapRecognizer {
@@ -162,10 +168,6 @@
         [_offButton addTarget:self action:@selector(tappedOffButton) forControlEvents:UIControlEventTouchUpInside];
     }
     return _offButton;
-}
-
-- (void)tappedOffButton {
-    [self.lightController setResourceOff:self.resource];
 }
 
 - (void)dismissView {

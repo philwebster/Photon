@@ -18,7 +18,7 @@
                                 [UIColor colorWithHue:0.540 saturation:0.409 brightness:0.922 alpha:1.000]];
     NSArray *ctNaturalColors = @[@500, @413, @326, @240, @153];
     NSUInteger index = [naturalColors indexOfObject:color];
-    NSLog(@"Returning index: %lu for color: %@", (unsigned long)index, color);
+//    NSLog(@"Returning index: %lu for color: %@", (unsigned long)index, color);
     return ctNaturalColors[index];
 }
 

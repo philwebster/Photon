@@ -184,7 +184,7 @@
 - (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
 
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-        NSLog(@"long press ended");
+//        NSLog(@"long press ended");
         [self.colorPickerVC handleLongPress:recognizer];
         self.pickingColor = NO;
         return;
