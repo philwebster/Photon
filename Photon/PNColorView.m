@@ -53,7 +53,7 @@
         }
         
         self.gradientView = [UIView new];
-        [self addSubview:self.gradientView];
+        [self insertSubview:self.gradientView atIndex:0];
         self.gradLayer = [self gradientLayerWithColors:colors];
         self.gradLayer.frame = self.bounds;
         [self.gradientView.layer insertSublayer:self.gradLayer atIndex:0];

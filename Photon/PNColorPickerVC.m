@@ -41,7 +41,6 @@
         [self.tapRecognizer setCancelsTouchesInView:YES];
         
         [self.view addGestureRecognizer:self.tapRecognizer];
-        self.view.backgroundColor = [UIColor blackColor];
     }
     return self;
 }
@@ -60,10 +59,13 @@
     
     [self.view addSubview:self.naturalColorView];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_naturalColorView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView)]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_resourceLabel(50)][_cancelButton(120)]-[_naturalColorView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView, _cancelButton, _resourceLabel)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_resourceLabel(50)][_cancelButton(120)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView, _cancelButton, _resourceLabel)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_naturalColorView(500)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView, _cancelButton, _resourceLabel)]];
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_naturalColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    [self.view addConstraint:topConstraint];
+
 
     self.focusedView = _naturalColorView;
-    [self clearButtonBackgrounds];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -72,6 +74,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.naturalColorView becomeFirstResponder];
+    [self clearButtonBackgrounds];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self animateCard:_naturalColorView direction:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -159,7 +166,6 @@
 
 - (void)tappedOffButton {
     [self.lightController setResourceOff:self.resource];
-    [self dismissView];
 }
 
 - (void)dismissView {
@@ -172,13 +178,51 @@
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         if (CGRectContainsPoint(self.offButton.frame, p)) {
             [self tappedOffButton];
-        } else {
-            [self dismissView];
         }
+        [self animateCard:_naturalColorView direction:NO completion:^{
+            [self dismissView];
+        }];
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         [self tapAtPoint:p];
     }
 }
+
+- (NSLayoutConstraint *)topConstraintForView:(UIView *)view {
+    NSLayoutConstraint *topConstraint;
+    for (NSLayoutConstraint *constraint in self.view.constraints) {
+        if (constraint.firstItem == view && constraint.firstAttribute == NSLayoutAttributeTop) {
+            topConstraint = constraint;
+            break;
+        }
+    }
+    return topConstraint;
+}
+
+- (void)animateCard:(UIView *)card direction:(BOOL)direction completion:(void (^)())completion {
+    [self.view removeConstraint:[self topConstraintForView:card]];
+    NSLayoutConstraint *newTopConstraint;
+    if (direction) {
+        newTopConstraint = [NSLayoutConstraint constraintWithItem:card attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_cancelButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    } else {
+        newTopConstraint = [NSLayoutConstraint constraintWithItem:card attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    }
+    [self.view addConstraint:newTopConstraint];
+    [UIView animateWithDuration:0.2 animations:^{
+        if (direction) {
+            self.view.backgroundColor = [UIColor blackColor];
+        } else {
+            self.view.backgroundColor = [UIColor clearColor];
+        }
+        [self clearButtonBackgrounds];
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion();
+        }
+    }];
+
+}
+
 
 /*
 #pragma mark - Navigation
