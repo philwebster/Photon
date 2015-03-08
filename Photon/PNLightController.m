@@ -8,6 +8,7 @@
 
 #import "PNLightController.h"
 #import "PNAppDelegate.h"
+#import "PNUtilities.h"
 
 #define MAX_HUE 65535
 
@@ -112,9 +113,9 @@
         [lightState setCt:ct];
         [lightState setOnBool:YES];
         [bridgeSendAPI setLightStateForGroupWithId:group.identifier lightState:lightState completionHandler:nil];
-        // TODO: Set x and y to closest natural color
-        [lightState setX:@0.5268];
-        [lightState setY:@0.4133];
+        CGPoint coord = [PNUtilities xyFromCT:ct];
+        [lightState setX:[NSNumber numberWithDouble:coord.x]];
+        [lightState setY:[NSNumber numberWithDouble:coord.y]];
         for (PHLight *light in nonCTLights) {
             [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:nil];
         }
