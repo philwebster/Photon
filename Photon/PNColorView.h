@@ -17,6 +17,7 @@
 
 @interface PNColorView : UIView
 
+@property (nonatomic, strong) UIView *touchedView;
 @property id <colorSelectionDelegate> delegate;
 @property BOOL longPressMode;
 

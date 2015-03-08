@@ -159,6 +159,7 @@
 
 - (void)dismissView {
     [self.view removeFromSuperview];
+    self.naturalColorView.touchedView = nil;
     [self.delegate dismissedColorPicker];
 }
 

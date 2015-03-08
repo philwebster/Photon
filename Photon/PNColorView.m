@@ -13,7 +13,6 @@
 @interface PNColorView ()
 
 @property NSArray *colorViews;
-@property (nonatomic, strong) UIView *touchedView;
 @property UIView *gradientView;
 @property CAGradientLayer *gradLayer;
 @property BOOL isCT;
