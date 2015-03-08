@@ -18,7 +18,7 @@
 @property NSLayoutConstraint *topConstraint;
 @property PNLightController *lightController;
 @property UITapGestureRecognizer *tapRecognizer;
-@property (nonatomic) UIButton *cancelButton;
+@property (nonatomic) UIButton *doneButton;
 @property (nonatomic) UIButton *offButton;
 @property (nonatomic) UILabel *resourceLabel;
 
@@ -49,18 +49,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    [self.view addSubview:self.cancelButton];
+    [self.view addSubview:self.doneButton];
     
     [self.view addSubview:self.resourceLabel];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_resourceLabel]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_resourceLabel)]];
     [self.view addSubview:self.offButton];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_cancelButton(==_offButton)][_offButton]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_offButton, _cancelButton)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_doneButton(==_offButton)][_offButton]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_offButton, _doneButton)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_resourceLabel][_offButton(120)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_offButton, _resourceLabel)]];
     
     [self.view addSubview:self.naturalColorView];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_naturalColorView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView)]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_resourceLabel(50)][_cancelButton(120)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView, _cancelButton, _resourceLabel)]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_naturalColorView(500)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView, _cancelButton, _resourceLabel)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_resourceLabel(50)][_doneButton(120)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView, _doneButton, _resourceLabel)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_naturalColorView(500)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView, _doneButton, _resourceLabel)]];
     NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_naturalColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     [self.view addConstraint:topConstraint];
 
@@ -116,8 +116,8 @@
         [_naturalColorView updateTouchedViewWithPoint:p];
     } else if (CGRectContainsPoint(_offButton.frame, p)) {
         [_offButton setBackgroundColor:[UIColor grayColor]];
-    } else if (CGRectContainsPoint(_cancelButton.frame, p)) {
-        [_cancelButton setBackgroundColor:[UIColor grayColor]];
+    } else if (CGRectContainsPoint(_doneButton.frame, p)) {
+        [_doneButton setBackgroundColor:[UIColor grayColor]];
     }
     
     [UIView animateWithDuration:0.2 animations:^{
@@ -126,7 +126,7 @@
 }
 
 - (void)clearButtonBackgrounds {
-    [_cancelButton setBackgroundColor:[UIColor clearColor]];
+    [_doneButton setBackgroundColor:[UIColor clearColor]];
     [_offButton setBackgroundColor:[UIColor clearColor]];
 }
 
@@ -145,17 +145,17 @@
     return _resourceLabel;
 }
 
-- (UIButton *)cancelButton {
-    if (!_cancelButton) {
-        _cancelButton = [UIButton new];
-        [_cancelButton.titleLabel setFont:[_cancelButton.titleLabel.font fontWithSize:24]];
-        [_cancelButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        [_cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
-        [_cancelButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_cancelButton addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
+- (UIButton *)doneButton {
+    if (!_doneButton) {
+        _doneButton = [UIButton new];
+        [_doneButton.titleLabel setFont:[_doneButton.titleLabel.font fontWithSize:24]];
+        [_doneButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [_doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_doneButton setTitle:@"DONE" forState:UIControlStateNormal];
+        [_doneButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_doneButton addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _cancelButton;
+    return _doneButton;
 }
 
 - (UIButton *)offButton {
@@ -204,7 +204,7 @@
     [self.view removeConstraint:[self topConstraintForView:card]];
     NSLayoutConstraint *newTopConstraint;
     if (direction) {
-        newTopConstraint = [NSLayoutConstraint constraintWithItem:card attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_cancelButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+        newTopConstraint = [NSLayoutConstraint constraintWithItem:card attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_doneButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     } else {
         newTopConstraint = [NSLayoutConstraint constraintWithItem:card attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     }
