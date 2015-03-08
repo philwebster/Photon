@@ -12,7 +12,7 @@
 
 + (CGPoint)xyFromCT:(NSNumber *)temperature {
     CGPoint coord;
-    int temp = [temperature intValue];
+    int temp = 1000000 / [temperature intValue];
     if (1667 <= temp && temp <= 4000) {
     	coord.x = -0.26612239 * pow(10, 9) / pow(temp,3) - 0.2343580 * pow(10,6) / pow(temp,2) + 0.8776956 * pow(10,3) / temp + 0.17990;
     } else if (4000 < temp && temp <= 25000) {
