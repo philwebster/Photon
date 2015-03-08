@@ -18,6 +18,7 @@
 @interface PNColorView : UIView
 
 @property id <colorSelectionDelegate> delegate;
+@property BOOL longPressMode;
 
 - (id)initWithFrame:(CGRect)frame colors:(NSArray *)colors;
 - (void)updateTouchedViewWithPoint:(CGPoint)p;

@@ -13,7 +13,7 @@
 @interface PNColorView ()
 
 @property NSArray *colorViews;
-@property UIView *touchedView;
+@property (nonatomic, strong) UIView *touchedView;
 @property UIView *gradientView;
 @property CAGradientLayer *gradLayer;
 @property BOOL isCT;
@@ -106,61 +106,50 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self updateTouchedViewWithTouches:touches event:event];
+    CGPoint p = [(UITouch *)[touches anyObject] locationInView:self];
+    UIView *updatedTouchedView = [self hitTest:p withEvent:nil];
+    if (updatedTouchedView != self.touchedView) {
+        self.touchedView = updatedTouchedView;
+    }
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    CGPoint p = [(UITouch *)[touches anyObject] locationInView:self];
-    UIView *updatedTouchedView = [self hitTest:p withEvent:event];
-    updatedTouchedView.layer.borderWidth = 0;
-    [self contractWidthOfView:updatedTouchedView withConstraint:[self widthConstraintForView:updatedTouchedView]];
-    _touchedView = nil;
+- (void)setTouchedView:(UIView *)touchedView {
+    if (_touchedView == touchedView) {
+        if (!self.longPressMode) {
+            [self contractWidthOfView:_touchedView withConstraint:[self widthConstraintForView:_touchedView]];
+            _touchedView = nil;
+        }
+        return;
+    } else {
+        // TODO: This is gross
+        if (touchedView) {
+            if (self.isCT) {
+                if (self.isGradient) {
+                    [self.delegate naturalColorSelected:[NSNumber numberWithInt:300]];
+                } else {
+                    [self.delegate naturalColorSelected:[UIColor tempFromColor:touchedView.backgroundColor]];
+                }
+            } else {
+                [self.delegate colorSelected:touchedView.backgroundColor];
+            }
+            [self expandWidthOfView:touchedView withConstraint:[self widthConstraintForView:touchedView]];
+        }
+        [self contractWidthOfView:_touchedView withConstraint:[self widthConstraintForView:_touchedView]];
+    }
+    _touchedView = touchedView;
 }
 
 - (void)updateTouchedViewWithTouches:(NSSet *)touches event:(UIEvent *)event {
     CGPoint p = [(UITouch *)[touches anyObject] locationInView:self];
     [self updateTouchedViewWithPoint:p];
-//    UIView *updatedTouchedView = [self hitTest:p withEvent:event];
-//    if (_touchedView == updatedTouchedView || !self.isFirstResponder) {
-//        return;
-//    }
-//    updatedTouchedView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-//    updatedTouchedView.layer.borderWidth = 4;
-//
-//    _touchedView.layer.borderWidth = 0;
-//    _touchedView = updatedTouchedView;
-//    
-//    // TODO: Fire a timer and set the color if it's still being touched after a second or so
-//    if (self.isCT) {
-//        [self.delegate naturalColorSelected:[UIColor tempFromColor:_touchedView.backgroundColor]];
-//    } else {
-//        [self.delegate colorSelected:_touchedView.backgroundColor];
-//    }
 }
 
 - (void)updateTouchedViewWithPoint:(CGPoint)p {
     UIView *updatedTouchedView = [self hitTest:p withEvent:nil];
-    if (_touchedView == updatedTouchedView || !self.isFirstResponder) {
+    self.touchedView = updatedTouchedView;
+    if (!self.isFirstResponder) {
         return;
     }
-    if (!self.isGradient) {
-        NSLayoutConstraint *widthConstraint = [self widthConstraintForView:updatedTouchedView];
-        [self expandWidthOfView:updatedTouchedView withConstraint:widthConstraint];
-        [self contractWidthOfView:_touchedView withConstraint:[self widthConstraintForView:_touchedView]];
-        _touchedView = updatedTouchedView;
-    }
-    
-    // TODO: Fire a timer and set the color if it's still being touched after a second or so
-    if (self.isCT) {
-        if (self.isGradient) {
-            [self.delegate naturalColorSelected:[NSNumber numberWithInt:300]];
-        } else {
-            [self.delegate naturalColorSelected:[UIColor tempFromColor:_touchedView.backgroundColor]];
-        }
-    } else {
-        [self.delegate colorSelected:_touchedView.backgroundColor];
-    }
-
 }
 
 - (NSLayoutConstraint *)widthConstraintForView:(UIView *)view {
@@ -187,11 +176,9 @@
     view.layer.shadowOffset = CGSizeMake(0,0);//CGSizeMake(-15, 20);
     view.layer.shadowRadius = 5;
     view.layer.shadowOpacity = 0.5;
-//    [self layoutSubviews];
     [UIView animateWithDuration:0.05 animations:^{
         [self layoutIfNeeded];
     }];
-
 }
 
 - (void)contractWidthOfView:(UIView *)view withConstraint:(NSLayoutConstraint *)constraint {
@@ -208,8 +195,6 @@
     [UIView animateWithDuration:0.05 animations:^{
         [self layoutIfNeeded];
     }];
-
-//    [self layoutSubviews];
 }
 
 /*

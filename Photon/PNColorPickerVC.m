@@ -34,13 +34,6 @@
 
         self.naturalColorView = [[PNColorView alloc] initWithFrame:CGRectZero colors:self.lightController.naturalColors];
         self.naturalColorView.delegate = self;
-        
-        self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-        self.tapRecognizer.numberOfTapsRequired = 1;
-        self.tapRecognizer.delegate = self;
-        [self.tapRecognizer setCancelsTouchesInView:YES];
-        
-        [self.view addGestureRecognizer:self.tapRecognizer];
     }
     return self;
 }
@@ -101,12 +94,6 @@
     [self.lightController setResourceOff:self.resource];
 }
 
-- (void)tap:(UITapGestureRecognizer *)tapRecognizer {
-    [self.view removeConstraint:self.topConstraint];
-    CGPoint p = [tapRecognizer locationInView:self.view];
-    [self tapAtPoint:p];
-}
-
 - (void)tapAtPoint:(CGPoint)p {
 //    NSLog(@"tapping at point: %f, %f", p.x, p.y);
 
@@ -153,7 +140,7 @@
         [_doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_doneButton setTitle:@"DONE" forState:UIControlStateNormal];
         [_doneButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_doneButton addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
+        [_doneButton addTarget:self action:@selector(animateOut) forControlEvents:UIControlEventTouchUpInside];
     }
     return _doneButton;
 }
@@ -178,15 +165,21 @@
 - (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
     CGPoint p = [recognizer locationInView:self.view];
     if (recognizer.state == UIGestureRecognizerStateEnded) {
+        self.naturalColorView.longPressMode = NO;
         if (CGRectContainsPoint(self.offButton.frame, p)) {
             [self tappedOffButton];
         }
-        [self animateCard:_naturalColorView direction:NO completion:^{
-            [self dismissView];
-        }];
+        [self animateOut];
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        self.naturalColorView.longPressMode = YES;
         [self tapAtPoint:p];
     }
+}
+
+- (void)animateOut {
+    [self animateCard:_naturalColorView direction:NO completion:^{
+        [self dismissView];
+    }];
 }
 
 - (NSLayoutConstraint *)topConstraintForView:(UIView *)view {
@@ -224,7 +217,6 @@
     }];
 
 }
-
 
 /*
 #pragma mark - Navigation

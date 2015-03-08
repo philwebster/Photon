@@ -11,6 +11,9 @@
 @implementation UIColor (PNUtilities)
 
 +(NSNumber *)tempFromColor:(UIColor *)color {
+    if (!color) {
+        return nil;
+    }
     NSArray *naturalColors = @[ [UIColor colorWithHue:0.123 saturation:0.665 brightness:0.996 alpha:1.000],
                                 [UIColor colorWithHue:0.132 saturation:0.227 brightness:1.000 alpha:1.000],
                                 [UIColor colorWithHue:0.167 saturation:0.012 brightness:1.000 alpha:1.000],
