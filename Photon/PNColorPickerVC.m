@@ -9,6 +9,7 @@
 #import "PNColorPickerVC.h"
 #import "PNLightController.h"
 #import "PNColorView.h"
+#import "PNBrightnessPickerVC.h"
 
 @interface PNColorPickerVC ()
 
@@ -21,6 +22,7 @@
 @property (nonatomic) UIButton *doneButton;
 @property (nonatomic) UIButton *offButton;
 @property (nonatomic) UILabel *resourceLabel;
+@property PNBrightnessPickerVC *brightnessPicker;
 
 @end
 
@@ -34,6 +36,9 @@
 
         self.naturalColorView = [[PNColorView alloc] initWithFrame:CGRectZero colors:self.lightController.naturalColors];
         self.naturalColorView.delegate = self;
+        self.brightnessPicker = [[PNBrightnessPickerVC alloc] init];
+        self.brightnessPicker.delegate = self;
+
     }
     return self;
 }
@@ -56,9 +61,16 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_naturalColorView(500)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView, _doneButton, _resourceLabel)]];
     NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_naturalColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     [self.view addConstraint:topConstraint];
-
-
+    
     self.focusedView = _naturalColorView;
+    
+    [self.view insertSubview:self.brightnessPicker.view atIndex:0];
+    [self addChildViewController:self.brightnessPicker];
+}
+
+- (void)addChildViewController:(UIViewController *)childController {
+    [super addChildViewController:childController];
+    [self.view insertSubview:childController.view atIndex:0];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -160,7 +172,7 @@
 - (void)dismissView {
     [self.view removeFromSuperview];
     self.naturalColorView.touchedView = nil;
-    [self.delegate dismissedColorPicker];
+    [self.colorDelegate dismissedColorPicker];
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
@@ -179,7 +191,8 @@
 
 - (void)animateOut {
     [self animateCard:_naturalColorView direction:NO completion:^{
-        [self dismissView];
+        [self.brightnessPicker startFadingAfterInterval:3.0];
+//        [self dismissView];
     }];
 }
 
@@ -217,6 +230,10 @@
         }
     }];
 
+}
+
+- (void)finishedBrightnessSelection {
+    [self dismissView];
 }
 
 /*

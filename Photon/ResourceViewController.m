@@ -52,7 +52,7 @@
         }
         
         _recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-        _recognizer.minimumPressDuration = 0.1;
+        _recognizer.minimumPressDuration = 0.2;
         _recognizer.delegate = self;
         [self.view addGestureRecognizer:_recognizer];
         
@@ -61,7 +61,7 @@
         
         self.lightController = [PNLightController singleton];
         self.colorPickerVC = [[PNColorPickerVC alloc] init];
-        self.colorPickerVC.delegate = self;
+        self.colorPickerVC.colorDelegate = self;
     }
     return self;
 }
