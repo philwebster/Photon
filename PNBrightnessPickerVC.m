@@ -7,12 +7,14 @@
 //
 
 #import "PNBrightnessPickerVC.h"
+#import "PNLightController.h"
 
 @interface PNBrightnessPickerVC ()
 
 @property UISlider *mainSlider;
 @property UITableView *table;
 @property BOOL willUpdateBrightness;
+@property PNLightController *lightController;
 
 @end
 
@@ -21,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.lightController = [PNLightController singleton];
+    
     self.view.backgroundColor = [UIColor blackColor];
     self.mainSlider = [[UISlider alloc] init];
     self.mainSlider.minimumValue = 1.0;
@@ -73,7 +77,9 @@
         return cell;
     } else if ([self.resource isKindOfClass:[PHGroup class]]) {
         PHGroup *group = (PHGroup *)self.resource;
-        [cell.textLabel setText:[group.lightIdentifiers objectAtIndex:indexPath.row]];
+        NSString *lightID = [group.lightIdentifiers objectAtIndex:indexPath.row];
+        
+        [cell.textLabel setText:[[self.lightController lightWithId:lightID] name]];
     }
     return cell;
 }

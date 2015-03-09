@@ -29,5 +29,6 @@
 - (void)setResourceOff:(PHBridgeResource *)resource;
 - (void)setStateWithDict:(NSDictionary *)stateDict;
 - (void)setScene:(PHScene *)scene onGroup:(PHGroup *)group;
+- (PHLight *)lightWithId:(NSString *)lightId;
 
 @end
