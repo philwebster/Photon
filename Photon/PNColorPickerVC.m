@@ -109,6 +109,7 @@
 - (void)tappedOffButton {
     NSLog(@"Setting resource off: %@", self.resource.name);
     [self.lightController setResourceOff:self.resource];
+    [self animateOutWithBrightness:NO];
 }
 
 - (void)tapAtPoint:(CGPoint)p {
@@ -158,7 +159,7 @@
         [_doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_doneButton setTitle:@"DONE" forState:UIControlStateNormal];
         [_doneButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_doneButton addTarget:self action:@selector(animateOut) forControlEvents:UIControlEventTouchUpInside];
+        [_doneButton addTarget:self action:@selector(animateOutWithBrightness:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _doneButton;
 }
@@ -185,21 +186,26 @@
     CGPoint p = [recognizer locationInView:self.view];
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         self.naturalColorView.longPressMode = NO;
+        BOOL showBrightness = YES;
         if (CGRectContainsPoint(self.offButton.frame, p)) {
             [self tappedOffButton];
+            showBrightness = NO;
         }
-        [self animateOut];
+        [self animateOutWithBrightness:showBrightness];
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         self.naturalColorView.longPressMode = YES;
         [self tapAtPoint:p];
     }
 }
 
-- (void)animateOut {
+- (void)animateOutWithBrightness:(BOOL)showBrightnessPicker {
     [self animateCard:_naturalColorView direction:NO completion:^{
-        self.brightnessPicker.view.hidden = NO;
-        [self.brightnessPicker startFadingAfterInterval:10.0];
-//        [self dismissView];
+        if (showBrightnessPicker) {
+            self.brightnessPicker.view.hidden = NO;
+            [self.brightnessPicker startFadingAfterInterval:10.0];
+        } else {
+            [self dismissView];
+        }
     }];
 }
 
