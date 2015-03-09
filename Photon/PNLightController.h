@@ -25,6 +25,7 @@
 + (id)singleton;
 - (void)setNaturalColor:(NSNumber *)ct forResource:(PHBridgeResource *)resource;
 - (void)setColor:(UIColor *)color forResource:(PHBridgeResource *)resource;
+- (void)setBrightness:(NSNumber *)brightness forResource:(PHBridgeResource *)resource;
 - (void)setResourceOff:(PHBridgeResource *)resource;
 - (void)setStateWithDict:(NSDictionary *)stateDict;
 - (void)setScene:(PHScene *)scene onGroup:(PHGroup *)group;

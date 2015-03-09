@@ -95,10 +95,9 @@
             [lightState setCt:ct];
             [lightState setOnBool:YES];
         } else if ([light supportsColor]) {
-            [lightState setX:[_xyNaturalColors objectAtIndex:[_ctNaturalColors indexOfObject:ct]][0]];
-            [lightState setX:[_xyNaturalColors objectAtIndex:[_ctNaturalColors indexOfObject:ct]][1]];
-        } else {
-            [lightState setBrightness:@254];
+            CGPoint coord = [PNUtilities xyFromCT:ct];
+            [lightState setX:[NSNumber numberWithDouble:coord.x]];
+            [lightState setY:[NSNumber numberWithDouble:coord.y]];
         }
         [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:nil];
     } else if ([resource isKindOfClass:[PHGroup class]]) {
@@ -139,6 +138,19 @@
         [bridgeSendAPI updateLightStateForId:resource.identifier withLightState:lightState completionHandler:nil];
     } else if ([resource isKindOfClass:[PHGroup class]]) {
         [bridgeSendAPI setLightStateForGroupWithId:resource.identifier lightState:lightState completionHandler:nil];
+    }
+}
+
+- (void)setBrightness:(NSNumber *)brightness forResource:(PHBridgeResource *)resource {
+    PHLightState *lightState = [[PHLightState alloc] init];
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    [lightState setBrightness:brightness];
+    if ([resource isKindOfClass:[PHLight class]]) {
+        PHLight *light = (PHLight *)resource;
+        [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:nil];
+    } else if ([resource isKindOfClass:[PHGroup class]]) {
+        PHGroup *group = (PHGroup *)resource;
+        [bridgeSendAPI setLightStateForGroupWithId:group.identifier lightState:lightState completionHandler:nil];
     }
 }
 

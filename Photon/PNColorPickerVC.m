@@ -101,6 +101,11 @@
     [self.lightController setNaturalColor:colorTemp forResource:self.resource];
 }
 
+- (void)brightnessUpdated:(NSNumber *)brightness {
+    NSLog(@"Setting brightness: %@ for resource: %@", brightness, self.resource.name);
+    [self.lightController setBrightness:brightness forResource:self.resource];
+}
+
 - (void)tappedOffButton {
     NSLog(@"Setting resource off: %@", self.resource.name);
     [self.lightController setResourceOff:self.resource];
@@ -131,6 +136,7 @@
 
 - (void)setResource:(PHBridgeResource *)resource {
     _resource = resource;
+    self.brightnessPicker.resource = resource;
     self.resourceLabel.text = resource.name;
 }
 
@@ -191,7 +197,7 @@
 
 - (void)animateOut {
     [self animateCard:_naturalColorView direction:NO completion:^{
-        [self.brightnessPicker startFadingAfterInterval:3.0];
+        [self.brightnessPicker startFadingAfterInterval:10.0];
 //        [self dismissView];
     }];
 }
