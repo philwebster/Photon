@@ -11,6 +11,7 @@
 @interface PNBrightnessPickerVC ()
 
 @property UISlider *mainSlider;
+@property UITableView *table;
 @property BOOL willUpdateBrightness;
 
 @end
@@ -21,13 +22,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor blackColor];
-    self.mainSlider = [[UISlider alloc] initWithFrame:self.view.frame];
+    self.mainSlider = [[UISlider alloc] init];
     self.mainSlider.minimumValue = 1.0;
     self.mainSlider.maximumValue = 254.0;
     self.mainSlider.continuous = YES;
     self.mainSlider.value = 254.0;
     [self.mainSlider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:self.mainSlider];
+//    [self.view addSubview:self.mainSlider];
+    
+    self.table = [[UITableView alloc] initWithFrame:self.view.frame];
+    self.table.dataSource = self;
+    self.table.delegate = self;
+    [self.view addSubview:self.table];
+    
+    self.table.tableHeaderView = self.mainSlider;
+    self.view.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -42,6 +51,31 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger numRows = 0;
+    if ([self.resource isKindOfClass:[PHLight class]]) {
+        numRows = 0;
+    } else if ([self.resource isKindOfClass:[PHGroup class]]) {
+        PHGroup *group = (PHGroup *)self.resource;
+        numRows = [group.lightIdentifiers count];
+    }
+    return numRows;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] init];
+    }
+    if ([self.resource isKindOfClass:[PHLight class]]) {
+        return cell;
+    } else if ([self.resource isKindOfClass:[PHGroup class]]) {
+        PHGroup *group = (PHGroup *)self.resource;
+        [cell.textLabel setText:[group.lightIdentifiers objectAtIndex:indexPath.row]];
+    }
+    return cell;
 }
 
 - (void)sliderChanged:(id)sender {
@@ -68,6 +102,7 @@
 }
 
 - (void)done {
+    self.view.hidden = YES;
     [self.delegate finishedBrightnessSelection];
 }
 

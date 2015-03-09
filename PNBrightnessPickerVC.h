@@ -16,7 +16,7 @@
 
 @end
 
-@interface PNBrightnessPickerVC : UIViewController
+@interface PNBrightnessPickerVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) PHBridgeResource *resource;
 @property id <brightnessSelectionDelegate> delegate;

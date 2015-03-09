@@ -197,6 +197,7 @@
 
 - (void)animateOut {
     [self animateCard:_naturalColorView direction:NO completion:^{
+        self.brightnessPicker.view.hidden = NO;
         [self.brightnessPicker startFadingAfterInterval:10.0];
 //        [self dismissView];
     }];
