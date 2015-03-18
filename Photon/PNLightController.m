@@ -39,7 +39,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.inDemoMode = NO;
+        self.inDemoMode = YES;
         self.standardColors = @[[UIColor colorWithHue:0.626 saturation:0.871 brightness:1.000 alpha:1.000],
                                 [UIColor colorWithHue:0.788 saturation:1.000 brightness:0.996 alpha:1.000],
                                 [UIColor colorWithHue:0.846 saturation:1.000 brightness:0.984 alpha:1.000],
@@ -62,15 +62,15 @@
 
         for (int i = 0; i < 6; ++i) {
             PHGroup *group = [PHGroup new];
-            group.name = [NSString stringWithFormat:@"fake group %d", i];
+            group.name = [NSString stringWithFormat:@"Group %d", i];
             [tempGroups addObject:group];
 
             PHLight *light = [PHLight new];
-            light.name = [NSString stringWithFormat:@"fake light %d", i];
+            light.name = [NSString stringWithFormat:@"Light %d", i];
             [tempLights addObject:light];
             
             PHScene *scene = [PHScene new];
-            scene.name = [NSString stringWithFormat:@"fake scene %d", i];
+            scene.name = [NSString stringWithFormat:@"Scene %d", i];
             [tempScenes addObject:scene];
         }
         self.demoGroups = tempGroups;
@@ -91,9 +91,9 @@
     
     if ([resource isKindOfClass:[PHLight class]]) {
         PHLight *light = (PHLight *)resource;
+        [lightState setOnBool:YES];
         if ([light supportsCT]) {
             [lightState setCt:ct];
-            [lightState setOnBool:YES];
         } else if ([light supportsColor]) {
             CGPoint coord = [PNUtilities xyFromCT:ct];
             [lightState setX:[NSNumber numberWithDouble:coord.x]];

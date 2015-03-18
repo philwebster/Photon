@@ -112,6 +112,11 @@
     [self animateOutWithBrightness:NO];
 }
 
+- (void)tappedDoneButton {
+    NSLog(@"Tapped done button");
+    [self animateOutWithBrightness:YES];
+}
+
 - (void)tapAtPoint:(CGPoint)p {
 //    NSLog(@"tapping at point: %f, %f", p.x, p.y);
 
@@ -159,7 +164,7 @@
         [_doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_doneButton setTitle:@"DONE" forState:UIControlStateNormal];
         [_doneButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_doneButton addTarget:self action:@selector(animateOutWithBrightness:) forControlEvents:UIControlEventTouchUpInside];
+        [_doneButton addTarget:self action:@selector(tappedDoneButton) forControlEvents:UIControlEventTouchUpInside];
     }
     return _doneButton;
 }

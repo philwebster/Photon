@@ -44,6 +44,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self.table reloadData];
     if ([self.resource isKindOfClass:[PHLight class]]) {
         PHLight *light = (PHLight *)self.resource;
         self.mainSlider.value = [light.lightState.brightness floatValue];

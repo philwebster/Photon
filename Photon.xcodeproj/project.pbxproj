@@ -25,6 +25,7 @@
 		D38C16461A68DE96006FE974 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D38C16451A68DE96006FE974 /* Images.xcassets */; };
 		D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38C16471A68DE96006FE974 /* LaunchScreen.xib */; };
 		D38C16551A68DE96006FE974 /* PhotonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C16541A68DE96006FE974 /* PhotonTests.m */; };
+		D39A902F1AB9DC92003E0760 /* UIColor+PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */; };
 		D3B90BB01A6F77E50062E355 /* PNColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B90BAF1A6F77E50062E355 /* PNColorPickerView.m */; };
 		D3B90BB21A6F902F0062E355 /* LightGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3B90BB11A6F902F0062E355 /* LightGroupView.xib */; };
 		D3BA63271A6B5F6100095EF7 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */; };
@@ -37,6 +38,7 @@
 		D3BA633E1A6B664600095EF7 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */; };
 		D3C33B331A738AD10008EAFA /* PNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PNLightController.m */; };
 		D3C487EE1A8088B000ED9EDC /* PNColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C487ED1A8088B000ED9EDC /* PNColorView.m */; };
+		D3C53A171AB9826A00D8F6DF /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63321A6B664600095EF7 /* DDTTYLogger.m */; };
 		D3D4561F1A8B163000219219 /* UIColor+PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */; };
 		D3DF823C1A7425B1001AD7DB /* PNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PNLightController.m */; };
 		D3DF823D1A7425CF001AD7DB /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */; };
@@ -146,6 +148,8 @@
 		D3C33B321A738AD10008EAFA /* PNLightController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLightController.m; sourceTree = "<group>"; };
 		D3C487EC1A8088B000ED9EDC /* PNColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNColorView.h; sourceTree = "<group>"; };
 		D3C487ED1A8088B000ED9EDC /* PNColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNColorView.m; sourceTree = "<group>"; };
+		D3C53A151AB964D200D8F6DF /* Photon WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Photon WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		D3C53A161AB9672000D8F6DF /* Photon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Photon.entitlements; sourceTree = "<group>"; };
 		D3D4561D1A8B163000219219 /* UIColor+PNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PNUtilities.h"; sourceTree = "<group>"; };
 		D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PNUtilities.m"; sourceTree = "<group>"; };
 		D3EC69D21AABF2EF00DE4C65 /* PNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNUtilities.h; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 		D34FB2A11A71714600DB659E /* Photon WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				D3C53A151AB964D200D8F6DF /* Photon WatchKit Extension.entitlements */,
 				D34FB2A51A71714600DB659E /* InterfaceController.h */,
 				D34FB2A61A71714600DB659E /* InterfaceController.m */,
 				D34FB2A81A71714600DB659E /* NotificationController.h */,
@@ -260,6 +265,7 @@
 		D38C16371A68DE96006FE974 /* Photon */ = {
 			isa = PBXGroup;
 			children = (
+				D3C53A161AB9672000D8F6DF /* Photon.entitlements */,
 				D38C163C1A68DE96006FE974 /* PNAppDelegate.h */,
 				D38C163D1A68DE96006FE974 /* PNAppDelegate.m */,
 				D3C33B311A738AD10008EAFA /* PNLightController.h */,
@@ -473,6 +479,11 @@
 					D34FB29F1A71714600DB659E = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = V9RH239UZW;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					D34FB2AE1A71714700DB659E = {
 						CreatedOnToolsVersion = 6.2;
@@ -481,6 +492,11 @@
 					D38C16341A68DE96006FE974 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = V9RH239UZW;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					D38C164D1A68DE96006FE974 = {
 						CreatedOnToolsVersion = 6.1;
@@ -555,6 +571,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D39A902F1AB9DC92003E0760 /* UIColor+PNUtilities.m in Sources */,
+				D3C53A171AB9826A00D8F6DF /* DDTTYLogger.m in Sources */,
 				D3EC69D51AABF35400DE4C65 /* PNUtilities.m in Sources */,
 				D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */,
 				D3DF823C1A7425B1001AD7DB /* PNLightController.m in Sources */,
@@ -680,6 +698,7 @@
 		D34FB2C21A71714700DB659E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Photon WatchKit Extension/Photon WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -694,6 +713,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -701,6 +721,7 @@
 		D34FB2C31A71714700DB659E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Photon WatchKit Extension/Photon WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -712,6 +733,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -798,6 +820,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Photon/Photon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -816,6 +839,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Photon/Photon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
