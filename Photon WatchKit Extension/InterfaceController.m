@@ -26,7 +26,7 @@
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
-    
+    [self addMenuItemWithItemIcon:WKMenuItemIconDecline title:@"All Off" action:@selector(allOffTapped)];
     self.lightController = [PNLightController singleton];
     self.context = context;
     if ([context respondsToSelector:@selector(isEqualToString:)]) {
@@ -86,6 +86,10 @@
         [self.lightController setNaturalColor:[UIColor tempFromColor:[self.lightController.naturalColors objectAtIndex:rowIndex]] forResource:(PHBridgeResource *)self.context];
     }
     NSLog(@"tapped row");
+}
+
+- (void)allOffTapped {
+    NSLog(@"turn off all lights");
 }
 
 - (id)contextForSegueWithIdentifier:(NSString *)segueIdentifier inTable:(WKInterfaceTable *)table rowIndex:(NSInteger)rowIndex {

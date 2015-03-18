@@ -36,6 +36,9 @@
 		D3BA633C1A6B664600095EF7 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63321A6B664600095EF7 /* DDTTYLogger.m */; };
 		D3BA633D1A6B664600095EF7 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63351A6B664600095EF7 /* ContextFilterLogFormatter.m */; };
 		D3BA633E1A6B664600095EF7 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */; };
+		D3BA96771AB9EC0A0026F77A /* PhotonLightController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3BA96761AB9EC0A0026F77A /* PhotonLightController.h */; };
+		D3BA96791AB9EC0A0026F77A /* PhotonLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA96781AB9EC0A0026F77A /* PhotonLightController.m */; };
+		D3BA967F1AB9EC0A0026F77A /* libPhotonLightController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA96741AB9EC0A0026F77A /* libPhotonLightController.a */; };
 		D3C33B331A738AD10008EAFA /* PNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PNLightController.m */; };
 		D3C487EE1A8088B000ED9EDC /* PNColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C487ED1A8088B000ED9EDC /* PNColorView.m */; };
 		D3C53A171AB9826A00D8F6DF /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63321A6B664600095EF7 /* DDTTYLogger.m */; };
@@ -76,6 +79,13 @@
 			remoteGlobalIDString = D38C16341A68DE96006FE974;
 			remoteInfo = Photon;
 		};
+		D3BA96801AB9EC0A0026F77A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D38C162D1A68DE96006FE974 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3BA96731AB9EC0A0026F77A;
+			remoteInfo = PhotonLightController;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,6 +98,16 @@
 				D34FB2BD1A71714700DB659E /* Photon WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3BA96721AB9EC0A0026F77A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				D3BA96771AB9EC0A0026F77A /* PhotonLightController.h in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -144,6 +164,11 @@
 		D3BA63351A6B664600095EF7 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
 		D3BA63361A6B664600095EF7 /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
 		D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		D3BA96741AB9EC0A0026F77A /* libPhotonLightController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPhotonLightController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3BA96761AB9EC0A0026F77A /* PhotonLightController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotonLightController.h; sourceTree = "<group>"; };
+		D3BA96781AB9EC0A0026F77A /* PhotonLightController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotonLightController.m; sourceTree = "<group>"; };
+		D3BA967E1AB9EC0A0026F77A /* PhotonLightControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotonLightControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3BA96841AB9EC0A0026F77A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3C33B311A738AD10008EAFA /* PNLightController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLightController.h; sourceTree = "<group>"; };
 		D3C33B321A738AD10008EAFA /* PNLightController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLightController.m; sourceTree = "<group>"; };
 		D3C487EC1A8088B000ED9EDC /* PNColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNColorView.h; sourceTree = "<group>"; };
@@ -189,6 +214,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3BA96711AB9EC0A0026F77A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3BA967B1AB9EC0A0026F77A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3BA967F1AB9EC0A0026F77A /* libPhotonLightController.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +285,8 @@
 				D38C16511A68DE96006FE974 /* PhotonTests */,
 				D34FB2A11A71714600DB659E /* Photon WatchKit Extension */,
 				D34FB2B31A71714700DB659E /* Photon WatchKit App */,
+				D3BA96751AB9EC0A0026F77A /* PhotonLightController */,
+				D3BA96821AB9EC0A0026F77A /* PhotonLightControllerTests */,
 				D38C16361A68DE96006FE974 /* Products */,
 				D3BA63281A6B664600095EF7 /* Lumberjack */,
 				D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */,
@@ -258,6 +300,8 @@
 				D38C164E1A68DE96006FE974 /* PhotonTests.xctest */,
 				D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */,
 				D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */,
+				D3BA96741AB9EC0A0026F77A /* libPhotonLightController.a */,
+				D3BA967E1AB9EC0A0026F77A /* PhotonLightControllerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -346,6 +390,31 @@
 				D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D3BA96751AB9EC0A0026F77A /* PhotonLightController */ = {
+			isa = PBXGroup;
+			children = (
+				D3BA96761AB9EC0A0026F77A /* PhotonLightController.h */,
+				D3BA96781AB9EC0A0026F77A /* PhotonLightController.m */,
+			);
+			path = PhotonLightController;
+			sourceTree = "<group>";
+		};
+		D3BA96821AB9EC0A0026F77A /* PhotonLightControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				D3BA96831AB9EC0A0026F77A /* Supporting Files */,
+			);
+			path = PhotonLightControllerTests;
+			sourceTree = "<group>";
+		};
+		D3BA96831AB9EC0A0026F77A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3BA96841AB9EC0A0026F77A /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		D3ED38551A7ED3E0000CE316 /* Groups */ = {
@@ -467,6 +536,41 @@
 			productReference = D38C164E1A68DE96006FE974 /* PhotonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D3BA96731AB9EC0A0026F77A /* PhotonLightController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3BA96851AB9EC0A0026F77A /* Build configuration list for PBXNativeTarget "PhotonLightController" */;
+			buildPhases = (
+				D3BA96701AB9EC0A0026F77A /* Sources */,
+				D3BA96711AB9EC0A0026F77A /* Frameworks */,
+				D3BA96721AB9EC0A0026F77A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhotonLightController;
+			productName = PhotonLightController;
+			productReference = D3BA96741AB9EC0A0026F77A /* libPhotonLightController.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D3BA967D1AB9EC0A0026F77A /* PhotonLightControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3BA96881AB9EC0A0026F77A /* Build configuration list for PBXNativeTarget "PhotonLightControllerTests" */;
+			buildPhases = (
+				D3BA967A1AB9EC0A0026F77A /* Sources */,
+				D3BA967B1AB9EC0A0026F77A /* Frameworks */,
+				D3BA967C1AB9EC0A0026F77A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3BA96811AB9EC0A0026F77A /* PBXTargetDependency */,
+			);
+			name = PhotonLightControllerTests;
+			productName = PhotonLightControllerTests;
+			productReference = D3BA967E1AB9EC0A0026F77A /* PhotonLightControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -502,6 +606,12 @@
 						CreatedOnToolsVersion = 6.1;
 						TestTargetID = D38C16341A68DE96006FE974;
 					};
+					D3BA96731AB9EC0A0026F77A = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					D3BA967D1AB9EC0A0026F77A = {
+						CreatedOnToolsVersion = 6.2;
+					};
 				};
 			};
 			buildConfigurationList = D38C16301A68DE96006FE974 /* Build configuration list for PBXProject "Photon" */;
@@ -521,6 +631,8 @@
 				D38C164D1A68DE96006FE974 /* PhotonTests */,
 				D34FB29F1A71714600DB659E /* Photon WatchKit Extension */,
 				D34FB2AE1A71714700DB659E /* Photon WatchKit App */,
+				D3BA96731AB9EC0A0026F77A /* PhotonLightController */,
+				D3BA967D1AB9EC0A0026F77A /* PhotonLightControllerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -558,6 +670,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D38C164C1A68DE96006FE974 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3BA967C1AB9EC0A0026F77A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -620,6 +739,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D3BA96701AB9EC0A0026F77A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3BA96791AB9EC0A0026F77A /* PhotonLightController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3BA967A1AB9EC0A0026F77A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -637,6 +771,11 @@
 			isa = PBXTargetDependency;
 			target = D38C16341A68DE96006FE974 /* Photon */;
 			targetProxy = D38C164F1A68DE96006FE974 /* PBXContainerItemProxy */;
+		};
+		D3BA96811AB9EC0A0026F77A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3BA96731AB9EC0A0026F77A /* PhotonLightController */;
+			targetProxy = D3BA96801AB9EC0A0026F77A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -665,6 +804,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -673,6 +814,7 @@
 				INFOPLIST_FILE = "Photon WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -684,11 +826,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				IBSC_MODULE = Photon_WatchKit_Extension;
 				INFOPLIST_FILE = "Photon WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -888,6 +1033,64 @@
 			};
 			name = Release;
 		};
+		D3BA96861AB9EC0A0026F77A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D3BA96871AB9EC0A0026F77A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D3BA96891AB9EC0A0026F77A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PhotonLightControllerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D3BA968A1AB9EC0A0026F77A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PhotonLightControllerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -932,6 +1135,24 @@
 			buildConfigurations = (
 				D38C165C1A68DE96006FE974 /* Debug */,
 				D38C165D1A68DE96006FE974 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3BA96851AB9EC0A0026F77A /* Build configuration list for PBXNativeTarget "PhotonLightController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3BA96861AB9EC0A0026F77A /* Debug */,
+				D3BA96871AB9EC0A0026F77A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3BA96881AB9EC0A0026F77A /* Build configuration list for PBXNativeTarget "PhotonLightControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3BA96891AB9EC0A0026F77A /* Debug */,
+				D3BA968A1AB9EC0A0026F77A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

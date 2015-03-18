@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>PhotonLightController.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -53,6 +58,16 @@
 			<true/>
 		</dict>
 		<key>D38C164D1A68DE96006FE974</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3BA96731AB9EC0A0026F77A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3BA967D1AB9EC0A0026F77A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
