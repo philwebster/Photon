@@ -89,6 +89,8 @@
     if (!self.willUpdateBrightness) {
         NSLog(@"updating brightness in 0.5");
         [self performSelector:@selector(updateBrightness:) withObject:self.mainSlider afterDelay:0.5];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(done) object:nil];
+        [self performSelector:@selector(done) withObject:nil afterDelay:3.0];
         self.willUpdateBrightness = YES;
     }
 }

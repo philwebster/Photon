@@ -207,7 +207,7 @@
     [self animateCard:_naturalColorView direction:NO completion:^{
         if (showBrightnessPicker) {
             self.brightnessPicker.view.hidden = NO;
-            [self.brightnessPicker startFadingAfterInterval:10.0];
+            [self.brightnessPicker startFadingAfterInterval:3.0];
         } else {
             [self dismissView];
         }
