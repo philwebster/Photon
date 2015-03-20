@@ -113,8 +113,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourceRowController.h; path = "../Photon WatchKit Extension/ResourceRowController.h"; sourceTree = "<group>"; };
-		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResourceRowController.m; path = "../Photon WatchKit Extension/ResourceRowController.m"; sourceTree = "<group>"; };
+		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceRowController.h; sourceTree = "<group>"; };
+		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceRowController.m; sourceTree = "<group>"; };
 		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
 		D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridgeView.m; sourceTree = "<group>"; };
 		D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Photon WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,12 +238,11 @@
 		D34FB2A11A71714600DB659E /* Photon WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D3C53A151AB964D200D8F6DF /* Photon WatchKit Extension.entitlements */,
 				D34FB2A51A71714600DB659E /* InterfaceController.h */,
 				D34FB2A61A71714600DB659E /* InterfaceController.m */,
 				D34FB2A81A71714600DB659E /* NotificationController.h */,
 				D34FB2A91A71714600DB659E /* NotificationController.m */,
-				D34FB2AB1A71714600DB659E /* Images.xcassets */,
+				D3AAC07A1ABBC9F200E30C71 /* Row Controllers */,
 				D34FB2A21A71714600DB659E /* Supporting Files */,
 			);
 			path = "Photon WatchKit Extension";
@@ -252,6 +251,8 @@
 		D34FB2A21A71714600DB659E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D34FB2AB1A71714600DB659E /* Images.xcassets */,
+				D3C53A151AB964D200D8F6DF /* Photon WatchKit Extension.entitlements */,
 				D34FB2A31A71714600DB659E /* Info.plist */,
 				D34FB2A41A71714600DB659E /* PushNotificationPayload.apns */,
 			);
@@ -262,9 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				D34FB2B61A71714700DB659E /* Interface.storyboard */,
-				D31C3BE31A722834006D2678 /* ResourceRowController.h */,
-				D31C3BE41A722834006D2678 /* ResourceRowController.m */,
-				D34FB2B91A71714700DB659E /* Images.xcassets */,
 				D34FB2B41A71714700DB659E /* Supporting Files */,
 			);
 			path = "Photon WatchKit App";
@@ -273,6 +271,7 @@
 		D34FB2B41A71714700DB659E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D34FB2B91A71714700DB659E /* Images.xcassets */,
 				D34FB2B51A71714700DB659E /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -281,7 +280,7 @@
 		D38C162C1A68DE96006FE974 = {
 			isa = PBXGroup;
 			children = (
-				D38C16371A68DE96006FE974 /* Photon */,
+				D38C16371A68DE96006FE974 /* Photon iOS App */,
 				D38C16511A68DE96006FE974 /* PhotonTests */,
 				D34FB2A11A71714600DB659E /* Photon WatchKit Extension */,
 				D34FB2B31A71714700DB659E /* Photon WatchKit App */,
@@ -306,40 +305,29 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D38C16371A68DE96006FE974 /* Photon */ = {
+		D38C16371A68DE96006FE974 /* Photon iOS App */ = {
 			isa = PBXGroup;
 			children = (
-				D3C53A161AB9672000D8F6DF /* Photon.entitlements */,
+				D38C16471A68DE96006FE974 /* LaunchScreen.xib */,
 				D38C163C1A68DE96006FE974 /* PNAppDelegate.h */,
 				D38C163D1A68DE96006FE974 /* PNAppDelegate.m */,
-				D3C33B311A738AD10008EAFA /* PNLightController.h */,
-				D3C33B321A738AD10008EAFA /* PNLightController.m */,
+				D3AAC0791ABBC53000E30C71 /* Views */,
+				D3AAC0781ABBC52600E30C71 /* View Controllers */,
 				D3EC69D21AABF2EF00DE4C65 /* PNUtilities.h */,
 				D3EC69D31AABF2EF00DE4C65 /* PNUtilities.m */,
-				D3ED385B1A7F7982000CE316 /* Setup */,
-				D3ED385A1A7F7913000CE316 /* Resource Collection */,
-				D3ED38561A7ED3F3000CE316 /* Scenes */,
-				D3ED38551A7ED3E0000CE316 /* Groups */,
-				D3ED385C1A7FE2A9000CE316 /* PNColorPickerVC.h */,
-				D3ED385D1A7FE2A9000CE316 /* PNColorPickerVC.m */,
-				D36AAE601AACED8200EE0C2A /* PNBrightnessPickerVC.h */,
-				D36AAE611AACED8200EE0C2A /* PNBrightnessPickerVC.m */,
-				D3C487EC1A8088B000ED9EDC /* PNColorView.h */,
-				D3C487ED1A8088B000ED9EDC /* PNColorView.m */,
 				D3D4561D1A8B163000219219 /* UIColor+PNUtilities.h */,
 				D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */,
-				D3B90BAE1A6F77E50062E355 /* PNColorPickerView.h */,
-				D3B90BAF1A6F77E50062E355 /* PNColorPickerView.m */,
-				D38C16471A68DE96006FE974 /* LaunchScreen.xib */,
 				D38C16451A68DE96006FE974 /* Images.xcassets */,
 				D38C16381A68DE96006FE974 /* Supporting Files */,
 			);
+			name = "Photon iOS App";
 			path = Photon;
 			sourceTree = "<group>";
 		};
 		D38C16381A68DE96006FE974 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D3C53A161AB9672000D8F6DF /* Photon.entitlements */,
 				D38C16391A68DE96006FE974 /* Info.plist */,
 				D38C163A1A68DE96006FE974 /* main.m */,
 			);
@@ -361,6 +349,57 @@
 				D38C16531A68DE96006FE974 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D3AAC0781ABBC52600E30C71 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D36AAE601AACED8200EE0C2A /* PNBrightnessPickerVC.h */,
+				D36AAE611AACED8200EE0C2A /* PNBrightnessPickerVC.m */,
+				D3ED385C1A7FE2A9000CE316 /* PNColorPickerVC.h */,
+				D3ED385D1A7FE2A9000CE316 /* PNColorPickerVC.m */,
+				D3ED38571A7ED43F000CE316 /* SceneListViewController.h */,
+				D3ED38581A7ED43F000CE316 /* SceneListViewController.m */,
+				D3FB69521A6D0D810068945E /* ResourceViewController.h */,
+				D3FB69531A6D0D810068945E /* ResourceViewController.m */,
+				D3FB694D1A6CF7080068945E /* SetupViewController.h */,
+				D3FB694E1A6CF7080068945E /* SetupViewController.m */,
+				D3C33B311A738AD10008EAFA /* PNLightController.h */,
+				D3C33B321A738AD10008EAFA /* PNLightController.m */,
+				D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */,
+				D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */,
+				D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */,
+				D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D3AAC0791ABBC53000E30C71 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3B90BB11A6F902F0062E355 /* LightGroupView.xib */,
+				D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */,
+				D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */,
+				D3FB694F1A6CF7080068945E /* SetupViewController.xib */,
+				D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */,
+				D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */,
+				D3ED384E1A7DAD30000CE316 /* ResourceCollectionViewCell.h */,
+				D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */,
+				D3C487EC1A8088B000ED9EDC /* PNColorView.h */,
+				D3C487ED1A8088B000ED9EDC /* PNColorView.m */,
+				D3B90BAE1A6F77E50062E355 /* PNColorPickerView.h */,
+				D3B90BAF1A6F77E50062E355 /* PNColorPickerView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D3AAC07A1ABBC9F200E30C71 /* Row Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D31C3BE31A722834006D2678 /* ResourceRowController.h */,
+				D31C3BE41A722834006D2678 /* ResourceRowController.m */,
+			);
+			name = "Row Controllers";
 			sourceTree = "<group>";
 		};
 		D3BA63281A6B664600095EF7 /* Lumberjack */ = {
@@ -415,52 +454,6 @@
 				D3BA96841AB9EC0A0026F77A /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D3ED38551A7ED3E0000CE316 /* Groups */ = {
-			isa = PBXGroup;
-			children = (
-				D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */,
-				D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */,
-				D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */,
-				D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */,
-			);
-			name = Groups;
-			sourceTree = "<group>";
-		};
-		D3ED38561A7ED3F3000CE316 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				D3ED38571A7ED43F000CE316 /* SceneListViewController.h */,
-				D3ED38581A7ED43F000CE316 /* SceneListViewController.m */,
-			);
-			name = Scenes;
-			sourceTree = "<group>";
-		};
-		D3ED385A1A7F7913000CE316 /* Resource Collection */ = {
-			isa = PBXGroup;
-			children = (
-				D3B90BB11A6F902F0062E355 /* LightGroupView.xib */,
-				D3FB69521A6D0D810068945E /* ResourceViewController.h */,
-				D3FB69531A6D0D810068945E /* ResourceViewController.m */,
-				D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */,
-				D3ED384E1A7DAD30000CE316 /* ResourceCollectionViewCell.h */,
-				D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */,
-				D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */,
-			);
-			name = "Resource Collection";
-			sourceTree = "<group>";
-		};
-		D3ED385B1A7F7982000CE316 /* Setup */ = {
-			isa = PBXGroup;
-			children = (
-				D3FB694F1A6CF7080068945E /* SetupViewController.xib */,
-				D3FB694D1A6CF7080068945E /* SetupViewController.h */,
-				D3FB694E1A6CF7080068945E /* SetupViewController.m */,
-				D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */,
-				D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */,
-			);
-			name = Setup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
