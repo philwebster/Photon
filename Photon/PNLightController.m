@@ -39,7 +39,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.inDemoMode = NO;
+        self.inDemoMode = YES;
         self.standardColors = @[[UIColor colorWithHue:0.626 saturation:0.871 brightness:1.000 alpha:1.000],
                                 [UIColor colorWithHue:0.788 saturation:1.000 brightness:0.996 alpha:1.000],
                                 [UIColor colorWithHue:0.846 saturation:1.000 brightness:0.984 alpha:1.000],
@@ -63,6 +63,7 @@
         for (int i = 0; i < 6; ++i) {
             PHGroup *group = [PHGroup new];
             group.name = [NSString stringWithFormat:@"Group %d", i];
+            group.lightIdentifiers = @[@"light ID 1", @"light ID 2", @"light ID 3"];
             [tempGroups addObject:group];
 
             PHLight *light = [PHLight new];
@@ -105,7 +106,7 @@
         NSMutableSet *nonCTLights = [NSMutableSet new];
         for (NSString *identifier in group.lightIdentifiers) {
             PHLight *groupedLight = [self lightWithId:identifier];
-            if (![groupedLight supportsCT]) {
+            if (![groupedLight supportsCT] && groupedLight) {
                 [nonCTLights addObject:groupedLight];
             }
         }
@@ -172,6 +173,9 @@
 }
 
 - (PHLight *)lightWithId:(NSString *)lightId {
+    if (self.inDemoMode) {
+        return [self.demoLights firstObject];
+    }
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier == %@", lightId];
     NSArray *filteredArray = [self.lights filteredArrayUsingPredicate:predicate];
     PHLight *firstFoundObject = nil;
