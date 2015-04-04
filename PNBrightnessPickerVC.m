@@ -8,6 +8,7 @@
 
 #import "PNBrightnessPickerVC.h"
 #import "PNLightController.h"
+#import "PNBrightnessCell.h"
 
 @interface PNBrightnessPickerVC ()
 
@@ -27,16 +28,16 @@
     
     self.view.backgroundColor = [UIColor blackColor];
     self.mainSlider = [[UISlider alloc] init];
-    self.mainSlider.minimumValue = 1.0;
-    self.mainSlider.maximumValue = 254.0;
+    self.mainSlider.minimumValue = 0;
+    self.mainSlider.maximumValue = 255;
     self.mainSlider.continuous = YES;
-    self.mainSlider.value = 254.0;
+    self.mainSlider.value = 255;
     [self.mainSlider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
-//    [self.view addSubview:self.mainSlider];
     
     self.table = [[UITableView alloc] initWithFrame:self.view.frame];
     self.table.dataSource = self;
     self.table.delegate = self;
+    self.table.rowHeight = 110.0;
     [self.view addSubview:self.table];
     
     self.table.tableHeaderView = self.mainSlider;
@@ -48,8 +49,10 @@
     if ([self.resource isKindOfClass:[PHLight class]]) {
         PHLight *light = (PHLight *)self.resource;
         self.mainSlider.value = [light.lightState.brightness floatValue];
-    } else {
-        self.mainSlider.value = 254.0;
+    } else if ([self.resource isKindOfClass:[PHGroup class]]) {
+        // TODO: set as average of group
+        PHGroup *group = (PHGroup *)self.resource;
+        self.mainSlider.value = [[self.lightController averageBrightnessForGroup:group] floatValue];
     }
 }
 
@@ -70,19 +73,21 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    PNBrightnessCell *cell = [tableView dequeueReusableCellWithIdentifier:@"brightnessCell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] init];
-    }
-    if ([self.resource isKindOfClass:[PHLight class]]) {
-        return cell;
-    } else if ([self.resource isKindOfClass:[PHGroup class]]) {
-        PHGroup *group = (PHGroup *)self.resource;
-        NSString *lightID = [group.lightIdentifiers objectAtIndex:indexPath.row];
-        
-        [cell.textLabel setText:[[self.lightController lightWithId:lightID] name]];
+        [tableView registerNib:[UINib nibWithNibName:@"PNBrightnessCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"brightnessCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"brightnessCell"];
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.resource isKindOfClass:[PHGroup class]]) {
+        PHGroup *group = (PHGroup *)self.resource;
+        PHLight *light = [self.lightController lightWithId:[group.lightIdentifiers objectAtIndex:indexPath.row]];
+        PNBrightnessCell *brightnessCell = (PNBrightnessCell *)cell;
+        brightnessCell.resource = light;
+    }
 }
 
 - (void)sliderChanged:(id)sender {

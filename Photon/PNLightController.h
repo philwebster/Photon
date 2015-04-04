@@ -30,5 +30,6 @@
 - (void)setStateWithDict:(NSDictionary *)stateDict;
 - (void)setScene:(PHScene *)scene onGroup:(PHGroup *)group;
 - (PHLight *)lightWithId:(NSString *)lightId;
+- (NSNumber *)averageBrightnessForGroup:(PHGroup *)group;
 
 @end

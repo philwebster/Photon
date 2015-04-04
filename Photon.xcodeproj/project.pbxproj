@@ -46,6 +46,8 @@
 		D3DF823C1A7425B1001AD7DB /* PNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PNLightController.m */; };
 		D3DF823D1A7425CF001AD7DB /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */; };
 		D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63301A6B664600095EF7 /* DDLog.m */; };
+		D3EC3D401AD08C0F00B29301 /* PNBrightnessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3EC3D3F1AD08C0F00B29301 /* PNBrightnessCell.xib */; };
+		D3EC3D431AD08DB200B29301 /* PNBrightnessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EC3D421AD08DB200B29301 /* PNBrightnessCell.m */; };
 		D3EC69D41AABF2EF00DE4C65 /* PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EC69D31AABF2EF00DE4C65 /* PNUtilities.m */; };
 		D3EC69D51AABF35400DE4C65 /* PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EC69D31AABF2EF00DE4C65 /* PNUtilities.m */; };
 		D3ED38501A7DAD30000CE316 /* ResourceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */; };
@@ -177,6 +179,9 @@
 		D3C53A161AB9672000D8F6DF /* Photon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Photon.entitlements; sourceTree = "<group>"; };
 		D3D4561D1A8B163000219219 /* UIColor+PNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PNUtilities.h"; sourceTree = "<group>"; };
 		D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PNUtilities.m"; sourceTree = "<group>"; };
+		D3EC3D3F1AD08C0F00B29301 /* PNBrightnessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBrightnessCell.xib; sourceTree = "<group>"; };
+		D3EC3D411AD08DB200B29301 /* PNBrightnessCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNBrightnessCell.h; sourceTree = "<group>"; };
+		D3EC3D421AD08DB200B29301 /* PNBrightnessCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNBrightnessCell.m; sourceTree = "<group>"; };
 		D3EC69D21AABF2EF00DE4C65 /* PNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNUtilities.h; sourceTree = "<group>"; };
 		D3EC69D31AABF2EF00DE4C65 /* PNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNUtilities.m; sourceTree = "<group>"; };
 		D3ED384E1A7DAD30000CE316 /* ResourceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceCollectionViewCell.h; sourceTree = "<group>"; };
@@ -381,6 +386,7 @@
 				D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */,
 				D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */,
 				D3FB694F1A6CF7080068945E /* SetupViewController.xib */,
+				D3EC3D3F1AD08C0F00B29301 /* PNBrightnessCell.xib */,
 				D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */,
 				D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */,
 				D3ED384E1A7DAD30000CE316 /* ResourceCollectionViewCell.h */,
@@ -389,6 +395,8 @@
 				D3C487ED1A8088B000ED9EDC /* PNColorView.m */,
 				D3B90BAE1A6F77E50062E355 /* PNColorPickerView.h */,
 				D3B90BAF1A6F77E50062E355 /* PNColorPickerView.m */,
+				D3EC3D411AD08DB200B29301 /* PNBrightnessCell.h */,
+				D3EC3D421AD08DB200B29301 /* PNBrightnessCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -658,6 +666,7 @@
 				D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */,
 				D38C16461A68DE96006FE974 /* Images.xcassets in Resources */,
 				D3ED38521A7DBE58000CE316 /* ResourceCollectionViewCell.xib in Resources */,
+				D3EC3D401AD08C0F00B29301 /* PNBrightnessCell.xib in Resources */,
 				D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,6 +711,7 @@
 				D3B90BB01A6F77E50062E355 /* PNColorPickerView.m in Sources */,
 				D38C163E1A68DE96006FE974 /* PNAppDelegate.m in Sources */,
 				D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */,
+				D3EC3D431AD08DB200B29301 /* PNBrightnessCell.m in Sources */,
 				D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */,
 				D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */,
 				D3ED38591A7ED43F000CE316 /* SceneListViewController.m in Sources */,

@@ -63,11 +63,18 @@
         for (int i = 0; i < 6; ++i) {
             PHGroup *group = [PHGroup new];
             group.name = [NSString stringWithFormat:@"Group %d", i];
-            group.lightIdentifiers = @[@"light ID 1", @"light ID 2", @"light ID 3"];
+            group.lightIdentifiers = @[@"1", @"2", @"3"];
             [tempGroups addObject:group];
 
             PHLight *light = [PHLight new];
             light.name = [NSString stringWithFormat:@"Light %d", i];
+            light.identifier = [NSString stringWithFormat:@"%d", i];
+
+            PHLightState *lightState = [[PHLightState alloc] init];
+            [lightState setBrightness:[NSNumber numberWithInt:arc4random_uniform(256)]];
+            [lightState setOnBool:YES];
+            light.lightState = lightState;
+            
             [tempLights addObject:light];
             
             PHScene *scene = [PHScene new];
@@ -173,9 +180,6 @@
 }
 
 - (PHLight *)lightWithId:(NSString *)lightId {
-    if (self.inDemoMode) {
-        return [self.demoLights firstObject];
-    }
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier == %@", lightId];
     NSArray *filteredArray = [self.lights filteredArrayUsingPredicate:predicate];
     PHLight *firstFoundObject = nil;
@@ -202,6 +206,16 @@
         return self.demoScenes;
     }
     return [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
+}
+
+- (NSNumber *)averageBrightnessForGroup:(PHGroup *)group {
+    __block NSInteger average = 0;
+    [group.lightIdentifiers enumerateObjectsUsingBlock:^(NSString *lightID, NSUInteger idx, BOOL *stop) {
+        PHLight *light = [self lightWithId:lightID];
+        average += [light.lightState.brightness integerValue];
+    }];
+    average = average / group.lightIdentifiers.count;
+    return [NSNumber numberWithInteger:average];
 }
 
 @end
