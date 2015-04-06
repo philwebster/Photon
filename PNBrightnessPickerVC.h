@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <HueSDK_iOS/HueSDK.h>
+#import "PNBrightnessCell.h"
 
 @protocol brightnessSelectionDelegate
 
@@ -16,7 +17,7 @@
 
 @end
 
-@interface PNBrightnessPickerVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PNBrightnessPickerVC : UIViewController <UITableViewDataSource, UITableViewDelegate, lightBrightnessSliderDelegate>
 
 @property (nonatomic) PHBridgeResource *resource;
 @property id <brightnessSelectionDelegate> delegate;

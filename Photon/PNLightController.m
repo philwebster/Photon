@@ -208,6 +208,15 @@
     return [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
 }
 
+- (NSArray *)lightsForGroup:(PHGroup *)group {
+    __block NSMutableArray *lights = [NSMutableArray array];
+    [group.lightIdentifiers enumerateObjectsUsingBlock:^(NSString *lightID, NSUInteger idx, BOOL *stop) {
+        PHLight *light = [self lightWithId:lightID];
+        [lights addObject:light];
+    }];
+    return lights;
+}
+
 - (NSNumber *)averageBrightnessForGroup:(PHGroup *)group {
     __block NSInteger average = 0;
     [group.lightIdentifiers enumerateObjectsUsingBlock:^(NSString *lightID, NSUInteger idx, BOOL *stop) {

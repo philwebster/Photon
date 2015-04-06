@@ -8,7 +8,6 @@
 
 #import "PNBrightnessPickerVC.h"
 #import "PNLightController.h"
-#import "PNBrightnessCell.h"
 
 @interface PNBrightnessPickerVC ()
 
@@ -16,6 +15,9 @@
 @property UITableView *table;
 @property BOOL willUpdateBrightness;
 @property PNLightController *lightController;
+@property NSMutableDictionary *lightBrightnessValues;
+@property NSMutableDictionary *lightBrightnessInitialValues;
+@property NSInteger initialMainSliderValue;
 
 @end
 
@@ -53,6 +55,12 @@
         // TODO: set as average of group
         PHGroup *group = (PHGroup *)self.resource;
         self.mainSlider.value = [[self.lightController averageBrightnessForGroup:group] floatValue];
+        self.initialMainSliderValue = self.mainSlider.value;
+        self.lightBrightnessValues = [NSMutableDictionary dictionary];
+        for (PHLight *light in [self.lightController lightsForGroup:group]) {
+            [self.lightBrightnessValues setObject:light.lightState.brightness forKey:light.identifier];
+        }
+        self.lightBrightnessInitialValues = [self.lightBrightnessValues mutableCopy];
     }
 }
 
@@ -87,15 +95,43 @@
         PHLight *light = [self.lightController lightWithId:[group.lightIdentifiers objectAtIndex:indexPath.row]];
         PNBrightnessCell *brightnessCell = (PNBrightnessCell *)cell;
         brightnessCell.resource = light;
+        brightnessCell.delegate = self;
     }
 }
 
 - (void)sliderChanged:(id)sender {
+    if ([sender isKindOfClass:[PNBrightnessCell class]]) {
+        PNBrightnessCell *cell = (PNBrightnessCell *)sender;
+        UISlider *slider = cell.resourceBrightnessSlider;
+        PHLight *light = (PHLight *)cell.resource;
+        [self.lightBrightnessValues setObject:[NSNumber numberWithFloat:slider.value] forKey:light.identifier];
+        [self.lightBrightnessInitialValues setObject:[NSNumber numberWithFloat:slider.value] forKey:light.identifier];
+        self.mainSlider.value = self.initialMainSliderValue = [self averageBrightness:self.lightBrightnessValues];
+    }
+    if (sender == self.mainSlider) {
+        __weak PNBrightnessPickerVC *weakSelf = self;
+        [self.lightBrightnessValues enumerateKeysAndObjectsUsingBlock:^(NSString *lightID, NSNumber *brightness, BOOL *stop) {
+            CGFloat newBrightness;
+            CGFloat initialBrightness = [[weakSelf.lightBrightnessInitialValues objectForKey:lightID] floatValue];
+            if (weakSelf.mainSlider.value >= weakSelf.initialMainSliderValue) {
+                // initial value + difference * percent
+                CGFloat difference = 255.0 - initialBrightness;
+                newBrightness = initialBrightness + difference * ((weakSelf.mainSlider.value - weakSelf.initialMainSliderValue) / (255.0 - weakSelf.initialMainSliderValue));
+            } else {
+                // initial value - difference * percent
+                newBrightness = initialBrightness - initialBrightness * (1 - (weakSelf.mainSlider.value / weakSelf.initialMainSliderValue));
+            }
+            [self.lightBrightnessValues setObject:[NSNumber numberWithFloat:newBrightness] forKey:lightID];
+        }];
+        for (PNBrightnessCell *cell in weakSelf.table.visibleCells) {
+            cell.resourceBrightnessSlider.value = [[weakSelf.lightBrightnessValues objectForKey:cell.resource.identifier] floatValue];
+        }
+    }
     if (!self.willUpdateBrightness) {
         NSLog(@"updating brightness in 0.5");
         [self performSelector:@selector(updateBrightness:) withObject:self.mainSlider afterDelay:0.5];
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(done) object:nil];
-        [self performSelector:@selector(done) withObject:nil afterDelay:3.0];
+        [self performSelector:@selector(done) withObject:nil afterDelay:30.0];
         self.willUpdateBrightness = YES;
     }
 }
@@ -118,6 +154,15 @@
 - (void)done {
     self.view.hidden = YES;
     [self.delegate finishedBrightnessSelection];
+}
+
+- (NSInteger)averageBrightness:(NSDictionary *)brightnessValues {
+    __block NSInteger average = 0;
+    [brightnessValues enumerateKeysAndObjectsUsingBlock:^(PHLight *light, NSNumber *brightness, BOOL *stop) {
+        average += [brightness integerValue];
+    }];
+    average = average / brightnessValues.count;
+    return average;
 }
 
 /*

@@ -11,6 +11,7 @@
 @implementation PNUtilities
 
 + (CGPoint)xyFromCT:(NSNumber *)temperature {
+    // check temperature for nil/0 here
     CGPoint coord;
     int temp = 1000000 / [temperature intValue];
     if (1667 <= temp && temp <= 4000) {

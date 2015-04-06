@@ -11,7 +11,6 @@
 @interface PNBrightnessCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *resourceNameLabel;
-@property (weak, nonatomic) IBOutlet UISlider *resourceBrightnessSlider;
 
 @end
 
@@ -32,7 +31,13 @@
         PHLight *light = (PHLight *)resource;
         self.resourceNameLabel.text = light.name;
         self.resourceBrightnessSlider.value = [light.lightState.brightness floatValue];
+        _resource = resource;
     }
+}
+
+- (IBAction)sliderSlid:(id)sender {
+    NSLog(@"slider slid");
+    [self.delegate sliderChanged:self];
 }
 
 @end

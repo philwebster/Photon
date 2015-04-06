@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <HueSDK_iOS/HueSDK.h>
 
+@protocol lightBrightnessSliderDelegate
+
+- (void)sliderChanged:(id)sender;
+
+@end
+
 @interface PNBrightnessCell : UITableViewCell
 
-@property (weak, nonatomic) PHBridgeResource *resource;
+@property (strong, nonatomic) PHBridgeResource *resource;
+@property (weak, nonatomic) id<lightBrightnessSliderDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UISlider *resourceBrightnessSlider;
 
 @end
