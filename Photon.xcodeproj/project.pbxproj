@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */; };
 		D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C3BE41A722834006D2678 /* ResourceRowController.m */; };
 		D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */; };
 		D34FB2A71A71714600DB659E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A61A71714600DB659E /* InterfaceController.m */; };
@@ -115,6 +116,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBrightnessPickerVC.xib; sourceTree = "<group>"; };
 		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceRowController.h; sourceTree = "<group>"; };
 		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceRowController.m; sourceTree = "<group>"; };
 		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */,
 				D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */,
 				D3FB694F1A6CF7080068945E /* SetupViewController.xib */,
+				D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */,
 				D3EC3D3F1AD08C0F00B29301 /* PNBrightnessCell.xib */,
 				D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */,
 				D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */,
@@ -668,6 +671,7 @@
 				D3ED38521A7DBE58000CE316 /* ResourceCollectionViewCell.xib in Resources */,
 				D3EC3D401AD08C0F00B29301 /* PNBrightnessCell.xib in Resources */,
 				D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */,
+				D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

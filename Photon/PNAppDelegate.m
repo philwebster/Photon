@@ -34,7 +34,7 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+
     // Create sdk instance
     self.phHueSDK = [[PHHueSDK alloc] init];
     [self.phHueSDK startUpSDK];
@@ -149,7 +149,7 @@
  Checks if we are currently connected to the bridge locally and if not, it will show an error when the error is not already shown.
  */
 - (void)checkConnectionState {
-    if (!self.phHueSDK.localConnected) {
+    if (!self.phHueSDK.localConnected && !self.lightController.inDemoMode) {
         // No connection at all, show connection popup
         if (self.noConnectionAlert == nil) {
             [self showNoConnectionDialog];

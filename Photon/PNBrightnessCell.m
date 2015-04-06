@@ -36,7 +36,6 @@
 }
 
 - (IBAction)sliderSlid:(id)sender {
-    NSLog(@"slider slid");
     [self.delegate sliderChanged:self];
 }
 

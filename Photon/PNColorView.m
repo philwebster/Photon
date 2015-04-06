@@ -125,7 +125,7 @@
             if (self.isCT) {
                 if (self.isGradient) {
                     [self.delegate naturalColorSelected:[NSNumber numberWithInt:300]];
-                } else {
+                } else if ([self.colorViews containsObject:touchedView]) {
                     [self.delegate naturalColorSelected:[UIColor tempFromColor:touchedView.backgroundColor]];
                 }
             } else {

@@ -9,7 +9,6 @@
 #import "PNColorPickerVC.h"
 #import "PNLightController.h"
 #import "PNColorView.h"
-#import "PNBrightnessPickerVC.h"
 
 @interface PNColorPickerVC ()
 
@@ -64,7 +63,10 @@
     
     self.focusedView = _naturalColorView;
     
-    [self.view insertSubview:self.brightnessPicker.view atIndex:0];
+    UIView *brightnessView = self.brightnessPicker.view;
+    brightnessView.frame = self.view.frame;
+//    [self.view insertSubview:brightnessView atIndex:0];
+    
     [self addChildViewController:self.brightnessPicker];
 }
 
@@ -206,8 +208,9 @@
 - (void)animateOutWithBrightness:(BOOL)showBrightnessPicker {
     [self animateCard:_naturalColorView direction:NO completion:^{
         if (showBrightnessPicker) {
+            [self.view bringSubviewToFront:self.brightnessPicker.view];
             self.brightnessPicker.view.hidden = NO;
-            [self.brightnessPicker startFadingAfterInterval:3.0];
+            [self.brightnessPicker startFadingAfterInterval:5.0];
         } else {
             [self dismissView];
         }

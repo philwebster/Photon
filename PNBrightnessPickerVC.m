@@ -13,8 +13,8 @@
 
 @interface PNBrightnessPickerVC ()
 
-@property UISlider *mainSlider;
-@property UITableView *table;
+@property (weak, nonatomic) IBOutlet UISlider *mainSlider;
+@property (weak, nonatomic) IBOutlet UITableView *table;
 @property BOOL willUpdateBrightness;
 @property PNLightController *lightController;
 @property NSMutableDictionary *lightBrightnessValues;
@@ -30,21 +30,16 @@
     // Do any additional setup after loading the view.
     self.lightController = [PNLightController singleton];
     
-    self.view.backgroundColor = [UIColor blackColor];
-    self.mainSlider = [[UISlider alloc] init];
     self.mainSlider.minimumValue = 0;
     self.mainSlider.maximumValue = MAX_BRIGHTNESS;
     self.mainSlider.continuous = YES;
     self.mainSlider.value = MAX_BRIGHTNESS;
     [self.mainSlider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
     
-    self.table = [[UITableView alloc] initWithFrame:self.view.frame];
     self.table.dataSource = self;
     self.table.delegate = self;
     self.table.rowHeight = 110.0;
-    [self.view addSubview:self.table];
     
-    self.table.tableHeaderView = self.mainSlider;
     self.view.hidden = YES;
 }
 
@@ -132,10 +127,10 @@
     if (!self.willUpdateBrightness) {
         NSLog(@"updating brightness in 0.5");
         [self performSelector:@selector(updateBrightness:) withObject:self.mainSlider afterDelay:0.5];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(done) object:nil];
-        [self performSelector:@selector(done) withObject:nil afterDelay:30.0];
         self.willUpdateBrightness = YES;
     }
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(done) object:nil];
+    [self performSelector:@selector(done) withObject:nil afterDelay:5.0];
 }
 
 - (void)updateBrightness:(id)sender {
