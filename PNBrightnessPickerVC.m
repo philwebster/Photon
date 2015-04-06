@@ -38,7 +38,6 @@
     
     self.table.dataSource = self;
     self.table.delegate = self;
-    self.table.rowHeight = 110.0;
     
     self.view.hidden = YES;
 }
