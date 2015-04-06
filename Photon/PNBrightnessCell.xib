@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <slider opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="254" translatesAutoresizingMaskIntoConstraints="NO" id="WEB-iV-euW">
-                        <rect key="frame" x="23" y="74.5" width="350" height="31"/>
+                        <rect key="frame" x="23" y="74.5" width="358" height="31"/>
                         <connections>
                             <action selector="sliderSlid:" destination="KPG-Rb-WCb" eventType="valueChanged" id="zeO-uR-Nvh"/>
                         </connections>
@@ -27,7 +27,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="WEB-iV-euW" secondAttribute="trailing" constant="25" id="2Jf-jC-M4d"/>
+                    <constraint firstAttribute="trailing" secondItem="WEB-iV-euW" secondAttribute="trailing" constant="25" id="2Jf-jC-M4d"/>
                     <constraint firstItem="WEB-iV-euW" firstAttribute="leading" secondItem="hcZ-zf-voZ" secondAttribute="leading" constant="25" id="Xpn-8C-0hP"/>
                     <constraint firstItem="WEB-iV-euW" firstAttribute="top" secondItem="rP4-0S-amn" secondAttribute="bottom" constant="8" id="bM4-Su-gnN"/>
                     <constraint firstItem="rP4-0S-amn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hcZ-zf-voZ" secondAttribute="top" constant="10" id="vnn-WW-8C0"/>

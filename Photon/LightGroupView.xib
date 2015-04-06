@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResourceViewController">
@@ -31,12 +31,23 @@
                         <outlet property="delegate" destination="-1" id="WZ2-zB-IkR"/>
                     </connections>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9W-y8-U7x">
-                    <rect key="frame" x="523" y="550" width="57" height="30"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                    <state key="normal" title="Settings">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9W-y8-U7x">
+                    <rect key="frame" x="529" y="529" width="56" height="56"/>
+                    <state key="normal" image="settings">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                            <size key="value" width="0.0" height="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="settingsButtonPressed:" destination="-1" eventType="touchUpInside" id="cV5-vc-m13"/>
                     </connections>
@@ -44,13 +55,16 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="t9W-y8-U7x" secondAttribute="bottom" constant="20" id="543-wX-Z9L"/>
+                <constraint firstAttribute="bottom" secondItem="t9W-y8-U7x" secondAttribute="bottom" constant="15" id="543-wX-Z9L"/>
                 <constraint firstItem="0sA-tG-14p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7sf-8e-ATA"/>
                 <constraint firstAttribute="bottom" secondItem="0sA-tG-14p" secondAttribute="bottom" id="DxO-TV-7tv"/>
-                <constraint firstAttribute="trailing" secondItem="t9W-y8-U7x" secondAttribute="trailing" constant="20" id="OPP-o0-Q9w"/>
+                <constraint firstAttribute="trailing" secondItem="t9W-y8-U7x" secondAttribute="trailing" constant="15" id="OPP-o0-Q9w"/>
                 <constraint firstItem="0sA-tG-14p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Oj5-ND-N0P"/>
                 <constraint firstAttribute="trailing" secondItem="0sA-tG-14p" secondAttribute="trailing" id="xvp-yT-tR7"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="settings" width="56" height="56"/>
+    </resources>
 </document>
