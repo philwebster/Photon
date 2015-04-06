@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,25 +10,18 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOE-NY-zOU">
-                    <rect key="frame" x="20" y="289" width="63" height="20.5"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOE-NY-zOU">
+                    <rect key="frame" x="0.0" y="279" width="600" height="41"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                    <color key="textColor" red="0.0078431372550000003" green="0.0078431372550000003" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06y-Xa-cQf">
-                    <rect key="frame" x="550" y="285" width="30" height="30"/>
-                    <state key="normal" title="Edit">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
             </subviews>
-            <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.94994920490000001" green="0.94997149709999995" blue="0.94995945690000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="aOE-NY-zOU" secondAttribute="centerY" constant="0.5" id="8uW-1l-c0F"/>
-                <constraint firstAttribute="trailing" secondItem="06y-Xa-cQf" secondAttribute="trailing" constant="20" id="LsM-GI-5RI"/>
-                <constraint firstAttribute="centerY" secondItem="06y-Xa-cQf" secondAttribute="centerY" id="eeR-xZ-RUs"/>
-                <constraint firstItem="aOE-NY-zOU" firstAttribute="leading" secondItem="HFL-6V-1dR" secondAttribute="leading" constant="20" id="iy4-ZI-vUL"/>
+                <constraint firstAttribute="trailing" secondItem="aOE-NY-zOU" secondAttribute="trailing" id="451-Tt-DaT"/>
+                <constraint firstAttribute="centerY" secondItem="aOE-NY-zOU" secondAttribute="centerY" id="8uW-1l-c0F"/>
+                <constraint firstItem="aOE-NY-zOU" firstAttribute="leading" secondItem="HFL-6V-1dR" secondAttribute="leading" id="Hck-fD-hPd"/>
             </constraints>
             <point key="canvasLocation" x="566" y="273"/>
         </view>

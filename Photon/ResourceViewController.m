@@ -9,7 +9,6 @@
 #import "ResourceViewController.h"
 #import "GroupListViewController.h"
 #import "SceneListViewController.h"
-#import "PNColorPickerView.h"
 #import "PNAppDelegate.h"
 #import "PNLightController.h"
 #import "ResourceCollectionViewCell.h"

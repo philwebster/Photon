@@ -27,7 +27,6 @@
 		D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38C16471A68DE96006FE974 /* LaunchScreen.xib */; };
 		D38C16551A68DE96006FE974 /* PhotonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C16541A68DE96006FE974 /* PhotonTests.m */; };
 		D39A902F1AB9DC92003E0760 /* UIColor+PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */; };
-		D3B90BB01A6F77E50062E355 /* PNColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B90BAF1A6F77E50062E355 /* PNColorPickerView.m */; };
 		D3B90BB21A6F902F0062E355 /* LightGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3B90BB11A6F902F0062E355 /* LightGroupView.xib */; };
 		D3BA63271A6B5F6100095EF7 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */; };
 		D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632A1A6B664600095EF7 /* DDAbstractDatabaseLogger.m */; };
@@ -150,8 +149,6 @@
 		D38C164E1A68DE96006FE974 /* PhotonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16531A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C16541A68DE96006FE974 /* PhotonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotonTests.m; sourceTree = "<group>"; };
-		D3B90BAE1A6F77E50062E355 /* PNColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNColorPickerView.h; sourceTree = "<group>"; };
-		D3B90BAF1A6F77E50062E355 /* PNColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNColorPickerView.m; sourceTree = "<group>"; };
 		D3B90BB11A6F902F0062E355 /* LightGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightGroupView.xib; sourceTree = "<group>"; };
 		D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		D3BA63291A6B664600095EF7 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
@@ -385,8 +382,8 @@
 			isa = PBXGroup;
 			children = (
 				D3B90BB11A6F902F0062E355 /* LightGroupView.xib */,
-				D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */,
 				D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */,
+				D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */,
 				D3FB694F1A6CF7080068945E /* SetupViewController.xib */,
 				D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */,
 				D3EC3D3F1AD08C0F00B29301 /* PNBrightnessCell.xib */,
@@ -396,8 +393,6 @@
 				D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */,
 				D3C487EC1A8088B000ED9EDC /* PNColorView.h */,
 				D3C487ED1A8088B000ED9EDC /* PNColorView.m */,
-				D3B90BAE1A6F77E50062E355 /* PNColorPickerView.h */,
-				D3B90BAF1A6F77E50062E355 /* PNColorPickerView.m */,
 				D3EC3D411AD08DB200B29301 /* PNBrightnessCell.h */,
 				D3EC3D421AD08DB200B29301 /* PNBrightnessCell.m */,
 			);
@@ -712,7 +707,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3D4561F1A8B163000219219 /* UIColor+PNUtilities.m in Sources */,
-				D3B90BB01A6F77E50062E355 /* PNColorPickerView.m in Sources */,
 				D38C163E1A68DE96006FE974 /* PNAppDelegate.m in Sources */,
 				D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */,
 				D3EC3D431AD08DB200B29301 /* PNBrightnessCell.m in Sources */,
