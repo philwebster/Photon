@@ -9,6 +9,8 @@
 #import "PNBrightnessPickerVC.h"
 #import "PNLightController.h"
 
+#define MAX_BRIGHTNESS 254
+
 @interface PNBrightnessPickerVC ()
 
 @property UISlider *mainSlider;
@@ -31,9 +33,9 @@
     self.view.backgroundColor = [UIColor blackColor];
     self.mainSlider = [[UISlider alloc] init];
     self.mainSlider.minimumValue = 0;
-    self.mainSlider.maximumValue = 255;
+    self.mainSlider.maximumValue = MAX_BRIGHTNESS;
     self.mainSlider.continuous = YES;
-    self.mainSlider.value = 255;
+    self.mainSlider.value = MAX_BRIGHTNESS;
     [self.mainSlider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
     
     self.table = [[UITableView alloc] initWithFrame:self.view.frame];
@@ -105,7 +107,7 @@
         UISlider *slider = cell.resourceBrightnessSlider;
         PHLight *light = (PHLight *)cell.resource;
         [self.lightBrightnessValues setObject:[NSNumber numberWithFloat:slider.value] forKey:light.identifier];
-        [self.lightBrightnessInitialValues setObject:[NSNumber numberWithFloat:slider.value] forKey:light.identifier];
+        self.lightBrightnessInitialValues = [self.lightBrightnessValues mutableCopy];
         self.mainSlider.value = self.initialMainSliderValue = [self averageBrightness:self.lightBrightnessValues];
     }
     if (sender == self.mainSlider) {
@@ -115,8 +117,8 @@
             CGFloat initialBrightness = [[weakSelf.lightBrightnessInitialValues objectForKey:lightID] floatValue];
             if (weakSelf.mainSlider.value >= weakSelf.initialMainSliderValue) {
                 // initial value + difference * percent
-                CGFloat difference = 255.0 - initialBrightness;
-                newBrightness = initialBrightness + difference * ((weakSelf.mainSlider.value - weakSelf.initialMainSliderValue) / (255.0 - weakSelf.initialMainSliderValue));
+                CGFloat difference = MAX_BRIGHTNESS - initialBrightness;
+                newBrightness = initialBrightness + difference * ((weakSelf.mainSlider.value - weakSelf.initialMainSliderValue) / (MAX_BRIGHTNESS - weakSelf.initialMainSliderValue));
             } else {
                 // initial value - difference * percent
                 newBrightness = initialBrightness - initialBrightness * (1 - (weakSelf.mainSlider.value / weakSelf.initialMainSliderValue));

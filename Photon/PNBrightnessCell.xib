@@ -13,7 +13,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KPG-Rb-WCb" id="hcZ-zf-voZ">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <slider opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="WEB-iV-euW">
+                    <slider opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="254" translatesAutoresizingMaskIntoConstraints="NO" id="WEB-iV-euW">
                         <rect key="frame" x="21" y="64.5" width="362" height="31"/>
                         <connections>
                             <action selector="sliderSlid:" destination="KPG-Rb-WCb" eventType="valueChanged" id="zeO-uR-Nvh"/>
