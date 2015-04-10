@@ -15,6 +15,7 @@
                 <subviews>
                     <slider opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="254" translatesAutoresizingMaskIntoConstraints="NO" id="WEB-iV-euW">
                         <rect key="frame" x="23" y="74.5" width="358" height="31"/>
+                        <color key="tintColor" red="0.61427843569999996" green="0.6142932177" blue="0.6142852902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <action selector="sliderSlid:" destination="KPG-Rb-WCb" eventType="valueChanged" id="zeO-uR-Nvh"/>
                         </connections>
@@ -22,7 +23,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rP4-0S-amn">
                         <rect key="frame" x="25" y="45.5" width="42" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.37695565819740295" green="0.37702551484107971" blue="0.37695124745368958" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>

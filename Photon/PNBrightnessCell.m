@@ -18,6 +18,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [self.resourceBrightnessSlider setThumbImage:[UIImage imageNamed:@"slider"] forState:UIControlStateNormal];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

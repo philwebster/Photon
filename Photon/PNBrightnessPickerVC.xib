@@ -22,6 +22,7 @@
                 </tableView>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cZk-GZ-1Qh">
                     <rect key="frame" x="23" y="50" width="554" height="31"/>
+                    <color key="tintColor" red="0.61427843569999996" green="0.6142932177" blue="0.6142852902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </slider>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

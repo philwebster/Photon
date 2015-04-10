@@ -22,6 +22,7 @@
 @property (nonatomic) UIButton *offButton;
 @property (nonatomic) UILabel *resourceLabel;
 @property PNBrightnessPickerVC *brightnessPicker;
+@property (nonatomic, assign) BOOL shouldShowBrightness;
 
 @end
 
@@ -46,6 +47,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.doneButton];
     
     [self.view addSubview:self.resourceLabel];
@@ -64,10 +66,13 @@
     self.focusedView = _naturalColorView;
     
     UIView *brightnessView = self.brightnessPicker.view;
-    brightnessView.frame = self.view.frame;
-//    [self.view insertSubview:brightnessView atIndex:0];
-    
+//    brightnessView.frame = self.view.frame;
+    [brightnessView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self addChildViewController:self.brightnessPicker];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:brightnessView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_doneButton attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[brightnessView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(brightnessView)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[brightnessView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(brightnessView)]];
 }
 
 - (void)addChildViewController:(UIViewController *)childController {
@@ -82,6 +87,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [self.naturalColorView becomeFirstResponder];
     [self clearButtonBackgrounds];
+    self.shouldShowBrightness = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -96,11 +102,13 @@
 - (void)colorSelected:(UIColor *)color {
     NSLog(@"Setting color: %@ for resource: %@", color, self.resource.name);
     [self.lightController setColor:color forResource:self.resource];
+    self.shouldShowBrightness = YES;
 }
 
 - (void)naturalColorSelected:(NSNumber *)colorTemp {
     NSLog(@"Setting natural color: %@ for resource: %@", colorTemp, self.resource.name);
     [self.lightController setNaturalColor:colorTemp forResource:self.resource];
+    self.shouldShowBrightness = YES;
 }
 
 - (void)brightnessUpdated:(NSNumber *)brightness {
@@ -111,12 +119,13 @@
 - (void)tappedOffButton {
     NSLog(@"Setting resource off: %@", self.resource.name);
     [self.lightController setResourceOff:self.resource];
-    [self animateOutWithBrightness:NO];
+    self.shouldShowBrightness = NO;
+    [self animateOut];
 }
 
 - (void)tappedDoneButton {
     NSLog(@"Tapped done button");
-    [self animateOutWithBrightness:YES];
+    [self animateOut];
 }
 
 - (void)tapAtPoint:(CGPoint)p {
@@ -152,7 +161,7 @@
     if (!_resourceLabel) {
         _resourceLabel = [UILabel new];
         [_resourceLabel setTextAlignment:NSTextAlignmentCenter];
-        [_resourceLabel setTextColor:[UIColor whiteColor]];
+        [_resourceLabel setTextColor:[UIColor colorWithRed:0.377 green:0.377 blue:0.377 alpha:1]];
         [_resourceLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     }
     return _resourceLabel;
@@ -163,7 +172,7 @@
         _doneButton = [UIButton new];
         [_doneButton.titleLabel setFont:[_doneButton.titleLabel.font fontWithSize:24]];
         [_doneButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        [_doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_doneButton setTitleColor:[UIColor colorWithRed:0.377 green:0.377 blue:0.377 alpha:1] forState:UIControlStateNormal];
         [_doneButton setTitle:@"DONE" forState:UIControlStateNormal];
         [_doneButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_doneButton addTarget:self action:@selector(tappedDoneButton) forControlEvents:UIControlEventTouchUpInside];
@@ -175,7 +184,7 @@
     if (!_offButton) {
         _offButton = [UIButton new];
         [_offButton.titleLabel setFont:[_offButton.titleLabel.font fontWithSize:24]];
-        [_offButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_offButton setTitleColor:[UIColor colorWithRed:0.377 green:0.377 blue:0.377 alpha:1] forState:UIControlStateNormal];
         [_offButton setTitle:@"OFF" forState:UIControlStateNormal];
         [_offButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_offButton addTarget:self action:@selector(tappedOffButton) forControlEvents:UIControlEventTouchUpInside];
@@ -184,9 +193,14 @@
 }
 
 - (void)dismissView {
-    [self.view removeFromSuperview];
-    self.naturalColorView.touchedView = nil;
-    [self.colorDelegate dismissedColorPicker];
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [self.view removeFromSuperview];
+        self.view.alpha = 1.0;
+        self.naturalColorView.touchedView = nil;
+        [self.colorDelegate dismissedColorPicker];
+    }];
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
@@ -198,16 +212,28 @@
             [self tappedOffButton];
             showBrightness = NO;
         }
-        [self animateOutWithBrightness:showBrightness];
+        [self animateOut];
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         self.naturalColorView.longPressMode = YES;
         [self tapAtPoint:p];
     }
 }
 
-- (void)animateOutWithBrightness:(BOOL)showBrightnessPicker {
+//- (void)animateOutWithBrightness:(BOOL)showBrightnessPicker {
+//    [self animateCard:_naturalColorView direction:NO completion:^{
+//        if (showBrightnessPicker) {
+//            [self.view bringSubviewToFront:self.brightnessPicker.view];
+//            self.brightnessPicker.view.hidden = NO;
+//            [self.brightnessPicker startFadingAfterInterval:5.0];
+//        } else {
+//            [self dismissView];
+//        }
+//    }];
+//}
+
+- (void)animateOut {
     [self animateCard:_naturalColorView direction:NO completion:^{
-        if (showBrightnessPicker) {
+        if (self.shouldShowBrightness) {
             [self.view bringSubviewToFront:self.brightnessPicker.view];
             self.brightnessPicker.view.hidden = NO;
             [self.brightnessPicker startFadingAfterInterval:5.0];
@@ -215,7 +241,9 @@
             [self dismissView];
         }
     }];
+    
 }
+
 
 - (NSLayoutConstraint *)topConstraintForView:(UIView *)view {
     NSLayoutConstraint *topConstraint;
@@ -239,9 +267,9 @@
     [self.view addConstraint:newTopConstraint];
     [UIView animateWithDuration:0.2 animations:^{
         if (direction) {
-            self.view.backgroundColor = [UIColor blackColor];
+            self.view.backgroundColor = [UIColor whiteColor];
         } else {
-            self.view.backgroundColor = [UIColor clearColor];
+            self.view.backgroundColor = [UIColor whiteColor];
         }
         [self clearButtonBackgrounds];
         [self.view layoutIfNeeded];

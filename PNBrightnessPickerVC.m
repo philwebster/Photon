@@ -34,6 +34,7 @@
     self.mainSlider.maximumValue = MAX_BRIGHTNESS;
     self.mainSlider.continuous = YES;
     self.mainSlider.value = MAX_BRIGHTNESS;
+    [self.mainSlider setThumbImage:[UIImage imageNamed:@"slider"] forState:UIControlStateNormal];
     [self.mainSlider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
     
     self.table.dataSource = self;
