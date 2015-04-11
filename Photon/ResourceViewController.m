@@ -110,7 +110,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 0) {
-        return [self.lightController.groups count];
+        return [self.lightController.groups count] + 1;
     } else if (section == 1) {
         return [self.lightController.lights count];
     } else if (section == 2) {
@@ -124,8 +124,12 @@
     
     if (indexPath.section == 0) {
         NSArray *groups = self.lightController.groups;
-        // TODO: Add a default All group if user doesn't already have one
-        cell.resourceTitleLabel.text = [groups[indexPath.row] name];
+        if (indexPath.row == groups.count) {
+            cell.resourceTitleLabel.text = @"+";
+        } else {
+            // TODO: Add a default All group if user doesn't already have one
+            cell.resourceTitleLabel.text = [groups[indexPath.row] name];
+        }
     } else if (indexPath.section == 1) {
         NSArray *lights = self.lightController.lights;
         cell.resourceTitleLabel.text = [lights[indexPath.row] name];
@@ -167,9 +171,13 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.recognizer.enabled = NO;
     if (indexPath.section == 0) {
-        self.colorPickerVC.resource = self.lightController.groups[indexPath.row];
-        [self addChildViewController:self.colorPickerVC];
-        [self.view addSubview:self.colorPickerVC.view];
+        if (indexPath.row == self.lightController.groups.count) {
+            [self addGroupTapped];
+        } else {
+            self.colorPickerVC.resource = self.lightController.groups[indexPath.row];
+            [self addChildViewController:self.colorPickerVC];
+            [self.view addSubview:self.colorPickerVC.view];
+        }
     } else if (indexPath.section == 1) {
         self.colorPickerVC.resource = self.lightController.lights[indexPath.row];
         [self addChildViewController:self.colorPickerVC];
@@ -221,6 +229,13 @@
 }
 
 - (void)editGroupsTapped {
+    UINavigationController *navController = [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
+    self.groupListVC = [[GroupListViewController alloc] init];
+    [navController setNavigationBarHidden:NO];
+    [navController pushViewController:self.groupListVC animated:YES];
+}
+
+- (void)addGroupTapped {
     UINavigationController *navController = [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
     self.groupListVC = [[GroupListViewController alloc] init];
     [navController setNavigationBarHidden:NO];
