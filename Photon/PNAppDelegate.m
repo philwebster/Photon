@@ -76,6 +76,13 @@
      *****************************************************/
     
     [self enableLocalHeartbeat];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    NSData *cacheData = [[NSUserDefaults standardUserDefaults] objectForKey:@"phBridgeResourcesCache"];
+    NSString *deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"uniqueGlobalDeviceIdentifier"];
+    [sharedDefaults setObject:cacheData forKey:@"phBridgeResourcesCache"];
+    [sharedDefaults setObject:deviceID forKey:@"uniqueGlobalDeviceIdentifier"];
+    [sharedDefaults synchronize];
+
 
     return YES;
 }
@@ -161,6 +168,12 @@
             [self.noConnectionAlert dismissWithClickedButtonIndex:[self.noConnectionAlert cancelButtonIndex] animated:YES];
             self.noConnectionAlert = nil;
         }
+        NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+        NSData *cacheData = [[NSUserDefaults standardUserDefaults] objectForKey:@"phBridgeResourcesCache"];
+        NSString *deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"uniqueGlobalDeviceIdentifier"];
+        [sharedDefaults setObject:cacheData forKey:@"phBridgeResourcesCache"];
+        [sharedDefaults setObject:deviceID forKey:@"uniqueGlobalDeviceIdentifier"];
+        [sharedDefaults synchronize];
     }
 }
 

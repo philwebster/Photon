@@ -46,6 +46,26 @@
 - (void)willActivate {
     // This method is called when watch view controller is about to be visible to user
     [super willActivate];
+
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    NSData *cacheData = [sharedDefaults dataForKey:@"phBridgeResourcesCache"];
+    NSString *deviceID = [sharedDefaults stringForKey:@"uniqueGlobalDeviceIdentifier"];
+    [[NSUserDefaults standardUserDefaults] setObject:cacheData forKey:@"phBridgeResourcesCache"];
+    [[NSUserDefaults standardUserDefaults] setObject:deviceID forKey:@"uniqueGlobalDeviceIdentifier"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    self.sdk = [[PHHueSDK alloc] init];
+    [self.sdk startUpSDK];
+//    [self.sdk enableLogging:YES];
+    
+    PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
+    if (cache != nil && cache.bridgeConfiguration != nil && cache.bridgeConfiguration.ipaddress != nil) {
+        [self.sdk enableLocalConnection];
+    } else {
+        NSLog(@"need to set up with iPhone first");
+    }
+
+    
     [self loadResourceItems];
 }
 
