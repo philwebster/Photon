@@ -28,7 +28,6 @@
 		D38C16551A68DE96006FE974 /* PhotonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C16541A68DE96006FE974 /* PhotonTests.m */; };
 		D39A902F1AB9DC92003E0760 /* UIColor+PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */; };
 		D3B90BB21A6F902F0062E355 /* LightGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3B90BB11A6F902F0062E355 /* LightGroupView.xib */; };
-		D3BA63271A6B5F6100095EF7 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */; };
 		D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632A1A6B664600095EF7 /* DDAbstractDatabaseLogger.m */; };
 		D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632C1A6B664600095EF7 /* DDASLLogger.m */; };
 		D3BA633A1A6B664600095EF7 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632E1A6B664600095EF7 /* DDFileLogger.m */; };
@@ -44,7 +43,6 @@
 		D3C53A171AB9826A00D8F6DF /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63321A6B664600095EF7 /* DDTTYLogger.m */; };
 		D3D4561F1A8B163000219219 /* UIColor+PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */; };
 		D3DF823C1A7425B1001AD7DB /* PNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PNLightController.m */; };
-		D3DF823D1A7425CF001AD7DB /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */; };
 		D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63301A6B664600095EF7 /* DDLog.m */; };
 		D3EC3D401AD08C0F00B29301 /* PNBrightnessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3EC3D3F1AD08C0F00B29301 /* PNBrightnessCell.xib */; };
 		D3EC3D431AD08DB200B29301 /* PNBrightnessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EC3D421AD08DB200B29301 /* PNBrightnessCell.m */; };
@@ -150,7 +148,6 @@
 		D38C16531A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C16541A68DE96006FE974 /* PhotonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotonTests.m; sourceTree = "<group>"; };
 		D3B90BB11A6F902F0062E355 /* LightGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightGroupView.xib; sourceTree = "<group>"; };
-		D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		D3BA63291A6B664600095EF7 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		D3BA632A1A6B664600095EF7 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		D3BA632B1A6B664600095EF7 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
@@ -202,7 +199,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3DF823D1A7425CF001AD7DB /* HueSDK_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +206,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3BA63271A6B5F6100095EF7 /* HueSDK_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +287,6 @@
 				D3BA96821AB9EC0A0026F77A /* PhotonLightControllerTests */,
 				D38C16361A68DE96006FE974 /* Products */,
 				D3BA63281A6B664600095EF7 /* Lumberjack */,
-				D3BA63261A6B5F6100095EF7 /* HueSDK_iOS.framework */,
 			);
 			sourceTree = "<group>";
 		};
