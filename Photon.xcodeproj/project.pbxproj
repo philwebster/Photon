@@ -21,6 +21,8 @@
 		D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */; };
 		D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */; };
 		D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */; };
+		D380F1861AE2F03F00D846B9 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */; };
+		D380F1871AE2F04F00D846B9 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */; };
 		D38C163B1A68DE96006FE974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163A1A68DE96006FE974 /* main.m */; };
 		D38C163E1A68DE96006FE974 /* PNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163D1A68DE96006FE974 /* PNAppDelegate.m */; };
 		D38C16461A68DE96006FE974 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D38C16451A68DE96006FE974 /* Images.xcassets */; };
@@ -137,6 +139,7 @@
 		D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupListViewController.m; sourceTree = "<group>"; };
 		D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditGroupViewController.h; sourceTree = "<group>"; };
 		D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditGroupViewController.m; sourceTree = "<group>"; };
+		D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		D38C16351A68DE96006FE974 /* Photon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16391A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C163A1A68DE96006FE974 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -199,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D380F1871AE2F04F00D846B9 /* HueSDK_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D380F1861AE2F03F00D846B9 /* HueSDK_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +292,7 @@
 				D3BA96821AB9EC0A0026F77A /* PhotonLightControllerTests */,
 				D38C16361A68DE96006FE974 /* Products */,
 				D3BA63281A6B664600095EF7 /* Lumberjack */,
+				D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */,
 			);
 			sourceTree = "<group>";
 		};
