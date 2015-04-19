@@ -142,6 +142,9 @@
     NSArray *resources;
     if (indexPath.section == 0) {
         resources = self.lightController.groups;
+        if (indexPath.row == resources.count) {
+            return nil;
+        }
     } else if (indexPath.section == 1) {
         resources = self.lightController.lights;
     } else if (indexPath.section == 2) {
@@ -207,6 +210,9 @@
             return;
         }
         _selectedResource = [self bridgeResourceForIndexPath:indexPath];
+        if (!_selectedResource) {
+            return;
+        }
         self.colorPickerVC.resource = _selectedResource;
         [self addChildViewController:self.colorPickerVC];
         [self.view addSubview:self.colorPickerVC.view];
