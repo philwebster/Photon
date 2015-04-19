@@ -236,4 +236,37 @@
     return allLightsGroup;
 }
 
+- (void)updateGroup:(PHGroup *)group completion:(void (^)())completion {
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    [bridgeSendAPI updateGroupWithGroup:group completionHandler:^(NSArray *errors) {
+        if (!errors){
+            // Update successful
+            NSLog(@"successfully updated group");
+            if (completion) {
+                completion();
+            }
+        } else {
+            // Error occurred
+            NSLog(@"didn't update group");
+        }
+    }];
+}
+
+- (void)createNewGroupWithName:(NSString *)name lightIds:(NSArray *)lightIds completion:(void (^)())completion {
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    [bridgeSendAPI createGroupWithName:name lightIds:lightIds completionHandler:^(NSString *groupIdentifier, NSArray *errors) {
+        if (!errors){
+            // Create successful
+            NSLog(@"successfully created group");
+            if (completion) {
+                completion();
+            }
+        } else {
+            // Error occurred
+            NSLog(@"didn't create group");
+        }
+    }];
+}
+
+
 @end

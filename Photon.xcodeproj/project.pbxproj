@@ -19,8 +19,8 @@
 		D34FB2BD1A71714700DB659E /* Photon WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D36AAE621AACED8200EE0C2A /* PNBrightnessPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D36AAE611AACED8200EE0C2A /* PNBrightnessPickerVC.m */; };
 		D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */; };
-		D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */; };
-		D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */; };
+		D37BE56E1AE4302A006D4605 /* PNEditGroupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE56C1AE4302A006D4605 /* PNEditGroupVC.m */; };
+		D37BE56F1AE4302A006D4605 /* PNEditGroupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D37BE56D1AE4302A006D4605 /* PNEditGroupVC.xib */; };
 		D380F1861AE2F03F00D846B9 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */; };
 		D380F1871AE2F04F00D846B9 /* HueSDK_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */; };
 		D38C163B1A68DE96006FE974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163A1A68DE96006FE974 /* main.m */; };
@@ -29,6 +29,8 @@
 		D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38C16471A68DE96006FE974 /* LaunchScreen.xib */; };
 		D38C16551A68DE96006FE974 /* PhotonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C16541A68DE96006FE974 /* PhotonTests.m */; };
 		D39A902F1AB9DC92003E0760 /* UIColor+PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */; };
+		D3A8936E1AE42B3E00B230E1 /* PNGroupListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A8936C1AE42B3E00B230E1 /* PNGroupListVC.m */; };
+		D3A8936F1AE42B3E00B230E1 /* PNGroupListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3A8936D1AE42B3E00B230E1 /* PNGroupListVC.xib */; };
 		D3B90BB21A6F902F0062E355 /* LightGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3B90BB11A6F902F0062E355 /* LightGroupView.xib */; };
 		D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632A1A6B664600095EF7 /* DDAbstractDatabaseLogger.m */; };
 		D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632C1A6B664600095EF7 /* DDASLLogger.m */; };
@@ -135,10 +137,9 @@
 		D36AAE601AACED8200EE0C2A /* PNBrightnessPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNBrightnessPickerVC.h; path = ../PNBrightnessPickerVC.h; sourceTree = "<group>"; };
 		D36AAE611AACED8200EE0C2A /* PNBrightnessPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNBrightnessPickerVC.m; path = ../PNBrightnessPickerVC.m; sourceTree = "<group>"; };
 		D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResourceCollectionHeaderReusableView.xib; sourceTree = "<group>"; };
-		D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupListViewController.h; sourceTree = "<group>"; };
-		D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupListViewController.m; sourceTree = "<group>"; };
-		D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditGroupViewController.h; sourceTree = "<group>"; };
-		D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditGroupViewController.m; sourceTree = "<group>"; };
+		D37BE56B1AE4302A006D4605 /* PNEditGroupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNEditGroupVC.h; sourceTree = "<group>"; };
+		D37BE56C1AE4302A006D4605 /* PNEditGroupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNEditGroupVC.m; sourceTree = "<group>"; };
+		D37BE56D1AE4302A006D4605 /* PNEditGroupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNEditGroupVC.xib; sourceTree = "<group>"; };
 		D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_iOS.framework; sourceTree = "<group>"; };
 		D38C16351A68DE96006FE974 /* Photon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16391A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -150,6 +151,9 @@
 		D38C164E1A68DE96006FE974 /* PhotonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16531A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C16541A68DE96006FE974 /* PhotonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotonTests.m; sourceTree = "<group>"; };
+		D3A8936B1AE42B3E00B230E1 /* PNGroupListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNGroupListVC.h; sourceTree = "<group>"; };
+		D3A8936C1AE42B3E00B230E1 /* PNGroupListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNGroupListVC.m; sourceTree = "<group>"; };
+		D3A8936D1AE42B3E00B230E1 /* PNGroupListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNGroupListVC.xib; sourceTree = "<group>"; };
 		D3B90BB11A6F902F0062E355 /* LightGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightGroupView.xib; sourceTree = "<group>"; };
 		D3BA63291A6B664600095EF7 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		D3BA632A1A6B664600095EF7 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
@@ -370,10 +374,10 @@
 				D3FB69531A6D0D810068945E /* ResourceViewController.m */,
 				D3FB694D1A6CF7080068945E /* SetupViewController.h */,
 				D3FB694E1A6CF7080068945E /* SetupViewController.m */,
-				D37BE8CA1A6D45F200C67CE5 /* GroupListViewController.h */,
-				D37BE8CB1A6D45F200C67CE5 /* GroupListViewController.m */,
-				D37BE8CD1A6D4BD600C67CE5 /* EditGroupViewController.h */,
-				D37BE8CE1A6D4BD600C67CE5 /* EditGroupViewController.m */,
+				D3A8936B1AE42B3E00B230E1 /* PNGroupListVC.h */,
+				D3A8936C1AE42B3E00B230E1 /* PNGroupListVC.m */,
+				D37BE56B1AE4302A006D4605 /* PNEditGroupVC.h */,
+				D37BE56C1AE4302A006D4605 /* PNEditGroupVC.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -386,6 +390,8 @@
 				D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */,
 				D3FB694F1A6CF7080068945E /* SetupViewController.xib */,
 				D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */,
+				D3A8936D1AE42B3E00B230E1 /* PNGroupListVC.xib */,
+				D37BE56D1AE4302A006D4605 /* PNEditGroupVC.xib */,
 				D3EC3D3F1AD08C0F00B29301 /* PNBrightnessCell.xib */,
 				D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */,
 				D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */,
@@ -660,6 +666,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3B90BB21A6F902F0062E355 /* LightGroupView.xib in Resources */,
+				D3A8936F1AE42B3E00B230E1 /* PNGroupListVC.xib in Resources */,
+				D37BE56F1AE4302A006D4605 /* PNEditGroupVC.xib in Resources */,
 				D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */,
 				D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */,
 				D38C16461A68DE96006FE974 /* Images.xcassets in Resources */,
@@ -711,12 +719,13 @@
 				D3BA63391A6B664600095EF7 /* DDASLLogger.m in Sources */,
 				D3EC3D431AD08DB200B29301 /* PNBrightnessCell.m in Sources */,
 				D3FB69501A6CF7080068945E /* SetupViewController.m in Sources */,
+				D37BE56E1AE4302A006D4605 /* PNEditGroupVC.m in Sources */,
 				D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */,
 				D3ED38591A7ED43F000CE316 /* SceneListViewController.m in Sources */,
 				D36AAE621AACED8200EE0C2A /* PNBrightnessPickerVC.m in Sources */,
 				D3BA633D1A6B664600095EF7 /* ContextFilterLogFormatter.m in Sources */,
 				D3BA633C1A6B664600095EF7 /* DDTTYLogger.m in Sources */,
-				D37BE8CC1A6D45F200C67CE5 /* GroupListViewController.m in Sources */,
+				D3A8936E1AE42B3E00B230E1 /* PNGroupListVC.m in Sources */,
 				D3ED38501A7DAD30000CE316 /* ResourceCollectionViewCell.m in Sources */,
 				D3FB69551A6D0D810068945E /* ResourceViewController.m in Sources */,
 				D3BA633A1A6B664600095EF7 /* DDFileLogger.m in Sources */,
@@ -725,7 +734,6 @@
 				D38C163B1A68DE96006FE974 /* main.m in Sources */,
 				D3EC69D41AABF2EF00DE4C65 /* PNUtilities.m in Sources */,
 				D3BA633E1A6B664600095EF7 /* DispatchQueueLogFormatter.m in Sources */,
-				D37BE8CF1A6D4BD600C67CE5 /* EditGroupViewController.m in Sources */,
 				D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */,
 				D3C487EE1A8088B000ED9EDC /* PNColorView.m in Sources */,
 				D3C33B331A738AD10008EAFA /* PNLightController.m in Sources */,
