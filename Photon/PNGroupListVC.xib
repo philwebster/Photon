@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PNGroupListVC">
             <connections>
                 <outlet property="backButton" destination="qjL-AA-Qi5" id="3RO-m5-Wxt"/>
+                <outlet property="lightGroupTable" destination="KrI-LP-cEE" id="AZq-M3-vbC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,6 +38,9 @@
                     <state key="normal" title="New Group">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="newGroupButtonPressed:" destination="-1" eventType="touchUpInside" id="OvR-l7-BUh"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UITextField *groupNameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteGroupButton;
+@property (weak, nonatomic) IBOutlet UITableView *lightTable;
 
 @end
 
@@ -39,6 +41,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.groupNameTextField.text = self.group.name ? self.group.name : @"New Group";
+    self.deleteGroupButton.enabled = self.group != nil;
+    self.saveButton.enabled = self.group != nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,6 +88,7 @@
         [self.selectedLights removeObject:[light identifier]];
     }
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self updateSaveButtonState];
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
@@ -95,20 +100,40 @@
         self.group.name = name;
         self.group.lightIdentifiers = lightIds;
         
-        [self.lightController updateGroup:self.group completion:^{
+        [self.lightController updateGroup:self.group completion:^(NSArray *errors) {
+            if (!errors){
+                NSLog(@"successfully updated group");
+            } else {
+                NSLog(@"error updating group");
+            }
             [self.navigationController popViewControllerAnimated:YES];
         }];
 
     } else {
         // We're creating a new group
-        [self.lightController createNewGroupWithName:name lightIds:lightIds completion:^{
+        [self.lightController createNewGroupWithName:name lightIds:lightIds completion:^(NSArray *errors) {
+            if (!errors){
+                NSLog(@"successfully created group");
+            } else {
+                NSLog(@"error creating group");
+            }
             [self.navigationController popViewControllerAnimated:YES];
         }];
     }
 }
 
+- (void)updateSaveButtonState {
+    self.saveButton.enabled = self.selectedLights.count > 0;
+}
+
 - (IBAction)backButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)deleteGroupButtonPressed:(id)sender {
+    [self.lightController deleteGroup:self.group completion:^(NSArray *errors) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 /*

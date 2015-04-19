@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property PNLightController *lightController;
+@property (weak, nonatomic) IBOutlet UITableView *lightGroupTable;
 
 @end
 
@@ -23,6 +24,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.lightController = [PNLightController singleton];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.lightGroupTable reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,16 +46,10 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //add code here for when you hit delete
-        
-        NSArray *groups = [[[PHBridgeResourcesReader readBridgeResourcesCache] groups] allValues];
-        NSString *groupID = [groups[indexPath.row] identifier];
-        
-        PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
         __weak UITableView *weakTableView = tableView;
-        [bridgeSendAPI removeGroupWithId:groupID completionHandler:^(NSArray *errors) {
-            if (!errors) {
-                [weakTableView reloadData];
-            }
+        [self.lightController deleteGroup:self.lightController.groups[indexPath.row] completion:^(NSArray *errors) {
+            // TODO: We're not handling any errors here
+            [weakTableView reloadData];
         }];
     }
 }
@@ -75,6 +74,10 @@
     [self.navigationController pushViewController:editVC animated:YES];
 }
 
+- (IBAction)newGroupButtonPressed:(id)sender {
+    PNEditGroupVC *editVC = [[PNEditGroupVC alloc] initWithGroup:nil];
+    [self.navigationController pushViewController:editVC animated:YES];
+}
 
 /*
 #pragma mark - Navigation

@@ -7,7 +7,6 @@
 //
 
 #import "ResourceViewController.h"
-#import "GroupListViewController.h"
 #import "SceneListViewController.h"
 #import "PNAppDelegate.h"
 #import "PNLightController.h"
@@ -17,8 +16,7 @@
 
 @interface ResourceViewController ()
 @property (nonatomic, strong) PNLightController *lightController;
-@property (nonatomic, strong) GroupListViewController *groupListVC;
-@property (nonatomic, strong) PNGroupListVC *ggroupListVC;
+@property (nonatomic, strong) PNGroupListVC *groupListVC;
 @property (nonatomic, strong) SceneListViewController *sceneListVC;
 @property (nonatomic, strong) UILongPressGestureRecognizer *recognizer;
 @property (nonatomic, strong) NSMutableDictionary *fakeGroups;
@@ -236,18 +234,14 @@
 
 - (void)editGroupsTapped {
     UINavigationController *navController = [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
-//    self.groupListVC = [[GroupListViewController alloc] init];
-    self.ggroupListVC = [[PNGroupListVC alloc] init];
-//    [navController setNavigationBarHidden:NO];
-    [navController pushViewController:self.ggroupListVC animated:YES];
+    self.groupListVC = [[PNGroupListVC alloc] init];
+    [navController pushViewController:self.groupListVC animated:YES];
 }
 
 - (void)addGroupTapped {
     UINavigationController *navController = [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] navigationController];
-    self.groupListVC = [[GroupListViewController alloc] init];
-    self.ggroupListVC = [[PNGroupListVC alloc] init];
-//    [navController setNavigationBarHidden:NO];
-    [navController pushViewController:self.ggroupListVC animated:YES];
+    self.groupListVC = [[PNGroupListVC alloc] init];
+    [navController pushViewController:self.groupListVC animated:YES];
 }
 
 - (void)editLightsTapped {

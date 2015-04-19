@@ -34,7 +34,8 @@
 - (PHLight *)lightWithId:(NSString *)lightId;
 - (NSNumber *)averageBrightnessForGroup:(PHGroup *)group;
 - (NSArray *)lightsForGroup:(PHGroup *)group;
-- (void)updateGroup:(PHGroup *)group completion:(void (^)())completion;
-- (void)createNewGroupWithName:(NSString *)name lightIds:(NSArray *)lightIds completion:(void (^)())completion;
+- (void)updateGroup:(PHGroup *)group completion:(void (^)(NSArray *errors))completion;
+- (void)createNewGroupWithName:(NSString *)name lightIds:(NSArray *)lightIds completion:(void (^)(NSArray *errors))completion;
+- (void)deleteGroup:(PHGroup *)group completion:(void (^)(NSArray *errors))completion;
 
 @end

@@ -7,7 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PNEditGroupVC">
             <connections>
                 <outlet property="backButton" destination="ESt-7d-q6H" id="ukD-Il-LPt"/>
+                <outlet property="deleteGroupButton" destination="svg-Oy-dtG" id="7oB-hj-nEI"/>
                 <outlet property="groupNameTextField" destination="S6S-WC-y4M" id="9an-Sh-Tbg"/>
+                <outlet property="lightTable" destination="Q2g-zD-cZx" id="2er-s3-dvC"/>
                 <outlet property="saveButton" destination="OEO-WZ-c6i" id="qiF-ui-ZYJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,8 +27,8 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Q2g-zD-cZx">
-                    <rect key="frame" x="0.0" y="110" width="600" height="490"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Q2g-zD-cZx">
+                    <rect key="frame" x="0.0" y="110" width="600" height="432"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Kny-gk-95j"/>
@@ -51,6 +53,15 @@
                         <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="N9p-n2-vZc"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svg-Oy-dtG">
+                    <rect key="frame" x="255" y="562" width="91" height="30"/>
+                    <state key="normal" title="Delete Group">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteGroupButtonPressed:" destination="-1" eventType="touchUpInside" id="LJd-Tj-iV1"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -59,9 +70,11 @@
                 <constraint firstItem="ESt-7d-q6H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Gt8-wM-xOn"/>
                 <constraint firstItem="S6S-WC-y4M" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="HeS-n2-dG6"/>
                 <constraint firstItem="Q2g-zD-cZx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ldj-fU-l6o"/>
+                <constraint firstAttribute="centerX" secondItem="svg-Oy-dtG" secondAttribute="centerX" id="LlI-NZ-jII"/>
                 <constraint firstAttribute="centerX" secondItem="S6S-WC-y4M" secondAttribute="centerX" id="Qro-UU-GX6"/>
                 <constraint firstItem="OEO-WZ-c6i" firstAttribute="top" secondItem="ESt-7d-q6H" secondAttribute="top" id="fAV-sx-eQ6"/>
-                <constraint firstAttribute="bottom" secondItem="Q2g-zD-cZx" secondAttribute="bottom" id="gBV-SD-tWB"/>
+                <constraint firstItem="svg-Oy-dtG" firstAttribute="top" secondItem="Q2g-zD-cZx" secondAttribute="bottom" constant="20" id="krj-h3-JHd"/>
+                <constraint firstAttribute="bottom" secondItem="svg-Oy-dtG" secondAttribute="bottom" constant="8" id="mYA-cC-6rr"/>
                 <constraint firstItem="Q2g-zD-cZx" firstAttribute="top" secondItem="S6S-WC-y4M" secondAttribute="bottom" constant="60" id="xvs-Fg-f1J"/>
                 <constraint firstItem="ESt-7d-q6H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="zle-nt-uPM"/>
             </constraints>

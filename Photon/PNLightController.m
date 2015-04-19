@@ -236,34 +236,29 @@
     return allLightsGroup;
 }
 
-- (void)updateGroup:(PHGroup *)group completion:(void (^)())completion {
+- (void)updateGroup:(PHGroup *)group completion:(void (^)(NSArray *errors))completion {
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     [bridgeSendAPI updateGroupWithGroup:group completionHandler:^(NSArray *errors) {
-        if (!errors){
-            // Update successful
-            NSLog(@"successfully updated group");
-            if (completion) {
-                completion();
-            }
-        } else {
-            // Error occurred
-            NSLog(@"didn't update group");
+        if (completion) {
+            completion(errors);
         }
     }];
 }
 
-- (void)createNewGroupWithName:(NSString *)name lightIds:(NSArray *)lightIds completion:(void (^)())completion {
+- (void)createNewGroupWithName:(NSString *)name lightIds:(NSArray *)lightIds completion:(void (^)(NSArray *errors))completion {
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     [bridgeSendAPI createGroupWithName:name lightIds:lightIds completionHandler:^(NSString *groupIdentifier, NSArray *errors) {
-        if (!errors){
-            // Create successful
-            NSLog(@"successfully created group");
-            if (completion) {
-                completion();
-            }
-        } else {
-            // Error occurred
-            NSLog(@"didn't create group");
+        if (completion) {
+            completion(errors);
+        }
+    }];
+}
+
+- (void)deleteGroup:(PHGroup *)group completion:(void (^)(NSArray *errors))completion {
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    [bridgeSendAPI removeGroupWithId:group.identifier completionHandler:^(NSArray *errors) {
+        if (completion) {
+            completion(errors);
         }
     }];
 }
