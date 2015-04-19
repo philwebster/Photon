@@ -219,18 +219,6 @@
     }
 }
 
-//- (void)animateOutWithBrightness:(BOOL)showBrightnessPicker {
-//    [self animateCard:_naturalColorView direction:NO completion:^{
-//        if (showBrightnessPicker) {
-//            [self.view bringSubviewToFront:self.brightnessPicker.view];
-//            self.brightnessPicker.view.hidden = NO;
-//            [self.brightnessPicker startFadingAfterInterval:5.0];
-//        } else {
-//            [self dismissView];
-//        }
-//    }];
-//}
-
 - (void)animateOut {
     [self animateCard:_naturalColorView direction:NO completion:^{
         if (self.shouldShowBrightness) {
@@ -243,7 +231,6 @@
     }];
     
 }
-
 
 - (NSLayoutConstraint *)topConstraintForView:(UIView *)view {
     NSLayoutConstraint *topConstraint;

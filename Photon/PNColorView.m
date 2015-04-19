@@ -17,6 +17,7 @@
 @property CAGradientLayer *gradLayer;
 @property BOOL isCT;
 @property BOOL isGradient;
+@property BOOL enableShakeGesture;
 
 @end
 
@@ -61,6 +62,7 @@
             self.isCT = YES;
         }
         self.isGradient = NO;
+        self.enableShakeGesture = NO;
         
         self.layer.cornerRadius = 9;
         self.layer.masksToBounds = YES;
@@ -91,7 +93,7 @@
 }
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-    if (event.subtype == UIEventSubtypeMotionShake) {
+    if (event.subtype == UIEventSubtypeMotionShake && self.enableShakeGesture) {
         self.isGradient = !self.isGradient;
         [UIView animateWithDuration:0.25 animations:^() {
             [self bringSubviewToFront:self.gradientView];
