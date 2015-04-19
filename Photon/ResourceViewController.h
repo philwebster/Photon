@@ -9,13 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PNColorPickerVC.h"
 
-@class PHHueSDK;
-
 @interface ResourceViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, colorPickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *lightGroupCollectionView;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil hueSDK:(PHHueSDK *)hueSdk;
-
 
 @end

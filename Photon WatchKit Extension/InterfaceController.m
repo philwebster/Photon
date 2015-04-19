@@ -54,9 +54,15 @@
     [[NSUserDefaults standardUserDefaults] setObject:deviceID forKey:@"uniqueGlobalDeviceIdentifier"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    self.sdk = [[PHHueSDK alloc] init];
+//    self.sdk = [[PHHueSDK alloc] init];
+    self.sdk = self.lightController.phHueSDK;
     [self.sdk startUpSDK];
 //    [self.sdk enableLogging:YES];
+    
+    PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
+    [notificationManager registerObject:self withSelector:@selector(localConnection) forNotification:LOCAL_CONNECTION_NOTIFICATION];
+    [notificationManager registerObject:self withSelector:@selector(noLocalConnection) forNotification:NO_LOCAL_CONNECTION_NOTIFICATION];
+    [notificationManager registerObject:self withSelector:@selector(notAuthenticated) forNotification:NO_LOCAL_AUTHENTICATION_NOTIFICATION];
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     if (cache != nil && cache.bridgeConfiguration != nil && cache.bridgeConfiguration.ipaddress != nil) {
@@ -109,7 +115,7 @@
 }
 
 - (void)allOffTapped {
-    NSLog(@"turn off all lights");
+    [self.lightController setResourceOff:self.lightController.allLightsGroup];
 }
 
 - (id)contextForSegueWithIdentifier:(NSString *)segueIdentifier inTable:(WKInterfaceTable *)table rowIndex:(NSInteger)rowIndex {
@@ -121,6 +127,29 @@
         }
     }
     return self.tableData[rowIndex];
+}
+
+/**
+ Notification receiver for successful local connection
+ */
+- (void)localConnection {
+    // Check current connection state
+}
+
+/**
+ Notification receiver for failed local connection
+ */
+- (void)noLocalConnection {
+    // Check current connection state
+}
+
+/**
+ Notification receiver for failed local authentication
+ */
+- (void)notAuthenticated {
+    if ([[PNLightController singleton] inDemoMode]) {
+        return;
+    }
 }
 
 @end

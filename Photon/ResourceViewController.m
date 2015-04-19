@@ -15,7 +15,6 @@
 #import <HueSDK_iOS/HueSDK.h>
 
 @interface ResourceViewController ()
-@property (nonatomic, strong) PHHueSDK *phHueSDK;
 @property (nonatomic, strong) PNLightController *lightController;
 @property (nonatomic, strong) GroupListViewController *groupListVC;
 @property (nonatomic, strong) SceneListViewController *sceneListVC;
@@ -30,7 +29,7 @@
 
 @implementation ResourceViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil hueSDK:(PHHueSDK *)hueSdk {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 
@@ -40,7 +39,6 @@
         // Register for the local heartbeat notifications
         [notificationManager registerObject:self withSelector:@selector(receivedHeartbeat) forNotification:LOCAL_CONNECTION_NOTIFICATION];
         
-        self.phHueSDK = hueSdk;
         self.pickingColor = NO;
         
         _fakeGroups = [NSMutableDictionary new];

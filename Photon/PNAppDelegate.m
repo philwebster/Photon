@@ -35,14 +35,13 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    // Create sdk instance
-    self.phHueSDK = [[PHHueSDK alloc] init];
+    // Create sdk instance    
+    self.lightController = [PNLightController singleton];
+    self.phHueSDK = self.lightController.phHueSDK;
     [self.phHueSDK startUpSDK];
 //    [self.phHueSDK enableLogging:YES];
     
-    self.lightController = [PNLightController singleton];
-    
-    self.lightVC = [[ResourceViewController alloc] initWithNibName:@"LightGroupView" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK];
+    self.lightVC = [[ResourceViewController alloc] initWithNibName:@"LightGroupView" bundle:[NSBundle mainBundle]];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.lightVC];
 //    self.naturalColorPicker = [[PNColorPickerVC alloc] initWithColors:self.lightController.naturalColors];
 //    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.naturalColorPicker];
@@ -53,6 +52,7 @@
 
     PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
     
+    // TODO: Refactor this to the light controller and use delegate methods
     /***************************************************
      The SDK will send the following notifications in response to events:
      

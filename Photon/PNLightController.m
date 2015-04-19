@@ -39,6 +39,9 @@
 - (id)init {
     self = [super init];
     if (self) {
+        
+        self.phHueSDK = [[PHHueSDK alloc] init];
+
         self.inDemoMode = NO;
         self.standardColors = @[[UIColor colorWithHue:0.626 saturation:0.871 brightness:1.000 alpha:1.000],
                                 [UIColor colorWithHue:0.788 saturation:1.000 brightness:0.996 alpha:1.000],
@@ -225,6 +228,12 @@
     }];
     average = average / group.lightIdentifiers.count;
     return [NSNumber numberWithInteger:average];
+}
+
+- (PHBridgeResource *)allLightsGroup {
+    PHGroup *allLightsGroup = [PHGroup new];
+    allLightsGroup.identifier = @"0";
+    return allLightsGroup;
 }
 
 @end

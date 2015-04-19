@@ -19,6 +19,8 @@
 @property (nonatomic) NSArray *lights;
 @property (nonatomic) NSArray *groups;
 @property (nonatomic) NSArray *scenes;
+@property (strong, nonatomic) PHHueSDK *phHueSDK;
+@property (nonatomic) PHBridgeResource *allLightsGroup;
 
 @property (nonatomic, assign) BOOL inDemoMode;
 
