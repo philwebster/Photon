@@ -139,7 +139,6 @@
     CGFloat hue, sat, brightness, alpha;
     [color getHue:&hue saturation:&sat brightness:&brightness alpha:&alpha];
     [lightState setHue:[NSNumber numberWithInt:hue * MAX_HUE]];
-    [lightState setBrightness:[NSNumber numberWithInt:254]];
     [lightState setSaturation:[NSNumber numberWithInt:254]];
     [lightState setOnBool:YES];
     
@@ -156,6 +155,7 @@
     PHLightState *lightState = [[PHLightState alloc] init];
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     [lightState setBrightness:brightness];
+    [lightState setOnBool:YES];
     if ([resource isKindOfClass:[PHLight class]]) {
         PHLight *light = (PHLight *)resource;
         [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:nil];

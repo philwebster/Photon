@@ -125,6 +125,7 @@
 
 - (void)tappedDoneButton {
     NSLog(@"Tapped done button");
+    self.shouldShowBrightness = NO;
     [self animateOut];
 }
 
