@@ -40,7 +40,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.groupNameTextField.text = self.group.name ? self.group.name : @"New Group";
+    self.groupNameTextField.text = self.group.name;
+    if (!self.group) {
+        [self.groupNameTextField becomeFirstResponder];
+    }
     self.deleteGroupButton.enabled = self.group != nil;
     self.saveButton.enabled = self.group != nil;
 }
@@ -75,6 +78,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.groupNameTextField resignFirstResponder];
     UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     
     PHLight *light = self.lightController.lights[indexPath.row];
@@ -122,8 +126,25 @@
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.groupNameTextField resignFirstResponder];
+}
+
+#pragma mark UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
+
+- (IBAction)groupNameEdited:(id)sender {
+    [self updateSaveButtonState];
+}
+
+#pragma mark Buttons
+
 - (void)updateSaveButtonState {
-    self.saveButton.enabled = self.selectedLights.count > 0;
+    self.saveButton.enabled = self.selectedLights.count > 0 && self.groupNameTextField.text.length > 0;
 }
 
 - (IBAction)backButtonPressed:(id)sender {

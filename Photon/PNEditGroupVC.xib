@@ -25,7 +25,11 @@
                         <constraint firstAttribute="width" constant="200" id="S9U-l2-Htp"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                    <connections>
+                        <action selector="groupNameEdited:" destination="-1" eventType="editingChanged" id="JiF-Cz-X9q"/>
+                        <outlet property="delegate" destination="-1" id="Ep8-4e-vxy"/>
+                    </connections>
                 </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Q2g-zD-cZx">
                     <rect key="frame" x="0.0" y="110" width="600" height="432"/>

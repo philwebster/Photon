@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <HueSDK_iOS/HueSDK.h>
 
-@interface PNEditGroupVC : UIViewController
+@interface PNEditGroupVC : UIViewController <UIScrollViewDelegate, UITextFieldDelegate>
 
 - (id)initWithGroup:(PHGroup *)group;
 
