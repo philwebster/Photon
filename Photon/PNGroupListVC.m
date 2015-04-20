@@ -63,6 +63,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:22];
         cell.textLabel.textColor = [UIColor colorWithRed:0.377 green:0.377 blue:0.377 alpha:1];
+        cell.tintColor = [UIColor colorWithRed:0.354 green:0.592 blue:0.764 alpha:1];
     }
     
     NSArray *groups = self.lightController.groups;

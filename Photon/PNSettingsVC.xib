@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PNSettingsVC">
             <connections>
+                <outlet property="doneButton" destination="YWa-Vg-A3E" id="hhK-3I-nPY"/>
+                <outlet property="resetButton" destination="Ruy-1k-fu0" id="9Yb-NE-nOG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,14 +16,36 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWa-Vg-A3E">
-                    <rect key="frame" x="277" y="124" width="46" height="30"/>
-                    <state key="normal" title="Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWa-Vg-A3E">
+                    <rect key="frame" x="525" y="16" width="59" height="41"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
+                    <state key="normal" title="Done">
+                        <color key="titleColor" red="0.30141761900000003" green="0.3014255166" blue="0.30142125489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="doneButtonPressed:" destination="-1" eventType="touchUpInside" id="bpC-Us-qzd"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ruy-1k-fu0">
+                    <rect key="frame" x="238" y="538" width="126" height="36"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                    <state key="normal" title="Reset Photon">
+                        <color key="titleColor" red="0.98431372549999996" green="0.0" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="resetButtonPressed:" destination="-1" eventType="touchUpInside" id="ElP-5N-gtM"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="YWa-Vg-A3E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="3O8-d5-YUp"/>
+                <constraint firstAttribute="bottom" secondItem="Ruy-1k-fu0" secondAttribute="bottom" constant="8" id="45b-0P-RBr"/>
+                <constraint firstAttribute="centerX" secondItem="Ruy-1k-fu0" secondAttribute="centerX" id="J7X-YB-bAW"/>
+                <constraint firstAttribute="trailing" secondItem="YWa-Vg-A3E" secondAttribute="trailing" constant="16" id="h1T-Bv-KaR"/>
+            </constraints>
         </view>
     </objects>
 </document>

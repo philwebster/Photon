@@ -263,5 +263,17 @@
     }];
 }
 
+- (void)resetPhoton {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"phBridgeResourcesCache"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"uniqueGlobalDeviceIdentifier"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    [sharedDefaults removeObjectForKey:@"phBridgeResourcesCache"];
+    [sharedDefaults removeObjectForKey:@"uniqueGlobalDeviceIdentifier"];
+    [sharedDefaults synchronize];
+
+}
+
 
 @end

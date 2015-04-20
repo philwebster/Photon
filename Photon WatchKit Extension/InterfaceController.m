@@ -27,6 +27,7 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     [self addMenuItemWithItemIcon:WKMenuItemIconDecline title:@"All Off" action:@selector(allOffTapped)];
+    [self addMenuItemWithItemIcon:WKMenuItemIconAccept title:@"All On" action:@selector(allOffTapped)];
     self.lightController = [PNLightController singleton];
     self.context = context;
     if ([context respondsToSelector:@selector(isEqualToString:)]) {
@@ -39,7 +40,7 @@
     } else if ([context class] == [PHGroup class] || [context class] == [PHLight class]) {
         self.tableData = self.lightController.naturalColors;
     } else {
-        self.tableData = @[@"Groups", @"Lights", @"Scenes"];
+        self.tableData = @[@"Groups", @"Lights"];
     }
 }
 
@@ -54,15 +55,9 @@
     [[NSUserDefaults standardUserDefaults] setObject:deviceID forKey:@"uniqueGlobalDeviceIdentifier"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-//    self.sdk = [[PHHueSDK alloc] init];
     self.sdk = self.lightController.phHueSDK;
     [self.sdk startUpSDK];
 //    [self.sdk enableLogging:YES];
-    
-    PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
-    [notificationManager registerObject:self withSelector:@selector(localConnection) forNotification:LOCAL_CONNECTION_NOTIFICATION];
-    [notificationManager registerObject:self withSelector:@selector(noLocalConnection) forNotification:NO_LOCAL_CONNECTION_NOTIFICATION];
-    [notificationManager registerObject:self withSelector:@selector(notAuthenticated) forNotification:NO_LOCAL_AUTHENTICATION_NOTIFICATION];
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     if (cache != nil && cache.bridgeConfiguration != nil && cache.bridgeConfiguration.ipaddress != nil) {
@@ -70,7 +65,6 @@
     } else {
         NSLog(@"need to set up with iPhone first");
     }
-
     
     [self loadResourceItems];
 }

@@ -18,6 +18,7 @@
 
 - (void)searchForBridgeLocal;
 - (void)bridgeSelectedWithIpAddress:(NSString *)ipAddress andMacAddress:(NSString *)macAddress;
+- (void)doSetupProcess;
 
 @end
 

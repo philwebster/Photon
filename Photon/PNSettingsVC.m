@@ -7,8 +7,14 @@
 //
 
 #import "PNSettingsVC.h"
+#import "PNLightController.h"
+#import "PNAppDelegate.h"
 
 @interface PNSettingsVC ()
+
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
+@property PNLightController *lightController;
 
 @end
 
@@ -17,6 +23,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.lightController = [PNLightController singleton];
+}
+
+- (IBAction)doneButtonPressed:(id)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)resetButtonPressed:(id)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        [self.lightController resetPhoton];
+        [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] doSetupProcess];
+//        [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] searchForBridgeLocal];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -65,7 +65,8 @@
         self.enableShakeGesture = NO;
         
         self.layer.cornerRadius = 9;
-        self.layer.masksToBounds = YES;
+        
+        self.layer.masksToBounds = NO;
     }
     return self;
 }

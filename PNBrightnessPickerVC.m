@@ -137,7 +137,7 @@
         self.willUpdateBrightness = YES;
     }
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(done) object:nil];
-    [self performSelector:@selector(done) withObject:nil afterDelay:5.0];
+    [self performSelector:@selector(done) withObject:nil afterDelay:7.0];
 }
 
 - (void)updateBrightness:(id)sender {

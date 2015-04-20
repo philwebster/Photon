@@ -39,7 +39,7 @@
     self.lightController = [PNLightController singleton];
     self.phHueSDK = self.lightController.phHueSDK;
     [self.phHueSDK startUpSDK];
-//    [self.phHueSDK enableLogging:YES];
+    [self.phHueSDK enableLogging:YES];
     
     self.lightVC = [[ResourceViewController alloc] initWithNibName:@"LightGroupView" bundle:[NSBundle mainBundle]];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.lightVC];
@@ -159,7 +159,7 @@
     if (!self.phHueSDK.localConnected && !self.lightController.inDemoMode) {
         // No connection at all, show connection popup
         if (self.noConnectionAlert == nil) {
-            [self showNoConnectionDialog];
+//            [self showNoConnectionDialog];
         }
         
     } else {
@@ -214,14 +214,17 @@
         if ([[PNLightController singleton] inDemoMode]) {
             return;
         }
-        self.setupVC = [[SetupViewController alloc] initWithNibName:@"SetupViewController" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK delegate:self];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.setupVC];
-        [navController setNavigationBarHidden:YES animated:NO];
-//        navController.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self.navigationController presentViewController:navController animated:NO completion:nil];
-
-        [self searchForBridgeLocal];
+        [self doSetupProcess];
     }
+}
+
+- (void) doSetupProcess {
+    self.setupVC = [[SetupViewController alloc] initWithNibName:@"SetupViewController" bundle:[NSBundle mainBundle] hueSDK:self.phHueSDK delegate:self];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.setupVC];
+    [navController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController presentViewController:navController animated:NO completion:nil];
+    
+    [self searchForBridgeLocal];
 }
 
 /**

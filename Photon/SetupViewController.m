@@ -16,9 +16,11 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
-@property (strong, nonatomic) HueBridgeView *bridgeView;
-@property (nonatomic) float scaleFactor;
-@property (nonatomic) float angle;
+//@property (strong, nonatomic) HueBridgeView *bridgeView;
+//@property (nonatomic) float scaleFactor;
+//@property (nonatomic) float angle;
+@property (weak, nonatomic) IBOutlet UIImageView *bridgeImage;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *searchingIndicator;
 
 @end
 
@@ -35,14 +37,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] searchForBridgeLocal];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-    _scaleFactor = 2;
-    _angle = 180;
+//    [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] searchForBridgeLocal];
 
-    _bridgeView = [[HueBridgeView alloc] initWithFrame:CGRectMake(50, 50, 150, 150)];
-    _bridgeView.backgroundColor = [UIColor whiteColor];
-    _bridgeView.hidden = YES;
+//    _scaleFactor = 2;
+//    _angle = 180;
+
+//    _bridgeView = [[HueBridgeView alloc] initWithFrame:CGRectMake(50, 50, 150, 150)];
+//    _bridgeView.backgroundColor = [UIColor whiteColor];
+//    _bridgeView.hidden = YES;
 //    [_bridgeView setTranslatesAutoresizingMaskIntoConstraints:NO];
 //    [self.view addSubview:_bridgeView];
 //    
@@ -80,8 +84,9 @@
      The notifications sent by the SDK will confirm success
      or failure of push linking
      *****************************************************/
+    [self.searchingIndicator stopAnimating];
     self.instructionLabel.text = @"Push the button";
-    _bridgeView.hidden = NO;
+    self.bridgeImage.image = [UIImage imageNamed:@"bridgegreen"];
     self.progressView.hidden = NO;
     [self.phHueSDK startPushlinkAuthentication];
 }
@@ -158,6 +163,9 @@
 - (void)setMultipleBridgesFound:(NSDictionary *)bridges {
     self.bridges = bridges;
     [self.tableView reloadData];
+    self.bridgeImage.hidden = YES;
+    [self.searchingIndicator stopAnimating];
+    self.instructionLabel.text = @"Select the bridge to set up";
     self.tableView.hidden = NO;
 }
 
@@ -171,6 +179,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:22];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.377 green:0.377 blue:0.377 alpha:1];
+        cell.tintColor = [UIColor colorWithRed:0.354 green:0.592 blue:0.764 alpha:1];
     }
     
     // Sort bridges by mac address
@@ -191,6 +202,9 @@
     NSArray *sortedKeys = [self.bridges.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     NSString *mac = [sortedKeys objectAtIndex:indexPath.row];
     NSString *ip = [self.bridges objectForKey:mac];
+    self.tableView.hidden = YES;
+    [self.bridgeImage setImage:[UIImage imageNamed:@"greenbridge"]];
+    self.bridgeImage.hidden = NO;
     [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] bridgeSelectedWithIpAddress:ip andMacAddress:mac];
 }
 

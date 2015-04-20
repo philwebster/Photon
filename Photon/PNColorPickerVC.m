@@ -70,7 +70,7 @@
     [self addChildViewController:self.brightnessPicker];
     [self.view bringSubviewToFront:self.naturalColorView];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:brightnessView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_doneButton attribute:NSLayoutAttributeBottom multiplier:1.0 constant:8]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:brightnessView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_doneButton attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[brightnessView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(brightnessView)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[brightnessView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(brightnessView)]];
 }
@@ -234,7 +234,7 @@
     [self animateCard:_naturalColorView direction:NO completion:^{
         if (self.shouldShowBrightness) {
             [self.brightnessPicker becomeFirstResponder];
-            [self.brightnessPicker startFadingAfterInterval:5.0];
+            [self.brightnessPicker startFadingAfterInterval:7.0];
         } else {
             [self dismissView];
         }
