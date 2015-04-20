@@ -56,6 +56,7 @@
         
         [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"resourceCell"];
         [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionHeaderReusableView" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
+        self.lightGroupCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 45, 0);
         
         self.lightController = [PNLightController singleton];
         self.colorPickerVC = [[PNColorPickerVC alloc] init];
@@ -66,6 +67,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -213,7 +218,7 @@
     }
 
     CGPoint p = [recognizer locationInView:self.lightGroupCollectionView];
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
+    if (recognizer.state == UIGestureRecognizerStateBegan && self.isFirstResponder) {
         NSIndexPath *indexPath = [self.lightGroupCollectionView indexPathForItemAtPoint:p];
         if (!indexPath) {
             return;
@@ -226,6 +231,7 @@
         [self addChildViewController:self.colorPickerVC];
         [self.view addSubview:self.colorPickerVC.view];
         self.pickingColor = YES;
+        [self resignFirstResponder];
     } else {
 //        NSLog(@"gestureRecognizer.state = %ld", recognizer.state);
     }
@@ -239,10 +245,7 @@
 - (IBAction)settingsButtonPressed:(id)sender {
     PNSettingsVC *settingsVC = [[PNSettingsVC alloc] init];
     settingsVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self.navigationController presentViewController:settingsVC animated:YES completion:^{
-        NSLog(@"pushed settings");
-    }];
-    NSLog(@"Settings pressed");
+    [self.navigationController presentViewController:settingsVC animated:YES completion:nil];
 }
 
 - (void)editGroupsTapped {
@@ -271,6 +274,10 @@
 
 - (void)dismissedColorPicker {
     self.recognizer.enabled = YES;
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
 }
 
 /*
