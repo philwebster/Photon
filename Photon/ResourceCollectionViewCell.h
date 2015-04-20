@@ -11,5 +11,6 @@
 @interface ResourceCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *resourceTitleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *plusImage;
 
 @end

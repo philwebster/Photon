@@ -53,14 +53,14 @@
     [self.view addSubview:self.resourceLabel];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_resourceLabel]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_resourceLabel)]];
     [self.view addSubview:self.offButton];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_doneButton(==_offButton)][_offButton]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_offButton, _doneButton)]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_resourceLabel][_offButton(120)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_offButton, _resourceLabel)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-8-[_doneButton(==_offButton)]-8-[_offButton]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_offButton, _doneButton)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_resourceLabel]-8-[_offButton(120)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_offButton, _resourceLabel)]];
     
     [self.view addSubview:self.naturalColorView];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_naturalColorView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView)]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_resourceLabel(50)][_doneButton(120)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView, _doneButton, _resourceLabel)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_resourceLabel(50)]-8-[_doneButton(120)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView, _doneButton, _resourceLabel)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_naturalColorView(500)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_naturalColorView, _doneButton, _resourceLabel)]];
-    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_naturalColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_naturalColorView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:8];
     [self.view addConstraint:topConstraint];
     
     self.focusedView = _naturalColorView;
@@ -70,7 +70,7 @@
     [self addChildViewController:self.brightnessPicker];
     [self.view bringSubviewToFront:self.naturalColorView];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:brightnessView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_doneButton attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:brightnessView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_doneButton attribute:NSLayoutAttributeBottom multiplier:1.0 constant:8]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[brightnessView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(brightnessView)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[brightnessView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(brightnessView)]];
 }
@@ -103,19 +103,19 @@
 }
 
 - (void)colorSelected:(UIColor *)color {
-    NSLog(@"Setting color: %@ for resource: %@", color, self.resource.name);
+//    NSLog(@"Setting color: %@ for resource: %@", color, self.resource.name);
     [self.lightController setColor:color forResource:self.resource];
     self.shouldShowBrightness = YES;
 }
 
 - (void)naturalColorSelected:(NSNumber *)colorTemp {
-    NSLog(@"Setting natural color: %@ for resource: %@", colorTemp, self.resource.name);
+//    NSLog(@"Setting natural color: %@ for resource: %@", colorTemp, self.resource.name);
     [self.lightController setNaturalColor:colorTemp forResource:self.resource];
     self.shouldShowBrightness = YES;
 }
 
 - (void)tappedOffButton {
-    NSLog(@"Setting resource off: %@", self.resource.name);
+//    NSLog(@"Setting resource off: %@", self.resource.name);
     [self.lightController setResourceOff:self.resource];
     self.brightnessPicker.view.hidden = YES;
     self.shouldShowBrightness = NO;
@@ -123,7 +123,7 @@
 }
 
 - (void)tappedDoneButton {
-    NSLog(@"Tapped done button");
+//    NSLog(@"Tapped done button");
     if (self.brightnessPicker.isFirstResponder) {
         [self dismissView];
     } else {
@@ -136,12 +136,12 @@
 
     [self clearButtonBackgrounds];
     if (CGRectContainsPoint(_naturalColorView.frame, p)) {
-        [_naturalColorView becomeFirstResponder];
-        [_naturalColorView updateTouchedViewWithPoint:p];
+        [self.naturalColorView becomeFirstResponder];
+        [self.naturalColorView updateTouchedViewWithPoint:p];
     } else if (CGRectContainsPoint(_offButton.frame, p)) {
-        [_offButton setBackgroundColor:[UIColor grayColor]];
+        [self.offButton setBackgroundColor:[UIColor colorWithRed:0.949 green:0.949 blue:0.949 alpha:1]];
     } else if (CGRectContainsPoint(_doneButton.frame, p)) {
-        [_doneButton setBackgroundColor:[UIColor grayColor]];
+        [self.doneButton setBackgroundColor:[UIColor colorWithRed:0.949 green:0.949 blue:0.949 alpha:1]];
     }
     
     [UIView animateWithDuration:0.2 animations:^{
@@ -163,6 +163,7 @@
 - (UILabel *)resourceLabel {
     if (!_resourceLabel) {
         _resourceLabel = [UILabel new];
+        [_resourceLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:18]];
         [_resourceLabel setTextAlignment:NSTextAlignmentCenter];
         [_resourceLabel setTextColor:[UIColor colorWithRed:0.377 green:0.377 blue:0.377 alpha:1]];
         [_resourceLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -173,12 +174,14 @@
 - (UIButton *)doneButton {
     if (!_doneButton) {
         _doneButton = [UIButton new];
-        [_doneButton.titleLabel setFont:[_doneButton.titleLabel.font fontWithSize:24]];
+        [_doneButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:24]];
         [_doneButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [_doneButton setTitleColor:[UIColor colorWithRed:0.377 green:0.377 blue:0.377 alpha:1] forState:UIControlStateNormal];
         [_doneButton setTitle:@"DONE" forState:UIControlStateNormal];
         [_doneButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_doneButton addTarget:self action:@selector(tappedDoneButton) forControlEvents:UIControlEventTouchUpInside];
+        [_doneButton setTitleColor:[UIColor colorWithRed:0.185 green:0.185 blue:0.185 alpha:1] forState:UIControlStateHighlighted];
+        _doneButton.layer.cornerRadius = 8;
     }
     return _doneButton;
 }
@@ -186,11 +189,13 @@
 - (UIButton *)offButton {
     if (!_offButton) {
         _offButton = [UIButton new];
-        [_offButton.titleLabel setFont:[_offButton.titleLabel.font fontWithSize:24]];
+        [_offButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:24]];
         [_offButton setTitleColor:[UIColor colorWithRed:0.377 green:0.377 blue:0.377 alpha:1] forState:UIControlStateNormal];
         [_offButton setTitle:@"OFF" forState:UIControlStateNormal];
         [_offButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_offButton addTarget:self action:@selector(tappedOffButton) forControlEvents:UIControlEventTouchUpInside];
+        [_offButton setTitleColor:[UIColor colorWithRed:0.185 green:0.185 blue:0.185 alpha:1] forState:UIControlStateHighlighted];
+        _offButton.layer.cornerRadius = 8;
     }
     return _offButton;
 }
@@ -223,9 +228,9 @@
 }
 
 - (void)animateOut {
-//    if (!self.shouldShowBrightness) {
-//        self.brightnessPicker.view.hidden = YES;
-//    }
+    if (!self.shouldShowBrightness) {
+        self.brightnessPicker.view.hidden = YES;
+    }
     [self animateCard:_naturalColorView direction:NO completion:^{
         if (self.shouldShowBrightness) {
             [self.brightnessPicker becomeFirstResponder];
@@ -255,7 +260,7 @@
     [self.view removeConstraint:[self topConstraintForView:card]];
     NSLayoutConstraint *newTopConstraint;
     if (direction) {
-        newTopConstraint = [NSLayoutConstraint constraintWithItem:card attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_doneButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+        newTopConstraint = [NSLayoutConstraint constraintWithItem:card attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_doneButton attribute:NSLayoutAttributeBottom multiplier:1 constant:8];
     } else {
         newTopConstraint = [NSLayoutConstraint constraintWithItem:card attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     }

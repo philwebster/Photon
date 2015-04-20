@@ -65,6 +65,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(done) object:nil];
+    self.lightBrightnessValues = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -140,11 +141,15 @@
 }
 
 - (void)updateBrightness:(id)sender {
-    __weak PNBrightnessPickerVC *weakSelf = self;
-    [self.lightBrightnessValues enumerateKeysAndObjectsUsingBlock:^(NSString *identifier, NSNumber *brightnessVal, BOOL *stop) {
-        PHLight *light = [weakSelf.lightController lightWithId:identifier];
-        [weakSelf.lightController setBrightness:brightnessVal forResource:light];
-    }];
+    if ([self.resource isKindOfClass:[PHLight class]]) {
+        [self.lightController setBrightness:[NSNumber numberWithInt:(int)self.mainSlider.value] forResource:self.resource];
+    } else {
+        __weak PNBrightnessPickerVC *weakSelf = self;
+        [self.lightBrightnessValues enumerateKeysAndObjectsUsingBlock:^(NSString *identifier, NSNumber *brightnessVal, BOOL *stop) {
+            PHLight *light = [weakSelf.lightController lightWithId:identifier];
+            [weakSelf.lightController setBrightness:brightnessVal forResource:light];
+        }];
+    }
     self.willUpdateBrightness = NO;
 }
 

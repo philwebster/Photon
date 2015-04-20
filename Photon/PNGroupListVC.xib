@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PNGroupListVC">
             <connections>
-                <outlet property="backButton" destination="qjL-AA-Qi5" id="3RO-m5-Wxt"/>
+                <outlet property="backButton" destination="x3B-uR-iJD" id="9lJ-z6-1bq"/>
                 <outlet property="lightGroupTable" destination="KrI-LP-cEE" id="AZq-M3-vbC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -16,44 +16,60 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KrI-LP-cEE">
-                    <rect key="frame" x="0.0" y="58" width="600" height="542"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KrI-LP-cEE">
+                    <rect key="frame" x="0.0" y="171" width="600" height="429"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Xmo-cD-zzA"/>
                         <outlet property="delegate" destination="-1" id="FNQ-Oh-5w2"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjL-AA-Qi5">
-                    <rect key="frame" x="8" y="8" width="35" height="30"/>
-                    <state key="normal" title="Back">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="ElC-Y2-arc"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwF-sO-zhx">
-                    <rect key="frame" x="514" y="8" width="78" height="30"/>
-                    <state key="normal" title="New Group">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwF-sO-zhx">
+                    <rect key="frame" x="555" y="16" width="29" height="29"/>
+                    <state key="normal" image="plus">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="newGroupButtonPressed:" destination="-1" eventType="touchUpInside" id="OvR-l7-BUh"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x3B-uR-iJD">
+                    <rect key="frame" x="16" y="16" width="45" height="31"/>
+                    <state key="normal" image="backArrow">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="SUO-pr-mxv"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groups" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="aeR-aV-mXq">
+                    <rect key="frame" x="253" y="75" width="95" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="O78-I8-PZ9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
+                    <color key="textColor" red="0.30141761900000003" green="0.3014255166" blue="0.30142125489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="qjL-AA-Qi5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="89a-Ma-1Zw"/>
-                <constraint firstItem="qjL-AA-Qi5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Dhg-zI-2bS"/>
+                <constraint firstItem="aeR-aV-mXq" firstAttribute="top" secondItem="x3B-uR-iJD" secondAttribute="bottom" constant="28" id="Aea-6X-Ilp"/>
+                <constraint firstItem="XwF-sO-zhx" firstAttribute="top" secondItem="x3B-uR-iJD" secondAttribute="top" id="Bbl-gc-Mal"/>
                 <constraint firstAttribute="trailing" secondItem="KrI-LP-cEE" secondAttribute="trailing" id="E2t-JE-ufH"/>
-                <constraint firstAttribute="trailing" secondItem="XwF-sO-zhx" secondAttribute="trailing" constant="8" id="T0D-Zm-VH0"/>
+                <constraint firstItem="KrI-LP-cEE" firstAttribute="top" secondItem="aeR-aV-mXq" secondAttribute="bottom" constant="48" id="GTq-pP-JFA"/>
+                <constraint firstAttribute="centerX" secondItem="aeR-aV-mXq" secondAttribute="centerX" id="P8f-Pp-G5V"/>
+                <constraint firstAttribute="trailing" secondItem="XwF-sO-zhx" secondAttribute="trailing" constant="16" id="T0D-Zm-VH0"/>
                 <constraint firstItem="KrI-LP-cEE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bWB-Jc-epZ"/>
+                <constraint firstItem="x3B-uR-iJD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="cRv-bS-ue4"/>
                 <constraint firstAttribute="bottom" secondItem="KrI-LP-cEE" secondAttribute="bottom" id="j4l-45-HSu"/>
-                <constraint firstItem="XwF-sO-zhx" firstAttribute="top" secondItem="qjL-AA-Qi5" secondAttribute="top" id="z5R-py-HWm"/>
-                <constraint firstItem="KrI-LP-cEE" firstAttribute="top" secondItem="qjL-AA-Qi5" secondAttribute="bottom" constant="20" id="zPC-GV-FIh"/>
+                <constraint firstItem="x3B-uR-iJD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="t5J-pA-8ry"/>
             </constraints>
+            <point key="canvasLocation" x="454" y="438"/>
         </view>
     </objects>
+    <resources>
+        <image name="backArrow" width="45" height="31"/>
+        <image name="plus" width="29" height="29"/>
+    </resources>
 </document>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30358781AE4CDAE00D929DC /* PNSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D30358761AE4CDAE00D929DC /* PNSettingsVC.m */; };
+		D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */; };
 		D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */; };
 		D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C3BE41A722834006D2678 /* ResourceRowController.m */; };
 		D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */; };
@@ -117,6 +119,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D30358751AE4CDAE00D929DC /* PNSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNSettingsVC.h; sourceTree = "<group>"; };
+		D30358761AE4CDAE00D929DC /* PNSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNSettingsVC.m; sourceTree = "<group>"; };
+		D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNSettingsVC.xib; sourceTree = "<group>"; };
 		D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBrightnessPickerVC.xib; sourceTree = "<group>"; };
 		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceRowController.h; sourceTree = "<group>"; };
 		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceRowController.m; sourceTree = "<group>"; };
@@ -378,6 +383,8 @@
 				D3A8936C1AE42B3E00B230E1 /* PNGroupListVC.m */,
 				D37BE56B1AE4302A006D4605 /* PNEditGroupVC.h */,
 				D37BE56C1AE4302A006D4605 /* PNEditGroupVC.m */,
+				D30358751AE4CDAE00D929DC /* PNSettingsVC.h */,
+				D30358761AE4CDAE00D929DC /* PNSettingsVC.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -390,6 +397,7 @@
 				D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */,
 				D3FB694F1A6CF7080068945E /* SetupViewController.xib */,
 				D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */,
+				D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */,
 				D3A8936D1AE42B3E00B230E1 /* PNGroupListVC.xib */,
 				D37BE56D1AE4302A006D4605 /* PNEditGroupVC.xib */,
 				D3EC3D3F1AD08C0F00B29301 /* PNBrightnessCell.xib */,
@@ -666,6 +674,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3B90BB21A6F902F0062E355 /* LightGroupView.xib in Resources */,
+				D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */,
 				D3A8936F1AE42B3E00B230E1 /* PNGroupListVC.xib in Resources */,
 				D37BE56F1AE4302A006D4605 /* PNEditGroupVC.xib in Resources */,
 				D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */,
@@ -723,6 +732,7 @@
 				D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */,
 				D3ED38591A7ED43F000CE316 /* SceneListViewController.m in Sources */,
 				D36AAE621AACED8200EE0C2A /* PNBrightnessPickerVC.m in Sources */,
+				D30358781AE4CDAE00D929DC /* PNSettingsVC.m in Sources */,
 				D3BA633D1A6B664600095EF7 /* ContextFilterLogFormatter.m in Sources */,
 				D3BA633C1A6B664600095EF7 /* DDTTYLogger.m in Sources */,
 				D3A8936E1AE42B3E00B230E1 /* PNGroupListVC.m in Sources */,

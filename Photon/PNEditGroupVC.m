@@ -41,11 +41,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.groupNameTextField.text = self.group.name;
+    [self.groupNameTextField setTintColor:[UIColor colorWithRed:0.301 green:0.301 blue:0.301 alpha:1]];
     if (!self.group) {
         [self.groupNameTextField becomeFirstResponder];
     }
     self.deleteGroupButton.enabled = self.group != nil;
     self.saveButton.enabled = self.group != nil;
+    self.lightTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +65,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:22];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.377 green:0.377 blue:0.377 alpha:1];
     }
     PHLight *light = self.lightController.lights[indexPath.row];
     
@@ -124,10 +128,6 @@
             [self.navigationController popViewControllerAnimated:YES];
         }];
     }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.groupNameTextField resignFirstResponder];
 }
 
 #pragma mark UITextFieldDelegate

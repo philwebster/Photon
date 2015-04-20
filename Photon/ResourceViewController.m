@@ -12,6 +12,7 @@
 #import "PNLightController.h"
 #import "ResourceCollectionViewCell.h"
 #import "PNGroupListVC.h"
+#import "PNSettingsVC.h"
 #import <HueSDK_iOS/HueSDK.h>
 
 @interface ResourceViewController ()
@@ -123,7 +124,8 @@
     if (indexPath.section == 0) {
         NSArray *groups = self.lightController.groups;
         if (indexPath.row == groups.count) {
-            cell.resourceTitleLabel.text = @"+";
+//            cell.plusImage.hidden = NO;
+            cell.resourceTitleLabel.text = @"Edit...";
         } else {
             // TODO: Add a default All group if user doesn't already have one
             cell.resourceTitleLabel.text = [groups[indexPath.row] name];
@@ -228,6 +230,11 @@
 }
 
 - (IBAction)settingsButtonPressed:(id)sender {
+    PNSettingsVC *settingsVC = [[PNSettingsVC alloc] init];
+    settingsVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController presentViewController:settingsVC animated:YES completion:^{
+        NSLog(@"pushed settings");
+    }];
     NSLog(@"Settings pressed");
 }
 

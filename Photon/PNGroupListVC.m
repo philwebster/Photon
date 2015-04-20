@@ -24,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.lightController = [PNLightController singleton];
+    self.lightGroupTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -60,6 +61,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:22];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.377 green:0.377 blue:0.377 alpha:1];
     }
     
     NSArray *groups = self.lightController.groups;

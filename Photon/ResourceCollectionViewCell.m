@@ -10,4 +10,9 @@
 
 @implementation ResourceCollectionViewCell
 
+- (void)prepareForReuse {
+    self.plusImage.hidden = YES;
+    self.resourceTitleLabel.text = @"";
+}
+
 @end
