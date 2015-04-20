@@ -39,8 +39,6 @@
     
     self.table.dataSource = self;
     self.table.delegate = self;
-    
-    self.view.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -55,10 +53,18 @@
         self.initialMainSliderValue = self.mainSlider.value;
         self.lightBrightnessValues = [NSMutableDictionary dictionary];
         for (PHLight *light in [self.lightController lightsForGroup:group]) {
-            [self.lightBrightnessValues setObject:light.lightState.brightness forKey:light.identifier];
+            NSNumber *brightness = light.lightState.brightness;
+            if (!brightness) {
+                brightness = @0;
+            }
+            [self.lightBrightnessValues setObject:brightness forKey:light.identifier];
         }
         self.lightBrightnessInitialValues = [self.lightBrightnessValues mutableCopy];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(done) object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,7 +107,7 @@
         PNBrightnessCell *cell = (PNBrightnessCell *)sender;
         UISlider *slider = cell.resourceBrightnessSlider;
         PHLight *light = (PHLight *)cell.resource;
-        [self.lightBrightnessValues setObject:[NSNumber numberWithFloat:slider.value] forKey:light.identifier];
+        [self.lightBrightnessValues setObject:[NSNumber numberWithInt:(int)slider.value] forKey:light.identifier];
         self.lightBrightnessInitialValues = [self.lightBrightnessValues mutableCopy];
         self.mainSlider.value = self.initialMainSliderValue = [self averageBrightness:self.lightBrightnessValues];
     }
@@ -110,7 +116,7 @@
         [self.lightBrightnessValues enumerateKeysAndObjectsUsingBlock:^(NSString *lightID, NSNumber *brightness, BOOL *stop) {
             CGFloat newBrightness;
             CGFloat initialBrightness = [[weakSelf.lightBrightnessInitialValues objectForKey:lightID] floatValue];
-            if (weakSelf.mainSlider.value >= weakSelf.initialMainSliderValue) {
+            if (weakSelf.mainSlider.value > weakSelf.initialMainSliderValue) {
                 // initial value + difference * percent
                 CGFloat difference = MAX_BRIGHTNESS - initialBrightness;
                 newBrightness = initialBrightness + difference * ((weakSelf.mainSlider.value - weakSelf.initialMainSliderValue) / (MAX_BRIGHTNESS - weakSelf.initialMainSliderValue));
@@ -118,15 +124,15 @@
                 // initial value - difference * percent
                 newBrightness = initialBrightness - initialBrightness * (1 - (weakSelf.mainSlider.value / weakSelf.initialMainSliderValue));
             }
-            [self.lightBrightnessValues setObject:[NSNumber numberWithFloat:newBrightness] forKey:lightID];
+            [weakSelf.lightBrightnessValues setObject:[NSNumber numberWithInt:(int)newBrightness] forKey:lightID];
         }];
         for (PNBrightnessCell *cell in weakSelf.table.visibleCells) {
             cell.resourceBrightnessSlider.value = [[weakSelf.lightBrightnessValues objectForKey:cell.resource.identifier] floatValue];
         }
     }
     if (!self.willUpdateBrightness) {
-        NSLog(@"updating brightness in 0.5");
-        [self performSelector:@selector(updateBrightness:) withObject:self.mainSlider afterDelay:0.5];
+        NSLog(@"updating brightness in 0.25");
+        [self performSelector:@selector(updateBrightness:) withObject:self afterDelay:0.25];
         self.willUpdateBrightness = YES;
     }
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(done) object:nil];
@@ -134,8 +140,11 @@
 }
 
 - (void)updateBrightness:(id)sender {
-    NSNumber *brightnessVal = [NSNumber numberWithInt:[[NSNumber numberWithFloat:self.mainSlider.value] intValue]];
-    [self.delegate brightnessUpdated:brightnessVal];
+    __weak PNBrightnessPickerVC *weakSelf = self;
+    [self.lightBrightnessValues enumerateKeysAndObjectsUsingBlock:^(NSString *identifier, NSNumber *brightnessVal, BOOL *stop) {
+        PHLight *light = [weakSelf.lightController lightWithId:identifier];
+        [weakSelf.lightController setBrightness:brightnessVal forResource:light];
+    }];
     self.willUpdateBrightness = NO;
 }
 
@@ -149,7 +158,6 @@
 }
 
 - (void)done {
-    self.view.hidden = YES;
     [self.delegate finishedBrightnessSelection];
 }
 
@@ -160,6 +168,10 @@
     }];
     average = average / brightnessValues.count;
     return average;
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
 }
 
 /*

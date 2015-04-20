@@ -66,9 +66,9 @@
     self.focusedView = _naturalColorView;
     
     UIView *brightnessView = self.brightnessPicker.view;
-//    brightnessView.frame = self.view.frame;
     [brightnessView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self addChildViewController:self.brightnessPicker];
+    [self.view bringSubviewToFront:self.naturalColorView];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:brightnessView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_doneButton attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[brightnessView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(brightnessView)]];
@@ -91,7 +91,10 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self animateCard:_naturalColorView direction:YES completion:nil];
+    self.brightnessPicker.view.hidden = YES;
+    [self animateCard:_naturalColorView direction:YES completion:^{
+        self.brightnessPicker.view.hidden = NO;
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,22 +114,21 @@
     self.shouldShowBrightness = YES;
 }
 
-- (void)brightnessUpdated:(NSNumber *)brightness {
-    NSLog(@"Setting brightness: %@ for resource: %@", brightness, self.resource.name);
-    [self.lightController setBrightness:brightness forResource:self.resource];
-}
-
 - (void)tappedOffButton {
     NSLog(@"Setting resource off: %@", self.resource.name);
     [self.lightController setResourceOff:self.resource];
+    self.brightnessPicker.view.hidden = YES;
     self.shouldShowBrightness = NO;
     [self animateOut];
 }
 
 - (void)tappedDoneButton {
     NSLog(@"Tapped done button");
-    self.shouldShowBrightness = NO;
-    [self animateOut];
+    if (self.brightnessPicker.isFirstResponder) {
+        [self dismissView];
+    } else {
+        [self animateOut];
+    }
 }
 
 - (void)tapAtPoint:(CGPoint)p {
@@ -221,16 +223,17 @@
 }
 
 - (void)animateOut {
+//    if (!self.shouldShowBrightness) {
+//        self.brightnessPicker.view.hidden = YES;
+//    }
     [self animateCard:_naturalColorView direction:NO completion:^{
         if (self.shouldShowBrightness) {
-            [self.view bringSubviewToFront:self.brightnessPicker.view];
-            self.brightnessPicker.view.hidden = NO;
+            [self.brightnessPicker becomeFirstResponder];
             [self.brightnessPicker startFadingAfterInterval:5.0];
         } else {
             [self dismissView];
         }
     }];
-    
 }
 
 - (NSLayoutConstraint *)topConstraintForView:(UIView *)view {
@@ -245,6 +248,10 @@
 }
 
 - (void)animateCard:(UIView *)card direction:(BOOL)direction completion:(void (^)())completion {
+    if (self.shouldShowBrightness) {
+        self.brightnessPicker.view.hidden = NO;
+    }
+    
     [self.view removeConstraint:[self topConstraintForView:card]];
     NSLayoutConstraint *newTopConstraint;
     if (direction) {

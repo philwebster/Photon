@@ -12,7 +12,6 @@
 
 @protocol brightnessSelectionDelegate
 
-- (void)brightnessUpdated:(NSNumber *)brightness;
 - (void)finishedBrightnessSelection;
 
 @end

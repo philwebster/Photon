@@ -223,7 +223,6 @@
 }
 
 - (void)receivedHeartbeat {
-    NSLog(@"Got heartbeat, reloading data");
     // TODO: Be smarter about reloading data
     [self.lightGroupCollectionView reloadData];
 }
