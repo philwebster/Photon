@@ -1,9 +1,110 @@
 {
   "images" : [
     {
+      "idiom" : "iphone",
+      "size" : "29x29",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "29x29",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "29x29",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "40x40",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "40x40",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "57x57",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "57x57",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "60x60",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "60x60",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "29x29",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "29x29",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "40x40",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "40x40",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "50x50",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "50x50",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "72x72",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "72x72",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "76x76",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "76x76",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "car",
+      "size" : "120x120",
+      "scale" : "1x"
+    },
+    {
       "size" : "24x24",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "48x48@2x.png",
       "role" : "notificationCenter",
       "subtype" : "38mm"
     },
@@ -11,18 +112,21 @@
       "size" : "27.5x27.5",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "27.5x27.5@2x.png",
       "role" : "notificationCenter",
       "subtype" : "42mm"
     },
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "29x29@2x.png",
       "role" : "companionSettings",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "29x29@3x.png",
       "role" : "companionSettings",
       "scale" : "3x"
     },
@@ -30,7 +134,7 @@
       "size" : "40x40",
       "idiom" : "watch",
       "scale" : "2x",
-      "filename" : "photon icon copy.png",
+      "filename" : "40x40@2x.png",
       "role" : "appLauncher",
       "subtype" : "38mm"
     },
@@ -38,6 +142,7 @@
       "size" : "44x44",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "44x44@2x.png",
       "role" : "longLook",
       "subtype" : "42mm"
     },
@@ -45,6 +150,7 @@
       "size" : "86x86",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "86x86@2x.png",
       "role" : "quickLook",
       "subtype" : "38mm"
     },
@@ -52,43 +158,9 @@
       "size" : "98x98",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "98x98@2x.png",
       "role" : "quickLook",
       "subtype" : "42mm"
-    },
-    {
-      "size" : "44x44",
-      "idiom" : "watch",
-      "scale" : "2x",
-      "unassigned" : true,
-      "role" : "appLauncher",
-      "subtype" : "42mm"
-    },
-    {
-      "scale" : "2x",
-      "idiom" : "watch",
-      "unassigned" : true,
-      "role" : "notificationCenter",
-      "subtype" : "38mm"
-    },
-    {
-      "scale" : "2x",
-      "idiom" : "watch",
-      "unassigned" : true,
-      "role" : "notificationCenter",
-      "subtype" : "38mm"
-    },
-    {
-      "scale" : "2x",
-      "idiom" : "watch",
-      "unassigned" : true,
-      "role" : "notificationCenter",
-      "subtype" : "42mm"
-    },
-    {
-      "idiom" : "watch",
-      "unassigned" : true,
-      "role" : "companionSettings",
-      "scale" : "3x"
     }
   ],
   "info" : {

@@ -17,7 +17,6 @@
 		D34FB2AC1A71714600DB659E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AB1A71714600DB659E /* Images.xcassets */; };
 		D34FB2B01A71714700DB659E /* Photon WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */; };
 		D34FB2B81A71714700DB659E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2B61A71714700DB659E /* Interface.storyboard */; };
-		D34FB2BA1A71714700DB659E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2B91A71714700DB659E /* Images.xcassets */; };
 		D34FB2BD1A71714700DB659E /* Photon WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D36AAE621AACED8200EE0C2A /* PNBrightnessPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D36AAE611AACED8200EE0C2A /* PNBrightnessPickerVC.m */; };
 		D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */; };
@@ -28,6 +27,9 @@
 		D38780061AE50B29003DCF46 /* PNEditLightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D38780051AE50B29003DCF46 /* PNEditLightVC.m */; };
 		D38780081AE50B46003DCF46 /* PNEditLightVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38780071AE50B46003DCF46 /* PNEditLightVC.xib */; };
 		D387800B1AE51898003DCF46 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D387800A1AE51898003DCF46 /* MessageUI.framework */; };
+		D387800F1AE52B88003DCF46 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D387800C1AE52B88003DCF46 /* Default-568h@2x.png */; };
+		D38780101AE52B88003DCF46 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D387800D1AE52B88003DCF46 /* Default@2x.png */; };
+		D38780111AE52B88003DCF46 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D387800E1AE52B88003DCF46 /* Default.png */; };
 		D38C163B1A68DE96006FE974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163A1A68DE96006FE974 /* main.m */; };
 		D38C163E1A68DE96006FE974 /* PNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163D1A68DE96006FE974 /* PNAppDelegate.m */; };
 		D38C16461A68DE96006FE974 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D38C16451A68DE96006FE974 /* Images.xcassets */; };
@@ -53,6 +55,7 @@
 		D3D4561F1A8B163000219219 /* UIColor+PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */; };
 		D3DF823C1A7425B1001AD7DB /* PNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PNLightController.m */; };
 		D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63301A6B664600095EF7 /* DDLog.m */; };
+		D3E4C8431AE543A2006509D8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4C8421AE543A2006509D8 /* Images.xcassets */; };
 		D3EC3D401AD08C0F00B29301 /* PNBrightnessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3EC3D3F1AD08C0F00B29301 /* PNBrightnessCell.xib */; };
 		D3EC3D431AD08DB200B29301 /* PNBrightnessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EC3D421AD08DB200B29301 /* PNBrightnessCell.m */; };
 		D3EC69D41AABF2EF00DE4C65 /* PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EC69D31AABF2EF00DE4C65 /* PNUtilities.m */; };
@@ -141,7 +144,6 @@
 		D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photon WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34FB2B51A71714700DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34FB2B71A71714700DB659E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		D34FB2B91A71714700DB659E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D36AAE601AACED8200EE0C2A /* PNBrightnessPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNBrightnessPickerVC.h; path = ../PNBrightnessPickerVC.h; sourceTree = "<group>"; };
 		D36AAE611AACED8200EE0C2A /* PNBrightnessPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNBrightnessPickerVC.m; path = ../PNBrightnessPickerVC.m; sourceTree = "<group>"; };
 		D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResourceCollectionHeaderReusableView.xib; sourceTree = "<group>"; };
@@ -153,6 +155,9 @@
 		D38780071AE50B46003DCF46 /* PNEditLightVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNEditLightVC.xib; sourceTree = "<group>"; };
 		D38780091AE50B53003DCF46 /* PNEditLightVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNEditLightVC.h; sourceTree = "<group>"; };
 		D387800A1AE51898003DCF46 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		D387800C1AE52B88003DCF46 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../Desktop/Default-568h@2x.png"; sourceTree = "<group>"; };
+		D387800D1AE52B88003DCF46 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../../Desktop/Default@2x.png"; sourceTree = "<group>"; };
+		D387800E1AE52B88003DCF46 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../Desktop/Default.png; sourceTree = "<group>"; };
 		D38C16351A68DE96006FE974 /* Photon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16391A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C163A1A68DE96006FE974 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -194,6 +199,7 @@
 		D3C53A161AB9672000D8F6DF /* Photon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Photon.entitlements; sourceTree = "<group>"; };
 		D3D4561D1A8B163000219219 /* UIColor+PNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PNUtilities.h"; sourceTree = "<group>"; };
 		D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PNUtilities.m"; sourceTree = "<group>"; };
+		D3E4C8421AE543A2006509D8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D3EC3D3F1AD08C0F00B29301 /* PNBrightnessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBrightnessCell.xib; sourceTree = "<group>"; };
 		D3EC3D411AD08DB200B29301 /* PNBrightnessCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNBrightnessCell.h; sourceTree = "<group>"; };
 		D3EC3D421AD08DB200B29301 /* PNBrightnessCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNBrightnessCell.m; sourceTree = "<group>"; };
@@ -292,7 +298,7 @@
 		D34FB2B41A71714700DB659E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D34FB2B91A71714700DB659E /* Images.xcassets */,
+				D3E4C8421AE543A2006509D8 /* Images.xcassets */,
 				D34FB2B51A71714700DB659E /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -351,6 +357,9 @@
 		D38C16381A68DE96006FE974 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D387800C1AE52B88003DCF46 /* Default-568h@2x.png */,
+				D387800D1AE52B88003DCF46 /* Default@2x.png */,
+				D387800E1AE52B88003DCF46 /* Default.png */,
 				D3C53A161AB9672000D8F6DF /* Photon.entitlements */,
 				D38C16391A68DE96006FE974 /* Info.plist */,
 				D38C163A1A68DE96006FE974 /* main.m */,
@@ -677,7 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D34FB2B81A71714700DB659E /* Interface.storyboard in Resources */,
-				D34FB2BA1A71714700DB659E /* Images.xcassets in Resources */,
+				D3E4C8431AE543A2006509D8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,13 +698,16 @@
 				D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */,
 				D3A8936F1AE42B3E00B230E1 /* PNGroupListVC.xib in Resources */,
 				D38780081AE50B46003DCF46 /* PNEditLightVC.xib in Resources */,
+				D38780111AE52B88003DCF46 /* Default.png in Resources */,
 				D37BE56F1AE4302A006D4605 /* PNEditGroupVC.xib in Resources */,
 				D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */,
 				D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */,
 				D38C16461A68DE96006FE974 /* Images.xcassets in Resources */,
 				D3ED38521A7DBE58000CE316 /* ResourceCollectionViewCell.xib in Resources */,
+				D387800F1AE52B88003DCF46 /* Default-568h@2x.png in Resources */,
 				D3EC3D401AD08C0F00B29301 /* PNBrightnessCell.xib in Resources */,
 				D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */,
+				D38780101AE52B88003DCF46 /* Default@2x.png in Resources */,
 				D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1014,6 +1026,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1033,6 +1046,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
