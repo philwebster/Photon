@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PNGroupListVC : UIViewController
+@interface PNGroupListVC : UIViewController <UITableViewDataSource>
+
+- (id)initWithLights;
 
 @end

@@ -13,10 +13,12 @@
                         <table alignment="left" id="NIO-hF-4fy">
                             <items>
                                 <tableRow id="bfc-WT-HeD" customClass="ResourceRowController">
-                                    <group key="rootItem" width="1" alignment="left" id="hhi-4Y-BIS">
+                                    <group key="rootItem" width="1" height="2" alignment="left" id="hhi-4Y-BIS">
                                         <items>
-                                            <label width="131.5" height="40.5" alignment="left" text="Label" id="bEK-R7-zKz"/>
+                                            <label width="131.5" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="bEK-R7-zKz"/>
                                         </items>
+                                        <variation key="device=watch38mm" height="70"/>
+                                        <variation key="device=watch42mm" height="82"/>
                                     </group>
                                     <connections>
                                         <outlet property="resourceType" destination="bEK-R7-zKz" id="XCq-0k-ob8"/>

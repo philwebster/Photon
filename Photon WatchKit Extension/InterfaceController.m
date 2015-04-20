@@ -27,7 +27,7 @@
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     [self addMenuItemWithItemIcon:WKMenuItemIconDecline title:@"All Off" action:@selector(allOffTapped)];
-    [self addMenuItemWithItemIcon:WKMenuItemIconAccept title:@"All On" action:@selector(allOffTapped)];
+    [self addMenuItemWithItemIcon:WKMenuItemIconAccept title:@"All On" action:@selector(allOnTapped)];
     self.lightController = [PNLightController singleton];
     self.context = context;
     if ([context respondsToSelector:@selector(isEqualToString:)]) {
@@ -56,12 +56,13 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     self.sdk = self.lightController.phHueSDK;
-    [self.sdk startUpSDK];
-//    [self.sdk enableLogging:YES];
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
     if (cache != nil && cache.bridgeConfiguration != nil && cache.bridgeConfiguration.ipaddress != nil) {
-        [self.sdk enableLocalConnection];
+        if (!self.sdk.localConnected) {
+            [self.sdk startUpSDK];
+            [self.sdk enableLocalConnection];
+        }
     } else {
         NSLog(@"need to set up with iPhone first");
     }
@@ -110,6 +111,11 @@
 
 - (void)allOffTapped {
     [self.lightController setResourceOff:self.lightController.allLightsGroup];
+}
+
+- (void)allOnTapped {
+    [self.lightController setNaturalColor:@326 forResource:self.lightController.allLightsGroup];
+    [self.lightController setBrightness:@253 forResource:self.lightController.allLightsGroup];
 }
 
 - (id)contextForSegueWithIdentifier:(NSString *)segueIdentifier inTable:(WKInterfaceTable *)table rowIndex:(NSInteger)rowIndex {

@@ -237,6 +237,9 @@
 }
 
 - (void)updateGroup:(PHGroup *)group completion:(void (^)(NSArray *errors))completion {
+    if (self.inDemoMode) {
+        return;
+    }
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     [bridgeSendAPI updateGroupWithGroup:group completionHandler:^(NSArray *errors) {
         if (completion) {
@@ -245,7 +248,30 @@
     }];
 }
 
+- (void)updateLight:(PHLight *)light completion:(void (^)(NSArray *errors))completion {
+    if (self.inDemoMode) {
+        return;
+    }
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    [bridgeSendAPI updateLightWithLight:light completionHandler:^(NSArray *errors) {
+        if (completion) {
+            completion(errors);
+        }
+    }];
+}
+
 - (void)createNewGroupWithName:(NSString *)name lightIds:(NSArray *)lightIds completion:(void (^)(NSArray *errors))completion {
+    if (self.inDemoMode) {
+        PHGroup *group = [PHGroup new];
+        group.name = name;
+        group.lightIdentifiers = lightIds;
+
+        NSMutableArray *array = [self.groups mutableCopy];
+        [array addObject:group];
+        self.groups = array;
+        return;
+    }
+    
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     [bridgeSendAPI createGroupWithName:name lightIds:lightIds completionHandler:^(NSString *groupIdentifier, NSArray *errors) {
         if (completion) {
@@ -255,6 +281,12 @@
 }
 
 - (void)deleteGroup:(PHGroup *)group completion:(void (^)(NSArray *errors))completion {
+    if (self.inDemoMode) {
+        NSMutableArray *array = [self.groups mutableCopy];
+        [array removeObject:group];
+        self.groups = array;
+        return;
+    }
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     [bridgeSendAPI removeGroupWithId:group.identifier completionHandler:^(NSArray *errors) {
         if (completion) {
@@ -264,6 +296,8 @@
 }
 
 - (void)resetPhoton {
+    self.inDemoMode = NO;
+    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"phBridgeResourcesCache"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"uniqueGlobalDeviceIdentifier"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -272,7 +306,6 @@
     [sharedDefaults removeObjectForKey:@"phBridgeResourcesCache"];
     [sharedDefaults removeObjectForKey:@"uniqueGlobalDeviceIdentifier"];
     [sharedDefaults synchronize];
-
 }
 
 

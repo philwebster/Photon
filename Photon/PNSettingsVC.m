@@ -34,13 +34,32 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
         [self.lightController resetPhoton];
         [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] doSetupProcess];
-//        [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] searchForBridgeLocal];
     }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)emailTapped:(id)sender {
+    // Email Subject
+    NSString *emailTitle = @"Photon App Feedback";
+    // To address
+    NSArray *toRecipents = [NSArray arrayWithObject:@"phil@photonapp.io"];
+    
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    mc.mailComposeDelegate = self;
+    [mc setSubject:emailTitle];
+    [mc setToRecipients:toRecipents];
+    
+    // Present mail view controller on screen
+    [self presentViewController:mc animated:YES completion:NULL];
+}
+
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 /*

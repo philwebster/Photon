@@ -37,9 +37,9 @@
                         <outlet property="delegate" destination="-1" id="S2L-5e-gBQ"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u83-tf-bNn">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u83-tf-bNn">
                     <rect key="frame" x="198" y="542" width="205" height="34"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                     <state key="normal" title="Continue Without Bridge">
                         <color key="titleColor" red="0.34346067905426025" green="0.58893829584121704" blue="0.77145475149154663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,6 +50,7 @@
                 </button>
                 <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7Vz-nd-xOW">
                     <rect key="frame" x="161" y="590" width="278" height="2"/>
+                    <color key="tintColor" red="0.35447907449999999" green="0.59231340889999995" blue="0.7649234533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="278" id="XYv-P3-rqg"/>
                     </constraints>

@@ -111,7 +111,7 @@
     if (section == 0) {
         return [self.lightController.groups count] + 1;
     } else if (section == 1) {
-        return [self.lightController.lights count];
+        return [self.lightController.lights count] + 1;
     } else if (section == 2) {
         return [self.lightController.scenes count];
     }
@@ -124,7 +124,6 @@
     if (indexPath.section == 0) {
         NSArray *groups = self.lightController.groups;
         if (indexPath.row == groups.count) {
-//            cell.plusImage.hidden = NO;
             cell.resourceTitleLabel.text = @"Edit...";
         } else {
             // TODO: Add a default All group if user doesn't already have one
@@ -132,7 +131,11 @@
         }
     } else if (indexPath.section == 1) {
         NSArray *lights = self.lightController.lights;
-        cell.resourceTitleLabel.text = [lights[indexPath.row] name];
+        if (indexPath.row == lights.count) {
+            cell.resourceTitleLabel.text = @"Edit...";
+        } else {
+            cell.resourceTitleLabel.text = [lights[indexPath.row] name];
+        }
     } else if (indexPath.section == 2) {
         NSArray *scenes = self.lightController.scenes;
         cell.resourceTitleLabel.text = [scenes[indexPath.row] name];
@@ -182,9 +185,13 @@
             [self.view addSubview:self.colorPickerVC.view];
         }
     } else if (indexPath.section == 1) {
-        self.colorPickerVC.resource = self.lightController.lights[indexPath.row];
-        [self addChildViewController:self.colorPickerVC];
-        [self.view addSubview:self.colorPickerVC.view];
+        if (indexPath.row == self.lightController.lights.count) {
+            [self editLightsTapped];
+        } else {
+            self.colorPickerVC.resource = self.lightController.lights[indexPath.row];
+            [self addChildViewController:self.colorPickerVC];
+            [self.view addSubview:self.colorPickerVC.view];
+        }
     } else if (indexPath.section == 2) {
         NSArray *scenes = self.lightController.scenes;
         [self.lightController setScene:scenes[indexPath.row] onGroup:nil];
@@ -251,7 +258,8 @@
 }
 
 - (void)editLightsTapped {
-    NSLog(@"edit lights tapped");
+    PNGroupListVC *lightList = [[PNGroupListVC alloc] initWithLights];
+    [self.navigationController pushViewController:lightList animated:YES];
 }
 
 - (void)editScenesTapped {

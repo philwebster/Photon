@@ -6,8 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PNGroupListVC">
             <connections>
+                <outlet property="addButton" destination="XwF-sO-zhx" id="O8T-aM-A5P"/>
                 <outlet property="backButton" destination="x3B-uR-iJD" id="9lJ-z6-1bq"/>
-                <outlet property="lightGroupTable" destination="KrI-LP-cEE" id="AZq-M3-vbC"/>
+                <outlet property="resourceTypeLabel" destination="aeR-aV-mXq" id="XO7-vV-zLH"/>
+                <outlet property="table" destination="KrI-LP-cEE" id="wH8-s6-X0F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,7 +26,7 @@
                         <outlet property="delegate" destination="-1" id="FNQ-Oh-5w2"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwF-sO-zhx">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwF-sO-zhx">
                     <rect key="frame" x="555" y="16" width="29" height="29"/>
                     <state key="normal" image="plus">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

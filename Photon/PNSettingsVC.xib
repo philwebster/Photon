@@ -17,8 +17,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWa-Vg-A3E">
-                    <rect key="frame" x="525" y="16" width="59" height="41"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
+                    <rect key="frame" x="530" y="16" width="54" height="39"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
                     <state key="normal" title="Done">
                         <color key="titleColor" red="0.30141761900000003" green="0.3014255166" blue="0.30142125489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,8 +27,8 @@
                         <action selector="doneButtonPressed:" destination="-1" eventType="touchUpInside" id="bpC-Us-qzd"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ruy-1k-fu0">
-                    <rect key="frame" x="238" y="538" width="126" height="36"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ruy-1k-fu0">
+                    <rect key="frame" x="237" y="552" width="126" height="36"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                     <state key="normal" title="Reset Photon">
                         <color key="titleColor" red="0.98431372549999996" green="0.0" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,13 +38,35 @@
                         <action selector="resetButtonPressed:" destination="-1" eventType="touchUpInside" id="ElP-5N-gtM"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for purchasing Photon! Please feel free to contact me with any questions or feedback." lineBreakMode="tailTruncation" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xw-lM-Ddd">
+                    <rect key="frame" x="24" y="139" width="552" height="40"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDJ-O7-8am">
+                    <rect key="frame" x="225" y="224" width="151" height="33"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                    <state key="normal" title="phil@photonapp.io">
+                        <color key="titleColor" red="0.35447907449999999" green="0.59231340889999995" blue="0.7649234533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="emailTapped:" destination="-1" eventType="touchUpInside" id="WoR-WA-0RW"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="YWa-Vg-A3E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="3O8-d5-YUp"/>
-                <constraint firstAttribute="bottom" secondItem="Ruy-1k-fu0" secondAttribute="bottom" constant="8" id="45b-0P-RBr"/>
+                <constraint firstAttribute="bottom" secondItem="Ruy-1k-fu0" secondAttribute="bottom" constant="12" id="45b-0P-RBr"/>
+                <constraint firstItem="7Xw-lM-Ddd" firstAttribute="top" secondItem="YWa-Vg-A3E" secondAttribute="bottom" constant="84" id="AYw-4T-sph"/>
+                <constraint firstAttribute="trailing" secondItem="7Xw-lM-Ddd" secondAttribute="trailing" constant="24" id="Gdb-9H-iSd"/>
                 <constraint firstAttribute="centerX" secondItem="Ruy-1k-fu0" secondAttribute="centerX" id="J7X-YB-bAW"/>
+                <constraint firstItem="VDJ-O7-8am" firstAttribute="top" secondItem="7Xw-lM-Ddd" secondAttribute="bottom" constant="45" id="SOT-B5-8WJ"/>
+                <constraint firstAttribute="centerX" secondItem="VDJ-O7-8am" secondAttribute="centerX" id="ffB-gq-1jc"/>
                 <constraint firstAttribute="trailing" secondItem="YWa-Vg-A3E" secondAttribute="trailing" constant="16" id="h1T-Bv-KaR"/>
+                <constraint firstItem="7Xw-lM-Ddd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="kqi-5P-WdE"/>
             </constraints>
         </view>
     </objects>

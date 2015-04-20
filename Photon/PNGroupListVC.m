@@ -9,26 +9,43 @@
 #import "PNGroupListVC.h"
 #import "PNLightController.h"
 #import "PNEditGroupVC.h"
+#import "PNEditLightVC.h"
 
 @interface PNGroupListVC ()
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property PNLightController *lightController;
-@property (weak, nonatomic) IBOutlet UITableView *lightGroupTable;
+@property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) NSArray *tableData;
+@property (nonatomic, assign) BOOL displayLights;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (weak, nonatomic) IBOutlet UILabel *resourceTypeLabel;
 
 @end
 
 @implementation PNGroupListVC
 
+- (id)initWithLights {
+    self = [super init];
+    if (self) {
+        self.displayLights = YES;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.lightController = [PNLightController singleton];
-    self.lightGroupTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    if (self.displayLights) {
+        self.addButton.hidden = YES;
+        self.resourceTypeLabel.text = @"Lights";
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self.lightGroupTable reloadData];
+    [self.table reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,7 +58,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.lightController.groups.count;
+    return self.tableData.count;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,22 +82,40 @@
         cell.textLabel.textColor = [UIColor colorWithRed:0.377 green:0.377 blue:0.377 alpha:1];
         cell.tintColor = [UIColor colorWithRed:0.354 green:0.592 blue:0.764 alpha:1];
     }
-    
-    NSArray *groups = self.lightController.groups;
-    cell.textLabel.text = [groups[indexPath.row] name];
+
+    cell.textLabel.text = [self.tableData[indexPath.row] name];
     
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.displayLights) {
+        return NO;
+    }
+    return YES;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray *groups = self.lightController.groups;
-    PNEditGroupVC *editVC = [[PNEditGroupVC alloc] initWithGroup:groups[indexPath.row]];
-    [self.navigationController pushViewController:editVC animated:YES];
+    if (self.displayLights) {
+        PNEditLightVC *editVC = [[PNEditLightVC alloc] initWithLight:self.tableData[indexPath.row]];
+        [self.navigationController pushViewController:editVC animated:YES];
+    } else {
+        PNEditGroupVC *editVC = [[PNEditGroupVC alloc] initWithGroup:self.tableData[indexPath.row]];
+        [self.navigationController pushViewController:editVC animated:YES];
+    }
 }
 
 - (IBAction)newGroupButtonPressed:(id)sender {
     PNEditGroupVC *editVC = [[PNEditGroupVC alloc] initWithGroup:nil];
     [self.navigationController pushViewController:editVC animated:YES];
+}
+
+- (NSArray *)tableData {
+    if (self.displayLights) {
+        return self.lightController.lights;
+    } else {
+        return self.lightController.groups;
+    }
 }
 
 /*
