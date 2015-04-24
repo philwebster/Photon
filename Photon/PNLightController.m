@@ -42,7 +42,6 @@
         
         self.phHueSDK = [[PHHueSDK alloc] init];
 
-        self.inDemoMode = NO;
         self.standardColors = @[[UIColor colorWithHue:0.626 saturation:0.871 brightness:1.000 alpha:1.000],
                                 [UIColor colorWithHue:0.788 saturation:1.000 brightness:0.996 alpha:1.000],
                                 [UIColor colorWithHue:0.846 saturation:1.000 brightness:0.984 alpha:1.000],
@@ -308,5 +307,16 @@
     [sharedDefaults synchronize];
 }
 
+- (void)setInDemoMode:(BOOL)inDemoMode {
+    inDemoMode = inDemoMode;
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    [sharedDefaults setBool:inDemoMode forKey:@"demoMode"];
+    [sharedDefaults synchronize];
+}
+
+- (BOOL)inDemoMode {
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    return [sharedDefaults boolForKey:@"demoMode"];
+}
 
 @end

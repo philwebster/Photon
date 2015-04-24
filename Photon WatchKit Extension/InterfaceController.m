@@ -55,6 +55,9 @@
     [[NSUserDefaults standardUserDefaults] setObject:deviceID forKey:@"uniqueGlobalDeviceIdentifier"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    BOOL demoMode = [sharedDefaults boolForKey:@"demoMode"];
+    [[PNLightController singleton] setInDemoMode:demoMode];
+    
     self.sdk = self.lightController.phHueSDK;
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];
