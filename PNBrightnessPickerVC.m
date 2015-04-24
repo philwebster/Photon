@@ -108,7 +108,7 @@
         PNBrightnessCell *cell = (PNBrightnessCell *)sender;
         UISlider *slider = cell.resourceBrightnessSlider;
         PHLight *light = (PHLight *)cell.resource;
-        [self.lightBrightnessValues setObject:[NSNumber numberWithInt:(int)slider.value] forKey:light.identifier];
+        [self.lightBrightnessValues setObject:[NSNumber numberWithFloat:slider.value] forKey:light.identifier];
         self.lightBrightnessInitialValues = [self.lightBrightnessValues mutableCopy];
         self.mainSlider.value = self.initialMainSliderValue = [self averageBrightness:self.lightBrightnessValues];
     }
@@ -125,7 +125,7 @@
                 // initial value - difference * percent
                 newBrightness = initialBrightness - initialBrightness * (1 - (weakSelf.mainSlider.value / weakSelf.initialMainSliderValue));
             }
-            [weakSelf.lightBrightnessValues setObject:[NSNumber numberWithInt:(int)newBrightness] forKey:lightID];
+            [weakSelf.lightBrightnessValues setObject:[NSNumber numberWithFloat:newBrightness] forKey:lightID];
         }];
         for (PNBrightnessCell *cell in weakSelf.table.visibleCells) {
             cell.resourceBrightnessSlider.value = [[weakSelf.lightBrightnessValues objectForKey:cell.resource.identifier] floatValue];
@@ -147,7 +147,7 @@
         __weak PNBrightnessPickerVC *weakSelf = self;
         [self.lightBrightnessValues enumerateKeysAndObjectsUsingBlock:^(NSString *identifier, NSNumber *brightnessVal, BOOL *stop) {
             PHLight *light = [weakSelf.lightController lightWithId:identifier];
-            [weakSelf.lightController setBrightness:brightnessVal forResource:light];
+            [weakSelf.lightController setBrightness:[NSNumber numberWithInt:(int)[brightnessVal floatValue]] forResource:light];
         }];
     }
     self.willUpdateBrightness = NO;
