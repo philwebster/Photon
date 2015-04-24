@@ -66,8 +66,6 @@
             [self.sdk startUpSDK];
             [self.sdk enableLocalConnection];
         }
-    } else {
-        NSLog(@"need to set up with iPhone first");
     }
     
     [self loadResourceItems];

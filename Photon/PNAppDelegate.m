@@ -302,6 +302,10 @@
     }];
 }
 
+- (void)cancelBridgeSearch {
+    [self.bridgeSearch cancelSearch];
+}
+
 /**
  Delegate method for PHbridgeSelectionViewController which is invoked when a bridge is selected
  */
@@ -349,7 +353,6 @@
     self.setupVC = nil;
     
     // Start local heartbeat
-    NSLog(@"push link success");
     [self performSelector:@selector(enableLocalHeartbeat) withObject:nil afterDelay:1];
 }
 

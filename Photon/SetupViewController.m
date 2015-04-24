@@ -210,6 +210,7 @@
 
 - (IBAction)continueButtonPressed:(id)sender {
     [[PNLightController singleton] setInDemoMode:YES];
+    [(PNAppDelegate *)[[UIApplication sharedApplication] delegate] cancelBridgeSearch];
     [self.phHueSDK cancelPushLinkAuthentication];
     [self authenticationSuccess];
 }
