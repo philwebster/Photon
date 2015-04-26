@@ -154,6 +154,10 @@
     [_offButton setBackgroundColor:[UIColor clearColor]];
 }
 
+- (void)setBackgroundColor:(UIButton *)button {
+    [button setBackgroundColor:[UIColor colorWithRed:0.949 green:0.949 blue:0.949 alpha:1]];
+}
+
 - (void)setResource:(PHBridgeResource *)resource {
     _resource = resource;
     self.brightnessPicker.resource = resource;
@@ -180,7 +184,8 @@
         [_doneButton setTitle:@"DONE" forState:UIControlStateNormal];
         [_doneButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_doneButton addTarget:self action:@selector(tappedDoneButton) forControlEvents:UIControlEventTouchUpInside];
-        [_doneButton setTitleColor:[UIColor colorWithRed:0.185 green:0.185 blue:0.185 alpha:1] forState:UIControlStateHighlighted];
+        [_doneButton addTarget:self action:@selector(setBackgroundColor:) forControlEvents:UIControlEventTouchDown];
+        [_doneButton addTarget:self action:@selector(clearButtonBackgrounds) forControlEvents:UIControlEventTouchUpOutside];
         _doneButton.layer.cornerRadius = 8;
     }
     return _doneButton;
@@ -194,7 +199,8 @@
         [_offButton setTitle:@"OFF" forState:UIControlStateNormal];
         [_offButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_offButton addTarget:self action:@selector(tappedOffButton) forControlEvents:UIControlEventTouchUpInside];
-        [_offButton setTitleColor:[UIColor colorWithRed:0.185 green:0.185 blue:0.185 alpha:1] forState:UIControlStateHighlighted];
+        [_offButton addTarget:self action:@selector(setBackgroundColor:) forControlEvents:UIControlEventTouchDown];
+        [_offButton addTarget:self action:@selector(clearButtonBackgrounds) forControlEvents:UIControlEventTouchUpOutside];
         _offButton.layer.cornerRadius = 8;
     }
     return _offButton;
