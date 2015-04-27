@@ -35,6 +35,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
+#ifndef DEBUG
     // Initialize the library with your
     // Mixpanel project token, MIXPANEL_TOKEN
     [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
@@ -44,6 +45,7 @@
     [mixpanel identify:mixpanel.distinctId];
     [mixpanel.people set:@{@"device name": [[UIDevice currentDevice] name]}];
     [mixpanel track:@"app launch"];
+#endif
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 

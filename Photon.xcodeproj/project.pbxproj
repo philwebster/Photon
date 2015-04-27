@@ -13,6 +13,11 @@
 		D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */; };
 		D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C3BE41A722834006D2678 /* ResourceRowController.m */; };
 		D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */; };
+		D344C5401AECB21C002522D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C53F1AECB21C002522D0 /* AppDelegate.m */; };
+		D344C5421AECB21C002522D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C5411AECB21C002522D0 /* main.m */; };
+		D344C5441AECB21C002522D0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D344C5431AECB21C002522D0 /* Images.xcassets */; };
+		D344C5471AECB21C002522D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D344C5451AECB21C002522D0 /* MainMenu.xib */; };
+		D344C5531AECB21C002522D0 /* Photon__OS_X_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C5521AECB21C002522D0 /* Photon__OS_X_Tests.m */; };
 		D34FB2A71A71714600DB659E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A61A71714600DB659E /* InterfaceController.m */; };
 		D34FB2AA1A71714600DB659E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A91A71714600DB659E /* NotificationController.m */; };
 		D34FB2AC1A71714600DB659E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AB1A71714600DB659E /* Images.xcassets */; };
@@ -71,6 +76,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D344C54D1AECB21C002522D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D38C162D1A68DE96006FE974 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D344C5391AECB21C002522D0;
+			remoteInfo = "Photon (OS X)";
+		};
 		D34FB2B11A71714700DB659E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D38C162D1A68DE96006FE974 /* Project object */;
@@ -135,6 +147,16 @@
 		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceRowController.m; sourceTree = "<group>"; };
 		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
 		D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridgeView.m; sourceTree = "<group>"; };
+		D344C53A1AECB21C002522D0 /* Photon (OS X).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photon (OS X).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D344C53D1AECB21C002522D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D344C53E1AECB21C002522D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D344C53F1AECB21C002522D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D344C5411AECB21C002522D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D344C5431AECB21C002522D0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D344C5461AECB21C002522D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D344C54C1AECB21C002522D0 /* Photon (OS X)Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Photon (OS X)Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D344C5511AECB21C002522D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D344C5521AECB21C002522D0 /* Photon__OS_X_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Photon__OS_X_Tests.m; sourceTree = "<group>"; };
 		D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Photon WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34FB2A31A71714600DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34FB2A41A71714600DB659E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -224,6 +246,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D344C5371AECB21C002522D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D344C5491AECB21C002522D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D34FB29D1A71714600DB659E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,6 +320,47 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D344C53B1AECB21C002522D0 /* Photon OS X App */ = {
+			isa = PBXGroup;
+			children = (
+				D344C53E1AECB21C002522D0 /* AppDelegate.h */,
+				D344C53F1AECB21C002522D0 /* AppDelegate.m */,
+				D344C5431AECB21C002522D0 /* Images.xcassets */,
+				D344C5451AECB21C002522D0 /* MainMenu.xib */,
+				D344C54F1AECB21C002522D0 /* Photon OS X Tests */,
+				D344C53C1AECB21C002522D0 /* Supporting Files */,
+			);
+			name = "Photon OS X App";
+			path = "Photon (OS X)";
+			sourceTree = "<group>";
+		};
+		D344C53C1AECB21C002522D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D344C53D1AECB21C002522D0 /* Info.plist */,
+				D344C5411AECB21C002522D0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D344C54F1AECB21C002522D0 /* Photon OS X Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D344C5521AECB21C002522D0 /* Photon__OS_X_Tests.m */,
+				D344C5501AECB21C002522D0 /* Supporting Files */,
+			);
+			name = "Photon OS X Tests";
+			path = "Photon (OS X)Tests";
+			sourceTree = SOURCE_ROOT;
+		};
+		D344C5501AECB21C002522D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D344C5511AECB21C002522D0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		D34FB2A11A71714600DB659E /* Photon WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +412,7 @@
 				D34FB2B31A71714700DB659E /* Photon WatchKit App */,
 				D3BA96751AB9EC0A0026F77A /* PhotonLightController */,
 				D3BA96821AB9EC0A0026F77A /* PhotonLightControllerTests */,
+				D344C53B1AECB21C002522D0 /* Photon OS X App */,
 				D38C16361A68DE96006FE974 /* Products */,
 				D3BA63281A6B664600095EF7 /* Lumberjack */,
 				D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */,
@@ -353,6 +431,8 @@
 				D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */,
 				D3BA96741AB9EC0A0026F77A /* libPhotonLightController.a */,
 				D3BA967E1AB9EC0A0026F77A /* PhotonLightControllerTests.xctest */,
+				D344C53A1AECB21C002522D0 /* Photon (OS X).app */,
+				D344C54C1AECB21C002522D0 /* Photon (OS X)Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -524,6 +604,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D344C5391AECB21C002522D0 /* Photon (OS X) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D344C5581AECB21C002522D0 /* Build configuration list for PBXNativeTarget "Photon (OS X)" */;
+			buildPhases = (
+				D344C5361AECB21C002522D0 /* Sources */,
+				D344C5371AECB21C002522D0 /* Frameworks */,
+				D344C5381AECB21C002522D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Photon (OS X)";
+			productName = "Photon (OS X)";
+			productReference = D344C53A1AECB21C002522D0 /* Photon (OS X).app */;
+			productType = "com.apple.product-type.application";
+		};
+		D344C54B1AECB21C002522D0 /* Photon (OS X)Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D344C5591AECB21C002522D0 /* Build configuration list for PBXNativeTarget "Photon (OS X)Tests" */;
+			buildPhases = (
+				D344C5481AECB21C002522D0 /* Sources */,
+				D344C5491AECB21C002522D0 /* Frameworks */,
+				D344C54A1AECB21C002522D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D344C54E1AECB21C002522D0 /* PBXTargetDependency */,
+			);
+			name = "Photon (OS X)Tests";
+			productName = "Photon (OS X)Tests";
+			productReference = D344C54C1AECB21C002522D0 /* Photon (OS X)Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D34FB29F1A71714600DB659E /* Photon WatchKit Extension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D34FB2C11A71714700DB659E /* Build configuration list for PBXNativeTarget "Photon WatchKit Extension" */;
@@ -640,6 +755,13 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = phil;
 				TargetAttributes = {
+					D344C5391AECB21C002522D0 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					D344C54B1AECB21C002522D0 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = D344C5391AECB21C002522D0;
+					};
 					D34FB29F1A71714600DB659E = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = V9RH239UZW;
@@ -693,11 +815,29 @@
 				D34FB2AE1A71714700DB659E /* Photon WatchKit App */,
 				D3BA96731AB9EC0A0026F77A /* PhotonLightController */,
 				D3BA967D1AB9EC0A0026F77A /* PhotonLightControllerTests */,
+				D344C5391AECB21C002522D0 /* Photon (OS X) */,
+				D344C54B1AECB21C002522D0 /* Photon (OS X)Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D344C5381AECB21C002522D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D344C5441AECB21C002522D0 /* Images.xcassets in Resources */,
+				D344C5471AECB21C002522D0 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D344C54A1AECB21C002522D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D34FB29E1A71714600DB659E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -788,6 +928,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D344C5361AECB21C002522D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D344C5421AECB21C002522D0 /* main.m in Sources */,
+				D344C5401AECB21C002522D0 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D344C5481AECB21C002522D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D344C5531AECB21C002522D0 /* Photon__OS_X_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D34FB29C1A71714600DB659E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -861,6 +1018,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D344C54E1AECB21C002522D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D344C5391AECB21C002522D0 /* Photon (OS X) */;
+			targetProxy = D344C54D1AECB21C002522D0 /* PBXContainerItemProxy */;
+		};
 		D34FB2B21A71714700DB659E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D34FB2AE1A71714700DB659E /* Photon WatchKit App */;
@@ -884,6 +1046,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D344C5451AECB21C002522D0 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D344C5461AECB21C002522D0 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		D34FB2B61A71714700DB659E /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -903,6 +1073,88 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D344C5541AECB21C002522D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Photon (OS X)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D344C5551AECB21C002522D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Photon (OS X)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D344C5561AECB21C002522D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Photon (OS X)Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photon (OS X).app/Contents/MacOS/Photon (OS X)";
+			};
+			name = Debug;
+		};
+		D344C5571AECB21C002522D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Photon (OS X)Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photon (OS X).app/Contents/MacOS/Photon (OS X)";
+			};
+			name = Release;
+		};
 		D34FB2BF1A71714700DB659E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1214,6 +1466,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D344C5581AECB21C002522D0 /* Build configuration list for PBXNativeTarget "Photon (OS X)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D344C5541AECB21C002522D0 /* Debug */,
+				D344C5551AECB21C002522D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D344C5591AECB21C002522D0 /* Build configuration list for PBXNativeTarget "Photon (OS X)Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D344C5561AECB21C002522D0 /* Debug */,
+				D344C5571AECB21C002522D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D34FB2BE1A71714700DB659E /* Build configuration list for PBXNativeTarget "Photon WatchKit App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
