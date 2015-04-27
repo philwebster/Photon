@@ -18,6 +18,8 @@
 		D344C5441AECB21C002522D0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D344C5431AECB21C002522D0 /* Images.xcassets */; };
 		D344C5471AECB21C002522D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D344C5451AECB21C002522D0 /* MainMenu.xib */; };
 		D344C5531AECB21C002522D0 /* Photon__OS_X_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C5521AECB21C002522D0 /* Photon__OS_X_Tests.m */; };
+		D344C55E1AEE152A002522D0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D344C55C1AEE152A002522D0 /* Crashlytics.framework */; };
+		D344C55F1AEE152A002522D0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D344C55D1AEE152A002522D0 /* Fabric.framework */; };
 		D34FB2A71A71714600DB659E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A61A71714600DB659E /* InterfaceController.m */; };
 		D34FB2AA1A71714600DB659E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A91A71714600DB659E /* NotificationController.m */; };
 		D34FB2AC1A71714600DB659E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AB1A71714600DB659E /* Images.xcassets */; };
@@ -157,6 +159,8 @@
 		D344C54C1AECB21C002522D0 /* Photon (OS X)Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Photon (OS X)Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D344C5511AECB21C002522D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D344C5521AECB21C002522D0 /* Photon__OS_X_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Photon__OS_X_Tests.m; sourceTree = "<group>"; };
+		D344C55C1AEE152A002522D0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		D344C55D1AEE152A002522D0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Photon WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34FB2A31A71714600DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34FB2A41A71714600DB659E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -273,7 +277,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D387800B1AE51898003DCF46 /* MessageUI.framework in Frameworks */,
+				D344C55F1AEE152A002522D0 /* Fabric.framework in Frameworks */,
 				D380F1861AE2F03F00D846B9 /* HueSDK_iOS.framework in Frameworks */,
+				D344C55E1AEE152A002522D0 /* Crashlytics.framework in Frameworks */,
 				B21B1F28ACB98A64E864C854 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +425,8 @@
 				D387800A1AE51898003DCF46 /* MessageUI.framework */,
 				D290A354950A7DAA5E6BB112 /* Pods */,
 				49ACB7E6BC37C8E6B5D2B4CB /* Frameworks */,
+				D344C55C1AEE152A002522D0 /* Crashlytics.framework */,
+				D344C55D1AEE152A002522D0 /* Fabric.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -682,6 +690,7 @@
 				D38C16331A68DE96006FE974 /* Resources */,
 				D34FB24B1A70F56F00DB659E /* Embed App Extensions */,
 				F39397C658B572E70615BB40 /* Copy Pods Resources */,
+				D344C55B1AEE14F8002522D0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -909,6 +918,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		D344C55B1AEE14F8002522D0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 0fc1afd63ddc37177b5fb943fad7a8cb15dff382 aa8302b2d2bc544764e25306c4eb9f6685006e8d9fd4ef72fdda6d7548ee7796";
 		};
 		F39397C658B572E70615BB40 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1473,6 +1495,7 @@
 				D344C5551AECB21C002522D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D344C5591AECB21C002522D0 /* Build configuration list for PBXNativeTarget "Photon (OS X)Tests" */ = {
 			isa = XCConfigurationList;
@@ -1481,6 +1504,7 @@
 				D344C5571AECB21C002522D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D34FB2BE1A71714700DB659E /* Build configuration list for PBXNativeTarget "Photon WatchKit App" */ = {
 			isa = XCConfigurationList;

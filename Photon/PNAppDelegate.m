@@ -12,6 +12,8 @@
 #import "PNLightController.h"
 #import "PNColorPickerVC.h"
 #import "Mixpanel.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 #define MIXPANEL_TOKEN @"48a70e77f8f176df9ddfe85e7af783db"
 
@@ -46,6 +48,8 @@
     [mixpanel.people set:@{@"device name": [[UIDevice currentDevice] name]}];
     [mixpanel track:@"app launch"];
 #endif
+    [Fabric with:@[CrashlyticsKit]];
+
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
