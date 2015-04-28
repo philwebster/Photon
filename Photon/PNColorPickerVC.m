@@ -185,7 +185,7 @@
         [_doneButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_doneButton addTarget:self action:@selector(tappedDoneButton) forControlEvents:UIControlEventTouchUpInside];
         [_doneButton addTarget:self action:@selector(setBackgroundColor:) forControlEvents:UIControlEventTouchDown];
-        [_doneButton addTarget:self action:@selector(clearButtonBackgrounds) forControlEvents:UIControlEventTouchUpOutside];
+        [_doneButton addTarget:self action:@selector(clearButtonBackgrounds) forControlEvents:UIControlEventTouchUpOutside|UIControlEventTouchDragExit];
         _doneButton.layer.cornerRadius = 8;
     }
     return _doneButton;
@@ -200,7 +200,7 @@
         [_offButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_offButton addTarget:self action:@selector(tappedOffButton) forControlEvents:UIControlEventTouchUpInside];
         [_offButton addTarget:self action:@selector(setBackgroundColor:) forControlEvents:UIControlEventTouchDown];
-        [_offButton addTarget:self action:@selector(clearButtonBackgrounds) forControlEvents:UIControlEventTouchUpOutside];
+        [_offButton addTarget:self action:@selector(clearButtonBackgrounds) forControlEvents:UIControlEventTouchUpOutside|UIControlEventTouchDragExit];
         _offButton.layer.cornerRadius = 8;
     }
     return _offButton;
