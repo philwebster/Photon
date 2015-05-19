@@ -42,5 +42,6 @@
 - (void)setOtherResourcesOff;
 - (void)setOtherResourcesOn;
 - (void)resetPhoton;
+- (NSInteger)numberOfOnLights;
 
 @end

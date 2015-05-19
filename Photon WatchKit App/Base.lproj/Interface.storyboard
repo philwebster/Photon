@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Watch ResourceIC-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController">
+                <controller id="AgC-eL-Hgc" customClass="PNWatchResourceIC">
                     <items>
                         <table alignment="left" id="NIO-hF-4fy">
                             <items>
@@ -35,10 +35,10 @@
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Watch ResourceIC-->
         <scene sceneID="tUo-WM-4GY">
             <objects>
-                <controller id="YER-dv-bR6" customClass="InterfaceController">
+                <controller id="YER-dv-bR6" customClass="PNWatchResourceIC">
                     <items>
                         <table alignment="left" id="JlT-UW-pDZ">
                             <items>
@@ -72,7 +72,7 @@
                     <items>
                         <group alignment="center" id="khd-5a-blY">
                             <items>
-                                <button width="25" height="81" alignment="left" id="9IZ-EI-NUK">
+                                <button width="25" height="60" alignment="left" id="9IZ-EI-NUK">
                                     <color key="backgroundColor" red="0.99607843139999996" green="0.82352941180000006" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <variation key="device=watch38mm" height="60"/>
                                     <variation key="device=watch42mm" height="84" width="29"/>
@@ -80,7 +80,7 @@
                                         <action selector="buttonAPressed" destination="CW7-YK-FKz" id="9PG-qD-YrS"/>
                                     </connections>
                                 </button>
-                                <button width="25" height="81" alignment="left" id="cKX-3c-HMe">
+                                <button width="25" height="60" alignment="left" id="cKX-3c-HMe">
                                     <color key="backgroundColor" red="1" green="0.95294117649999999" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                     <variation key="device=watch38mm" height="60"/>
                                     <variation key="device=watch42mm" height="84" width="29"/>
@@ -88,7 +88,7 @@
                                         <action selector="buttonBPressed" destination="CW7-YK-FKz" id="V1T-YD-C4N"/>
                                     </connections>
                                 </button>
-                                <button width="25" height="81" alignment="left" id="3en-YI-N9f">
+                                <button width="25" height="60" alignment="left" id="3en-YI-N9f">
                                     <color key="backgroundColor" red="1" green="1" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <variation key="device=watch38mm" height="60"/>
                                     <variation key="device=watch42mm" height="84" width="29"/>
@@ -96,7 +96,7 @@
                                         <action selector="buttonCPressed" destination="CW7-YK-FKz" id="AMn-fS-0yP"/>
                                     </connections>
                                 </button>
-                                <button width="25" height="81" alignment="left" id="kwn-Zm-nEP">
+                                <button width="25" height="60" alignment="left" id="kwn-Zm-nEP">
                                     <color key="backgroundColor" red="0.80000000000000004" green="0.94117647059999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <variation key="device=watch38mm" height="60"/>
                                     <variation key="device=watch42mm" height="84" width="29"/>
@@ -104,7 +104,7 @@
                                         <action selector="buttonDPressed" destination="CW7-YK-FKz" id="zNX-P1-DaK"/>
                                     </connections>
                                 </button>
-                                <button width="25" height="81" alignment="left" id="d2c-Pg-F56">
+                                <button width="25" height="60" alignment="left" id="d2c-Pg-F56">
                                     <color key="backgroundColor" red="0.5450980392" green="0.83137254900000002" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <variation key="device=watch38mm" height="60"/>
                                     <variation key="device=watch42mm" height="84" width="29"/>
@@ -120,6 +120,7 @@
                             </connections>
                         </slider>
                         <button width="1" height="40" alignment="left" title="Other Lights OFF" id="57z-b2-KkN">
+                            <fontDescription key="font" type="system" pointSize="15"/>
                             <connections>
                                 <action selector="otherLightsPressed" destination="CW7-YK-FKz" id="wRJ-cK-BDk"/>
                             </connections>
@@ -156,6 +157,44 @@
                 <controller id="4sK-HA-Art" customClass="NotificationController"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="Hqg-hN-zKf">
+            <objects>
+                <glanceController id="KYD-6V-hw8" customClass="PNWatchGlanceIC">
+                    <items>
+                        <group alignment="left" id="9jf-Ce-ZQ1">
+                            <items>
+                                <imageView width="34" height="34" alignment="left" verticalAlignment="center" image="glanceIcon" contentMode="scaleAspectFit" id="BgZ-ob-69W">
+                                    <variation key="device=watch38mm" height="34" width="34"/>
+                                    <variation key="device=watch42mm" height="42" width="42"/>
+                                </imageView>
+                            </items>
+                        </group>
+                        <group alignment="left" layout="vertical" id="Qtj-Pk-sty">
+                            <items>
+                                <label height="56" alignment="center" text="5" textAlignment="center" minimumScaleFactor="0.0" id="xDZ-N5-waf">
+                                    <fontDescription key="font" type="system" weight="semibold" pointSize="62"/>
+                                    <variation key="device=watch38mm" height="56">
+                                        <fontDescription key="font" type="system" weight="semibold" pointSize="62"/>
+                                    </variation>
+                                    <variation key="device=watch42mm" height="66">
+                                        <fontDescription key="font" type="system" weight="semibold" pointSize="76"/>
+                                    </variation>
+                                </label>
+                                <label width="1" alignment="left" text="lights on" textAlignment="center" id="onn-nu-M9i">
+                                    <fontDescription key="font" type="system" pointSize="20"/>
+                                </label>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="lightsOnLabel" destination="onn-nu-M9i" id="00R-RL-7hl"/>
+                        <outlet property="numLightsOnLabel" destination="xDZ-N5-waf" id="rCP-RI-7G7"/>
+                    </connections>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="724.46153846153857" y="639.46153846153845"/>
         </scene>
     </scenes>
 </document>

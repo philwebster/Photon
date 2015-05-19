@@ -20,7 +20,7 @@
 		D344C5531AECB21C002522D0 /* Photon__OS_X_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C5521AECB21C002522D0 /* Photon__OS_X_Tests.m */; };
 		D344C55E1AEE152A002522D0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D344C55C1AEE152A002522D0 /* Crashlytics.framework */; };
 		D344C55F1AEE152A002522D0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D344C55D1AEE152A002522D0 /* Fabric.framework */; };
-		D34FB2A71A71714600DB659E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A61A71714600DB659E /* InterfaceController.m */; };
+		D34FB2A71A71714600DB659E /* PNWatchResourceIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A61A71714600DB659E /* PNWatchResourceIC.m */; };
 		D34FB2AA1A71714600DB659E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A91A71714600DB659E /* NotificationController.m */; };
 		D34FB2AC1A71714600DB659E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AB1A71714600DB659E /* Images.xcassets */; };
 		D34FB2B01A71714700DB659E /* Photon WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */; };
@@ -63,6 +63,8 @@
 		D3C487EE1A8088B000ED9EDC /* PNColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C487ED1A8088B000ED9EDC /* PNColorView.m */; };
 		D3C53A171AB9826A00D8F6DF /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63321A6B664600095EF7 /* DDTTYLogger.m */; };
 		D3D4561F1A8B163000219219 /* UIColor+PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */; };
+		D3D473461B0B0B8F00BD08E0 /* PNWatchIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D473451B0B0B8F00BD08E0 /* PNWatchIC.m */; };
+		D3D473491B0B0F8400BD08E0 /* PNWatchGlanceIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D473481B0B0F8400BD08E0 /* PNWatchGlanceIC.m */; };
 		D3DF823C1A7425B1001AD7DB /* PNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PNLightController.m */; };
 		D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63301A6B664600095EF7 /* DDLog.m */; };
 		D3E4C8431AE543A2006509D8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4C8421AE543A2006509D8 /* Images.xcassets */; };
@@ -167,8 +169,8 @@
 		D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Photon WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34FB2A31A71714600DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34FB2A41A71714600DB659E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		D34FB2A51A71714600DB659E /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
-		D34FB2A61A71714600DB659E /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		D34FB2A51A71714600DB659E /* PNWatchResourceIC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PNWatchResourceIC.h; sourceTree = "<group>"; };
+		D34FB2A61A71714600DB659E /* PNWatchResourceIC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PNWatchResourceIC.m; sourceTree = "<group>"; };
 		D34FB2A81A71714600DB659E /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
 		D34FB2A91A71714600DB659E /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
 		D34FB2AB1A71714600DB659E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -234,6 +236,10 @@
 		D3C53A161AB9672000D8F6DF /* Photon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Photon.entitlements; sourceTree = "<group>"; };
 		D3D4561D1A8B163000219219 /* UIColor+PNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PNUtilities.h"; sourceTree = "<group>"; };
 		D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PNUtilities.m"; sourceTree = "<group>"; };
+		D3D473441B0B0B8F00BD08E0 /* PNWatchIC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNWatchIC.h; sourceTree = "<group>"; };
+		D3D473451B0B0B8F00BD08E0 /* PNWatchIC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNWatchIC.m; sourceTree = "<group>"; };
+		D3D473471B0B0F8400BD08E0 /* PNWatchGlanceIC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNWatchGlanceIC.h; sourceTree = "<group>"; };
+		D3D473481B0B0F8400BD08E0 /* PNWatchGlanceIC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNWatchGlanceIC.m; sourceTree = "<group>"; };
 		D3E4C8421AE543A2006509D8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D3EC3D3F1AD08C0F00B29301 /* PNBrightnessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBrightnessCell.xib; sourceTree = "<group>"; };
 		D3EC3D411AD08DB200B29301 /* PNBrightnessCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNBrightnessCell.h; sourceTree = "<group>"; };
@@ -378,10 +384,14 @@
 		D34FB2A11A71714600DB659E /* Photon WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D34FB2A51A71714600DB659E /* InterfaceController.h */,
-				D34FB2A61A71714600DB659E /* InterfaceController.m */,
+				D3D473441B0B0B8F00BD08E0 /* PNWatchIC.h */,
+				D3D473451B0B0B8F00BD08E0 /* PNWatchIC.m */,
+				D34FB2A51A71714600DB659E /* PNWatchResourceIC.h */,
+				D34FB2A61A71714600DB659E /* PNWatchResourceIC.m */,
 				D39094851AFD327100070B37 /* PNWatchLightSettingIC.h */,
 				D39094861AFD327100070B37 /* PNWatchLightSettingIC.m */,
+				D3D473471B0B0F8400BD08E0 /* PNWatchGlanceIC.h */,
+				D3D473481B0B0F8400BD08E0 /* PNWatchGlanceIC.m */,
 				D34FB2A81A71714600DB659E /* NotificationController.h */,
 				D34FB2A91A71714600DB659E /* NotificationController.m */,
 				D3AAC07A1ABBC9F200E30C71 /* Row Controllers */,
@@ -983,16 +993,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3D473461B0B0B8F00BD08E0 /* PNWatchIC.m in Sources */,
 				D39A902F1AB9DC92003E0760 /* UIColor+PNUtilities.m in Sources */,
 				D3C53A171AB9826A00D8F6DF /* DDTTYLogger.m in Sources */,
 				D3EC69D51AABF35400DE4C65 /* PNUtilities.m in Sources */,
 				D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */,
 				D39094871AFD327100070B37 /* PNWatchLightSettingIC.m in Sources */,
 				D390948A1AFD36E900070B37 /* PNWatchBrightnessRC.m in Sources */,
+				D3D473491B0B0F8400BD08E0 /* PNWatchGlanceIC.m in Sources */,
 				D3DF823C1A7425B1001AD7DB /* PNLightController.m in Sources */,
 				D34FB2AA1A71714600DB659E /* NotificationController.m in Sources */,
 				D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */,
-				D34FB2A71A71714600DB659E /* InterfaceController.m in Sources */,
+				D34FB2A71A71714600DB659E /* PNWatchResourceIC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

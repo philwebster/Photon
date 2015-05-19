@@ -8,7 +8,8 @@
 
 #import <WatchKit/WatchKit.h>
 #import <Foundation/Foundation.h>
+#import "PNWatchIC.h"
 
-@interface InterfaceController : WKInterfaceController
+@interface PNWatchResourceIC : PNWatchIC
 
 @end

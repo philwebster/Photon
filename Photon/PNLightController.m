@@ -366,4 +366,14 @@
     return lightsToSet;
 }
 
+- (NSInteger)numberOfOnLights {
+    NSInteger numOn = 0;
+    for (PHLight *light in self.lights) {
+        if ([light.lightState.on boolValue]) {
+            numOn += 1;
+        }
+    }
+    return numOn;
+}
+
 @end

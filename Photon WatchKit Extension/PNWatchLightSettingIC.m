@@ -16,7 +16,6 @@
 
 @property PHBridgeResource *resource;
 @property NSArray *tableData;
-@property PNLightController *lightController;
 @property (weak, nonatomic) IBOutlet WKInterfaceButton *otherLightsButton;
 @property (weak, nonatomic) IBOutlet WKInterfaceSlider *brightnessSlider;
 @property (nonatomic, assign) BOOL labelOff;
@@ -27,7 +26,6 @@
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
-    self.lightController = [PNLightController singleton];
     if ([context class] == [PHGroup class] || [context class] == [PHLight class]) {
         self.resource = (PHBridgeResource *)context;
     }
@@ -35,6 +33,7 @@
     self.labelOff = YES;
     CGFloat brightness = [self.resource isKindOfClass:[PHGroup class]] ? [[self.lightController averageBrightnessForGroup:(PHGroup *)self.resource] floatValue]: [((PHLight *)self.resource).lightState.brightness floatValue];
     [self.brightnessSlider setValue:brightness];
+    [self setTitle:self.resource.name];
 }
 
 - (void)willActivate {
