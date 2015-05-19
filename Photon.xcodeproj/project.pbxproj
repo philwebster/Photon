@@ -43,6 +43,8 @@
 		D38C16461A68DE96006FE974 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D38C16451A68DE96006FE974 /* Images.xcassets */; };
 		D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38C16471A68DE96006FE974 /* LaunchScreen.xib */; };
 		D38C16551A68DE96006FE974 /* PhotonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C16541A68DE96006FE974 /* PhotonTests.m */; };
+		D39094871AFD327100070B37 /* PNWatchLightSettingIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D39094861AFD327100070B37 /* PNWatchLightSettingIC.m */; };
+		D390948A1AFD36E900070B37 /* PNWatchBrightnessRC.m in Sources */ = {isa = PBXBuildFile; fileRef = D39094891AFD36E900070B37 /* PNWatchBrightnessRC.m */; };
 		D39A902F1AB9DC92003E0760 /* UIColor+PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */; };
 		D3A8936E1AE42B3E00B230E1 /* PNGroupListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A8936C1AE42B3E00B230E1 /* PNGroupListVC.m */; };
 		D3A8936F1AE42B3E00B230E1 /* PNGroupListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3A8936D1AE42B3E00B230E1 /* PNGroupListVC.xib */; };
@@ -161,6 +163,7 @@
 		D344C5521AECB21C002522D0 /* Photon__OS_X_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Photon__OS_X_Tests.m; sourceTree = "<group>"; };
 		D344C55C1AEE152A002522D0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		D344C55D1AEE152A002522D0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		D34DAEFA1B07EF85001CF778 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Photon WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34FB2A31A71714600DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34FB2A41A71714600DB659E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -196,6 +199,10 @@
 		D38C164E1A68DE96006FE974 /* PhotonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16531A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C16541A68DE96006FE974 /* PhotonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotonTests.m; sourceTree = "<group>"; };
+		D39094851AFD327100070B37 /* PNWatchLightSettingIC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNWatchLightSettingIC.h; sourceTree = "<group>"; };
+		D39094861AFD327100070B37 /* PNWatchLightSettingIC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNWatchLightSettingIC.m; sourceTree = "<group>"; };
+		D39094881AFD36E900070B37 /* PNWatchBrightnessRC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNWatchBrightnessRC.h; sourceTree = "<group>"; };
+		D39094891AFD36E900070B37 /* PNWatchBrightnessRC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNWatchBrightnessRC.m; sourceTree = "<group>"; };
 		D3A8936B1AE42B3E00B230E1 /* PNGroupListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNGroupListVC.h; sourceTree = "<group>"; };
 		D3A8936C1AE42B3E00B230E1 /* PNGroupListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNGroupListVC.m; sourceTree = "<group>"; };
 		D3A8936D1AE42B3E00B230E1 /* PNGroupListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNGroupListVC.xib; sourceTree = "<group>"; };
@@ -312,6 +319,7 @@
 		49ACB7E6BC37C8E6B5D2B4CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D34DAEFA1B07EF85001CF778 /* SystemConfiguration.framework */,
 				DE73545164D92F377CE65494 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -372,6 +380,8 @@
 			children = (
 				D34FB2A51A71714600DB659E /* InterfaceController.h */,
 				D34FB2A61A71714600DB659E /* InterfaceController.m */,
+				D39094851AFD327100070B37 /* PNWatchLightSettingIC.h */,
+				D39094861AFD327100070B37 /* PNWatchLightSettingIC.m */,
 				D34FB2A81A71714600DB659E /* NotificationController.h */,
 				D34FB2A91A71714600DB659E /* NotificationController.m */,
 				D3AAC07A1ABBC9F200E30C71 /* Row Controllers */,
@@ -421,12 +431,12 @@
 				D344C53B1AECB21C002522D0 /* Photon OS X App */,
 				D38C16361A68DE96006FE974 /* Products */,
 				D3BA63281A6B664600095EF7 /* Lumberjack */,
-				D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */,
-				D387800A1AE51898003DCF46 /* MessageUI.framework */,
 				D290A354950A7DAA5E6BB112 /* Pods */,
 				49ACB7E6BC37C8E6B5D2B4CB /* Frameworks */,
 				D344C55C1AEE152A002522D0 /* Crashlytics.framework */,
 				D344C55D1AEE152A002522D0 /* Fabric.framework */,
+				D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */,
+				D387800A1AE51898003DCF46 /* MessageUI.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -551,6 +561,8 @@
 			children = (
 				D31C3BE31A722834006D2678 /* ResourceRowController.h */,
 				D31C3BE41A722834006D2678 /* ResourceRowController.m */,
+				D39094881AFD36E900070B37 /* PNWatchBrightnessRC.h */,
+				D39094891AFD36E900070B37 /* PNWatchBrightnessRC.m */,
 			);
 			name = "Row Controllers";
 			sourceTree = "<group>";
@@ -975,6 +987,8 @@
 				D3C53A171AB9826A00D8F6DF /* DDTTYLogger.m in Sources */,
 				D3EC69D51AABF35400DE4C65 /* PNUtilities.m in Sources */,
 				D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */,
+				D39094871AFD327100070B37 /* PNWatchLightSettingIC.m in Sources */,
+				D390948A1AFD36E900070B37 /* PNWatchBrightnessRC.m in Sources */,
 				D3DF823C1A7425B1001AD7DB /* PNLightController.m in Sources */,
 				D34FB2AA1A71714600DB659E /* NotificationController.m in Sources */,
 				D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */,

@@ -109,7 +109,9 @@
             [lightState setX:[NSNumber numberWithDouble:coord.x]];
             [lightState setY:[NSNumber numberWithDouble:coord.y]];
         }
-        [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:nil];
+        [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {
+            self.lastUsedResource = light;
+        }];
     } else if ([resource isKindOfClass:[PHGroup class]]) {
         PHGroup *group = (PHGroup *)resource;
         NSMutableSet *nonCTLights = [NSMutableSet new];
@@ -121,7 +123,9 @@
         }
         [lightState setCt:ct];
         [lightState setOnBool:YES];
-        [bridgeSendAPI setLightStateForGroupWithId:group.identifier lightState:lightState completionHandler:nil];
+        [bridgeSendAPI setLightStateForGroupWithId:group.identifier lightState:lightState completionHandler:^(NSArray *errors) {
+            self.lastUsedResource = group;
+        }];
         CGPoint coord = [PNUtilities xyFromCT:ct];
         [lightState setX:[NSNumber numberWithDouble:coord.x]];
         [lightState setY:[NSNumber numberWithDouble:coord.y]];
@@ -157,10 +161,14 @@
     [lightState setOnBool:YES];
     if ([resource isKindOfClass:[PHLight class]]) {
         PHLight *light = (PHLight *)resource;
-        [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:nil];
+        [bridgeSendAPI updateLightStateForId:light.identifier withLightState:lightState completionHandler:^(NSArray *errors) {
+
+        }];
     } else if ([resource isKindOfClass:[PHGroup class]]) {
         PHGroup *group = (PHGroup *)resource;
-        [bridgeSendAPI setLightStateForGroupWithId:group.identifier lightState:lightState completionHandler:nil];
+        [bridgeSendAPI setLightStateForGroupWithId:group.identifier lightState:lightState completionHandler:^(NSArray *errors) {
+            
+        }];
     }
 }
 
@@ -317,6 +325,45 @@
 - (BOOL)inDemoMode {
     NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
     return [sharedDefaults boolForKey:@"demoMode"];
+}
+
+- (void)setOtherResourcesOff {
+    PHLightState *lightState = [PHLightState new];
+    [lightState setOnBool:NO];
+    [self setState:lightState forLights:[self otherResources]];
+}
+
+- (void)setOtherResourcesOn {
+    PHLightState *lightState = [PHLightState new];
+    [lightState setOnBool:YES];
+    [self setState:lightState forLights:[self otherResources]];
+}
+
+- (void)setState:(PHLightState *)state forLights:(NSArray *)lights {
+    PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
+    for (PHLight *light in lights) {
+        [bridgeSendAPI updateLightStateForId:light.identifier withLightState:state completionHandler:nil];
+    }
+}
+
+- (NSArray *)otherResources {
+    NSMutableArray *lightsToRemove = [NSMutableArray array];
+    if ([self.lastUsedResource isKindOfClass:[PHLight class]]) {
+        [lightsToRemove addObject:self.lastUsedResource.identifier];
+    } else if ([self.lastUsedResource isKindOfClass:[PHGroup class]]) {
+        for (PHLight *light in [self lightsForGroup:(PHGroup *)self.lastUsedResource]) {
+            [lightsToRemove addObject:light.identifier];
+        }
+    }
+  
+    NSMutableArray *lightsToSet = [NSMutableArray array];
+    for (PHLight *light in self.lights) {
+        if (![lightsToRemove containsObject:light.identifier]) {
+            [lightsToSet addObject:light];
+        }
+    }
+    
+    return lightsToSet;
 }
 
 @end

@@ -37,8 +37,6 @@
             self.tableData = self.lightController.lights;
         else if ([context isEqualToString:@"Scenes"])
             self.tableData = self.lightController.scenes;
-    } else if ([context class] == [PHGroup class] || [context class] == [PHLight class]) {
-        self.tableData = self.lightController.naturalColors;
     } else {
         self.tableData = @[@"Groups", @"Lights"];
     }
@@ -74,6 +72,8 @@
 - (void)didDeactivate {
     // This method is called when watch view controller is no longer visible
     [super didDeactivate];
+//    [self.sdk disableLocalConnection];
+//    [self.sdk stopSDK];
 }
 
 - (void)loadResourceItems {
@@ -129,6 +129,11 @@
     }
     return self.tableData[rowIndex];
 }
+
+//- (IBAction)brightnessSliderChanged:(float)value {
+//    [self.lightController setBrightness:[NSNumber numberWithInt:(int)value] forResource:(PHBridgeResource *)self.context];
+//}
+
 
 /**
  Notification receiver for successful local connection
