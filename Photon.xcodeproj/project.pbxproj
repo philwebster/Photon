@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4EA7DA26D1080F909A71489B /* libPods-Photon WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1C73569DDDB048C99B7BFD /* libPods-Photon WatchKit Extension.a */; };
+		67AF0652A491FE4DAF948DB2 /* libPods-Photon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71518618920DCD3A394F7099 /* libPods-Photon.a */; };
 		B21B1F28ACB98A64E864C854 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE73545164D92F377CE65494 /* libPods.a */; };
 		D30358781AE4CDAE00D929DC /* PNSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D30358761AE4CDAE00D929DC /* PNSettingsVC.m */; };
 		D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */; };
@@ -144,7 +146,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E1C73569DDDB048C99B7BFD /* libPods-Photon WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photon WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A7EEBCB6438DFACE80ED517 /* Pods-Photon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photon/Pods-Photon.debug.xcconfig"; sourceTree = "<group>"; };
+		71518618920DCD3A394F7099 /* libPods-Photon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A3FE52FBDAE77747EBA0628 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A5FFCB92737127147D863A4D /* Pods-Photon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photon/Pods-Photon.release.xcconfig"; sourceTree = "<group>"; };
+		A8E2619878DDD17147702D85 /* Pods-Photon WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photon WatchKit Extension/Pods-Photon WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		C318FD3CA9F58D71D9F07A18 /* Pods-Photon WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photon WatchKit Extension/Pods-Photon WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		D30358751AE4CDAE00D929DC /* PNSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNSettingsVC.h; sourceTree = "<group>"; };
 		D30358761AE4CDAE00D929DC /* PNSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNSettingsVC.m; sourceTree = "<group>"; };
 		D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNSettingsVC.xib; sourceTree = "<group>"; };
@@ -282,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D380F1871AE2F04F00D846B9 /* HueSDK_iOS.framework in Frameworks */,
+				4EA7DA26D1080F909A71489B /* libPods-Photon WatchKit Extension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +303,7 @@
 				D380F1861AE2F03F00D846B9 /* HueSDK_iOS.framework in Frameworks */,
 				D344C55E1AEE152A002522D0 /* Crashlytics.framework in Frameworks */,
 				B21B1F28ACB98A64E864C854 /* libPods.a in Frameworks */,
+				67AF0652A491FE4DAF948DB2 /* libPods-Photon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +337,8 @@
 			children = (
 				D34DAEFA1B07EF85001CF778 /* SystemConfiguration.framework */,
 				DE73545164D92F377CE65494 /* libPods.a */,
+				71518618920DCD3A394F7099 /* libPods-Photon.a */,
+				4E1C73569DDDB048C99B7BFD /* libPods-Photon WatchKit Extension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -336,6 +348,10 @@
 			children = (
 				7A3FE52FBDAE77747EBA0628 /* Pods.debug.xcconfig */,
 				D91EC371DD2FE135E0D83759 /* Pods.release.xcconfig */,
+				5A7EEBCB6438DFACE80ED517 /* Pods-Photon.debug.xcconfig */,
+				A5FFCB92737127147D863A4D /* Pods-Photon.release.xcconfig */,
+				A8E2619878DDD17147702D85 /* Pods-Photon WatchKit Extension.debug.xcconfig */,
+				C318FD3CA9F58D71D9F07A18 /* Pods-Photon WatchKit Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -673,9 +689,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D34FB2C11A71714700DB659E /* Build configuration list for PBXNativeTarget "Photon WatchKit Extension" */;
 			buildPhases = (
+				F18BC5B608A6A82D6030B751 /* Check Pods Manifest.lock */,
 				D34FB29C1A71714600DB659E /* Sources */,
 				D34FB29D1A71714600DB659E /* Frameworks */,
 				D34FB29E1A71714600DB659E /* Resources */,
+				CC8E6EDCBF9F932903E16D13 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -941,6 +959,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		CC8E6EDCBF9F932903E16D13 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Photon WatchKit Extension/Pods-Photon WatchKit Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D344C55B1AEE14F8002522D0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -954,6 +987,21 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 0fc1afd63ddc37177b5fb943fad7a8cb15dff382 aa8302b2d2bc544764e25306c4eb9f6685006e8d9fd4ef72fdda6d7548ee7796";
 		};
+		F18BC5B608A6A82D6030B751 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		F39397C658B572E70615BB40 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -966,7 +1014,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Photon/Pods-Photon-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1248,6 +1296,7 @@
 		};
 		D34FB2C21A71714700DB659E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8E2619878DDD17147702D85 /* Pods-Photon WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Photon WatchKit Extension/Photon WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1263,7 +1312,11 @@
 				INFOPLIST_FILE = "Photon WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
+				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1272,6 +1325,7 @@
 		};
 		D34FB2C31A71714700DB659E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C318FD3CA9F58D71D9F07A18 /* Pods-Photon WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Photon WatchKit Extension/Photon WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1284,7 +1338,11 @@
 				INFOPLIST_FILE = "Photon WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
+				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1371,7 +1429,7 @@
 		};
 		D38C16591A68DE96006FE974 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A3FE52FBDAE77747EBA0628 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 5A7EEBCB6438DFACE80ED517 /* Pods-Photon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Photon/Photon.entitlements;
@@ -1387,7 +1445,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
+				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS) $(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1396,7 +1454,7 @@
 		};
 		D38C165A1A68DE96006FE974 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D91EC371DD2FE135E0D83759 /* Pods.release.xcconfig */;
+			baseConfigurationReference = A5FFCB92737127147D863A4D /* Pods-Photon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Photon/Photon.entitlements;
@@ -1412,7 +1470,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
+				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS) $(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
