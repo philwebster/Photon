@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4EA7DA26D1080F909A71489B /* libPods-Photon WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1C73569DDDB048C99B7BFD /* libPods-Photon WatchKit Extension.a */; };
-		67AF0652A491FE4DAF948DB2 /* libPods-Photon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71518618920DCD3A394F7099 /* libPods-Photon.a */; };
-		B21B1F28ACB98A64E864C854 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE73545164D92F377CE65494 /* libPods.a */; };
 		D30358781AE4CDAE00D929DC /* PNSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D30358761AE4CDAE00D929DC /* PNSettingsVC.m */; };
 		D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */; };
 		D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */; };
@@ -159,6 +157,7 @@
 		D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBrightnessPickerVC.xib; sourceTree = "<group>"; };
 		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceRowController.h; sourceTree = "<group>"; };
 		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceRowController.m; sourceTree = "<group>"; };
+		D31D54E01B0EEFB500C53F9A /* libPods-Photon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Photon.a"; path = "Pods/build/Debug-iphoneos/libPods-Photon.a"; sourceTree = "<group>"; };
 		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
 		D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridgeView.m; sourceTree = "<group>"; };
 		D344C53A1AECB21C002522D0 /* Photon (OS X).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photon (OS X).app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,8 +301,6 @@
 				D344C55F1AEE152A002522D0 /* Fabric.framework in Frameworks */,
 				D380F1861AE2F03F00D846B9 /* HueSDK_iOS.framework in Frameworks */,
 				D344C55E1AEE152A002522D0 /* Crashlytics.framework in Frameworks */,
-				B21B1F28ACB98A64E864C854 /* libPods.a in Frameworks */,
-				67AF0652A491FE4DAF948DB2 /* libPods-Photon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +332,7 @@
 		49ACB7E6BC37C8E6B5D2B4CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D31D54E01B0EEFB500C53F9A /* libPods-Photon.a */,
 				D34DAEFA1B07EF85001CF778 /* SystemConfiguration.framework */,
 				DE73545164D92F377CE65494 /* libPods.a */,
 				71518618920DCD3A394F7099 /* libPods-Photon.a */,
@@ -1441,6 +1439,10 @@
 				);
 				INFOPLIST_FILE = Photon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -1466,6 +1468,10 @@
 				);
 				INFOPLIST_FILE = Photon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
