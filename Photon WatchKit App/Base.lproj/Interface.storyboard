@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Watch ResourceIC-->
@@ -65,49 +65,67 @@
             </objects>
             <point key="canvasLocation" x="450" y="345"/>
         </scene>
+        <!--Brightness-->
+        <scene sceneID="6YB-qM-1wj">
+            <objects>
+                <controller identifier="Brightness" id="Mse-ed-ORc" customClass="PNWatchBrightnessIC">
+                    <items>
+                        <slider height="40" alignment="left" value="254" maximum="254" steps="6" id="KEX-Gp-2zx">
+                            <connections>
+                                <action selector="brightnessChanged:" destination="Mse-ed-ORc" id="L5N-7a-6sK"/>
+                            </connections>
+                        </slider>
+                    </items>
+                    <connections>
+                        <outlet property="brightnessSlider" destination="KEX-Gp-2zx" id="GqA-xc-G8N"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="666" y="101"/>
+        </scene>
         <!--Watch Light SettingIC-->
         <scene sceneID="3qT-d1-Ku7">
             <objects>
                 <controller id="CW7-YK-FKz" customClass="PNWatchLightSettingIC">
                     <items>
-                        <group alignment="center" id="khd-5a-blY">
+                        <group alignment="center" radius="4" spacing="0.0" id="khd-5a-blY">
                             <items>
-                                <button width="25" height="60" alignment="left" id="9IZ-EI-NUK">
-                                    <color key="backgroundColor" red="0.99607843139999996" green="0.82352941180000006" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    <variation key="device=watch38mm" height="60"/>
-                                    <variation key="device=watch42mm" height="84" width="29"/>
+                                <button alignment="left" id="9IZ-EI-NUK">
+                                    <group key="contentGroup" width="25" height="60" alignment="left" radius="0.0" id="m9u-1S-oWi">
+                                        <color key="backgroundColor" red="0.99607843139999996" green="0.82352941180000006" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </group>
                                     <connections>
                                         <action selector="buttonAPressed" destination="CW7-YK-FKz" id="9PG-qD-YrS"/>
                                     </connections>
                                 </button>
-                                <button width="25" height="60" alignment="left" id="cKX-3c-HMe">
-                                    <color key="backgroundColor" red="1" green="0.95294117649999999" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
-                                    <variation key="device=watch38mm" height="60"/>
-                                    <variation key="device=watch42mm" height="84" width="29"/>
+                                <button alignment="left" id="cKX-3c-HMe">
+                                    <group key="contentGroup" width="25" height="60" alignment="left" radius="0.0" id="dpx-8W-ffh">
+                                        <color key="backgroundColor" red="1" green="0.95294117649999999" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                    </group>
                                     <connections>
                                         <action selector="buttonBPressed" destination="CW7-YK-FKz" id="V1T-YD-C4N"/>
                                     </connections>
                                 </button>
-                                <button width="25" height="60" alignment="left" id="3en-YI-N9f">
-                                    <color key="backgroundColor" red="1" green="1" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <variation key="device=watch38mm" height="60"/>
-                                    <variation key="device=watch42mm" height="84" width="29"/>
+                                <button alignment="left" id="3en-YI-N9f">
+                                    <group key="contentGroup" width="25" height="60" alignment="left" radius="0.0" id="wyD-vK-uGK">
+                                        <color key="backgroundColor" red="1" green="1" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </group>
                                     <connections>
                                         <action selector="buttonCPressed" destination="CW7-YK-FKz" id="AMn-fS-0yP"/>
                                     </connections>
                                 </button>
-                                <button width="25" height="60" alignment="left" id="kwn-Zm-nEP">
-                                    <color key="backgroundColor" red="0.80000000000000004" green="0.94117647059999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <variation key="device=watch38mm" height="60"/>
-                                    <variation key="device=watch42mm" height="84" width="29"/>
+                                <button alignment="left" id="kwn-Zm-nEP">
+                                    <group key="contentGroup" width="25" height="60" alignment="left" radius="0.0" id="Abl-Cz-n6r">
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.94117647059999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </group>
                                     <connections>
                                         <action selector="buttonDPressed" destination="CW7-YK-FKz" id="zNX-P1-DaK"/>
                                     </connections>
                                 </button>
-                                <button width="25" height="60" alignment="left" id="d2c-Pg-F56">
-                                    <color key="backgroundColor" red="0.5450980392" green="0.83137254900000002" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <variation key="device=watch38mm" height="60"/>
-                                    <variation key="device=watch42mm" height="84" width="29"/>
+                                <button alignment="left" id="d2c-Pg-F56">
+                                    <group key="contentGroup" width="25" height="60" alignment="left" radius="0.0" id="40l-yu-l2O">
+                                        <color key="backgroundColor" red="0.5450980392" green="0.83137254900000002" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </group>
                                     <connections>
                                         <action selector="buttonEPressed" destination="CW7-YK-FKz" id="Uxp-B8-kkJ"/>
                                     </connections>

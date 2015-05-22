@@ -34,6 +34,7 @@
         } else if ([context isEqualToString:@"Scenes"])
             self.tableData = self.lightController.scenes;
     } else {
+        [self setTitle:@"Photon"];
         self.tableData = @[@"Groups", @"Lights"];
     }
 }

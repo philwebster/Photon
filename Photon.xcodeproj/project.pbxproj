@@ -12,6 +12,7 @@
 		D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */; };
 		D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */; };
 		D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C3BE41A722834006D2678 /* ResourceRowController.m */; };
+		D31D54E41B0EF45800C53F9A /* PNWatchBrightnessIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D31D54E31B0EF45800C53F9A /* PNWatchBrightnessIC.m */; };
 		D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */; };
 		D344C5401AECB21C002522D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C53F1AECB21C002522D0 /* AppDelegate.m */; };
 		D344C5421AECB21C002522D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C5411AECB21C002522D0 /* main.m */; };
@@ -158,6 +159,8 @@
 		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceRowController.h; sourceTree = "<group>"; };
 		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceRowController.m; sourceTree = "<group>"; };
 		D31D54E01B0EEFB500C53F9A /* libPods-Photon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Photon.a"; path = "Pods/build/Debug-iphoneos/libPods-Photon.a"; sourceTree = "<group>"; };
+		D31D54E21B0EF45800C53F9A /* PNWatchBrightnessIC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNWatchBrightnessIC.h; sourceTree = "<group>"; };
+		D31D54E31B0EF45800C53F9A /* PNWatchBrightnessIC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNWatchBrightnessIC.m; sourceTree = "<group>"; };
 		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
 		D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridgeView.m; sourceTree = "<group>"; };
 		D344C53A1AECB21C002522D0 /* Photon (OS X).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photon (OS X).app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -404,6 +407,8 @@
 				D34FB2A61A71714600DB659E /* PNWatchResourceIC.m */,
 				D39094851AFD327100070B37 /* PNWatchLightSettingIC.h */,
 				D39094861AFD327100070B37 /* PNWatchLightSettingIC.m */,
+				D31D54E21B0EF45800C53F9A /* PNWatchBrightnessIC.h */,
+				D31D54E31B0EF45800C53F9A /* PNWatchBrightnessIC.m */,
 				D3D473471B0B0F8400BD08E0 /* PNWatchGlanceIC.h */,
 				D3D473481B0B0F8400BD08E0 /* PNWatchGlanceIC.m */,
 				D34FB2A81A71714600DB659E /* NotificationController.h */,
@@ -1041,6 +1046,7 @@
 			files = (
 				D3D473461B0B0B8F00BD08E0 /* PNWatchIC.m in Sources */,
 				D39A902F1AB9DC92003E0760 /* UIColor+PNUtilities.m in Sources */,
+				D31D54E41B0EF45800C53F9A /* PNWatchBrightnessIC.m in Sources */,
 				D3C53A171AB9826A00D8F6DF /* DDTTYLogger.m in Sources */,
 				D3EC69D51AABF35400DE4C65 /* PNUtilities.m in Sources */,
 				D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */,

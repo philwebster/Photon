@@ -38,7 +38,7 @@
     // This method is called when watch view controller is about to be visible to user
     [super willActivate];
 
-    NSInteger numOn = [self.lightController numberOfOnLights];
+    NSInteger numOn = self.lightController.onLights.count;
 
     [self.numLightsOnLabel setText:[NSString stringWithFormat:@"%ld", (long)numOn]];
 

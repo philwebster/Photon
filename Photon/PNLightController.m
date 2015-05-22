@@ -237,6 +237,15 @@
     return [NSNumber numberWithInteger:average];
 }
 
+- (NSNumber *)averageBrightnessForLights:(NSArray *)lights {
+    __block NSInteger average = 0;
+    [lights enumerateObjectsUsingBlock:^(PHLight *light, NSUInteger idx, BOOL *stop) {
+        average += [light.lightState.brightness integerValue];
+    }];
+    average = average / lights.count;
+    return [NSNumber numberWithInteger:average];
+}
+
 - (PHBridgeResource *)allLightsGroup {
     PHGroup *allLightsGroup = [PHGroup new];
     allLightsGroup.identifier = @"0";
@@ -366,14 +375,14 @@
     return lightsToSet;
 }
 
-- (NSInteger)numberOfOnLights {
-    NSInteger numOn = 0;
+- (NSArray *)onLights {
+    NSMutableArray *lights = [NSMutableArray array];
     for (PHLight *light in self.lights) {
         if ([light.lightState.on boolValue]) {
-            numOn += 1;
+            [lights addObject:light];
         }
     }
-    return numOn;
+    return lights;
 }
 
 @end

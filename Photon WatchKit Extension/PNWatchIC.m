@@ -19,6 +19,7 @@
     
     [self addMenuItemWithItemIcon:WKMenuItemIconDecline title:@"All Off" action:@selector(allOffTapped)];
     [self addMenuItemWithItemIcon:WKMenuItemIconAccept title:@"All On" action:@selector(allOnTapped)];
+    [self addMenuItemWithItemIcon:WKMenuItemIconAdd title:@"Adjust" action:@selector(adjustTapped)];
     // Configure interface objects here.
     
     NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
@@ -57,6 +58,10 @@
 
 - (void)allOffTapped {
     [self.lightController setResourceOff:self.lightController.allLightsGroup];
+}
+
+- (void)adjustTapped {
+    [self pushControllerWithName:@"Brightness" context:@"adjust"];
 }
 
 - (void)allOnTapped {

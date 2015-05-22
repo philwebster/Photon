@@ -22,6 +22,7 @@
 @property (strong, nonatomic) PHHueSDK *phHueSDK;
 @property (nonatomic) PHBridgeResource *allLightsGroup;
 @property PHBridgeResource *lastUsedResource;
+@property (nonatomic) NSArray *onLights;
 
 @property (nonatomic, assign) BOOL inDemoMode;
 
@@ -34,6 +35,7 @@
 - (void)setScene:(PHScene *)scene onGroup:(PHGroup *)group;
 - (PHLight *)lightWithId:(NSString *)lightId;
 - (NSNumber *)averageBrightnessForGroup:(PHGroup *)group;
+- (NSNumber *)averageBrightnessForLights:(NSArray *)lights;
 - (NSArray *)lightsForGroup:(PHGroup *)group;
 - (void)updateGroup:(PHGroup *)group completion:(void (^)(NSArray *errors))completion;
 - (void)createNewGroupWithName:(NSString *)name lightIds:(NSArray *)lightIds completion:(void (^)(NSArray *errors))completion;
@@ -42,6 +44,5 @@
 - (void)setOtherResourcesOff;
 - (void)setOtherResourcesOn;
 - (void)resetPhoton;
-- (NSInteger)numberOfOnLights;
 
 @end
