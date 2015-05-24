@@ -218,6 +218,15 @@
     return [[[PHBridgeResourcesReader readBridgeResourcesCache] scenes] allValues];
 }
 
+- (PHGroup *)groupWithName:(NSString *)name {
+    for (PHGroup *group in self.groups) {
+        if ([group.name isEqualToString:name]) {
+            return group;
+        }
+    }
+    return nil;
+}
+
 - (NSArray *)lightsForGroup:(PHGroup *)group {
     __block NSMutableArray *lights = [NSMutableArray array];
     [group.lightIdentifiers enumerateObjectsUsingBlock:^(NSString *lightID, NSUInteger idx, BOOL *stop) {

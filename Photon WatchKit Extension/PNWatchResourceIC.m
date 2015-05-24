@@ -85,14 +85,23 @@
 }
 
 - (id)contextForSegueWithIdentifier:(NSString *)segueIdentifier inTable:(WKInterfaceTable *)table rowIndex:(NSInteger)rowIndex {
-    if ([self.context class] == [NSString class]) {
+    if ([self.context isKindOfClass:[NSString class]]) {
         if ([self.context isEqualToString:@"Groups"]) {
             return self.lightController.groups[rowIndex];
         } else if ([self.context isEqualToString:@"Lights"]) {
             return self.lightController.lights[rowIndex];
         }
     }
-    return self.tableData[rowIndex];
+    return @"";
+}
+
+- (id)contextForSegueWithIdentifier:(NSString *)segueIdentifier {
+    if ([segueIdentifier isEqualToString:@"GroupSegue"]) {
+        return @"Groups";
+    } else if ([segueIdentifier isEqualToString:@"LightSegue"]) {
+        return @"Lights";
+    }
+    return @"";
 }
 
 @end

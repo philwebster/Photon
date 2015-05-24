@@ -12,7 +12,7 @@
 		D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */; };
 		D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */; };
 		D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C3BE41A722834006D2678 /* ResourceRowController.m */; };
-		D31D54E41B0EF45800C53F9A /* PNWatchBrightnessIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D31D54E31B0EF45800C53F9A /* PNWatchBrightnessIC.m */; };
+		D31D54E81B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D31D54E71B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a */; };
 		D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */; };
 		D344C5401AECB21C002522D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C53F1AECB21C002522D0 /* AppDelegate.m */; };
 		D344C5421AECB21C002522D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C5411AECB21C002522D0 /* main.m */; };
@@ -23,7 +23,6 @@
 		D344C55F1AEE152A002522D0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D344C55D1AEE152A002522D0 /* Fabric.framework */; };
 		D34FB2A71A71714600DB659E /* PNWatchResourceIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A61A71714600DB659E /* PNWatchResourceIC.m */; };
 		D34FB2AA1A71714600DB659E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A91A71714600DB659E /* NotificationController.m */; };
-		D34FB2AC1A71714600DB659E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AB1A71714600DB659E /* Images.xcassets */; };
 		D34FB2B01A71714700DB659E /* Photon WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */; };
 		D34FB2B81A71714700DB659E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2B61A71714700DB659E /* Interface.storyboard */; };
 		D34FB2BD1A71714700DB659E /* Photon WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -159,8 +158,8 @@
 		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceRowController.h; sourceTree = "<group>"; };
 		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceRowController.m; sourceTree = "<group>"; };
 		D31D54E01B0EEFB500C53F9A /* libPods-Photon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Photon.a"; path = "Pods/build/Debug-iphoneos/libPods-Photon.a"; sourceTree = "<group>"; };
-		D31D54E21B0EF45800C53F9A /* PNWatchBrightnessIC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNWatchBrightnessIC.h; sourceTree = "<group>"; };
-		D31D54E31B0EF45800C53F9A /* PNWatchBrightnessIC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNWatchBrightnessIC.m; sourceTree = "<group>"; };
+		D31D54E51B0EFA8900C53F9A /* libPods-Photon-Mixpanel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Photon-Mixpanel.a"; path = "Pods/build/Debug-iphoneos/libPods-Photon-Mixpanel.a"; sourceTree = "<group>"; };
+		D31D54E71B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Photon-Mixpanel.a"; path = "Pods/build/Debug-iphoneos/libPods-Photon-Mixpanel.a"; sourceTree = "<group>"; };
 		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
 		D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridgeView.m; sourceTree = "<group>"; };
 		D344C53A1AECB21C002522D0 /* Photon (OS X).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photon (OS X).app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,7 +182,6 @@
 		D34FB2A61A71714600DB659E /* PNWatchResourceIC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PNWatchResourceIC.m; sourceTree = "<group>"; };
 		D34FB2A81A71714600DB659E /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
 		D34FB2A91A71714600DB659E /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
-		D34FB2AB1A71714600DB659E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photon WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34FB2B51A71714700DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34FB2B71A71714700DB659E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -300,6 +298,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31D54E81B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a in Frameworks */,
 				D387800B1AE51898003DCF46 /* MessageUI.framework in Frameworks */,
 				D344C55F1AEE152A002522D0 /* Fabric.framework in Frameworks */,
 				D380F1861AE2F03F00D846B9 /* HueSDK_iOS.framework in Frameworks */,
@@ -335,6 +334,8 @@
 		49ACB7E6BC37C8E6B5D2B4CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D31D54E71B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a */,
+				D31D54E51B0EFA8900C53F9A /* libPods-Photon-Mixpanel.a */,
 				D31D54E01B0EEFB500C53F9A /* libPods-Photon.a */,
 				D34DAEFA1B07EF85001CF778 /* SystemConfiguration.framework */,
 				DE73545164D92F377CE65494 /* libPods.a */,
@@ -407,8 +408,6 @@
 				D34FB2A61A71714600DB659E /* PNWatchResourceIC.m */,
 				D39094851AFD327100070B37 /* PNWatchLightSettingIC.h */,
 				D39094861AFD327100070B37 /* PNWatchLightSettingIC.m */,
-				D31D54E21B0EF45800C53F9A /* PNWatchBrightnessIC.h */,
-				D31D54E31B0EF45800C53F9A /* PNWatchBrightnessIC.m */,
 				D3D473471B0B0F8400BD08E0 /* PNWatchGlanceIC.h */,
 				D3D473481B0B0F8400BD08E0 /* PNWatchGlanceIC.m */,
 				D34FB2A81A71714600DB659E /* NotificationController.h */,
@@ -422,7 +421,6 @@
 		D34FB2A21A71714600DB659E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D34FB2AB1A71714600DB659E /* Images.xcassets */,
 				D3C53A151AB964D200D8F6DF /* Photon WatchKit Extension.entitlements */,
 				D34FB2A31A71714600DB659E /* Info.plist */,
 				D34FB2A41A71714600DB659E /* PushNotificationPayload.apns */,
@@ -895,7 +893,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D34FB2B01A71714700DB659E /* Photon WatchKit App.app in Resources */,
-				D34FB2AC1A71714600DB659E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,7 +1043,6 @@
 			files = (
 				D3D473461B0B0B8F00BD08E0 /* PNWatchIC.m in Sources */,
 				D39A902F1AB9DC92003E0760 /* UIColor+PNUtilities.m in Sources */,
-				D31D54E41B0EF45800C53F9A /* PNWatchBrightnessIC.m in Sources */,
 				D3C53A171AB9826A00D8F6DF /* DDTTYLogger.m in Sources */,
 				D3EC69D51AABF35400DE4C65 /* PNUtilities.m in Sources */,
 				D3DF823E1A74264C001AD7DB /* DDLog.m in Sources */,
@@ -1316,6 +1312,10 @@
 				INFOPLIST_FILE = "Photon WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
@@ -1342,6 +1342,10 @@
 				INFOPLIST_FILE = "Photon WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",

@@ -18,6 +18,8 @@
 @property NSArray *tableData;
 @property (weak, nonatomic) IBOutlet WKInterfaceButton *otherLightsButton;
 @property (weak, nonatomic) IBOutlet WKInterfaceSlider *brightnessSlider;
+@property (weak, nonatomic) IBOutlet WKInterfaceButton *offButton;
+@property id context;
 @property (nonatomic, assign) BOOL labelOff;
 
 @end
@@ -26,24 +28,46 @@
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
-    if ([context class] == [PHGroup class] || [context class] == [PHLight class]) {
-        self.resource = (PHBridgeResource *)context;
-    }
+    self.context = context;
+
     // Configure interface objects here.
     self.labelOff = YES;
-    CGFloat brightness = [self.resource isKindOfClass:[PHGroup class]] ? [[self.lightController averageBrightnessForGroup:(PHGroup *)self.resource] floatValue]: [((PHLight *)self.resource).lightState.brightness floatValue];
-    [self.brightnessSlider setValue:brightness];
-    [self setTitle:self.resource.name];
 }
 
 - (void)willActivate {
     // This method is called when watch view controller is about to be visible to user
     [super willActivate];
+
+    if ([self.context class] == [PHGroup class] || [self.context class] == [PHLight class]) {
+        self.resource = (PHBridgeResource *)self.context;
+        [self setTitle:self.resource.name];
+    } else if ([self.context isEqualToString:@"adjust"]) {
+        NSMutableArray *onLights = [NSMutableArray array];
+        [self.lightController.onLights enumerateObjectsUsingBlock:^(PHLight *light, NSUInteger idx, BOOL *stop) {
+            [onLights addObject:light.identifier];
+        }];
+        [self.lightController createNewGroupWithName:@"photon temp" lightIds:onLights completion:^(NSArray *errors) {
+            self.resource = [self.lightController groupWithName:@"photon temp"];
+        }];
+    }
+    CGFloat brightness = [self.resource isKindOfClass:[PHGroup class]] ? [[self.lightController averageBrightnessForGroup:(PHGroup *)self.resource] floatValue]: [((PHLight *)self.resource).lightState.brightness floatValue];
+    [self.brightnessSlider setValue:brightness];
+
+    if ([self.context respondsToSelector:@selector(isEqualToString:)]) {
+        if ([self.context isEqualToString:@"adjust"]) {
+            [self setTitle:@"Done"];
+        }
+    }
 }
 
 - (void)didDeactivate {
     // This method is called when watch view controller is no longer visible
     [super didDeactivate];
+    if ([self.context respondsToSelector:@selector(isEqualToString:)]) {
+        if ([self.context isEqualToString:@"adjust"] ) {
+            [self.lightController deleteGroup:(PHGroup *)self.resource completion:nil];
+        }
+    }
 }
 
 - (IBAction)buttonAPressed {
@@ -73,13 +97,17 @@
 - (IBAction)otherLightsPressed {
     if (self.labelOff) {
         [self.lightController setOtherResourcesOff];
-        [self.otherLightsButton setTitle:@"Other Lights ON"];
+        [self.otherLightsButton setTitle:@"Others ON"];
         self.labelOff = NO;
     } else {
         [self.lightController setOtherResourcesOn];
-        [self.otherLightsButton setTitle:@"Other Lights OFF"];
+        [self.otherLightsButton setTitle:@"Others OFF"];
         self.labelOff = YES;
     }
+}
+
+- (IBAction)offButtonPressed {
+    [self.lightController setResourceOff:self.resource];
 }
 
 @end
