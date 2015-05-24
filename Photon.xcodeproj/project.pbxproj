@@ -57,12 +57,28 @@
 		D3BA633C1A6B664600095EF7 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63321A6B664600095EF7 /* DDTTYLogger.m */; };
 		D3BA633D1A6B664600095EF7 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63351A6B664600095EF7 /* ContextFilterLogFormatter.m */; };
 		D3BA633E1A6B664600095EF7 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */; };
-		D3BA96771AB9EC0A0026F77A /* PhotonLightController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3BA96761AB9EC0A0026F77A /* PhotonLightController.h */; };
-		D3BA96791AB9EC0A0026F77A /* PhotonLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA96781AB9EC0A0026F77A /* PhotonLightController.m */; };
-		D3BA967F1AB9EC0A0026F77A /* libPhotonLightController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BA96741AB9EC0A0026F77A /* libPhotonLightController.a */; };
 		D3C33B331A738AD10008EAFA /* PNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PNLightController.m */; };
 		D3C487EE1A8088B000ED9EDC /* PNColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C487ED1A8088B000ED9EDC /* PNColorView.m */; };
 		D3C53A171AB9826A00D8F6DF /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63321A6B664600095EF7 /* DDTTYLogger.m */; };
+		D3D3942B1B119B840047DB55 /* HueSDK_OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D3942A1B119B840047DB55 /* HueSDK_OSX.framework */; };
+		D3D394301B124D6A0047DB55 /* PHControlLightsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3D3942F1B124D6A0047DB55 /* PHControlLightsViewController.xib */; };
+		D3D394381B124DA10047DB55 /* PHBridgeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D394331B124DA10047DB55 /* PHBridgeSelectionViewController.m */; };
+		D3D394391B124DA10047DB55 /* PHBridgeSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3D394341B124DA10047DB55 /* PHBridgeSelectionViewController.xib */; };
+		D3D3943A1B124DA10047DB55 /* PHBridgePushLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D394361B124DA10047DB55 /* PHBridgePushLinkViewController.m */; };
+		D3D3943B1B124DA10047DB55 /* PHBridgePushLinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3D394371B124DA10047DB55 /* PHBridgePushLinkViewController.xib */; };
+		D3D394411B124DCC0047DB55 /* PHLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3943F1B124DCC0047DB55 /* PHLoadingViewController.m */; };
+		D3D394421B124DCC0047DB55 /* PHLoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3D394401B124DCC0047DB55 /* PHLoadingViewController.xib */; };
+		D3D394441B124DD30047DB55 /* press_smartbridge.png in Resources */ = {isa = PBXBuildFile; fileRef = D3D394431B124DD30047DB55 /* press_smartbridge.png */; };
+		D3D394471B124DFC0047DB55 /* PHControlLightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D394461B124DFC0047DB55 /* PHControlLightsViewController.m */; };
+		D3D394481B124F080047DB55 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63301A6B664600095EF7 /* DDLog.m */; };
+		D3D394491B124F230047DB55 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632C1A6B664600095EF7 /* DDASLLogger.m */; };
+		D3D3944A1B124F430047DB55 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632A1A6B664600095EF7 /* DDAbstractDatabaseLogger.m */; };
+		D3D3944B1B124F430047DB55 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA632E1A6B664600095EF7 /* DDFileLogger.m */; };
+		D3D3944C1B124F430047DB55 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63321A6B664600095EF7 /* DDTTYLogger.m */; };
+		D3D3944E1B124F820047DB55 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D3944D1B124F820047DB55 /* SystemConfiguration.framework */; };
+		D3D394501B124F870047DB55 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D3944F1B124F870047DB55 /* Cocoa.framework */; };
+		D3D394511B12517A0047DB55 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63351A6B664600095EF7 /* ContextFilterLogFormatter.m */; };
+		D3D394521B12517A0047DB55 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */; };
 		D3D4561F1A8B163000219219 /* UIColor+PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */; };
 		D3D473461B0B0B8F00BD08E0 /* PNWatchIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D473451B0B0B8F00BD08E0 /* PNWatchIC.m */; };
 		D3D473491B0B0F8400BD08E0 /* PNWatchGlanceIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D473481B0B0F8400BD08E0 /* PNWatchGlanceIC.m */; };
@@ -111,13 +127,6 @@
 			remoteGlobalIDString = D38C16341A68DE96006FE974;
 			remoteInfo = Photon;
 		};
-		D3BA96801AB9EC0A0026F77A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D38C162D1A68DE96006FE974 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D3BA96731AB9EC0A0026F77A;
-			remoteInfo = PhotonLightController;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -130,16 +139,6 @@
 				D34FB2BD1A71714700DB659E /* Photon WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D3BA96721AB9EC0A0026F77A /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-				D3BA96771AB9EC0A0026F77A /* PhotonLightController.h in CopyFiles */,
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -231,17 +230,28 @@
 		D3BA63351A6B664600095EF7 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
 		D3BA63361A6B664600095EF7 /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
 		D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
-		D3BA96741AB9EC0A0026F77A /* libPhotonLightController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPhotonLightController.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3BA96761AB9EC0A0026F77A /* PhotonLightController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotonLightController.h; sourceTree = "<group>"; };
-		D3BA96781AB9EC0A0026F77A /* PhotonLightController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotonLightController.m; sourceTree = "<group>"; };
-		D3BA967E1AB9EC0A0026F77A /* PhotonLightControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotonLightControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3BA96841AB9EC0A0026F77A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3C33B311A738AD10008EAFA /* PNLightController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLightController.h; sourceTree = "<group>"; };
 		D3C33B321A738AD10008EAFA /* PNLightController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLightController.m; sourceTree = "<group>"; };
 		D3C487EC1A8088B000ED9EDC /* PNColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNColorView.h; sourceTree = "<group>"; };
 		D3C487ED1A8088B000ED9EDC /* PNColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNColorView.m; sourceTree = "<group>"; };
 		D3C53A151AB964D200D8F6DF /* Photon WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Photon WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		D3C53A161AB9672000D8F6DF /* Photon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Photon.entitlements; sourceTree = "<group>"; };
+		D3D3942A1B119B840047DB55 /* HueSDK_OSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HueSDK_OSX.framework; sourceTree = "<group>"; };
+		D3D3942F1B124D6A0047DB55 /* PHControlLightsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHControlLightsViewController.xib; sourceTree = "<group>"; };
+		D3D394321B124DA10047DB55 /* PHBridgeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHBridgeSelectionViewController.h; sourceTree = "<group>"; };
+		D3D394331B124DA10047DB55 /* PHBridgeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHBridgeSelectionViewController.m; sourceTree = "<group>"; };
+		D3D394341B124DA10047DB55 /* PHBridgeSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHBridgeSelectionViewController.xib; sourceTree = "<group>"; };
+		D3D394351B124DA10047DB55 /* PHBridgePushLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHBridgePushLinkViewController.h; sourceTree = "<group>"; };
+		D3D394361B124DA10047DB55 /* PHBridgePushLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHBridgePushLinkViewController.m; sourceTree = "<group>"; };
+		D3D394371B124DA10047DB55 /* PHBridgePushLinkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHBridgePushLinkViewController.xib; sourceTree = "<group>"; };
+		D3D3943E1B124DCC0047DB55 /* PHLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHLoadingViewController.h; sourceTree = "<group>"; };
+		D3D3943F1B124DCC0047DB55 /* PHLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHLoadingViewController.m; sourceTree = "<group>"; };
+		D3D394401B124DCC0047DB55 /* PHLoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PHLoadingViewController.xib; sourceTree = "<group>"; };
+		D3D394431B124DD30047DB55 /* press_smartbridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = press_smartbridge.png; sourceTree = "<group>"; };
+		D3D394451B124DFC0047DB55 /* PHControlLightsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHControlLightsViewController.h; sourceTree = "<group>"; };
+		D3D394461B124DFC0047DB55 /* PHControlLightsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHControlLightsViewController.m; sourceTree = "<group>"; };
+		D3D3944D1B124F820047DB55 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		D3D3944F1B124F870047DB55 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		D3D4561D1A8B163000219219 /* UIColor+PNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PNUtilities.h"; sourceTree = "<group>"; };
 		D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PNUtilities.m"; sourceTree = "<group>"; };
 		D3D473441B0B0B8F00BD08E0 /* PNWatchIC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNWatchIC.h; sourceTree = "<group>"; };
@@ -274,6 +284,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3D394501B124F870047DB55 /* Cocoa.framework in Frameworks */,
+				D3D3944E1B124F820047DB55 /* SystemConfiguration.framework in Frameworks */,
+				D3D3942B1B119B840047DB55 /* HueSDK_OSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,27 +326,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D3BA96711AB9EC0A0026F77A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D3BA967B1AB9EC0A0026F77A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D3BA967F1AB9EC0A0026F77A /* libPhotonLightController.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		49ACB7E6BC37C8E6B5D2B4CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3D3944F1B124F870047DB55 /* Cocoa.framework */,
+				D3D3944D1B124F820047DB55 /* SystemConfiguration.framework */,
 				D31D54E71B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a */,
 				D31D54E51B0EFA8900C53F9A /* libPods-Photon-Mixpanel.a */,
 				D31D54E01B0EEFB500C53F9A /* libPods-Photon.a */,
@@ -359,10 +359,14 @@
 		D344C53B1AECB21C002522D0 /* Photon OS X App */ = {
 			isa = PBXGroup;
 			children = (
+				D3D394311B124D8E0047DB55 /* SDK Wizard */,
 				D344C53E1AECB21C002522D0 /* AppDelegate.h */,
 				D344C53F1AECB21C002522D0 /* AppDelegate.m */,
 				D344C5431AECB21C002522D0 /* Images.xcassets */,
 				D344C5451AECB21C002522D0 /* MainMenu.xib */,
+				D3D394451B124DFC0047DB55 /* PHControlLightsViewController.h */,
+				D3D394461B124DFC0047DB55 /* PHControlLightsViewController.m */,
+				D3D3942F1B124D6A0047DB55 /* PHControlLightsViewController.xib */,
 				D344C54F1AECB21C002522D0 /* Photon OS X Tests */,
 				D344C53C1AECB21C002522D0 /* Supporting Files */,
 			);
@@ -451,8 +455,6 @@
 				D38C16511A68DE96006FE974 /* PhotonTests */,
 				D34FB2A11A71714600DB659E /* Photon WatchKit Extension */,
 				D34FB2B31A71714700DB659E /* Photon WatchKit App */,
-				D3BA96751AB9EC0A0026F77A /* PhotonLightController */,
-				D3BA96821AB9EC0A0026F77A /* PhotonLightControllerTests */,
 				D344C53B1AECB21C002522D0 /* Photon OS X App */,
 				D38C16361A68DE96006FE974 /* Products */,
 				D3BA63281A6B664600095EF7 /* Lumberjack */,
@@ -461,6 +463,7 @@
 				D344C55C1AEE152A002522D0 /* Crashlytics.framework */,
 				D344C55D1AEE152A002522D0 /* Fabric.framework */,
 				D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */,
+				D3D3942A1B119B840047DB55 /* HueSDK_OSX.framework */,
 				D387800A1AE51898003DCF46 /* MessageUI.framework */,
 			);
 			sourceTree = "<group>";
@@ -472,8 +475,6 @@
 				D38C164E1A68DE96006FE974 /* PhotonTests.xctest */,
 				D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */,
 				D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */,
-				D3BA96741AB9EC0A0026F77A /* libPhotonLightController.a */,
-				D3BA967E1AB9EC0A0026F77A /* PhotonLightControllerTests.xctest */,
 				D344C53A1AECB21C002522D0 /* Photon (OS X).app */,
 				D344C54C1AECB21C002522D0 /* Photon (OS X)Tests.xctest */,
 			);
@@ -621,29 +622,37 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		D3BA96751AB9EC0A0026F77A /* PhotonLightController */ = {
+		D3D394311B124D8E0047DB55 /* SDK Wizard */ = {
 			isa = PBXGroup;
 			children = (
-				D3BA96761AB9EC0A0026F77A /* PhotonLightController.h */,
-				D3BA96781AB9EC0A0026F77A /* PhotonLightController.m */,
+				D3D3943D1B124DBE0047DB55 /* LoadingView */,
+				D3D3943C1B124DB10047DB55 /* Resources */,
+				D3D394321B124DA10047DB55 /* PHBridgeSelectionViewController.h */,
+				D3D394331B124DA10047DB55 /* PHBridgeSelectionViewController.m */,
+				D3D394341B124DA10047DB55 /* PHBridgeSelectionViewController.xib */,
+				D3D394351B124DA10047DB55 /* PHBridgePushLinkViewController.h */,
+				D3D394361B124DA10047DB55 /* PHBridgePushLinkViewController.m */,
+				D3D394371B124DA10047DB55 /* PHBridgePushLinkViewController.xib */,
 			);
-			path = PhotonLightController;
+			name = "SDK Wizard";
 			sourceTree = "<group>";
 		};
-		D3BA96821AB9EC0A0026F77A /* PhotonLightControllerTests */ = {
+		D3D3943C1B124DB10047DB55 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D3BA96831AB9EC0A0026F77A /* Supporting Files */,
+				D3D394431B124DD30047DB55 /* press_smartbridge.png */,
 			);
-			path = PhotonLightControllerTests;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		D3BA96831AB9EC0A0026F77A /* Supporting Files */ = {
+		D3D3943D1B124DBE0047DB55 /* LoadingView */ = {
 			isa = PBXGroup;
 			children = (
-				D3BA96841AB9EC0A0026F77A /* Info.plist */,
+				D3D3943E1B124DCC0047DB55 /* PHLoadingViewController.h */,
+				D3D3943F1B124DCC0047DB55 /* PHLoadingViewController.m */,
+				D3D394401B124DCC0047DB55 /* PHLoadingViewController.xib */,
 			);
-			name = "Supporting Files";
+			name = LoadingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -759,41 +768,6 @@
 			productReference = D38C164E1A68DE96006FE974 /* PhotonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D3BA96731AB9EC0A0026F77A /* PhotonLightController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D3BA96851AB9EC0A0026F77A /* Build configuration list for PBXNativeTarget "PhotonLightController" */;
-			buildPhases = (
-				D3BA96701AB9EC0A0026F77A /* Sources */,
-				D3BA96711AB9EC0A0026F77A /* Frameworks */,
-				D3BA96721AB9EC0A0026F77A /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PhotonLightController;
-			productName = PhotonLightController;
-			productReference = D3BA96741AB9EC0A0026F77A /* libPhotonLightController.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		D3BA967D1AB9EC0A0026F77A /* PhotonLightControllerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D3BA96881AB9EC0A0026F77A /* Build configuration list for PBXNativeTarget "PhotonLightControllerTests" */;
-			buildPhases = (
-				D3BA967A1AB9EC0A0026F77A /* Sources */,
-				D3BA967B1AB9EC0A0026F77A /* Frameworks */,
-				D3BA967C1AB9EC0A0026F77A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D3BA96811AB9EC0A0026F77A /* PBXTargetDependency */,
-			);
-			name = PhotonLightControllerTests;
-			productName = PhotonLightControllerTests;
-			productReference = D3BA967E1AB9EC0A0026F77A /* PhotonLightControllerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -836,12 +810,6 @@
 						CreatedOnToolsVersion = 6.1;
 						TestTargetID = D38C16341A68DE96006FE974;
 					};
-					D3BA96731AB9EC0A0026F77A = {
-						CreatedOnToolsVersion = 6.2;
-					};
-					D3BA967D1AB9EC0A0026F77A = {
-						CreatedOnToolsVersion = 6.2;
-					};
 				};
 			};
 			buildConfigurationList = D38C16301A68DE96006FE974 /* Build configuration list for PBXProject "Photon" */;
@@ -861,8 +829,6 @@
 				D38C164D1A68DE96006FE974 /* PhotonTests */,
 				D34FB29F1A71714600DB659E /* Photon WatchKit Extension */,
 				D34FB2AE1A71714700DB659E /* Photon WatchKit App */,
-				D3BA96731AB9EC0A0026F77A /* PhotonLightController */,
-				D3BA967D1AB9EC0A0026F77A /* PhotonLightControllerTests */,
 				D344C5391AECB21C002522D0 /* Photon (OS X) */,
 				D344C54B1AECB21C002522D0 /* Photon (OS X)Tests */,
 			);
@@ -874,7 +840,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3D394301B124D6A0047DB55 /* PHControlLightsViewController.xib in Resources */,
+				D3D394441B124DD30047DB55 /* press_smartbridge.png in Resources */,
+				D3D394421B124DCC0047DB55 /* PHLoadingViewController.xib in Resources */,
+				D3D3943B1B124DA10047DB55 /* PHBridgePushLinkViewController.xib in Resources */,
 				D344C5441AECB21C002522D0 /* Images.xcassets in Resources */,
+				D3D394391B124DA10047DB55 /* PHBridgeSelectionViewController.xib in Resources */,
 				D344C5471AECB21C002522D0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -926,13 +897,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D38C164C1A68DE96006FE974 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D3BA967C1AB9EC0A0026F77A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1022,8 +986,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3D394511B12517A0047DB55 /* ContextFilterLogFormatter.m in Sources */,
+				D3D394521B12517A0047DB55 /* DispatchQueueLogFormatter.m in Sources */,
+				D3D3944A1B124F430047DB55 /* DDAbstractDatabaseLogger.m in Sources */,
+				D3D3944B1B124F430047DB55 /* DDFileLogger.m in Sources */,
+				D3D3944C1B124F430047DB55 /* DDTTYLogger.m in Sources */,
+				D3D394491B124F230047DB55 /* DDASLLogger.m in Sources */,
+				D3D394481B124F080047DB55 /* DDLog.m in Sources */,
+				D3D394411B124DCC0047DB55 /* PHLoadingViewController.m in Sources */,
+				D3D394381B124DA10047DB55 /* PHBridgeSelectionViewController.m in Sources */,
 				D344C5421AECB21C002522D0 /* main.m in Sources */,
+				D3D3943A1B124DA10047DB55 /* PHBridgePushLinkViewController.m in Sources */,
 				D344C5401AECB21C002522D0 /* AppDelegate.m in Sources */,
+				D3D394471B124DFC0047DB55 /* PHControlLightsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,21 +1069,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D3BA96701AB9EC0A0026F77A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D3BA96791AB9EC0A0026F77A /* PhotonLightController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D3BA967A1AB9EC0A0026F77A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1131,11 +1091,6 @@
 			isa = PBXTargetDependency;
 			target = D38C16341A68DE96006FE974 /* Photon */;
 			targetProxy = D38C164F1A68DE96006FE974 /* PBXContainerItemProxy */;
-		};
-		D3BA96811AB9EC0A0026F77A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D3BA96731AB9EC0A0026F77A /* PhotonLightController */;
-			targetProxy = D3BA96801AB9EC0A0026F77A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1174,6 +1129,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1182,6 +1141,10 @@
 				INFOPLIST_FILE = "Photon (OS X)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1195,10 +1158,18 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Photon (OS X)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1525,64 +1496,6 @@
 			};
 			name = Release;
 		};
-		D3BA96861AB9EC0A0026F77A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		D3BA96871AB9EC0A0026F77A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		D3BA96891AB9EC0A0026F77A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PhotonLightControllerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		D3BA968A1AB9EC0A0026F77A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PhotonLightControllerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1645,24 +1558,6 @@
 			buildConfigurations = (
 				D38C165C1A68DE96006FE974 /* Debug */,
 				D38C165D1A68DE96006FE974 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D3BA96851AB9EC0A0026F77A /* Build configuration list for PBXNativeTarget "PhotonLightController" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D3BA96861AB9EC0A0026F77A /* Debug */,
-				D3BA96871AB9EC0A0026F77A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D3BA96881AB9EC0A0026F77A /* Build configuration list for PBXNativeTarget "PhotonLightControllerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D3BA96891AB9EC0A0026F77A /* Debug */,
-				D3BA968A1AB9EC0A0026F77A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
