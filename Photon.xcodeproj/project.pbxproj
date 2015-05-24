@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4EA7DA26D1080F909A71489B /* libPods-Photon WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1C73569DDDB048C99B7BFD /* libPods-Photon WatchKit Extension.a */; };
+		6F6D357CACD23F452EA8F5AC /* libPods-Photon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71518618920DCD3A394F7099 /* libPods-Photon.a */; };
 		D30358781AE4CDAE00D929DC /* PNSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D30358761AE4CDAE00D929DC /* PNSettingsVC.m */; };
 		D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */; };
 		D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */; };
@@ -147,7 +148,6 @@
 		4E1C73569DDDB048C99B7BFD /* libPods-Photon WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photon WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A7EEBCB6438DFACE80ED517 /* Pods-Photon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photon/Pods-Photon.debug.xcconfig"; sourceTree = "<group>"; };
 		71518618920DCD3A394F7099 /* libPods-Photon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A3FE52FBDAE77747EBA0628 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A5FFCB92737127147D863A4D /* Pods-Photon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photon/Pods-Photon.release.xcconfig"; sourceTree = "<group>"; };
 		A8E2619878DDD17147702D85 /* Pods-Photon WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photon WatchKit Extension/Pods-Photon WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		C318FD3CA9F58D71D9F07A18 /* Pods-Photon WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photon WatchKit Extension/Pods-Photon WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
@@ -266,7 +266,6 @@
 		D3FB694F1A6CF7080068945E /* SetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		D3FB69521A6D0D810068945E /* ResourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceViewController.h; sourceTree = "<group>"; };
 		D3FB69531A6D0D810068945E /* ResourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceViewController.m; sourceTree = "<group>"; };
-		D91EC371DD2FE135E0D83759 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DE73545164D92F377CE65494 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -303,6 +302,7 @@
 				D344C55F1AEE152A002522D0 /* Fabric.framework in Frameworks */,
 				D380F1861AE2F03F00D846B9 /* HueSDK_iOS.framework in Frameworks */,
 				D344C55E1AEE152A002522D0 /* Crashlytics.framework in Frameworks */,
+				6F6D357CACD23F452EA8F5AC /* libPods-Photon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,8 +348,6 @@
 		D290A354950A7DAA5E6BB112 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7A3FE52FBDAE77747EBA0628 /* Pods.debug.xcconfig */,
-				D91EC371DD2FE135E0D83759 /* Pods.release.xcconfig */,
 				5A7EEBCB6438DFACE80ED517 /* Pods-Photon.debug.xcconfig */,
 				A5FFCB92737127147D863A4D /* Pods-Photon.release.xcconfig */,
 				A8E2619878DDD17147702D85 /* Pods-Photon WatchKit Extension.debug.xcconfig */,
