@@ -7,7 +7,7 @@
 //
 
 #import "PNLightController.h"
-#import "PNAppDelegate.h"
+//#import "PNAppDelegate.h"
 #import "PNUtilities.h"
 
 #define MAX_HUE 65535

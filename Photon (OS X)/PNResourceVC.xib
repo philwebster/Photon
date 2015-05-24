@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PNResourceVC">
+            <connections>
+                <outlet property="resourceCollectionView" destination="wms-NC-mha" id="AD1-6C-SOb"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="396"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLt-Hb-dbO">
+                    <rect key="frame" x="20" y="176" width="310" height="200"/>
+                    <clipView key="contentView" id="9Va-dx-2uZ">
+                        <rect key="frame" x="1" y="1" width="248" height="158"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView id="wms-NC-mha" customClass="PNResourceCollectionView">
+                                <rect key="frame" x="0.0" y="0.0" width="248" height="158"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="secondaryBackgroundColor" red="0.3434606791" green="0.58893829580000001" blue="0.77145475149999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <binding destination="OXU-yr-8so" name="content" keyPath="arrangedObjects" id="onf-BV-Wig"/>
+                                    <outlet property="itemPrototype" destination="TFc-Jw-kE1" id="7bv-Tr-IQy"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                    </clipView>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="HbS-Vn-8e9"/>
+                    </constraints>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="LH2-G6-lIu">
+                        <rect key="frame" x="1" y="144" width="233" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="80r-HZ-zP9">
+                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="DLt-Hb-dbO" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="EIK-EJ-DXv"/>
+                <constraint firstItem="DLt-Hb-dbO" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="Iy6-0P-7DQ"/>
+                <constraint firstAttribute="trailing" secondItem="DLt-Hb-dbO" secondAttribute="trailing" constant="20" id="YGP-jl-zRr"/>
+            </constraints>
+            <point key="canvasLocation" x="404" y="391"/>
+        </customView>
+        <collectionViewItem id="TFc-Jw-kE1">
+            <connections>
+                <outlet property="view" destination="Tkv-lW-taf" id="GQu-Jw-ceV"/>
+            </connections>
+        </collectionViewItem>
+        <view id="Tkv-lW-taf">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1XQ-Qw-Y2s">
+                    <rect key="frame" x="31" y="42" width="36" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hello" id="LwK-Ux-gXP">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="TFc-Jw-kE1" name="value" keyPath="representedObject.name" id="gs5-Gd-T7z"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="704" y="325"/>
+        </view>
+        <arrayController objectClassName="PHBridgeResource" id="OXU-yr-8so">
+            <declaredKeys>
+                <string>name</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="resources" id="6jH-3I-Ikd"/>
+            </connections>
+        </arrayController>
+        <userDefaultsController representsSharedInstance="YES" id="EHE-ug-eoO"/>
+    </objects>
+</document>

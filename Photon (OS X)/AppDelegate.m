@@ -6,6 +6,8 @@
 #import "AppDelegate.h"
 #import "PHLoadingViewController.h"
 #import "PHControlLightsViewController.h"
+#import "PNLightController.h"
+#import "PNResourceVC.h"
 
 @interface  AppDelegate()
 
@@ -19,7 +21,9 @@
 @property (nonatomic, strong) PHLoadingViewController *loadingViewController;
 @property (nonatomic, strong) PHBridgePushLinkViewController *pushLinkViewController;
 @property (nonatomic, strong) PHControlLightsViewController *controlLightsViewController;
+@property (nonatomic, strong) PNResourceVC *resourceVC;
 @property (nonatomic, strong) PHBridgeSearching *bridgeSearch;
+@property (nonatomic, weak) PNLightController *lightController;
 
 @end
 
@@ -27,10 +31,13 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    self.controlLightsViewController = [[PHControlLightsViewController alloc] initWithNibName:@"PHControlLightsViewController" bundle:[NSBundle mainBundle]];
-    
-    self.controlLightsViewController.view.frame = ((NSView*)self.window.contentView).bounds;
-    self.window.contentView = self.controlLightsViewController.view;
+//    self.controlLightsViewController = [[PHControlLightsViewController alloc] initWithNibName:@"PHControlLightsViewController" bundle:[NSBundle mainBundle]];
+//    self.controlLightsViewController.view.frame = ((NSView*)self.window.contentView).bounds;
+//    self.window.contentView = self.controlLightsViewController.view;
+
+    self.resourceVC = [[PNResourceVC alloc] initWithNibName:@"PNResourceVC" bundle:[NSBundle mainBundle]];
+    self.resourceVC.view.frame = ((NSView *)self.window.contentView).bounds;
+    self.window.contentView = self.resourceVC.view;
     
     /***************************************************
      The Hue SDK is created as a property in the App delegate .h file
@@ -45,7 +52,8 @@
      *****************************************************/
     
     // Create sdk instance
-    self.phHueSDK = [[PHHueSDK alloc] init];
+    self.lightController = [PNLightController singleton];
+    self.phHueSDK = self.lightController.phHueSDK;
     [self.phHueSDK startUpSDK];
     [self.phHueSDK enableLogging:YES];
     

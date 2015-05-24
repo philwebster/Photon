@@ -11,6 +11,9 @@
 		6F6D357CACD23F452EA8F5AC /* libPods-Photon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71518618920DCD3A394F7099 /* libPods-Photon.a */; };
 		D30358781AE4CDAE00D929DC /* PNSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D30358761AE4CDAE00D929DC /* PNSettingsVC.m */; };
 		D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */; };
+		D30540A31B12712900A10CA7 /* PNResourceCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30540A21B12712900A10CA7 /* PNResourceCollectionView.m */; };
+		D30540A41B1276C900A10CA7 /* PNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PNLightController.m */; };
+		D30540A51B12774F00A10CA7 /* PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EC69D31AABF2EF00DE4C65 /* PNUtilities.m */; };
 		D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */; };
 		D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C3BE41A722834006D2678 /* ResourceRowController.m */; };
 		D31D54E81B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D31D54E71B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a */; };
@@ -79,6 +82,8 @@
 		D3D394501B124F870047DB55 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D3944F1B124F870047DB55 /* Cocoa.framework */; };
 		D3D394511B12517A0047DB55 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63351A6B664600095EF7 /* ContextFilterLogFormatter.m */; };
 		D3D394521B12517A0047DB55 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA63371A6B664600095EF7 /* DispatchQueueLogFormatter.m */; };
+		D3D394561B125E920047DB55 /* PNResourceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D394541B125E920047DB55 /* PNResourceVC.m */; };
+		D3D394571B125E920047DB55 /* PNResourceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3D394551B125E920047DB55 /* PNResourceVC.xib */; };
 		D3D4561F1A8B163000219219 /* UIColor+PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */; };
 		D3D473461B0B0B8F00BD08E0 /* PNWatchIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D473451B0B0B8F00BD08E0 /* PNWatchIC.m */; };
 		D3D473491B0B0F8400BD08E0 /* PNWatchGlanceIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D473481B0B0F8400BD08E0 /* PNWatchGlanceIC.m */; };
@@ -153,6 +158,8 @@
 		D30358751AE4CDAE00D929DC /* PNSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNSettingsVC.h; sourceTree = "<group>"; };
 		D30358761AE4CDAE00D929DC /* PNSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNSettingsVC.m; sourceTree = "<group>"; };
 		D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNSettingsVC.xib; sourceTree = "<group>"; };
+		D30540A11B12712900A10CA7 /* PNResourceCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNResourceCollectionView.h; sourceTree = "<group>"; };
+		D30540A21B12712900A10CA7 /* PNResourceCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNResourceCollectionView.m; sourceTree = "<group>"; };
 		D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBrightnessPickerVC.xib; sourceTree = "<group>"; };
 		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceRowController.h; sourceTree = "<group>"; };
 		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceRowController.m; sourceTree = "<group>"; };
@@ -161,7 +168,7 @@
 		D31D54E71B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Photon-Mixpanel.a"; path = "Pods/build/Debug-iphoneos/libPods-Photon-Mixpanel.a"; sourceTree = "<group>"; };
 		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
 		D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridgeView.m; sourceTree = "<group>"; };
-		D344C53A1AECB21C002522D0 /* Photon (OS X).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photon (OS X).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D344C53A1AECB21C002522D0 /* Photon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D344C53D1AECB21C002522D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D344C53E1AECB21C002522D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D344C53F1AECB21C002522D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -252,6 +259,9 @@
 		D3D394461B124DFC0047DB55 /* PHControlLightsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHControlLightsViewController.m; sourceTree = "<group>"; };
 		D3D3944D1B124F820047DB55 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		D3D3944F1B124F870047DB55 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		D3D394531B125E920047DB55 /* PNResourceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNResourceVC.h; sourceTree = "<group>"; };
+		D3D394541B125E920047DB55 /* PNResourceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNResourceVC.m; sourceTree = "<group>"; };
+		D3D394551B125E920047DB55 /* PNResourceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNResourceVC.xib; sourceTree = "<group>"; };
 		D3D4561D1A8B163000219219 /* UIColor+PNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PNUtilities.h"; sourceTree = "<group>"; };
 		D3D4561E1A8B163000219219 /* UIColor+PNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PNUtilities.m"; sourceTree = "<group>"; };
 		D3D473441B0B0B8F00BD08E0 /* PNWatchIC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNWatchIC.h; sourceTree = "<group>"; };
@@ -367,6 +377,11 @@
 				D3D394451B124DFC0047DB55 /* PHControlLightsViewController.h */,
 				D3D394461B124DFC0047DB55 /* PHControlLightsViewController.m */,
 				D3D3942F1B124D6A0047DB55 /* PHControlLightsViewController.xib */,
+				D3D394531B125E920047DB55 /* PNResourceVC.h */,
+				D3D394541B125E920047DB55 /* PNResourceVC.m */,
+				D3D394551B125E920047DB55 /* PNResourceVC.xib */,
+				D30540A11B12712900A10CA7 /* PNResourceCollectionView.h */,
+				D30540A21B12712900A10CA7 /* PNResourceCollectionView.m */,
 				D344C54F1AECB21C002522D0 /* Photon OS X Tests */,
 				D344C53C1AECB21C002522D0 /* Supporting Files */,
 			);
@@ -475,7 +490,7 @@
 				D38C164E1A68DE96006FE974 /* PhotonTests.xctest */,
 				D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */,
 				D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */,
-				D344C53A1AECB21C002522D0 /* Photon (OS X).app */,
+				D344C53A1AECB21C002522D0 /* Photon.app */,
 				D344C54C1AECB21C002522D0 /* Photon (OS X)Tests.xctest */,
 			);
 			name = Products;
@@ -672,7 +687,7 @@
 			);
 			name = "Photon (OS X)";
 			productName = "Photon (OS X)";
-			productReference = D344C53A1AECB21C002522D0 /* Photon (OS X).app */;
+			productReference = D344C53A1AECB21C002522D0 /* Photon.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D344C54B1AECB21C002522D0 /* Photon (OS X)Tests */ = {
@@ -840,6 +855,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3D394571B125E920047DB55 /* PNResourceVC.xib in Resources */,
 				D3D394301B124D6A0047DB55 /* PHControlLightsViewController.xib in Resources */,
 				D3D394441B124DD30047DB55 /* press_smartbridge.png in Resources */,
 				D3D394421B124DCC0047DB55 /* PHLoadingViewController.xib in Resources */,
@@ -986,6 +1002,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D30540A51B12774F00A10CA7 /* PNUtilities.m in Sources */,
+				D30540A41B1276C900A10CA7 /* PNLightController.m in Sources */,
 				D3D394511B12517A0047DB55 /* ContextFilterLogFormatter.m in Sources */,
 				D3D394521B12517A0047DB55 /* DispatchQueueLogFormatter.m in Sources */,
 				D3D3944A1B124F430047DB55 /* DDAbstractDatabaseLogger.m in Sources */,
@@ -997,7 +1015,9 @@
 				D3D394381B124DA10047DB55 /* PHBridgeSelectionViewController.m in Sources */,
 				D344C5421AECB21C002522D0 /* main.m in Sources */,
 				D3D3943A1B124DA10047DB55 /* PHBridgePushLinkViewController.m in Sources */,
+				D30540A31B12712900A10CA7 /* PNResourceCollectionView.m in Sources */,
 				D344C5401AECB21C002522D0 /* AppDelegate.m in Sources */,
+				D3D394561B125E920047DB55 /* PNResourceVC.m in Sources */,
 				D3D394471B124DFC0047DB55 /* PHControlLightsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1145,7 +1165,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Photon;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -1170,7 +1190,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Photon;
 				SDKROOT = macosx;
 			};
 			name = Release;
