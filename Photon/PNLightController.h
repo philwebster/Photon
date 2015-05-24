@@ -1,5 +1,5 @@
 //
-//  PTNLightController.h
+//  PNLightController.h
 //  Photon
 //
 //  Created by Philip Webster on 1/24/15.
@@ -7,8 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+
+#if TARGET_OS_IPHONE
+
 #import <HueSDK_iOS/HueSDK.h>
+@import UIKit;
+#define PNColor UIColor
+
+#elif TARGET_OS_MAC
+
+#import <HueSDK_OSX/HueSDK.h>
+@import Cocoa;
+#define PNColor NSColor
+
+#endif
 
 @interface PNLightController : NSObject
 
@@ -28,7 +40,7 @@
 
 + (id)singleton;
 - (void)setNaturalColor:(NSNumber *)ct forResource:(PHBridgeResource *)resource;
-- (void)setColor:(UIColor *)color forResource:(PHBridgeResource *)resource;
+- (void)setColor:(PNColor *)color forResource:(PHBridgeResource *)resource;
 - (void)setBrightness:(NSNumber *)brightness forResource:(PHBridgeResource *)resource;
 - (void)setResourceOff:(PHBridgeResource *)resource;
 - (void)setStateWithDict:(NSDictionary *)stateDict;
