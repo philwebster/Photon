@@ -32,6 +32,11 @@
 
     // Configure interface objects here.
     self.labelOff = YES;
+    if ([self.context respondsToSelector:@selector(isEqualToString:)]) {
+        if ([self.context isEqualToString:@"adjust"]) {
+            [self setTitle:@"Done"];
+        }
+    }
 }
 
 - (void)willActivate {
@@ -40,6 +45,8 @@
 
     if ([self.context class] == [PHGroup class] || [self.context class] == [PHLight class]) {
         self.resource = (PHBridgeResource *)self.context;
+        self.lightController.lastUsedResource = self.resource;
+        [self updateBrightnessSlider];
         [self setTitle:self.resource.name];
     } else if ([self.context isEqualToString:@"adjust"]) {
         NSMutableArray *onLights = [NSMutableArray array];
@@ -48,16 +55,15 @@
         }];
         [self.lightController createNewGroupWithName:@"photon temp" lightIds:onLights completion:^(NSArray *errors) {
             self.resource = [self.lightController groupWithName:@"photon temp"];
+            self.lightController.lastUsedResource = self.resource;
+            [self updateBrightnessSlider];
         }];
     }
+}
+
+- (void)updateBrightnessSlider {
     CGFloat brightness = [self.resource isKindOfClass:[PHGroup class]] ? [[self.lightController averageBrightnessForGroup:(PHGroup *)self.resource] floatValue]: [((PHLight *)self.resource).lightState.brightness floatValue];
     [self.brightnessSlider setValue:brightness];
-
-    if ([self.context respondsToSelector:@selector(isEqualToString:)]) {
-        if ([self.context isEqualToString:@"adjust"]) {
-            [self setTitle:@"Done"];
-        }
-    }
 }
 
 - (void)didDeactivate {

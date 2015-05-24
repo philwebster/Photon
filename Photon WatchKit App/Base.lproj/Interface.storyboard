@@ -56,7 +56,7 @@
                     <items>
                         <table alignment="left" id="JlT-UW-pDZ">
                             <items>
-                                <tableRow id="oHu-hT-2PR" customClass="ResourceRowController">
+                                <tableRow identifier="default" id="oHu-hT-2PR" customClass="ResourceRowController">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" id="0RE-nD-Ynf">
                                         <items>
                                             <label width="131.5" height="38.5" alignment="left" text="Label" id="qnH-h2-Uw9"/>
