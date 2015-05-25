@@ -11,6 +11,7 @@
 #import "PNAppDelegate.h"
 #import "PNLightController.h"
 #import "ResourceCollectionViewCell.h"
+#import "PNResourceSettingVC.h"
 #import "PNGroupListVC.h"
 #import "PNSettingsVC.h"
 #import <HueSDK_iOS/HueSDK.h>
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) PHBridgeResource *selectedResource;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (nonatomic, strong) PNColorPickerVC *colorPickerVC;
+@property (nonatomic, strong) PNResourceSettingVC *resourceSettingVC;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, assign) BOOL pickingColor;
 @end
@@ -61,6 +63,8 @@
         self.lightController = [PNLightController singleton];
         self.colorPickerVC = [[PNColorPickerVC alloc] init];
         self.colorPickerVC.colorDelegate = self;
+        
+        self.resourceSettingVC = [[PNResourceSettingVC alloc] init];
     }
     return self;
 }
@@ -71,6 +75,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [self becomeFirstResponder];
+}
+
+- (void)viewWillLayoutSubviews {
+    self.resourceSettingVC.view.frame = self.view.bounds;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,9 +122,9 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 0) {
-        return [self.lightController.groups count] + 1;
+        return [self.lightController.groups count];
     } else if (section == 1) {
-        return [self.lightController.lights count] + 1;
+        return [self.lightController.lights count];
     } else if (section == 2) {
         return [self.lightController.scenes count];
     }
@@ -128,19 +136,11 @@
     
     if (indexPath.section == 0) {
         NSArray *groups = self.lightController.groups;
-        if (indexPath.row == groups.count) {
-            cell.resourceTitleLabel.text = @"Edit...";
-        } else {
-            // TODO: Add a default All group if user doesn't already have one
-            cell.resourceTitleLabel.text = [groups[indexPath.row] name];
-        }
+        // TODO: Add a default All group if user doesn't already have one
+        cell.resourceTitleLabel.text = [groups[indexPath.row] name];
     } else if (indexPath.section == 1) {
         NSArray *lights = self.lightController.lights;
-        if (indexPath.row == lights.count) {
-            cell.resourceTitleLabel.text = @"Edit...";
-        } else {
-            cell.resourceTitleLabel.text = [lights[indexPath.row] name];
-        }
+        cell.resourceTitleLabel.text = [lights[indexPath.row] name];
     } else if (indexPath.section == 2) {
         NSArray *scenes = self.lightController.scenes;
         cell.resourceTitleLabel.text = [scenes[indexPath.row] name];
@@ -182,21 +182,15 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.recognizer.enabled = NO;
     if (indexPath.section == 0) {
-        if (indexPath.row == self.lightController.groups.count) {
-            [self addGroupTapped];
-        } else {
-            self.colorPickerVC.resource = self.lightController.groups[indexPath.row];
-            [self addChildViewController:self.colorPickerVC];
-            [self.view addSubview:self.colorPickerVC.view];
-        }
+        self.resourceSettingVC.resource = self.lightController.groups[indexPath.row];
+        [self.view addSubview:self.resourceSettingVC.view];
+        [self addChildViewController:self.resourceSettingVC];
+        [self didMoveToParentViewController:self.resourceSettingVC];
     } else if (indexPath.section == 1) {
-        if (indexPath.row == self.lightController.lights.count) {
-            [self editLightsTapped];
-        } else {
-            self.colorPickerVC.resource = self.lightController.lights[indexPath.row];
-            [self addChildViewController:self.colorPickerVC];
-            [self.view addSubview:self.colorPickerVC.view];
-        }
+        self.resourceSettingVC.resource = self.lightController.lights[indexPath.row];
+        [self.view addSubview:self.resourceSettingVC.view];
+        [self addChildViewController:self.resourceSettingVC];
+        [self didMoveToParentViewController:self.resourceSettingVC];
     } else if (indexPath.section == 2) {
         NSArray *scenes = self.lightController.scenes;
         [self.lightController setScene:scenes[indexPath.row] onGroup:nil];

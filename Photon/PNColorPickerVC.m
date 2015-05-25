@@ -34,7 +34,8 @@
     if (self) {
         self.lightController = [PNLightController singleton];
 
-        self.naturalColorView = [[PNColorView alloc] initWithFrame:CGRectZero colors:self.lightController.naturalColors];
+        self.naturalColorView = [[PNColorView alloc] init];
+        [self.naturalColorView setColors:self.lightController.naturalColors];
         self.naturalColorView.delegate = self;
         self.brightnessPicker = [[PNBrightnessPickerVC alloc] init];
         self.brightnessPicker.delegate = self;

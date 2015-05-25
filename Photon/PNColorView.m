@@ -24,10 +24,8 @@
 
 @implementation PNColorView
 
-- (id)initWithFrame:(CGRect)frame colors:(NSArray *)colors {
-    // TODO: Pass in a gradient
-    self = [super initWithFrame:frame];
-    if (self) {
+- (id)init {
+    if (self = [super init]) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
         [self setTranslatesAutoresizingMaskIntoConstraints:NO];
         
@@ -35,46 +33,56 @@
         self.layer.shadowOffset = CGSizeMake(0,0);//CGSizeMake(-15, 20);
         self.layer.shadowRadius = 2.5f;
         self.layer.shadowOpacity = 0.5f;
-//        self.layer.cornerRadius = 4.f;
+        //        self.layer.cornerRadius = 4.f;
         
-        NSMutableArray *tempViewArray = [NSMutableArray new];
-        for (int i = 0; i < colors.count; ++i) {
-            UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
-            view.translatesAutoresizingMaskIntoConstraints = NO;
-            view.backgroundColor = colors[i];
-
-            [tempViewArray addObject:view];
-        }
-        self.colorViews = tempViewArray;
-        
-        CGFloat widthMultiplier = 1.0 / self.colorViews.count;
-        CGFloat xMultiplier;
-        CGFloat numColors = self.colorViews.count;
-
-        for (int i = 0; i < numColors; ++i) {
-            UIView *view = self.colorViews[i];
-            xMultiplier = (1 / (numColors / 2.0)) * (i + 0.5);
-            [self addSubview:view];
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:xMultiplier constant:0]];
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:widthMultiplier constant:0]];
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
-        }
+        //        [self setColors:colors];
         
         self.gradientView = [UIView new];
-//        [self insertSubview:self.gradientView atIndex:0];
-        self.gradLayer = [self gradientLayerWithColors:colors];
+        //        [self insertSubview:self.gradientView atIndex:0];
+        //        self.gradLayer = [self gradientLayerWithColors:colors];
         self.gradLayer.frame = self.bounds;
         [self.gradientView.layer insertSublayer:self.gradLayer atIndex:0];
         
-        if (colors.count == 5) {
-            self.isCT = YES;
-        }
+        //        if (colors.count == 5) {
+        //            self.isCT = YES;
+        //        }
+        self.isCT = YES;
         self.isGradient = NO;
         self.enableShakeGesture = NO;
         [self updateShadowLayer];
     }
     return self;
+}
+
+- (void)setColors:(NSArray *)colors {
+    [self.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop) {
+        [subview removeFromSuperview];
+    }];
+    self.isCT = YES;
+    NSMutableArray *tempViewArray = [NSMutableArray new];
+    for (int i = 0; i < colors.count; ++i) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+        view.translatesAutoresizingMaskIntoConstraints = NO;
+        view.backgroundColor = colors[i];
+        
+        [tempViewArray addObject:view];
+    }
+    self.colorViews = tempViewArray;
+    
+    CGFloat widthMultiplier = 1.0 / self.colorViews.count;
+    CGFloat xMultiplier;
+    CGFloat numColors = self.colorViews.count;
+    
+    for (int i = 0; i < numColors; ++i) {
+        UIView *view = self.colorViews[i];
+        xMultiplier = (1 / (numColors / 2.0)) * (i + 0.5);
+        [self addSubview:view];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:xMultiplier constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:widthMultiplier constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
+    }
+
 }
 
 - (void)layoutSubviews {
