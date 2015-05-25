@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PNResourceVC">
             <connections>
+                <outlet property="loopButton" destination="10i-C9-ROE" id="Myf-58-UOJ"/>
                 <outlet property="resourceCollectionView" destination="wms-NC-mha" id="AD1-6C-SOb"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -22,13 +23,13 @@
                         <rect key="frame" x="1" y="1" width="248" height="158"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView id="wms-NC-mha" customClass="PNResourceCollectionView">
+                            <collectionView selectable="YES" id="wms-NC-mha" customClass="PNResourceCollectionView">
                                 <rect key="frame" x="0.0" y="0.0" width="248" height="158"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <color key="secondaryBackgroundColor" red="0.3434606791" green="0.58893829580000001" blue="0.77145475149999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <binding destination="OXU-yr-8so" name="content" keyPath="arrangedObjects" id="onf-BV-Wig"/>
+                                    <binding destination="OXU-yr-8so" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="onf-BV-Wig" id="LuU-yf-Uqe"/>
                                     <outlet property="itemPrototype" destination="TFc-Jw-kE1" id="7bv-Tr-IQy"/>
                                 </connections>
                             </collectionView>
@@ -46,26 +47,38 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="10i-C9-ROE">
+                    <rect key="frame" x="128" y="13" width="95" height="32"/>
+                    <buttonCell key="cell" type="push" title="Loop Me" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="176-Zg-Jsd">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="loopPressed:" target="-2" id="Ip0-ei-JbH"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="DLt-Hb-dbO" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="EIK-EJ-DXv"/>
                 <constraint firstItem="DLt-Hb-dbO" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="Iy6-0P-7DQ"/>
                 <constraint firstAttribute="trailing" secondItem="DLt-Hb-dbO" secondAttribute="trailing" constant="20" id="YGP-jl-zRr"/>
+                <constraint firstAttribute="centerX" secondItem="10i-C9-ROE" secondAttribute="centerX" id="ptM-ue-VgF"/>
+                <constraint firstAttribute="bottom" secondItem="10i-C9-ROE" secondAttribute="bottom" constant="20" id="z1h-35-KDq"/>
             </constraints>
             <point key="canvasLocation" x="404" y="391"/>
         </customView>
-        <collectionViewItem id="TFc-Jw-kE1">
+        <collectionViewItem id="TFc-Jw-kE1" customClass="PNResourceCVItem">
             <connections>
                 <outlet property="view" destination="Tkv-lW-taf" id="GQu-Jw-ceV"/>
             </connections>
         </collectionViewItem>
-        <view id="Tkv-lW-taf">
+        <view focusRingType="exterior" id="Tkv-lW-taf" customClass="PNResourceCVCellView">
             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1XQ-Qw-Y2s">
-                    <rect key="frame" x="31" y="42" width="36" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hello" id="LwK-Ux-gXP">
+                    <rect key="frame" x="18" y="42" width="64" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Hello" id="LwK-Ux-gXP">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -83,6 +96,7 @@
             </declaredKeys>
             <connections>
                 <binding destination="-2" name="contentArray" keyPath="resources" id="6jH-3I-Ikd"/>
+                <binding destination="-2" name="selectionIndexes" keyPath="selection" id="Brg-DR-4es"/>
             </connections>
         </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="EHE-ug-eoO"/>

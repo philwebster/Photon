@@ -14,6 +14,8 @@
 		D30540A31B12712900A10CA7 /* PNResourceCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30540A21B12712900A10CA7 /* PNResourceCollectionView.m */; };
 		D30540A41B1276C900A10CA7 /* PNLightController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C33B321A738AD10008EAFA /* PNLightController.m */; };
 		D30540A51B12774F00A10CA7 /* PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EC69D31AABF2EF00DE4C65 /* PNUtilities.m */; };
+		D30540A81B1290AA00A10CA7 /* PNResourceCVItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D30540A71B1290AA00A10CA7 /* PNResourceCVItem.m */; };
+		D30540AB1B12919200A10CA7 /* PNResourceCVCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30540AA1B12919200A10CA7 /* PNResourceCVCellView.m */; };
 		D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */; };
 		D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C3BE41A722834006D2678 /* ResourceRowController.m */; };
 		D31D54E81B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D31D54E71B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a */; };
@@ -160,6 +162,10 @@
 		D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNSettingsVC.xib; sourceTree = "<group>"; };
 		D30540A11B12712900A10CA7 /* PNResourceCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNResourceCollectionView.h; sourceTree = "<group>"; };
 		D30540A21B12712900A10CA7 /* PNResourceCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNResourceCollectionView.m; sourceTree = "<group>"; };
+		D30540A61B1290AA00A10CA7 /* PNResourceCVItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNResourceCVItem.h; sourceTree = "<group>"; };
+		D30540A71B1290AA00A10CA7 /* PNResourceCVItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNResourceCVItem.m; sourceTree = "<group>"; };
+		D30540A91B12919200A10CA7 /* PNResourceCVCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNResourceCVCellView.h; sourceTree = "<group>"; };
+		D30540AA1B12919200A10CA7 /* PNResourceCVCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNResourceCVCellView.m; sourceTree = "<group>"; };
 		D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBrightnessPickerVC.xib; sourceTree = "<group>"; };
 		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceRowController.h; sourceTree = "<group>"; };
 		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceRowController.m; sourceTree = "<group>"; };
@@ -375,11 +381,15 @@
 				D344C5431AECB21C002522D0 /* Images.xcassets */,
 				D344C5451AECB21C002522D0 /* MainMenu.xib */,
 				D3D394451B124DFC0047DB55 /* PHControlLightsViewController.h */,
+				D30540A61B1290AA00A10CA7 /* PNResourceCVItem.h */,
+				D30540A71B1290AA00A10CA7 /* PNResourceCVItem.m */,
 				D3D394461B124DFC0047DB55 /* PHControlLightsViewController.m */,
 				D3D3942F1B124D6A0047DB55 /* PHControlLightsViewController.xib */,
 				D3D394531B125E920047DB55 /* PNResourceVC.h */,
 				D3D394541B125E920047DB55 /* PNResourceVC.m */,
 				D3D394551B125E920047DB55 /* PNResourceVC.xib */,
+				D30540A91B12919200A10CA7 /* PNResourceCVCellView.h */,
+				D30540AA1B12919200A10CA7 /* PNResourceCVCellView.m */,
 				D30540A11B12712900A10CA7 /* PNResourceCollectionView.h */,
 				D30540A21B12712900A10CA7 /* PNResourceCollectionView.m */,
 				D344C54F1AECB21C002522D0 /* Photon OS X Tests */,
@@ -1017,7 +1027,9 @@
 				D3D3943A1B124DA10047DB55 /* PHBridgePushLinkViewController.m in Sources */,
 				D30540A31B12712900A10CA7 /* PNResourceCollectionView.m in Sources */,
 				D344C5401AECB21C002522D0 /* AppDelegate.m in Sources */,
+				D30540A81B1290AA00A10CA7 /* PNResourceCVItem.m in Sources */,
 				D3D394561B125E920047DB55 /* PNResourceVC.m in Sources */,
+				D30540AB1B12919200A10CA7 /* PNResourceCVCellView.m in Sources */,
 				D3D394471B124DFC0047DB55 /* PHControlLightsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

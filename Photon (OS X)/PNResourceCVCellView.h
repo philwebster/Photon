@@ -1,5 +1,5 @@
 //
-//  PNResourceVC.h
+//  PNResourceCVCellView.h
 //  Photon
 //
 //  Created by Philip Webster on 5/24/15.
@@ -8,9 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PNResourceVC : NSViewController
+@interface PNResourceCVCellView : NSView
 
-@property NSMutableArray *resources;
-@property NSIndexSet *selection;
+@property (readwrite) BOOL selected;
 
 @end

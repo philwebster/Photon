@@ -1,3 +1,4 @@
+
 //
 //  PTNLightController.m
 //  Photon
@@ -50,11 +51,11 @@
         self.phHueSDK = [[PHHueSDK alloc] init];
 
         self.standardColors = @[[PNColor colorWithHue:0.626 saturation:0.871 brightness:1.000 alpha:1.000],
-                                [PNColor colorWithHue:0.788 saturation:1.000 brightness:0.996 alpha:1.000],
-                                [PNColor colorWithHue:0.846 saturation:1.000 brightness:0.984 alpha:1.000],
-                                [PNColor colorWithHue:0.965 saturation:1.000 brightness:0.984 alpha:1.000],
-                                [PNColor colorWithHue:0.081 saturation:0.881 brightness:0.992 alpha:1.000],
-                                [PNColor colorWithHue:0.155 saturation:0.941 brightness:0.996 alpha:1.000],
+                                [PNColor colorWithHue:0.788 saturation:1.000 brightness:1.000 alpha:1.000],
+                                [PNColor colorWithHue:0.846 saturation:1.000 brightness:1.000 alpha:1.000],
+                                [PNColor colorWithHue:0.965 saturation:1.000 brightness:1.000 alpha:1.000],
+                                [PNColor colorWithHue:0.081 saturation:0.881 brightness:1.000 alpha:1.000],
+                                [PNColor colorWithHue:0.155 saturation:0.941 brightness:1.000 alpha:1.000],
                                 [PNColor colorWithHue:0.341 saturation:0.748 brightness:1.000 alpha:1.000],
                                 [PNColor colorWithHue:0.468 saturation:0.808 brightness:1.000 alpha:1.000]];
         self.naturalColors = @[ [PNColor colorWithHue:0.123 saturation:0.665 brightness:0.996 alpha:1.000],
@@ -142,7 +143,7 @@
     }
 }
 
-- (void)setColor:(PNColor *)color forResource:(PHBridgeResource *)resource {
+- (void)setColor:(PNColor *)color forResource:(PHBridgeResource *)resource transitionTime:(NSNumber *)transitionTime {
     
     PHLightState *lightState = [[PHLightState alloc] init];
     
@@ -151,6 +152,10 @@
     [lightState setHue:[NSNumber numberWithInt:hue * MAX_HUE]];
     [lightState setSaturation:[NSNumber numberWithInt:254]];
     [lightState setOnBool:YES];
+    if (transitionTime) {
+        int correctedTransition = [transitionTime intValue] * 10;
+        [lightState setTransitionTime:[NSNumber numberWithInt:correctedTransition]];
+    }
     
     // Send lightstate to light
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
@@ -399,6 +404,26 @@
         }
     }
     return lights;
+}
+
+- (void)startColorLoopForResource:(PHBridgeResource *)resource transitionTime:(NSInteger)transitionTime {
+    NSLog(@"color loop for: %@", resource.name);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:resource.name forKey:@"loop resource"];
+    [defaults setInteger:self.standardColors.count - 1 forKey:@"loop state"];
+    [defaults setInteger:transitionTime forKey:@"transition time"];
+    [defaults synchronize];
+    [self stepColorLoop];
+}
+
+- (void)stepColorLoop {
+    NSLog(@"stepping color loop");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger lastColorIndex = [defaults integerForKey:@"loop state"];
+    NSInteger nextColor = lastColorIndex == self.standardColors.count - 1 ? 0 : lastColorIndex + 1;
+    [defaults setInteger:nextColor forKey:@"loop state"];
+    [defaults synchronize];
+    [self setColor:self.standardColors[nextColor] forResource:[self groupWithName:[defaults stringForKey:@"loop resource"]] transitionTime:[NSNumber numberWithInteger:[defaults integerForKey:@"transition time"]]];
 }
 
 @end

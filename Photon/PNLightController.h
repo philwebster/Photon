@@ -40,7 +40,7 @@
 
 + (id)singleton;
 - (void)setNaturalColor:(NSNumber *)ct forResource:(PHBridgeResource *)resource;
-- (void)setColor:(PNColor *)color forResource:(PHBridgeResource *)resource;
+- (void)setColor:(PNColor *)color forResource:(PHBridgeResource *)resource transitionTime:(NSNumber *)transitionTime;
 - (void)setBrightness:(NSNumber *)brightness forResource:(PHBridgeResource *)resource;
 - (void)setResourceOff:(PHBridgeResource *)resource;
 - (void)setStateWithDict:(NSDictionary *)stateDict;
@@ -57,5 +57,7 @@
 - (void)setOtherResourcesOff;
 - (void)setOtherResourcesOn;
 - (void)resetPhoton;
+- (void)startColorLoopForResource:(PHBridgeResource *)resource transitionTime:(NSInteger)transitionTime;
+- (void)stepColorLoop;
 
 @end

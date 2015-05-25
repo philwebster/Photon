@@ -1,5 +1,5 @@
 //
-//  PNResourceVC.h
+//  PNResourceCVItem.h
 //  Photon
 //
 //  Created by Philip Webster on 5/24/15.
@@ -8,9 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PNResourceVC : NSViewController
-
-@property NSMutableArray *resources;
-@property NSIndexSet *selection;
+@interface PNResourceCVItem : NSCollectionViewItem
 
 @end

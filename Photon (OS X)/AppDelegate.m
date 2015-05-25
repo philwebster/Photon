@@ -55,7 +55,7 @@
     self.lightController = [PNLightController singleton];
     self.phHueSDK = self.lightController.phHueSDK;
     [self.phHueSDK startUpSDK];
-    [self.phHueSDK enableLogging:YES];
+//    [self.phHueSDK enableLogging:YES];
     
     PHNotificationManager *notificationManager = [PHNotificationManager defaultManager];
     
