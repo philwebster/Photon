@@ -105,7 +105,7 @@
 
 - (void)colorSelected:(UIColor *)color {
 //    NSLog(@"Setting color: %@ for resource: %@", color, self.resource.name);
-    [self.lightController setColor:color forResource:self.resource transitionTime:nil];
+    [self.lightController setColor:color forResource:self.resource transitionTime:nil completion:nil];
     self.shouldShowBrightness = YES;
 }
 

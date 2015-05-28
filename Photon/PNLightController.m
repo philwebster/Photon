@@ -8,8 +8,8 @@
 //
 
 #import "PNLightController.h"
-//#import "PNAppDelegate.h"
 #import "PNUtilities.h"
+#import <Parse/Parse.h>
 
 #define MAX_HUE 65535
 
@@ -19,6 +19,7 @@
 #define PNColor NSColor
 #endif
 
+NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
 
 @interface PNLightController()
 
@@ -143,7 +144,7 @@
     }
 }
 
-- (void)setColor:(PNColor *)color forResource:(PHBridgeResource *)resource transitionTime:(NSNumber *)transitionTime {
+- (void)setColor:(PNColor *)color forResource:(PHBridgeResource *)resource transitionTime:(NSNumber *)transitionTime completion:(void (^)(NSArray *errors))completion {
     
     PHLightState *lightState = [[PHLightState alloc] init];
     
@@ -160,9 +161,10 @@
     // Send lightstate to light
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     if ([resource isKindOfClass:[PHLight class]]) {
+        // TODO: only works for groups
         [bridgeSendAPI updateLightStateForId:resource.identifier withLightState:lightState completionHandler:nil];
     } else if ([resource isKindOfClass:[PHGroup class]]) {
-        [bridgeSendAPI setLightStateForGroupWithId:resource.identifier lightState:lightState completionHandler:nil];
+        [bridgeSendAPI setLightStateForGroupWithId:resource.identifier lightState:lightState completionHandler:completion];
     }
 }
 
@@ -413,17 +415,78 @@
     [defaults setInteger:self.standardColors.count - 1 forKey:@"loop state"];
     [defaults setInteger:transitionTime forKey:@"transition time"];
     [defaults synchronize];
-    [self stepColorLoop];
+
+    [self stepColorLoopCompletion:nil];
 }
 
-- (void)stepColorLoop {
+- (void)stepColorLoopCompletion:(void (^)())completion {
     NSLog(@"stepping color loop");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults stringForKey:@"loop resource"]) {
+        NSLog(@"cancelling the loop");
+        return;
+    }
+
     NSInteger lastColorIndex = [defaults integerForKey:@"loop state"];
     NSInteger nextColor = lastColorIndex == self.standardColors.count - 1 ? 0 : lastColorIndex + 1;
     [defaults setInteger:nextColor forKey:@"loop state"];
     [defaults synchronize];
-    [self setColor:self.standardColors[nextColor] forResource:[self groupWithName:[defaults stringForKey:@"loop resource"]] transitionTime:[NSNumber numberWithInteger:[defaults integerForKey:@"transition time"]]];
+    NSInteger transitionTime = [defaults integerForKey:@"transition time"];
+    __weak PNLightController *weakSelf = self;
+    [self setColor:self.standardColors[nextColor] forResource:[self groupWithName:[defaults stringForKey:@"loop resource"]] transitionTime:[NSNumber numberWithInteger:transitionTime] completion:^(NSArray *errors) {
+        NSLog(@"setColorCompletion");
+#if TARGET_OS_IPHONE
+        [weakSelf initiatePushUpdateWithInterval:transitionTime completion:completion];
+#else
+        if (completion) {
+            completion(errors);
+        }
+#endif
+    }];
+}
+
+- (void)stopColorLoop {
+    NSLog(@"stopColorLoop");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"loop resource"];
+    [defaults removeObjectForKey:@"loop state"];
+    [defaults removeObjectForKey:@"transition time"];
+    [defaults synchronize];
+}
+
+- (void)initiatePushUpdateWithInterval:(NSInteger)interval completion:(void (^)())completion {
+    NSLog(@"initiatePushUpdateWithInterval");
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    NSString *scheduledDate = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:interval]];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:@{@"deviceToken": @{@"$in": @[[PFInstallation currentInstallation].deviceToken]}} forKey:@"where"];
+    [params setObject:scheduledDate forKey:@"push_time"];
+    [params setObject:@{@"aps": @{@"content-available":@1}} forKey:@"data"];
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.parse.com/1/push"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:[Parse getApplicationId] forHTTPHeaderField:@"X-Parse-Application-Id"];
+    [request setValue:kParseRESTAPIKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
+    [request setHTTPBody:postData];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            NSLog(@"successfully scheduled push notification for %@", scheduledDate);
+        }
+        NSLog(@"response: %@\nerror: %@", response, error);
+        if (completion) {
+            completion();
+        }
+    }];
+    
+    [postDataTask resume];
 }
 
 @end

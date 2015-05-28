@@ -14,6 +14,7 @@
 #import "Mixpanel.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <Parse/Parse.h>
 
 #define MIXPANEL_TOKEN @"48a70e77f8f176df9ddfe85e7af783db"
 
@@ -49,7 +50,24 @@
     [mixpanel track:@"app launch"];
 #endif
     [Fabric with:@[CrashlyticsKit]];
+    [Parse setApplicationId:@"FFOnykbBPee8QFOyqc1EJk8QbWFXPoAzAtDC1QF3"
+                  clientKey:@"vYuZwfanjXc4vqzTocEdFpPMx5ADpew0PITg1Jml"];
 
+
+    [PFUser enableAutomaticUser];
+    if (![PFUser currentUser]) {
+        PFUser *user = [PFUser currentUser];
+        [user saveInBackground];
+    }
+
+//    if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]) {
+//        [self application:application didReceiveRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
+//    }
+
+    // Register for Push Notitications
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeNone) categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
@@ -57,7 +75,7 @@
     self.lightController = [PNLightController singleton];
     self.phHueSDK = self.lightController.phHueSDK;
     [self.phHueSDK startUpSDK];
-    [self.phHueSDK enableLogging:YES];
+//    [self.phHueSDK enableLogging:YES];
     
     self.lightVC = [[ResourceViewController alloc] initWithNibName:@"LightGroupView" bundle:[NSBundle mainBundle]];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.lightVC];
@@ -101,8 +119,29 @@
     [sharedDefaults setObject:deviceID forKey:@"uniqueGlobalDeviceIdentifier"];
     [sharedDefaults synchronize];
 
-
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+//    NSLog(@"didReceiveRemoteNotification no fetch");
+//    NSLog(@"got remote notification");
+//    [[PNLightController singleton] stepColorLoop];
+//}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"got remote notification");
+    PNLightController *lc = [PNLightController singleton];
+    [lc stepColorLoopCompletion:^{
+        NSLog(@"appDelegate completion");
+        completionHandler(UIBackgroundFetchResultNewData);
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

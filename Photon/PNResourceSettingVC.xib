@@ -54,7 +54,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYN-Rn-zH2" customClass="PNButton">
                     <rect key="frame" x="8" y="115" width="288" height="41"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                     <state key="normal" title="Color Loop">
                         <color key="titleColor" red="0.37696561217308044" green="0.37702274322509766" blue="0.3769475519657135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,6 +90,7 @@
                 <constraint firstItem="Dc6-P6-qAC" firstAttribute="top" secondItem="VYN-Rn-zH2" secondAttribute="bottom" constant="8" id="5RJ-iZ-ear"/>
                 <constraint firstItem="VYN-Rn-zH2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="CC7-QJ-RPP"/>
                 <constraint firstItem="VYN-Rn-zH2" firstAttribute="top" secondItem="UMR-hP-sL7" secondAttribute="bottom" constant="8" id="DMK-zE-Lap"/>
+                <constraint firstItem="4lK-po-TEm" firstAttribute="height" secondItem="VYN-Rn-zH2" secondAttribute="height" id="ExP-40-Z01"/>
                 <constraint firstItem="D1Y-0e-pDJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KFa-2Y-JSo"/>
                 <constraint firstItem="4lK-po-TEm" firstAttribute="width" secondItem="VYN-Rn-zH2" secondAttribute="width" id="NHT-D2-345"/>
                 <constraint firstAttribute="bottom" secondItem="D1Y-0e-pDJ" secondAttribute="bottom" id="Oyp-AQ-cHV"/>

@@ -53,6 +53,15 @@
     self.naturalColorView.hidden = NO;
 }
 
+- (void)viewWillLayoutSubviews {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([[defaults stringForKey:@"loop resource"] isEqualToString:self.resource.name]) {
+        self.colorLoopButton.titleLabel.text = @"Stop color loop";
+    } else {
+        self.colorLoopButton.titleLabel.text = @"Color loop";
+    }    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -73,7 +82,12 @@
 }
 
 - (IBAction)colorLoopButtonPressed:(id)sender {
-
+    if ([self.colorLoopButton.titleLabel.text isEqualToString:@"Stop color loop"]) {
+        [self.lightController stopColorLoop];
+    } else {
+        [self.lightController startColorLoopForResource:self.resource transitionTime:60];
+        self.colorLoopButton.titleLabel.text = @"Stop color loop";
+    }
 }
 
 - (IBAction)othersOffButtonPressed:(id)sender {
@@ -94,7 +108,7 @@
 
 - (void)colorSelected:(UIColor *)color {
     //    NSLog(@"Setting color: %@ for resource: %@", color, self.resource.name);
-    [self.lightController setColor:color forResource:self.resource transitionTime:nil];
+    [self.lightController setColor:color forResource:self.resource transitionTime:nil completion:nil];
     self.shouldShowBrightness = YES;
 }
 
