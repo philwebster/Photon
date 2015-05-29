@@ -49,6 +49,19 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
     self = [super init];
     if (self) {
         
+
+#ifdef TARGET_IS_EXTENSION
+        [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.phil.photon"
+                                         containingApplication:@"com.phil.photon"];
+        [Parse setApplicationId:@"FFOnykbBPee8QFOyqc1EJk8QbWFXPoAzAtDC1QF3"
+                      clientKey:@"vYuZwfanjXc4vqzTocEdFpPMx5ADpew0PITg1Jml"];
+        [PFUser enableAutomaticUser];
+        if (![PFUser currentUser]) {
+            PFUser *user = [PFUser currentUser];
+            [user saveInBackground];
+        }
+#endif
+
         self.phHueSDK = [[PHHueSDK alloc] init];
 
         self.standardColors = @[[PNColor colorWithHue:0.626 saturation:0.871 brightness:1.000 alpha:1.000],
@@ -409,33 +422,29 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
 }
 
 - (void)startColorLoopForResource:(PHBridgeResource *)resource transitionTime:(NSInteger)transitionTime {
-    NSLog(@"color loop for: %@", resource.name);
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:resource.name forKey:@"loop resource"];
-    [defaults setInteger:self.standardColors.count - 1 forKey:@"loop state"];
-    [defaults setInteger:transitionTime forKey:@"transition time"];
-    [defaults synchronize];
-
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    [sharedDefaults setObject:resource.name forKey:@"loop resource"];
+    [sharedDefaults setInteger:self.standardColors.count - 1 forKey:@"loop state"];
+    [sharedDefaults setInteger:transitionTime forKey:@"transition time"];
+    [sharedDefaults synchronize];
+    [self setColor:self.standardColors.lastObject forResource:resource transitionTime:@5 completion:nil];
     [self stepColorLoopCompletion:nil];
 }
 
 - (void)stepColorLoopCompletion:(void (^)())completion {
-    NSLog(@"stepping color loop");
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults stringForKey:@"loop resource"]) {
-        NSLog(@"cancelling the loop");
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    if (![sharedDefaults stringForKey:@"loop resource"]) {
         return;
     }
 
-    NSInteger lastColorIndex = [defaults integerForKey:@"loop state"];
+    NSInteger lastColorIndex = [sharedDefaults integerForKey:@"loop state"];
     NSInteger nextColor = lastColorIndex == self.standardColors.count - 1 ? 0 : lastColorIndex + 1;
-    [defaults setInteger:nextColor forKey:@"loop state"];
-    [defaults synchronize];
-    NSInteger transitionTime = [defaults integerForKey:@"transition time"];
+    [sharedDefaults setInteger:nextColor forKey:@"loop state"];
+    [sharedDefaults synchronize];
+    NSInteger transitionTime = [sharedDefaults integerForKey:@"transition time"];
     __weak PNLightController *weakSelf = self;
-    [self setColor:self.standardColors[nextColor] forResource:[self groupWithName:[defaults stringForKey:@"loop resource"]] transitionTime:[NSNumber numberWithInteger:transitionTime] completion:^(NSArray *errors) {
-        NSLog(@"setColorCompletion");
-#if TARGET_OS_IPHONE
+    [self setColor:self.standardColors[nextColor] forResource:[self groupWithName:[sharedDefaults stringForKey:@"loop resource"]] transitionTime:@(transitionTime) completion:^(NSArray *errors) {
+#ifndef MACOSX_DEPLOYMENT_TARGET
         [weakSelf initiatePushUpdateWithInterval:transitionTime completion:completion];
 #else
         if (completion) {
@@ -446,16 +455,14 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
 }
 
 - (void)stopColorLoop {
-    NSLog(@"stopColorLoop");
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults removeObjectForKey:@"loop resource"];
-    [defaults removeObjectForKey:@"loop state"];
-    [defaults removeObjectForKey:@"transition time"];
-    [defaults synchronize];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    [sharedDefaults removeObjectForKey:@"loop resource"];
+    [sharedDefaults removeObjectForKey:@"loop state"];
+    [sharedDefaults removeObjectForKey:@"transition time"];
+    [sharedDefaults synchronize];
 }
 
 - (void)initiatePushUpdateWithInterval:(NSInteger)interval completion:(void (^)())completion {
-    NSLog(@"initiatePushUpdateWithInterval");
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
@@ -477,10 +484,6 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (!error) {
-            NSLog(@"successfully scheduled push notification for %@", scheduledDate);
-        }
-        NSLog(@"response: %@\nerror: %@", response, error);
         if (completion) {
             completion();
         }

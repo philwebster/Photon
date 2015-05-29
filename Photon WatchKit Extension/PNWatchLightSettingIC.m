@@ -19,8 +19,10 @@
 @property (weak, nonatomic) IBOutlet WKInterfaceButton *otherLightsButton;
 @property (weak, nonatomic) IBOutlet WKInterfaceSlider *brightnessSlider;
 @property (weak, nonatomic) IBOutlet WKInterfaceButton *offButton;
+@property (weak, nonatomic) IBOutlet WKInterfaceButton *colorButton;
 @property id context;
 @property (nonatomic, assign) BOOL labelOff;
+@property (nonatomic, assign) BOOL colorEnabled;
 
 @end
 
@@ -37,16 +39,10 @@
             [self setTitle:@"Done"];
         }
     }
-}
-
-- (void)willActivate {
-    // This method is called when watch view controller is about to be visible to user
-    [super willActivate];
 
     if ([self.context class] == [PHGroup class] || [self.context class] == [PHLight class]) {
         self.resource = (PHBridgeResource *)self.context;
         self.lightController.lastUsedResource = self.resource;
-        [self updateBrightnessSlider];
         [self setTitle:self.resource.name];
     } else if ([self.context isEqualToString:@"adjust"]) {
         NSMutableArray *onLights = [NSMutableArray array];
@@ -56,9 +52,23 @@
         [self.lightController createNewGroupWithName:@"photon temp" lightIds:onLights completion:^(NSArray *errors) {
             self.resource = [self.lightController groupWithName:@"photon temp"];
             self.lightController.lastUsedResource = self.resource;
-            [self updateBrightnessSlider];
         }];
     }
+    
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    if ([[sharedDefaults stringForKey:@"loop resource"] isEqualToString:self.resource.name]) {
+        [self.colorButton setTitle:@"Stop Color"];
+        self.colorEnabled = YES;
+    } else {
+        [self.colorButton setTitle:@"Start Color"];
+        self.colorEnabled = NO;
+    }
+}
+
+- (void)willActivate {
+    // This method is called when watch view controller is about to be visible to user
+    [super willActivate];
+    [self updateBrightnessSlider];
 }
 
 - (void)updateBrightnessSlider {
@@ -98,6 +108,18 @@
 
 - (IBAction)brightnessChanged:(float)value {
     [self.lightController setBrightness:[NSNumber numberWithInt:(int)value] forResource:self.resource];
+}
+
+- (IBAction)colorButtonPressed {
+    if (self.colorEnabled) {
+        [self.colorButton setTitle:@"Start Color"];
+        [self.lightController stopColorLoop];
+        self.colorEnabled = NO;
+    } else {
+        [self.colorButton setTitle:@"Stop Color"];
+        [self.lightController startColorLoopForResource:self.resource transitionTime:60];
+        self.colorEnabled = YES;
+    }
 }
 
 - (IBAction)otherLightsPressed {

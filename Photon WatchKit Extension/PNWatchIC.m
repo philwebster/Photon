@@ -7,6 +7,7 @@
 //
 
 #import "PNWatchIC.h"
+#import <Parse/Parse.h>
 
 @interface PNWatchIC ()
 
@@ -19,6 +20,7 @@
     
     [self addMenuItemWithItemIcon:WKMenuItemIconDecline title:@"All Off" action:@selector(allOffTapped)];
     [self addMenuItemWithItemIcon:WKMenuItemIconAccept title:@"All On" action:@selector(allOnTapped)];
+    // TODO: see if lights are already a group when going to adjust
     [self addMenuItemWithImageNamed:@"adjust" title:@"Adjust" action:@selector(adjustTapped)];
     // Configure interface objects here.
     

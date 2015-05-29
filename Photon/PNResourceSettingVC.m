@@ -54,8 +54,8 @@
 }
 
 - (void)viewWillLayoutSubviews {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([[defaults stringForKey:@"loop resource"] isEqualToString:self.resource.name]) {
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    if ([[sharedDefaults stringForKey:@"loop resource"] isEqualToString:self.resource.name]) {
         self.colorLoopButton.titleLabel.text = @"Stop color loop";
     } else {
         self.colorLoopButton.titleLabel.text = @"Color loop";

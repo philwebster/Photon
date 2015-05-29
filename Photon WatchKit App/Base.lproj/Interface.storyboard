@@ -107,10 +107,10 @@
                                     </connections>
                                 </button>
                                 <button alignment="left" id="3en-YI-N9f">
-                                    <group key="contentGroup" width="27" height="60" alignment="left" radius="0.0" id="wyD-vK-uGK">
+                                    <group key="contentGroup" width="28" height="60" alignment="left" radius="0.0" id="wyD-vK-uGK">
                                         <color key="backgroundColor" red="1" green="1" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <variation key="device=watch38mm" width="27"/>
-                                        <variation key="device=watch42mm" height="80" width="31"/>
+                                        <variation key="device=watch38mm" width="28"/>
+                                        <variation key="device=watch42mm" height="80" width="32"/>
                                     </group>
                                     <connections>
                                         <action selector="buttonCPressed" destination="CW7-YK-FKz" id="AMn-fS-0yP"/>
@@ -166,10 +166,17 @@
                                 </button>
                             </items>
                         </group>
+                        <button width="1" height="40" alignment="left" title="Color" id="BB2-AB-qT8">
+                            <variation key="device=watch38mm" title="Color"/>
+                            <connections>
+                                <action selector="colorButtonPressed" destination="CW7-YK-FKz" id="koT-eH-1qX"/>
+                            </connections>
+                        </button>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                     <connections>
                         <outlet property="brightnessSlider" destination="wCj-Gh-1mt" id="3h6-dG-ig5"/>
+                        <outlet property="colorButton" destination="BB2-AB-qT8" id="USK-nx-8ws"/>
                         <outlet property="offButton" destination="XLj-q8-rDe" id="q4R-AP-t8N"/>
                         <outlet property="otherLightsButton" destination="57z-b2-KkN" id="vYY-cy-Yz6"/>
                     </connections>

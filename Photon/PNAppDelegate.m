@@ -50,6 +50,10 @@
     [mixpanel track:@"app launch"];
 #endif
     [Fabric with:@[CrashlyticsKit]];
+
+    // Enable data sharing in main app.
+    [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.phil.photon"];
+    // Setup Parse
     [Parse setApplicationId:@"FFOnykbBPee8QFOyqc1EJk8QbWFXPoAzAtDC1QF3"
                   clientKey:@"vYuZwfanjXc4vqzTocEdFpPMx5ADpew0PITg1Jml"];
 
@@ -59,10 +63,6 @@
         PFUser *user = [PFUser currentUser];
         [user saveInBackground];
     }
-
-//    if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]) {
-//        [self application:application didReceiveRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
-//    }
 
     // Register for Push Notitications
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeNone) categories:nil];
@@ -79,8 +79,6 @@
     
     self.lightVC = [[ResourceViewController alloc] initWithNibName:@"LightGroupView" bundle:[NSBundle mainBundle]];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.lightVC];
-//    self.naturalColorPicker = [[PNColorPickerVC alloc] initWithColors:self.lightController.naturalColors];
-//    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.naturalColorPicker];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     self.window.rootViewController = self.navigationController;
@@ -129,17 +127,8 @@
     [currentInstallation saveInBackground];
 }
 
-//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-//    NSLog(@"didReceiveRemoteNotification no fetch");
-//    NSLog(@"got remote notification");
-//    [[PNLightController singleton] stepColorLoop];
-//}
-
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    NSLog(@"got remote notification");
-    PNLightController *lc = [PNLightController singleton];
-    [lc stepColorLoopCompletion:^{
-        NSLog(@"appDelegate completion");
+    [[PNLightController singleton] stepColorLoopCompletion:^{
         completionHandler(UIBackgroundFetchResultNewData);
     }];
 }

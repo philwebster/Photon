@@ -6,5 +6,9 @@
 	<array>
 		<string>group.phil.photon</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)group.phil.photon</string>
+	</array>
 </dict>
 </plist>
