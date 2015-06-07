@@ -423,17 +423,25 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
 
 - (void)startColorLoopForResource:(PHBridgeResource *)resource transitionTime:(NSInteger)transitionTime {
     NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    BOOL alreadyLooping = [sharedDefaults objectForKey:@"loop resource"];
     [sharedDefaults setObject:resource.name forKey:@"loop resource"];
     [sharedDefaults setInteger:self.standardColors.count - 1 forKey:@"loop state"];
     [sharedDefaults setInteger:transitionTime forKey:@"transition time"];
     [sharedDefaults synchronize];
-    [self setColor:self.standardColors.lastObject forResource:resource transitionTime:@5 completion:nil];
-    [self stepColorLoopCompletion:nil];
+    __weak PNLightController *weakSelf = self;
+    [self setColor:self.standardColors.lastObject forResource:resource transitionTime:@3 completion:^(NSArray *errors) {
+        BOOL awaitingPush = [sharedDefaults boolForKey:@"awaiting push"];
+        if (!alreadyLooping && !awaitingPush) {
+            [weakSelf stepColorLoopCompletion:nil];
+        }
+    }];
 }
 
 - (void)stepColorLoopCompletion:(void (^)())completion {
     NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
     if (![sharedDefaults stringForKey:@"loop resource"]) {
+        [sharedDefaults setBool:NO forKey:@"awaiting push"];
+        [sharedDefaults synchronize];
         return;
     }
 
@@ -455,6 +463,7 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
 }
 
 - (void)stopColorLoop {
+    // TODO: handle starting/stopping quickly and prevent multiple push notifications being sent
     NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
     [sharedDefaults removeObjectForKey:@"loop resource"];
     [sharedDefaults removeObjectForKey:@"loop state"];
@@ -484,6 +493,9 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+        [sharedDefaults setBool:YES forKey:@"awaiting push"];
+        [sharedDefaults synchronize];
         if (completion) {
             completion();
         }
