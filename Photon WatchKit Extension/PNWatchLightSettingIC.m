@@ -8,6 +8,7 @@
 
 #import "PNWatchLightSettingIC.h"
 #import "PNLightController.h"
+#import "PNConstants.h"
 #import <HueSDK_iOS/HueSDK.h>
 #import "UIColor+PNUtilities.h"
 #import "ResourceRowController.h"
@@ -55,7 +56,7 @@
         }];
     }
     
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
     if ([[sharedDefaults stringForKey:@"loop resource"] isEqualToString:self.resource.name]) {
         [self.colorButton setTitle:@"Stop Color"];
         self.colorEnabled = YES;

@@ -44,6 +44,7 @@
         
         self.pickingColor = NO;
         
+        // TODO: remove this
         _fakeGroups = [NSMutableDictionary new];
         for (int i = 0; i < 5; ++i) {
             PHGroup *group = [[PHGroup alloc] init];
@@ -59,6 +60,7 @@
         [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"resourceCell"];
         [self.lightGroupCollectionView registerNib:[UINib nibWithNibName:@"ResourceCollectionHeaderReusableView" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionHeader"];
         self.lightGroupCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 45, 0);
+        self.lightGroupCollectionView.layer.cornerRadius = 4;
         
         self.lightController = [PNLightController singleton];
         self.colorPickerVC = [[PNColorPickerVC alloc] init];
@@ -183,6 +185,17 @@
     self.recognizer.enabled = NO;
     if (indexPath.section == 0) {
         self.resourceSettingVC.resource = self.lightController.groups[indexPath.row];
+
+        self.resourceSettingVC.view.frame = CGRectMake(0, CGRectGetHeight(self.view.bounds), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
+        [UIView animateWithDuration:0.1
+                              delay:0.f
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             self.resourceSettingVC.view.frame = self.view.frame;
+                         }
+                         completion:^(BOOL finished){
+                         }];
+        
         [self.view addSubview:self.resourceSettingVC.view];
         [self addChildViewController:self.resourceSettingVC];
         [self didMoveToParentViewController:self.resourceSettingVC];

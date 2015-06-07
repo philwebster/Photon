@@ -12,6 +12,7 @@
 #import "PNLightController.h"
 #import "PNColorPickerVC.h"
 #import "Mixpanel.h"
+#import "PNConstants.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <Parse/Parse.h>
@@ -52,10 +53,10 @@
     [Fabric with:@[CrashlyticsKit]];
 
     // Enable data sharing in main app.
-    [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.phil.photon"];
+    [Parse enableDataSharingWithApplicationGroupIdentifier:kPNAppGroup];
     // Setup Parse
-    [Parse setApplicationId:@"FFOnykbBPee8QFOyqc1EJk8QbWFXPoAzAtDC1QF3"
-                  clientKey:@"vYuZwfanjXc4vqzTocEdFpPMx5ADpew0PITg1Jml"];
+    [Parse setApplicationId:kPNParseAppId
+                  clientKey:kPNParseClientKey];
 
 
     [PFUser enableAutomaticUser];
@@ -110,7 +111,7 @@
      *****************************************************/
     
     [self enableLocalHeartbeat];
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
     NSData *cacheData = [[NSUserDefaults standardUserDefaults] objectForKey:@"phBridgeResourcesCache"];
     NSString *deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"uniqueGlobalDeviceIdentifier"];
     [sharedDefaults setObject:cacheData forKey:@"phBridgeResourcesCache"];
@@ -214,7 +215,7 @@
             [self.noConnectionAlert dismissWithClickedButtonIndex:[self.noConnectionAlert cancelButtonIndex] animated:YES];
             self.noConnectionAlert = nil;
         }
-        NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+        NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
         NSData *cacheData = [[NSUserDefaults standardUserDefaults] objectForKey:@"phBridgeResourcesCache"];
         NSString *deviceID = [[NSUserDefaults standardUserDefaults] objectForKey:@"uniqueGlobalDeviceIdentifier"];
         [sharedDefaults setObject:cacheData forKey:@"phBridgeResourcesCache"];

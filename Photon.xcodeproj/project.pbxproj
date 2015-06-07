@@ -49,6 +49,7 @@
 		D30540A51B12774F00A10CA7 /* PNUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EC69D31AABF2EF00DE4C65 /* PNUtilities.m */; };
 		D30540A81B1290AA00A10CA7 /* PNResourceCVItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D30540A71B1290AA00A10CA7 /* PNResourceCVItem.m */; };
 		D30540AB1B12919200A10CA7 /* PNResourceCVCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30540AA1B12919200A10CA7 /* PNResourceCVCellView.m */; };
+		D30D798D1B1F5C22006AE991 /* PNCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30D798C1B1F5C22006AE991 /* PNCardView.m */; };
 		D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */; };
 		D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C3BE41A722834006D2678 /* ResourceRowController.m */; };
 		D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */; };
@@ -64,6 +65,9 @@
 		D34FB2B01A71714700DB659E /* Photon WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */; };
 		D34FB2B81A71714700DB659E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2B61A71714700DB659E /* Interface.storyboard */; };
 		D34FB2BD1A71714700DB659E /* Photon WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D36161601B240B8100855EA3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D361615F1B240B8100855EA3 /* Settings.bundle */; };
+		D36161631B24337A00855EA3 /* PNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D36161621B24337A00855EA3 /* PNConstants.m */; };
+		D36161641B24405F00855EA3 /* PNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = D36161621B24337A00855EA3 /* PNConstants.m */; };
 		D36AAE621AACED8200EE0C2A /* PNBrightnessPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D36AAE611AACED8200EE0C2A /* PNBrightnessPickerVC.m */; };
 		D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */; };
 		D37BE56E1AE4302A006D4605 /* PNEditGroupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D37BE56C1AE4302A006D4605 /* PNEditGroupVC.m */; };
@@ -138,6 +142,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D32CC0091B2395AD001F2BCA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D38C162D1A68DE96006FE974 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D34FB29F1A71714600DB659E;
+			remoteInfo = "Photon WatchKit Extension";
+		};
 		D344C54D1AECB21C002522D0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D38C162D1A68DE96006FE974 /* Project object */;
@@ -151,13 +162,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = D34FB2AE1A71714700DB659E;
 			remoteInfo = "Photon WatchKit App";
-		};
-		D34FB2BB1A71714700DB659E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D38C162D1A68DE96006FE974 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D34FB29F1A71714600DB659E;
-			remoteInfo = "Photon WatchKit Extension";
 		};
 		D38C164F1A68DE96006FE974 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -217,6 +221,8 @@
 		D30540A71B1290AA00A10CA7 /* PNResourceCVItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNResourceCVItem.m; sourceTree = "<group>"; };
 		D30540A91B12919200A10CA7 /* PNResourceCVCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNResourceCVCellView.h; sourceTree = "<group>"; };
 		D30540AA1B12919200A10CA7 /* PNResourceCVCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNResourceCVCellView.m; sourceTree = "<group>"; };
+		D30D798B1B1F5C22006AE991 /* PNCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNCardView.h; sourceTree = "<group>"; };
+		D30D798C1B1F5C22006AE991 /* PNCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNCardView.m; sourceTree = "<group>"; };
 		D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBrightnessPickerVC.xib; sourceTree = "<group>"; };
 		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceRowController.h; sourceTree = "<group>"; };
 		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceRowController.m; sourceTree = "<group>"; };
@@ -248,6 +254,9 @@
 		D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photon WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34FB2B51A71714700DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34FB2B71A71714700DB659E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		D361615F1B240B8100855EA3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		D36161611B24330700855EA3 /* PNConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PNConstants.h; sourceTree = "<group>"; };
+		D36161621B24337A00855EA3 /* PNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNConstants.m; path = ../PNConstants.m; sourceTree = "<group>"; };
 		D36AAE601AACED8200EE0C2A /* PNBrightnessPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNBrightnessPickerVC.h; path = ../PNBrightnessPickerVC.h; sourceTree = "<group>"; };
 		D36AAE611AACED8200EE0C2A /* PNBrightnessPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNBrightnessPickerVC.m; path = ../PNBrightnessPickerVC.m; sourceTree = "<group>"; };
 		D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResourceCollectionHeaderReusableView.xib; sourceTree = "<group>"; };
@@ -568,6 +577,7 @@
 		D38C162C1A68DE96006FE974 = {
 			isa = PBXGroup;
 			children = (
+				D361615F1B240B8100855EA3 /* Settings.bundle */,
 				D38C16371A68DE96006FE974 /* Photon iOS App */,
 				D38C16511A68DE96006FE974 /* PhotonTests */,
 				D34FB2A11A71714600DB659E /* Photon WatchKit Extension */,
@@ -608,6 +618,8 @@
 				D38C163D1A68DE96006FE974 /* PNAppDelegate.m */,
 				D3C33B311A738AD10008EAFA /* PNLightController.h */,
 				D3C33B321A738AD10008EAFA /* PNLightController.m */,
+				D36161611B24330700855EA3 /* PNConstants.h */,
+				D36161621B24337A00855EA3 /* PNConstants.m */,
 				D3AAC0791ABBC53000E30C71 /* Views */,
 				D3AAC0781ABBC52600E30C71 /* View Controllers */,
 				D3EC69D21AABF2EF00DE4C65 /* PNUtilities.h */,
@@ -700,6 +712,8 @@
 				D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */,
 				D3C487EC1A8088B000ED9EDC /* PNColorView.h */,
 				D3C487ED1A8088B000ED9EDC /* PNColorView.m */,
+				D30D798B1B1F5C22006AE991 /* PNCardView.h */,
+				D30D798C1B1F5C22006AE991 /* PNCardView.m */,
 				D3EC3D411AD08DB200B29301 /* PNBrightnessCell.h */,
 				D3EC3D421AD08DB200B29301 /* PNBrightnessCell.m */,
 			);
@@ -867,7 +881,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				D34FB2BC1A71714700DB659E /* PBXTargetDependency */,
+				D32CC00A1B2395AD001F2BCA /* PBXTargetDependency */,
 			);
 			name = Photon;
 			productName = Photon;
@@ -1012,6 +1026,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36161601B240B8100855EA3 /* Settings.bundle in Resources */,
 				D3B90BB21A6F902F0062E355 /* LightGroupView.xib in Resources */,
 				D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */,
 				D3A8936F1AE42B3E00B230E1 /* PNGroupListVC.xib in Resources */,
@@ -1155,6 +1170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36161641B24405F00855EA3 /* PNConstants.m in Sources */,
 				D3D473461B0B0B8F00BD08E0 /* PNWatchIC.m in Sources */,
 				D39A902F1AB9DC92003E0760 /* UIColor+PNUtilities.m in Sources */,
 				D3C53A171AB9826A00D8F6DF /* DDTTYLogger.m in Sources */,
@@ -1184,6 +1200,7 @@
 				D37BE56E1AE4302A006D4605 /* PNEditGroupVC.m in Sources */,
 				D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */,
 				D3ED38591A7ED43F000CE316 /* SceneListViewController.m in Sources */,
+				D36161631B24337A00855EA3 /* PNConstants.m in Sources */,
 				24AE9CC31B13C74A00CF9F85 /* PNButton.m in Sources */,
 				D36AAE621AACED8200EE0C2A /* PNBrightnessPickerVC.m in Sources */,
 				D30358781AE4CDAE00D929DC /* PNSettingsVC.m in Sources */,
@@ -1198,6 +1215,7 @@
 				D38C163B1A68DE96006FE974 /* main.m in Sources */,
 				D3EC69D41AABF2EF00DE4C65 /* PNUtilities.m in Sources */,
 				D3BA633E1A6B664600095EF7 /* DispatchQueueLogFormatter.m in Sources */,
+				D30D798D1B1F5C22006AE991 /* PNCardView.m in Sources */,
 				D3BA63381A6B664600095EF7 /* DDAbstractDatabaseLogger.m in Sources */,
 				D3C487EE1A8088B000ED9EDC /* PNColorView.m in Sources */,
 				D3C33B331A738AD10008EAFA /* PNLightController.m in Sources */,
@@ -1215,6 +1233,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D32CC00A1B2395AD001F2BCA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D34FB29F1A71714600DB659E /* Photon WatchKit Extension */;
+			targetProxy = D32CC0091B2395AD001F2BCA /* PBXContainerItemProxy */;
+		};
 		D344C54E1AECB21C002522D0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D344C5391AECB21C002522D0 /* Photon (OS X) */;
@@ -1224,11 +1247,6 @@
 			isa = PBXTargetDependency;
 			target = D34FB2AE1A71714700DB659E /* Photon WatchKit App */;
 			targetProxy = D34FB2B11A71714700DB659E /* PBXContainerItemProxy */;
-		};
-		D34FB2BC1A71714700DB659E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D34FB29F1A71714600DB659E /* Photon WatchKit Extension */;
-			targetProxy = D34FB2BB1A71714700DB659E /* PBXContainerItemProxy */;
 		};
 		D38C16501A68DE96006FE974 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

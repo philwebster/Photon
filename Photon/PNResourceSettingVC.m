@@ -7,20 +7,23 @@
 //
 
 #import "PNResourceSettingVC.h"
+#import "PNColorView.h"
+#import "PNConstants.h"
 
 @interface PNResourceSettingVC ()
 
 @property (weak, nonatomic) PNLightController *lightController;
 
-@property (weak, nonatomic) IBOutlet UILabel *resourceNameLabel;
-@property (weak, nonatomic) IBOutlet UIButton *doneButton;
+@property (weak, nonatomic) IBOutlet UIButton *resourceNameButton;
 @property (weak, nonatomic) IBOutlet UIButton *offButton;
 @property (weak, nonatomic) IBOutlet UIButton *colorLoopButton;
-@property (weak, nonatomic) IBOutlet UIButton *othersOffButton;
-@property (weak, nonatomic) IBOutlet PNColorView *naturalColorView;
 @property (strong, nonatomic) PNBrightnessPickerVC *brightnessVC;
-@property (weak, nonatomic) IBOutlet UIView *brightnessView;
 @property (nonatomic, assign) BOOL shouldShowBrightness;
+@property (weak, nonatomic) IBOutlet UIView *brightnessView;
+@property (weak, nonatomic) IBOutlet PNColorView *naturalColorView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *naturalColorTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *naturalColorHeightConstraint;
+@property NSString *otherButtonText;
 
 @end
 
@@ -31,35 +34,44 @@
     // Do any additional setup after loading the view from its nib.
     self.lightController = [PNLightController singleton];
 
-    self.naturalColorView.delegate = self;
-    [self.naturalColorView setColors:self.lightController.naturalColors];
-    
     self.brightnessVC = [[PNBrightnessPickerVC alloc] init];
     self.brightnessVC.delegate = self;
     
     [self.brightnessView addSubview:self.brightnessVC.view];
+    [self.naturalColorView setColors:[[PNLightController singleton] naturalColors]];
+    
+    UIPanGestureRecognizer *colorTempPanRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                 action:@selector(handleColorTempPan:)];
+    [self.naturalColorView addGestureRecognizer:colorTempPanRecognizer];
+    self.naturalColorView.delegate = self;
+    
+    UIPanGestureRecognizer *bottomCardRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                             action:@selector(handleBottomCardPan:)];
+    [self.view addGestureRecognizer:bottomCardRecognizer];
+    self.otherButtonText = @"Others OFF";
 }
 
 - (void)willMoveToParentViewController:(UIViewController *)parent {
     self.lightController.lastUsedResource = self.resource;
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    self.naturalColorView.touchedView = nil;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     self.shouldShowBrightness = NO;
     self.naturalColorView.hidden = NO;
-}
+    self.naturalColorHeightConstraint.constant = self.view.bounds.size.height;
+    [self moveNaturalColorsUp:NO];
 
-- (void)viewWillLayoutSubviews {
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
-    if ([[sharedDefaults stringForKey:@"loop resource"] isEqualToString:self.resource.name]) {
-        self.colorLoopButton.titleLabel.text = @"Stop color loop";
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
+    NSString *loopingResourceName = [sharedDefaults stringForKey:kPNLoopResourceNameKey];
+    if ([loopingResourceName isEqualToString:self.resource.name]) {
+        [self.colorLoopButton setTitle:@"Stop color loop" forState:UIControlStateNormal];
+        [self.colorLoopButton setUserInteractionEnabled:YES];
+    } else if (loopingResourceName) {
+        [self.colorLoopButton setTitle:@"Other resource looping" forState:UIControlStateNormal];
+        [self.colorLoopButton setUserInteractionEnabled:NO];
     } else {
         self.colorLoopButton.titleLabel.text = @"Color loop";
-    }    
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,11 +81,18 @@
 
 - (IBAction)doneButtonPressed:(id)sender {
     if (self.brightnessVC.isFirstResponder || !self.shouldShowBrightness) {
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
-    } else {
-        self.naturalColorView.hidden = YES;
-        [self.brightnessVC becomeFirstResponder];
+        [UIView animateWithDuration:0.2
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             self.view.frame = CGRectMake(0, CGRectGetHeight(self.view.superview.bounds), self.view.frame.size.width, self.view.frame.size.height);
+                         }
+                         completion:^(BOOL finished){
+                             if (finished){
+                                 [self.view removeFromSuperview];
+                                 [self removeFromParentViewController];
+                             }
+                         }];
     }
 }
 
@@ -84,26 +103,42 @@
 - (IBAction)colorLoopButtonPressed:(id)sender {
     if ([self.colorLoopButton.titleLabel.text isEqualToString:@"Stop color loop"]) {
         [self.lightController stopColorLoop];
+        [self.colorLoopButton setTitle:@"Color Loop" forState:UIControlStateNormal];
     } else {
         [self.lightController startColorLoopForResource:self.resource transitionTime:60];
-        self.colorLoopButton.titleLabel.text = @"Stop color loop";
+        [self.colorLoopButton setTitle:@"Stop color loop" forState:UIControlStateNormal];
     }
 }
 
 - (IBAction)othersOffButtonPressed:(id)sender {
-    if ([self.othersOffButton.titleLabel.text isEqualToString:@"Others OFF"]) {
+    if ([self.otherButtonText isEqualToString:@"Others OFF"]) {
         [self.lightController setOtherResourcesOff];
-        self.othersOffButton.titleLabel.text = @"Others ON";
+        self.otherButtonText = @"Others ON";
     } else {
         [self.lightController setOtherResourcesOn];
-        self.othersOffButton.titleLabel.text = @"Others OFF";
+        self.otherButtonText = @"Others OFF";
     }
 }
 
 - (void)setResource:(PHBridgeResource *)resource {
-    self.resourceNameLabel.text = resource.name;
+    [self.resourceNameButton setTitle:resource.name forState:UIControlStateNormal];
     self.brightnessVC.resource = resource;
     _resource = resource;
+}
+
+- (IBAction)resourceButtonPressed:(id)sender {
+        [UIView animateWithDuration:0.2
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             self.view.frame = CGRectMake(0, CGRectGetHeight(self.view.superview.bounds), self.view.frame.size.width, self.view.frame.size.height);
+                         }
+                         completion:^(BOOL finished){
+                             if (finished){
+                                 [self.view removeFromSuperview];
+                                 [self removeFromParentViewController];
+                             }
+                         }];
 }
 
 - (void)colorSelected:(UIColor *)color {
@@ -120,6 +155,93 @@
 
 - (void)finishedBrightnessSelection {
     
+}
+
+- (void)handleColorLoopPan:(UIPanGestureRecognizer *)recognizer
+{
+    CGPoint translation = [recognizer translationInView:self.view];
+    recognizer.view.center = CGPointMake(recognizer.view.center.x,
+                                         recognizer.view.center.y + translation.y);
+    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+    
+    if(recognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"center: %@", NSStringFromCGPoint(recognizer.view.center));
+        if (recognizer.view.center.y > 628) {
+            recognizer.view.center = CGPointMake(recognizer.view.center.x, 871);
+        } else {
+            recognizer.view.center = CGPointMake(recognizer.view.center.x, 432);
+        }
+    }
+}
+
+- (void)handleColorTempPan:(UIPanGestureRecognizer *)recognizer {
+    CGPoint translation = [recognizer translationInView:self.view];
+    recognizer.view.center = CGPointMake(recognizer.view.center.x,
+                                         recognizer.view.center.y + translation.y);
+    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+    if(recognizer.state == UIGestureRecognizerStateEnded) {
+        if (recognizer.view.frame.origin.y > self.view.frame.size.height / 3) {
+            [self moveNaturalColorsDown:NO];
+        } else {
+            [self moveNaturalColorsUp:NO];
+        }
+    }
+}
+
+- (void)handleBottomCardPan:(UIPanGestureRecognizer *)recognizer {
+    CGPoint translation = [recognizer translationInView:self.view];
+    recognizer.view.center = CGPointMake(recognizer.view.center.x,
+                                         recognizer.view.center.y + translation.y);
+    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        if (recognizer.view.frame.origin.y > self.view.bounds.size.height / 4) {
+            [UIView animateWithDuration:0.2
+                                  delay:0.0
+                                options:UIViewAnimationOptionCurveEaseIn
+                             animations:^{
+                                 self.view.frame = CGRectMake(0, CGRectGetHeight(self.view.superview.bounds), self.view.frame.size.width, self.view.frame.size.height);
+                             }
+                             completion:^(BOOL finished){
+                                 if (finished){
+                                     [self.view removeFromSuperview];
+                                     [self moveNaturalColorsUp:NO];
+                                     [self removeFromParentViewController];
+                                 }
+                             }];
+        } else {
+            recognizer.view.frame = self.view.bounds;
+        }
+    }
+}
+
+- (IBAction)longPressedOffButton:(UILongPressGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        [self.offButton setTitle:self.otherButtonText forState:UIControlStateNormal];
+    } else if (gesture.state == UIGestureRecognizerStateChanged) {
+        if (!CGRectContainsPoint(self.offButton.frame, [gesture locationInView:self.view])) {
+            [self.offButton setTitle:@"OFF" forState:UIControlStateNormal];
+            gesture.enabled = NO;
+        }
+    } else if ( gesture.state == UIGestureRecognizerStateEnded ) {
+        if (CGRectContainsPoint(self.offButton.frame, [gesture locationInView:self.view])) {
+            [self othersOffButtonPressed:nil];
+        }
+        [self.offButton setHighlighted:NO];
+        [self.offButton setTitle:@"OFF" forState:UIControlStateNormal];
+    } else if (gesture.state == UIGestureRecognizerStateCancelled) {
+        gesture.enabled = YES;
+        [self.offButton setHighlighted:NO];
+    }
+}
+
+- (void)moveNaturalColorsUp:(BOOL)animated {
+    self.naturalColorTopConstraint.constant = - (self.view.bounds.size.height - self.resourceNameButton.frame.size.height - 8 - self.offButton.frame.size.height - 20);
+    [self.view setNeedsUpdateConstraints];
+}
+
+- (void)moveNaturalColorsDown:(BOOL)animated {
+    self.naturalColorTopConstraint.constant = -50;
+    [self.view setNeedsUpdateConstraints];
 }
 
 /*

@@ -31,7 +31,7 @@
                         <outlet property="delegate" destination="-1" id="WZ2-zB-IkR"/>
                     </connections>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9W-y8-U7x">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9W-y8-U7x">
                     <rect key="frame" x="529" y="529" width="56" height="56"/>
                     <state key="normal" image="settings">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -52,22 +52,14 @@
                         <action selector="settingsButtonPressed:" destination="-1" eventType="touchUpInside" id="cV5-vc-m13"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXo-Fz-dge">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="qXo-Fz-dge" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3ba-5U-1Zx"/>
                 <constraint firstAttribute="bottom" secondItem="t9W-y8-U7x" secondAttribute="bottom" constant="15" id="543-wX-Z9L"/>
                 <constraint firstItem="0sA-tG-14p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7sf-8e-ATA"/>
                 <constraint firstAttribute="bottom" secondItem="0sA-tG-14p" secondAttribute="bottom" id="DxO-TV-7tv"/>
                 <constraint firstAttribute="trailing" secondItem="t9W-y8-U7x" secondAttribute="trailing" constant="15" id="OPP-o0-Q9w"/>
                 <constraint firstItem="0sA-tG-14p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Oj5-ND-N0P"/>
-                <constraint firstAttribute="trailing" secondItem="qXo-Fz-dge" secondAttribute="trailing" id="P42-XX-tI5"/>
-                <constraint firstItem="qXo-Fz-dge" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qAu-JW-2fM"/>
-                <constraint firstAttribute="bottom" secondItem="qXo-Fz-dge" secondAttribute="bottom" id="tRS-My-X2a"/>
                 <constraint firstAttribute="trailing" secondItem="0sA-tG-14p" secondAttribute="trailing" id="xvp-yT-tR7"/>
             </constraints>
         </view>

@@ -8,6 +8,7 @@
 
 #import "PNWatchGlanceIC.h"
 #import "PNLightController.h"
+#import "PNConstants.h"
 
 @interface PNWatchGlanceIC ()
 
@@ -23,7 +24,7 @@
     [super awakeWithContext:context];
     
     // Configure interface objects here.
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
     NSData *cacheData = [sharedDefaults dataForKey:@"phBridgeResourcesCache"];
     NSString *deviceID = [sharedDefaults stringForKey:@"uniqueGlobalDeviceIdentifier"];
     [[NSUserDefaults standardUserDefaults] setObject:cacheData forKey:@"phBridgeResourcesCache"];

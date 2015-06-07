@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PNCardView.h"
 
 @protocol colorSelectionDelegate
 
@@ -15,7 +16,7 @@
 
 @end
 
-@interface PNColorView : UIView
+@interface PNColorView : PNCardView
 
 @property (nonatomic, strong) UIView *touchedView;
 @property id <colorSelectionDelegate> delegate;

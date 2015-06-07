@@ -7,6 +7,7 @@
 //
 
 #import "PNWatchIC.h"
+#import "PNConstants.h"
 #import <Parse/Parse.h>
 
 @interface PNWatchIC ()
@@ -24,7 +25,7 @@
     [self addMenuItemWithImageNamed:@"adjust" title:@"Adjust" action:@selector(adjustTapped)];
     // Configure interface objects here.
     
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
     NSData *cacheData = [sharedDefaults dataForKey:@"phBridgeResourcesCache"];
     NSString *deviceID = [sharedDefaults stringForKey:@"uniqueGlobalDeviceIdentifier"];
     [[NSUserDefaults standardUserDefaults] setObject:cacheData forKey:@"phBridgeResourcesCache"];
@@ -33,7 +34,7 @@
 
     self.lightController = [PNLightController singleton];
 
-    BOOL demoMode = [sharedDefaults boolForKey:@"demoMode"];
+    BOOL demoMode = [sharedDefaults boolForKey:kPNDemoModeKey];
     [[PNLightController singleton] setInDemoMode:demoMode];
     
     PHBridgeResourcesCache *cache = [PHBridgeResourcesReader readBridgeResourcesCache];

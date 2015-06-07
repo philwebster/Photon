@@ -9,6 +9,7 @@
 
 #import "PNLightController.h"
 #import "PNUtilities.h"
+#import "PNConstants.h"
 #import <Parse/Parse.h>
 
 #define MAX_HUE 65535
@@ -18,8 +19,6 @@
 #elif TARGET_OS_MAC
 #define PNColor NSColor
 #endif
-
-NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
 
 @interface PNLightController()
 
@@ -51,10 +50,10 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
         
 
 #ifdef TARGET_IS_EXTENSION
-        [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.phil.photon"
-                                         containingApplication:@"com.phil.photon"];
-        [Parse setApplicationId:@"FFOnykbBPee8QFOyqc1EJk8QbWFXPoAzAtDC1QF3"
-                      clientKey:@"vYuZwfanjXc4vqzTocEdFpPMx5ADpew0PITg1Jml"];
+        [Parse enableDataSharingWithApplicationGroupIdentifier:kPNAppGroup
+                                         containingApplication:kPNAppId];
+        [Parse setApplicationId:kPNParseAppId
+                      clientKey:kPNParseClientKey];
         [PFUser enableAutomaticUser];
         if (![PFUser currentUser]) {
             PFUser *user = [PFUser currentUser];
@@ -174,8 +173,7 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
     // Send lightstate to light
     PHBridgeSendAPI *bridgeSendAPI = [[PHBridgeSendAPI alloc] init];
     if ([resource isKindOfClass:[PHLight class]]) {
-        // TODO: only works for groups
-        [bridgeSendAPI updateLightStateForId:resource.identifier withLightState:lightState completionHandler:nil];
+        [bridgeSendAPI updateLightStateForId:resource.identifier withLightState:lightState completionHandler:completion];
     } else if ([resource isKindOfClass:[PHGroup class]]) {
         [bridgeSendAPI setLightStateForGroupWithId:resource.identifier lightState:lightState completionHandler:completion];
     }
@@ -249,6 +247,15 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
     for (PHGroup *group in self.groups) {
         if ([group.name isEqualToString:name]) {
             return group;
+        }
+    }
+    return nil;
+}
+
+- (PHLight *)lightWithName:(NSString *)name {
+    for (PHLight *light in self.lights) {
+        if ([light.name isEqualToString:name]) {
+            return light;
         }
     }
     return nil;
@@ -354,7 +361,7 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"uniqueGlobalDeviceIdentifier"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
     [sharedDefaults removeObjectForKey:@"phBridgeResourcesCache"];
     [sharedDefaults removeObjectForKey:@"uniqueGlobalDeviceIdentifier"];
     [sharedDefaults synchronize];
@@ -362,14 +369,14 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
 
 - (void)setInDemoMode:(BOOL)inDemoMode {
     inDemoMode = inDemoMode;
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
-    [sharedDefaults setBool:inDemoMode forKey:@"demoMode"];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
+    [sharedDefaults setBool:inDemoMode forKey:kPNDemoModeKey];
     [sharedDefaults synchronize];
 }
 
 - (BOOL)inDemoMode {
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
-    return [sharedDefaults boolForKey:@"demoMode"];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
+    return [sharedDefaults boolForKey:kPNDemoModeKey];
 }
 
 - (void)setOtherResourcesOff {
@@ -422,36 +429,46 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
 }
 
 - (void)startColorLoopForResource:(PHBridgeResource *)resource transitionTime:(NSInteger)transitionTime {
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
-    BOOL alreadyLooping = [sharedDefaults objectForKey:@"loop resource"];
-    [sharedDefaults setObject:resource.name forKey:@"loop resource"];
-    [sharedDefaults setInteger:self.standardColors.count - 1 forKey:@"loop state"];
-    [sharedDefaults setInteger:transitionTime forKey:@"transition time"];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
+    BOOL alreadyLooping = [sharedDefaults objectForKey:kPNLoopResourceNameKey];
+    [sharedDefaults setObject:resource.name forKey:kPNLoopResourceNameKey];
+    [sharedDefaults setObject:NSStringFromClass([resource class]) forKey:kPNLoopResourceTypeKey];
+    [sharedDefaults setInteger:self.standardColors.count - 1 forKey:kPNLoopStateKey];
     [sharedDefaults synchronize];
     __weak PNLightController *weakSelf = self;
-    [self setColor:self.standardColors.lastObject forResource:resource transitionTime:@3 completion:^(NSArray *errors) {
-        BOOL awaitingPush = [sharedDefaults boolForKey:@"awaiting push"];
-        if (!alreadyLooping && !awaitingPush) {
+    [self setColor:self.standardColors.lastObject forResource:resource transitionTime:nil completion:^(NSArray *errors) {
+        if (!alreadyLooping) {
             [weakSelf stepColorLoopCompletion:nil];
         }
     }];
 }
 
 - (void)stepColorLoopCompletion:(void (^)())completion {
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
-    if (![sharedDefaults stringForKey:@"loop resource"]) {
-        [sharedDefaults setBool:NO forKey:@"awaiting push"];
-        [sharedDefaults synchronize];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
+    if (![sharedDefaults stringForKey:kPNLoopResourceNameKey]) {
+        if (completion) {
+            completion();
+        }
         return;
     }
 
-    NSInteger lastColorIndex = [sharedDefaults integerForKey:@"loop state"];
+    NSInteger lastColorIndex = [sharedDefaults integerForKey:kPNLoopStateKey];
     NSInteger nextColor = lastColorIndex == self.standardColors.count - 1 ? 0 : lastColorIndex + 1;
-    [sharedDefaults setInteger:nextColor forKey:@"loop state"];
+    [sharedDefaults setInteger:nextColor forKey:kPNLoopStateKey];
     [sharedDefaults synchronize];
-    NSInteger transitionTime = [sharedDefaults integerForKey:@"transition time"];
+    NSInteger transitionTime = [sharedDefaults integerForKey:kPNLoopDurationKey];
+    PHBridgeResource *loopingResource;
+
+    NSString *resourceType = [sharedDefaults stringForKey:kPNLoopResourceTypeKey];
+    NSString *resourceName = [sharedDefaults stringForKey:kPNLoopResourceNameKey];
+    if ([resourceType isEqualToString:NSStringFromClass([PHGroup class])]) {
+        loopingResource = [self groupWithName:resourceName];
+    } else if ([resourceType isEqualToString:NSStringFromClass([PHLight class])]) {
+        loopingResource = [self lightWithName:resourceName];
+    }
     __weak PNLightController *weakSelf = self;
-    [self setColor:self.standardColors[nextColor] forResource:[self groupWithName:[sharedDefaults stringForKey:@"loop resource"]] transitionTime:@(transitionTime) completion:^(NSArray *errors) {
+    
+    [self setColor:self.standardColors[nextColor] forResource:loopingResource transitionTime:@(transitionTime) completion:^(NSArray *errors) {
 #ifndef MACOSX_DEPLOYMENT_TARGET
         [weakSelf initiatePushUpdateWithInterval:transitionTime completion:completion];
 #else
@@ -464,28 +481,38 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
 
 - (void)stopColorLoop {
     // TODO: handle starting/stopping quickly and prevent multiple push notifications being sent
-    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
-    [sharedDefaults removeObjectForKey:@"loop resource"];
-    [sharedDefaults removeObjectForKey:@"loop state"];
-    [sharedDefaults removeObjectForKey:@"transition time"];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
+    [sharedDefaults removeObjectForKey:kPNLoopResourceTypeKey];
+    [sharedDefaults removeObjectForKey:kPNLoopResourceNameKey];
+    [sharedDefaults removeObjectForKey:kPNLoopStateKey];
     [sharedDefaults synchronize];
 }
 
 - (void)initiatePushUpdateWithInterval:(NSInteger)interval completion:(void (^)())completion {
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
+    NSDate *expectedPush = [sharedDefaults objectForKey:kPNScheduledPushDateKey];
+    if ([[NSDate date] timeIntervalSinceDate:expectedPush] < 0) {
+        if (completion) {
+            completion();
+        }
+        return;
+    }
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-    NSString *scheduledDate = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:interval]];
+    NSDate *scheduledDate = [NSDate dateWithTimeIntervalSinceNow:interval];
+    NSString *scheduledDateString = [dateFormatter stringFromDate:scheduledDate];
 
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:@{@"deviceToken": @{@"$in": @[[PFInstallation currentInstallation].deviceToken]}} forKey:@"where"];
-    [params setObject:scheduledDate forKey:@"push_time"];
+    [params setObject:scheduledDateString forKey:@"push_time"];
     [params setObject:@{@"aps": @{@"content-available":@1}} forKey:@"data"];
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.parse.com/1/push"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:[Parse getApplicationId] forHTTPHeaderField:@"X-Parse-Application-Id"];
-    [request setValue:kParseRESTAPIKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+    [request setValue:kPNParseRESTAPIKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     NSData *postData = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
@@ -493,8 +520,8 @@ NSString* const kParseRESTAPIKey = @"cjjRye5Y9S6zrMARBdjuNK2DaouJACM3JC7lZOHm";
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.phil.photon"];
-        [sharedDefaults setBool:YES forKey:@"awaiting push"];
+        NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kPNAppGroup];
+        [sharedDefaults setObject:scheduledDate forKey:kPNScheduledPushDateKey];
         [sharedDefaults synchronize];
         if (completion) {
             completion();
