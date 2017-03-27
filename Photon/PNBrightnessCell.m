@@ -17,7 +17,7 @@
 @implementation PNBrightnessCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    [super awakeFromNib];
     [self.resourceBrightnessSlider setThumbImage:[UIImage imageNamed:@"slider"] forState:UIControlStateNormal];
 }
 
