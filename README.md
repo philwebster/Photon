@@ -1,6 +1,6 @@
 # Photon
 
-Photon was a remote for Philips Hue lights and is no longer maintained. It was the first app I released to the app store (in 2015). Although the code quality isn't my greatest work, the app made interacting with the light system easier and it had a number of unique features that were unmatched in other Hue remote apps.
+Photon was a remote for Philips Hue lights and is no longer maintained. It was the first app I released to the app store (in 2015). Although the code quality isn't my greatest work and the UI is rather spartan, the app made interacting with the light system easier and it had a number of unique features that were unmatched in other Hue remote apps.
 
 ![Phone GIF](demo/photon-phone.gif "Photon running on iOS")
 
