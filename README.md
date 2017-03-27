@@ -6,10 +6,12 @@ Photon was a remote for Philips Hue lights and is no longer maintained. It was t
 
 To adjust the color temperature or brightness, tap the group or light, select the color or OFF. Once a color is selected, the brightness sliders appear and allow for adjustments. Using the master slider at top adjusts the brightness of the lights proportionately, rather than setting each light to the same brightness.
 
-## Notable features:
+### Notable features:
 - Some Hue lights only have limited color capabilities which don't include setting color temperature. In Photon, I calculated the closest color temperature match from hue, saturation, and brightness values. This allowed the control of groups that include both types of lights.
 - The brightness slider behavior is very useful and I haven't seen it in other lighting control apps.
 - Long pressing and sliding to the desired color temperature makes adjustments even faster.
+
+## Photon watch app
 
 ![Watch GIF](demo/photon-watch.gif "Photon running on watchOS")
 
