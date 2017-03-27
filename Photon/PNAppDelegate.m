@@ -11,11 +11,6 @@
 #import "ResourceViewController.h"
 #import "PNLightController.h"
 #import "PNColorPickerVC.h"
-#import "Mixpanel.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
-
-#define MIXPANEL_TOKEN @"48a70e77f8f176df9ddfe85e7af783db"
 
 @interface PNAppDelegate ()
 
@@ -36,20 +31,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
-#ifndef DEBUG
-    // Initialize the library with your
-    // Mixpanel project token, MIXPANEL_TOKEN
-    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
-    
-    // Later, you can get your instance with
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel identify:mixpanel.distinctId];
-    [mixpanel.people set:@{@"device name": [[UIDevice currentDevice] name]}];
-    [mixpanel track:@"app launch"];
-#endif
-    [Fabric with:@[CrashlyticsKit]];
-
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="resourceCell" id="tNm-74-EwU" customClass="ResourceCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="239"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="387" height="239"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="VwM-2P-yp8">
+                        <rect key="frame" x="15" y="15" width="357" height="209"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                        <color key="textColor" red="0.23529410362243652" green="0.23529410362243652" blue="0.23529410362243652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="5Ky-bU-vFd">
+                        <rect key="frame" x="0.0" y="0.0" width="387" height="239"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="VwM-2P-yp8" secondAttribute="bottom" constant="15" id="0Q5-jN-um6"/>
+                <constraint firstItem="5Ky-bU-vFd" firstAttribute="top" secondItem="tNm-74-EwU" secondAttribute="top" id="GJ2-b3-qcB"/>
+                <constraint firstAttribute="bottom" secondItem="5Ky-bU-vFd" secondAttribute="bottom" id="HWy-0q-9K7"/>
+                <constraint firstAttribute="trailing" secondItem="5Ky-bU-vFd" secondAttribute="trailing" id="ee2-xz-oNS"/>
+                <constraint firstAttribute="trailing" secondItem="VwM-2P-yp8" secondAttribute="trailing" constant="15" id="p2H-fd-jqm"/>
+                <constraint firstItem="VwM-2P-yp8" firstAttribute="top" secondItem="tNm-74-EwU" secondAttribute="top" constant="15" id="vSj-N0-hC2"/>
+                <constraint firstItem="5Ky-bU-vFd" firstAttribute="leading" secondItem="tNm-74-EwU" secondAttribute="leading" id="xBX-Hg-oE1"/>
+                <constraint firstItem="VwM-2P-yp8" firstAttribute="leading" secondItem="tNm-74-EwU" secondAttribute="leading" constant="15" id="yWl-iS-2yM"/>
+            </constraints>
+            <size key="customSize" width="387" height="239"/>
+            <connections>
+                <outlet property="plusImage" destination="5Ky-bU-vFd" id="RZZ-cj-pFK"/>
+                <outlet property="resourceTitleLabel" destination="VwM-2P-yp8" id="j54-CD-CWi"/>
+            </connections>
+            <point key="canvasLocation" x="366.5" y="250.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="plus" width="29" height="29"/>
+    </resources>
+</document>

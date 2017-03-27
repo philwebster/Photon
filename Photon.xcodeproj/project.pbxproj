@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4EA7DA26D1080F909A71489B /* libPods-Photon WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1C73569DDDB048C99B7BFD /* libPods-Photon WatchKit Extension.a */; };
-		6F6D357CACD23F452EA8F5AC /* libPods-Photon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71518618920DCD3A394F7099 /* libPods-Photon.a */; };
 		D30358781AE4CDAE00D929DC /* PNSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D30358761AE4CDAE00D929DC /* PNSettingsVC.m */; };
 		D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */; };
 		D30540A31B12712900A10CA7 /* PNResourceCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30540A21B12712900A10CA7 /* PNResourceCollectionView.m */; };
@@ -18,15 +16,12 @@
 		D30540AB1B12919200A10CA7 /* PNResourceCVCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30540AA1B12919200A10CA7 /* PNResourceCVCellView.m */; };
 		D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */; };
 		D31C3BE51A722834006D2678 /* ResourceRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31C3BE41A722834006D2678 /* ResourceRowController.m */; };
-		D31D54E81B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D31D54E71B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a */; };
 		D322AA0E1A6E0D7B00D7DC05 /* HueBridgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */; };
 		D344C5401AECB21C002522D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C53F1AECB21C002522D0 /* AppDelegate.m */; };
 		D344C5421AECB21C002522D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C5411AECB21C002522D0 /* main.m */; };
 		D344C5441AECB21C002522D0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D344C5431AECB21C002522D0 /* Images.xcassets */; };
 		D344C5471AECB21C002522D0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D344C5451AECB21C002522D0 /* MainMenu.xib */; };
 		D344C5531AECB21C002522D0 /* Photon__OS_X_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D344C5521AECB21C002522D0 /* Photon__OS_X_Tests.m */; };
-		D344C55E1AEE152A002522D0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D344C55C1AEE152A002522D0 /* Crashlytics.framework */; };
-		D344C55F1AEE152A002522D0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D344C55D1AEE152A002522D0 /* Fabric.framework */; };
 		D34FB2A71A71714600DB659E /* PNWatchResourceIC.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A61A71714600DB659E /* PNWatchResourceIC.m */; };
 		D34FB2AA1A71714600DB659E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D34FB2A91A71714600DB659E /* NotificationController.m */; };
 		D34FB2B01A71714700DB659E /* Photon WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */; };
@@ -41,9 +36,6 @@
 		D38780061AE50B29003DCF46 /* PNEditLightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D38780051AE50B29003DCF46 /* PNEditLightVC.m */; };
 		D38780081AE50B46003DCF46 /* PNEditLightVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38780071AE50B46003DCF46 /* PNEditLightVC.xib */; };
 		D387800B1AE51898003DCF46 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D387800A1AE51898003DCF46 /* MessageUI.framework */; };
-		D387800F1AE52B88003DCF46 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D387800C1AE52B88003DCF46 /* Default-568h@2x.png */; };
-		D38780101AE52B88003DCF46 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D387800D1AE52B88003DCF46 /* Default@2x.png */; };
-		D38780111AE52B88003DCF46 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D387800E1AE52B88003DCF46 /* Default.png */; };
 		D38C163B1A68DE96006FE974 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163A1A68DE96006FE974 /* main.m */; };
 		D38C163E1A68DE96006FE974 /* PNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D38C163D1A68DE96006FE974 /* PNAppDelegate.m */; };
 		D38C16461A68DE96006FE974 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D38C16451A68DE96006FE974 /* Images.xcassets */; };
@@ -151,12 +143,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4E1C73569DDDB048C99B7BFD /* libPods-Photon WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photon WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A7EEBCB6438DFACE80ED517 /* Pods-Photon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photon/Pods-Photon.debug.xcconfig"; sourceTree = "<group>"; };
-		71518618920DCD3A394F7099 /* libPods-Photon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5FFCB92737127147D863A4D /* Pods-Photon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photon/Pods-Photon.release.xcconfig"; sourceTree = "<group>"; };
-		A8E2619878DDD17147702D85 /* Pods-Photon WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photon WatchKit Extension/Pods-Photon WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
-		C318FD3CA9F58D71D9F07A18 /* Pods-Photon WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photon WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photon WatchKit Extension/Pods-Photon WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		D30358751AE4CDAE00D929DC /* PNSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNSettingsVC.h; sourceTree = "<group>"; };
 		D30358761AE4CDAE00D929DC /* PNSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNSettingsVC.m; sourceTree = "<group>"; };
 		D30358771AE4CDAE00D929DC /* PNSettingsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNSettingsVC.xib; sourceTree = "<group>"; };
@@ -169,9 +155,6 @@
 		D3180F3E1AD23757007D95D8 /* PNBrightnessPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNBrightnessPickerVC.xib; sourceTree = "<group>"; };
 		D31C3BE31A722834006D2678 /* ResourceRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceRowController.h; sourceTree = "<group>"; };
 		D31C3BE41A722834006D2678 /* ResourceRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceRowController.m; sourceTree = "<group>"; };
-		D31D54E01B0EEFB500C53F9A /* libPods-Photon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Photon.a"; path = "Pods/build/Debug-iphoneos/libPods-Photon.a"; sourceTree = "<group>"; };
-		D31D54E51B0EFA8900C53F9A /* libPods-Photon-Mixpanel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Photon-Mixpanel.a"; path = "Pods/build/Debug-iphoneos/libPods-Photon-Mixpanel.a"; sourceTree = "<group>"; };
-		D31D54E71B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Photon-Mixpanel.a"; path = "Pods/build/Debug-iphoneos/libPods-Photon-Mixpanel.a"; sourceTree = "<group>"; };
 		D322AA0C1A6E0D7B00D7DC05 /* HueBridgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridgeView.h; sourceTree = "<group>"; };
 		D322AA0D1A6E0D7B00D7DC05 /* HueBridgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridgeView.m; sourceTree = "<group>"; };
 		D344C53A1AECB21C002522D0 /* Photon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,8 +167,6 @@
 		D344C54C1AECB21C002522D0 /* Photon (OS X)Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Photon (OS X)Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D344C5511AECB21C002522D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D344C5521AECB21C002522D0 /* Photon__OS_X_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Photon__OS_X_Tests.m; sourceTree = "<group>"; };
-		D344C55C1AEE152A002522D0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		D344C55D1AEE152A002522D0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D34DAEFA1B07EF85001CF778 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D34FB2A01A71714600DB659E /* Photon WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Photon WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34FB2A31A71714600DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -197,8 +178,8 @@
 		D34FB2AF1A71714700DB659E /* Photon WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photon WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34FB2B51A71714700DB659E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34FB2B71A71714700DB659E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		D36AAE601AACED8200EE0C2A /* PNBrightnessPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNBrightnessPickerVC.h; path = ../PNBrightnessPickerVC.h; sourceTree = "<group>"; };
-		D36AAE611AACED8200EE0C2A /* PNBrightnessPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNBrightnessPickerVC.m; path = ../PNBrightnessPickerVC.m; sourceTree = "<group>"; };
+		D36AAE601AACED8200EE0C2A /* PNBrightnessPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNBrightnessPickerVC.h; sourceTree = "<group>"; };
+		D36AAE611AACED8200EE0C2A /* PNBrightnessPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNBrightnessPickerVC.m; sourceTree = "<group>"; };
 		D3779F121A78B483008B817A /* ResourceCollectionHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResourceCollectionHeaderReusableView.xib; sourceTree = "<group>"; };
 		D37BE56B1AE4302A006D4605 /* PNEditGroupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNEditGroupVC.h; sourceTree = "<group>"; };
 		D37BE56C1AE4302A006D4605 /* PNEditGroupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNEditGroupVC.m; sourceTree = "<group>"; };
@@ -208,9 +189,6 @@
 		D38780071AE50B46003DCF46 /* PNEditLightVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PNEditLightVC.xib; sourceTree = "<group>"; };
 		D38780091AE50B53003DCF46 /* PNEditLightVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNEditLightVC.h; sourceTree = "<group>"; };
 		D387800A1AE51898003DCF46 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		D387800C1AE52B88003DCF46 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../Desktop/Default-568h@2x.png"; sourceTree = "<group>"; };
-		D387800D1AE52B88003DCF46 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../../Desktop/Default@2x.png"; sourceTree = "<group>"; };
-		D387800E1AE52B88003DCF46 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../Desktop/Default.png; sourceTree = "<group>"; };
 		D38C16351A68DE96006FE974 /* Photon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38C16391A68DE96006FE974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38C163A1A68DE96006FE974 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -282,7 +260,7 @@
 		D3EC69D31AABF2EF00DE4C65 /* PNUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNUtilities.m; sourceTree = "<group>"; };
 		D3ED384E1A7DAD30000CE316 /* ResourceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceCollectionViewCell.h; sourceTree = "<group>"; };
 		D3ED384F1A7DAD30000CE316 /* ResourceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceCollectionViewCell.m; sourceTree = "<group>"; };
-		D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResourceCollectionViewCell.xib; path = ../ResourceCollectionViewCell.xib; sourceTree = "<group>"; };
+		D3ED38511A7DBE58000CE316 /* ResourceCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResourceCollectionViewCell.xib; sourceTree = "<group>"; };
 		D3ED38571A7ED43F000CE316 /* SceneListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneListViewController.h; sourceTree = "<group>"; };
 		D3ED38581A7ED43F000CE316 /* SceneListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneListViewController.m; sourceTree = "<group>"; };
 		D3ED385C1A7FE2A9000CE316 /* PNColorPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNColorPickerVC.h; sourceTree = "<group>"; };
@@ -292,7 +270,6 @@
 		D3FB694F1A6CF7080068945E /* SetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		D3FB69521A6D0D810068945E /* ResourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceViewController.h; sourceTree = "<group>"; };
 		D3FB69531A6D0D810068945E /* ResourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceViewController.m; sourceTree = "<group>"; };
-		DE73545164D92F377CE65494 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,7 +295,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D380F1871AE2F04F00D846B9 /* HueSDK_iOS.framework in Frameworks */,
-				4EA7DA26D1080F909A71489B /* libPods-Photon WatchKit Extension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,12 +302,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D31D54E81B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a in Frameworks */,
 				D387800B1AE51898003DCF46 /* MessageUI.framework in Frameworks */,
-				D344C55F1AEE152A002522D0 /* Fabric.framework in Frameworks */,
 				D380F1861AE2F03F00D846B9 /* HueSDK_iOS.framework in Frameworks */,
-				D344C55E1AEE152A002522D0 /* Crashlytics.framework in Frameworks */,
-				6F6D357CACD23F452EA8F5AC /* libPods-Photon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,26 +322,9 @@
 			children = (
 				D3D3944F1B124F870047DB55 /* Cocoa.framework */,
 				D3D3944D1B124F820047DB55 /* SystemConfiguration.framework */,
-				D31D54E71B0EFADC00C53F9A /* libPods-Photon-Mixpanel.a */,
-				D31D54E51B0EFA8900C53F9A /* libPods-Photon-Mixpanel.a */,
-				D31D54E01B0EEFB500C53F9A /* libPods-Photon.a */,
 				D34DAEFA1B07EF85001CF778 /* SystemConfiguration.framework */,
-				DE73545164D92F377CE65494 /* libPods.a */,
-				71518618920DCD3A394F7099 /* libPods-Photon.a */,
-				4E1C73569DDDB048C99B7BFD /* libPods-Photon WatchKit Extension.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D290A354950A7DAA5E6BB112 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5A7EEBCB6438DFACE80ED517 /* Pods-Photon.debug.xcconfig */,
-				A5FFCB92737127147D863A4D /* Pods-Photon.release.xcconfig */,
-				A8E2619878DDD17147702D85 /* Pods-Photon WatchKit Extension.debug.xcconfig */,
-				C318FD3CA9F58D71D9F07A18 /* Pods-Photon WatchKit Extension.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		D344C53B1AECB21C002522D0 /* Photon OS X App */ = {
@@ -483,10 +438,7 @@
 				D344C53B1AECB21C002522D0 /* Photon OS X App */,
 				D38C16361A68DE96006FE974 /* Products */,
 				D3BA63281A6B664600095EF7 /* Lumberjack */,
-				D290A354950A7DAA5E6BB112 /* Pods */,
 				49ACB7E6BC37C8E6B5D2B4CB /* Frameworks */,
-				D344C55C1AEE152A002522D0 /* Crashlytics.framework */,
-				D344C55D1AEE152A002522D0 /* Fabric.framework */,
 				D380F1851AE2F03F00D846B9 /* HueSDK_iOS.framework */,
 				D3D3942A1B119B840047DB55 /* HueSDK_OSX.framework */,
 				D387800A1AE51898003DCF46 /* MessageUI.framework */,
@@ -530,9 +482,6 @@
 		D38C16381A68DE96006FE974 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D387800C1AE52B88003DCF46 /* Default-568h@2x.png */,
-				D387800D1AE52B88003DCF46 /* Default@2x.png */,
-				D387800E1AE52B88003DCF46 /* Default.png */,
 				D3C53A161AB9672000D8F6DF /* Photon.entitlements */,
 				D38C16391A68DE96006FE974 /* Info.plist */,
 				D38C163A1A68DE96006FE974 /* main.m */,
@@ -722,11 +671,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D34FB2C11A71714700DB659E /* Build configuration list for PBXNativeTarget "Photon WatchKit Extension" */;
 			buildPhases = (
-				F18BC5B608A6A82D6030B751 /* Check Pods Manifest.lock */,
 				D34FB29C1A71714600DB659E /* Sources */,
 				D34FB29D1A71714600DB659E /* Frameworks */,
 				D34FB29E1A71714600DB659E /* Resources */,
-				CC8E6EDCBF9F932903E16D13 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -757,13 +704,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D38C16581A68DE96006FE974 /* Build configuration list for PBXNativeTarget "Photon" */;
 			buildPhases = (
-				3E29AEADF4CA5421D8848D42 /* Check Pods Manifest.lock */,
 				D38C16311A68DE96006FE974 /* Sources */,
 				D38C16321A68DE96006FE974 /* Frameworks */,
 				D38C16331A68DE96006FE974 /* Resources */,
 				D34FB24B1A70F56F00DB659E /* Embed App Extensions */,
-				F39397C658B572E70615BB40 /* Copy Pods Resources */,
-				D344C55B1AEE14F8002522D0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -908,16 +852,13 @@
 				D30358791AE4CDAE00D929DC /* PNSettingsVC.xib in Resources */,
 				D3A8936F1AE42B3E00B230E1 /* PNGroupListVC.xib in Resources */,
 				D38780081AE50B46003DCF46 /* PNEditLightVC.xib in Resources */,
-				D38780111AE52B88003DCF46 /* Default.png in Resources */,
 				D37BE56F1AE4302A006D4605 /* PNEditGroupVC.xib in Resources */,
 				D3FB69511A6CF7080068945E /* SetupViewController.xib in Resources */,
 				D38C16491A68DE96006FE974 /* LaunchScreen.xib in Resources */,
 				D38C16461A68DE96006FE974 /* Images.xcassets in Resources */,
 				D3ED38521A7DBE58000CE316 /* ResourceCollectionViewCell.xib in Resources */,
-				D387800F1AE52B88003DCF46 /* Default-568h@2x.png in Resources */,
 				D3EC3D401AD08C0F00B29301 /* PNBrightnessCell.xib in Resources */,
 				D3779F131A78B483008B817A /* ResourceCollectionHeaderReusableView.xib in Resources */,
-				D38780101AE52B88003DCF46 /* Default@2x.png in Resources */,
 				D3180F3F1AD23757007D95D8 /* PNBrightnessPickerVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -930,82 +871,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		3E29AEADF4CA5421D8848D42 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CC8E6EDCBF9F932903E16D13 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Photon WatchKit Extension/Pods-Photon WatchKit Extension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D344C55B1AEE14F8002522D0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 0fc1afd63ddc37177b5fb943fad7a8cb15dff382 aa8302b2d2bc544764e25306c4eb9f6685006e8d9fd4ef72fdda6d7548ee7796";
-		};
-		F18BC5B608A6A82D6030B751 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F39397C658B572E70615BB40 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Photon/Pods-Photon-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D344C5361AECB21C002522D0 /* Sources */ = {
@@ -1297,7 +1162,6 @@
 		};
 		D34FB2C21A71714700DB659E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8E2619878DDD17147702D85 /* Pods-Photon WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Photon WatchKit Extension/Photon WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1330,7 +1194,6 @@
 		};
 		D34FB2C31A71714700DB659E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C318FD3CA9F58D71D9F07A18 /* Pods-Photon WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Photon WatchKit Extension/Photon WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1438,7 +1301,6 @@
 		};
 		D38C16591A68DE96006FE974 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A7EEBCB6438DFACE80ED517 /* Pods-Photon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Photon/Photon.entitlements;
@@ -1467,7 +1329,6 @@
 		};
 		D38C165A1A68DE96006FE974 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A5FFCB92737127147D863A4D /* Pods-Photon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Photon/Photon.entitlements;
